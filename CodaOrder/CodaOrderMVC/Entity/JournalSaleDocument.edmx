@@ -1,0 +1,1941 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="JournalSaleDocument.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.Action' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="ActionMethod" Type="varchar" MaxLength="128" />
+          <Property Name="ActionName" Type="varchar" MaxLength="128" />
+          <Property Name="ActionTypeID" Type="bigint" Nullable="false" />
+          <Property Name="Caption" Type="varchar" MaxLength="128" />
+          <Property Name="Comments" Type="varchar" MaxLength="128" />
+          <Property Name="DelDate" Type="datetime" />
+          <Property Name="DotNetMethod" Type="varchar" MaxLength="128" />
+          <Property Name="FullName" Type="varchar" MaxLength="128" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IconIndex" Type="int" Nullable="false" />
+          <Property Name="IsAuto" Type="bit" Nullable="false" />
+          <Property Name="IsCardItem" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsDocumentChanged" Type="bit" Nullable="false" />
+          <Property Name="IsGroup" Type="bit" Nullable="false" />
+          <Property Name="IsHidden" Type="bit" Nullable="false" />
+          <Property Name="IsListItem" Type="bit" Nullable="false" />
+          <Property Name="IsManual" Type="bit" Nullable="false" />
+          <Property Name="IsReset" Type="bit" Nullable="false" />
+          <Property Name="IsRowItem" Type="bit" Nullable="false" />
+          <Property Name="IsToolbarItem" Type="bit" Nullable="false" />
+          <Property Name="JournalClasses" Type="varchar" MaxLength="512" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="OwnerID" Type="bigint" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="PrepareAction" Type="varchar" MaxLength="128" />
+          <Property Name="Shortcut" Type="varchar" MaxLength="128" />
+          <Property Name="SID" Type="bigint" />
+          <Property Name="SortNO" Type="int" />
+          <Property Name="SQLMethod" Type="varchar" MaxLength="128" />
+          <Property Name="TargetStatusID" Type="bigint" />
+          <Property Name="ToolTip" Type="varchar" MaxLength="128" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.Address' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="CODE" Type="varchar" MaxLength="4" />
+          <Property Name="Comments" Type="varchar" MaxLength="128" />
+          <Property Name="ExtraName" Type="varchar" MaxLength="128" />
+          <Property Name="FlatNO" Type="varchar" MaxLength="32" />
+          <Property Name="FullName" Type="varchar" MaxLength="128" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="HouseNO" Type="varchar" MaxLength="32" />
+          <Property Name="IconIndex" Type="int" Nullable="false" />
+          <Property Name="Location" Type="bigint" />
+          <Property Name="LOCCODE" Type="varchar" MaxLength="32" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="PostalCode" Type="varchar" MaxLength="32" />
+          <Property Name="SettlementID" Type="bigint" />
+          <Property Name="StreetID" Type="bigint" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.Box' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Box">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="BoxCode" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="BoxTypeID" Type="bigint" Nullable="false" />
+          <Property Name="CloseDate" Type="datetime" />
+          <Property Name="IsClosed" Type="bit" Nullable="false" />
+          <Property Name="OpenDate" Type="datetime" />
+          <Property Name="OwnerID" Type="bigint" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.BusinessUnit' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="BusinessUnit">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="Code" Type="varchar" MaxLength="32" />
+          <Property Name="Comments" Type="varchar" MaxLength="128" />
+          <Property Name="DelDate" Type="datetime" />
+          <Property Name="FullName" Type="varchar" MaxLength="128" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IconIndex" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="ManagerID" Type="bigint" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="OwnerID" Type="bigint" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="SID" Type="bigint" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.Classification' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Classification">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="Code" Type="varchar" MaxLength="32" />
+          <Property Name="Comments" Type="varchar" MaxLength="128" />
+          <Property Name="DelDate" Type="datetime" />
+          <Property Name="FullName" Type="varchar" MaxLength="128" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IconIndex" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="OwnerID" Type="bigint" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="SID" Type="bigint" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.Contract' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="Comments" Type="varchar" MaxLength="128" />
+          <Property Name="ConditionID" Type="bigint" />
+          <Property Name="ContractKindID" Type="bigint" />
+          <Property Name="ContractNO" Type="varchar" MaxLength="32" />
+          <Property Name="ContractTypeID" Type="bigint" />
+          <Property Name="DebtLimit" Type="money" />
+          <Property Name="DelayLimit" Type="bigint" />
+          <Property Name="DelDate" Type="datetime" />
+          <Property Name="ExpireDate" Type="datetime" />
+          <Property Name="ExtraContractNO" Type="varchar" MaxLength="32" />
+          <Property Name="ExtraIssueDate" Type="datetime" />
+          <Property Name="FilialID" Type="bigint" />
+          <Property Name="FirmID" Type="bigint" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="128" />
+          <Property Name="GrowthValue" Type="money" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IconIndex" Type="int" Nullable="false" />
+          <Property Name="IsArchived" Type="bit" />
+          <Property Name="IsBlocked" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsFixed" Type="bit" />
+          <Property Name="IssueDate" Type="datetime" />
+          <Property Name="ManualDiscount" Type="money" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="OwnerID" Type="bigint" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="SID" Type="bigint" />
+          <Property Name="SubjectID" Type="bigint" Nullable="false" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.Department' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="AddressID" Type="bigint" />
+          <Property Name="Comments" Type="varchar" MaxLength="128" />
+          <Property Name="DelDate" Type="datetime" />
+          <Property Name="Email" Type="varchar" MaxLength="128" />
+          <Property Name="ExtraCode" Type="varchar" MaxLength="32" />
+          <Property Name="Fax" Type="varchar" MaxLength="128" />
+          <Property Name="FullName" Type="varchar" MaxLength="128" />
+          <Property Name="FullTextSearch" Type="varchar(max)" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IconIndex" Type="int" Nullable="false" />
+          <Property Name="InnerCode" Type="varchar" MaxLength="32" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="ManagerID" Type="bigint" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="OwnerID" Type="bigint" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="Phone" Type="varchar" MaxLength="128" />
+          <Property Name="SID" Type="bigint" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.Directory' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Directory">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="Comments" Type="varchar" MaxLength="128" />
+          <Property Name="DelDate" Type="datetime" />
+          <Property Name="FullName" Type="varchar" MaxLength="128" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IconIndex" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="OwnerID" Type="bigint" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="SID" Type="bigint" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.DocBoxLine' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DocBoxLine">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            <PropertyRef Name="DocID" />
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="BoxID" Type="bigint" Nullable="false" />
+          <Property Name="DocID" Type="bigint" Nullable="false" />
+          <Property Name="IsRemoved" Type="bit" Nullable="false" />
+          <Property Name="Ordinal" Type="int" Nullable="false" />
+          <Property Name="RemoveDate" Type="datetime" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.Employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="CodaUserID" Type="bigint" />
+          <Property Name="Comments" Type="varchar" MaxLength="128" />
+          <Property Name="DelDate" Type="datetime" />
+          <Property Name="DutyTypeID" Type="bigint" />
+          <Property Name="EMail" Type="varchar" MaxLength="128" />
+          <Property Name="FullName" Type="varchar" MaxLength="128" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IconIndex" Type="int" Nullable="false" />
+          <Property Name="IndividualID" Type="bigint" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="MedicalPaper" Type="varchar" MaxLength="128" />
+          <Property Name="MedPaperDateBegin" Type="datetime" />
+          <Property Name="MedPaperDateEnd" Type="datetime" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="OwnerID" Type="bigint" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="Phone" Type="varchar" MaxLength="128" />
+          <Property Name="Position" Type="varchar" MaxLength="128" />
+          <Property Name="SellerID" Type="bigint" />
+          <Property Name="SID" Type="bigint" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.Filial' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Filial">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="AddressID" Type="bigint" />
+          <Property Name="Comments" Type="varchar" MaxLength="128" />
+          <Property Name="DelDate" Type="datetime" />
+          <Property Name="Email" Type="varchar" MaxLength="128" />
+          <Property Name="ExtraCode" Type="varchar" MaxLength="32" />
+          <Property Name="Fax" Type="varchar" MaxLength="128" />
+          <Property Name="FullName" Type="varchar" MaxLength="128" />
+          <Property Name="FullTextSearch" Type="varchar(max)" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IconIndex" Type="int" Nullable="false" />
+          <Property Name="InnerCode" Type="varchar" MaxLength="32" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="ManagerID" Type="bigint" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="OwnerID" Type="bigint" />
+          <Property Name="PaperRegistrationCode" Type="varchar" MaxLength="32" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="Phone" Type="varchar" MaxLength="128" />
+          <Property Name="SID" Type="bigint" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.Firm' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Firm">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="Comments" Type="varchar" MaxLength="128" />
+          <Property Name="DelDate" Type="datetime" />
+          <Property Name="FullName" Type="varchar" MaxLength="128" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IconIndex" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="OwnerID" Type="bigint" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="ProviderID" Type="bigint" />
+          <Property Name="SID" Type="bigint" />
+          <Property Name="SubjectID" Type="bigint" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="WorkflowID" Type="bigint" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.JournalSale_Documents' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="JournalSale_Documents">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            
+            
+            <PropertyRef Name="FirmID" />
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="Amount" Type="money" />
+          <Property Name="BranchID" Type="bigint" />
+          <Property Name="ChangeDate" Type="datetime" Nullable="false" />
+          <Property Name="Comments" Type="varchar" MaxLength="128" />
+          <Property Name="CreateDate" Type="datetime" Nullable="false" />
+          <Property Name="DelDate" Type="datetime" />
+          <Property Name="DocCode" Type="varchar" MaxLength="32" />
+          <Property Name="DocDate" Type="datetime" Nullable="false" />
+          <Property Name="EmployeeID" Type="bigint" />
+          <Property Name="DeliverID" Type="bigint" />
+          <Property Name="ReceiverID" Type="bigint" />
+          <Property Name="FirmID" Type="bigint" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="128" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IconIndex" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="NodeID" Type="bigint" />
+          <Property Name="RGB" Type="char" MaxLength="1" Nullable="false" />
+          <Property Name="SourceDocID" Type="bigint" />
+          <Property Name="DocGroupID" Type="bigint" />
+          <Property Name="DocGroupPosition" Type="bigint" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="PriceSum" Type="money" Nullable="false" />
+          <Property Name="VatSum" Type="money" Nullable="false" />
+          <Property Name="ContractID" Type="bigint" />
+          <Property Name="CustomerID" Type="bigint" Nullable="false" />
+          <Property Name="DepartmentID" Type="bigint" />
+          <Property Name="CorrespondID" Type="bigint" />
+          <Property Name="TaxCode" Type="varchar" MaxLength="32" />
+          <Property Name="TaxDate" Type="datetime" />
+          <Property Name="FilialID" Type="bigint" />
+          <Property Name="PrintComments" Type="varchar" MaxLength="128" />
+          <Property Name="IsForeign" Type="int" Nullable="false" />
+          <Property Name="RevenueID" Type="bigint" />
+          <Property Name="DelayLimit" Type="bigint" />
+          <Property Name="VatPercent" Type="money" Nullable="false" />
+          <Property Name="SourceDocCode" Type="varchar" MaxLength="40" />
+          <Property Name="IsChangedAfterPrint" Type="bit" Nullable="false" />
+          <Property Name="CasefillrateID" Type="bigint" />
+          <Property Name="SectorID" Type="bigint" />
+          <Property Name="CreditComments" Type="varchar" MaxLength="128" />
+          <Property Name="VATNNSum" Type="money" />
+          <Property Name="TaxInvoiceType" Type="varchar" MaxLength="12" />
+          <Property Name="LineCount" Type="int" Nullable="false" />
+          <Property Name="Coordinate" Type="varchar" MaxLength="128" />
+          <Property Name="BrandName" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.Revenue' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Revenue">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="Code" Type="varchar" MaxLength="32" />
+          <Property Name="Comments" Type="varchar" MaxLength="128" />
+          <Property Name="DelDate" Type="datetime" />
+          <Property Name="FullName" Type="varchar" MaxLength="128" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IconIndex" Type="int" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="OwnerID" Type="bigint" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="SID" Type="bigint" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.Subject' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="AccountantID" Type="bigint" />
+          <Property Name="AddressID" Type="bigint" />
+          <Property Name="Comments" Type="varchar" MaxLength="128" />
+          <Property Name="DelDate" Type="datetime" />
+          <Property Name="DirectorID" Type="bigint" />
+          <Property Name="Email" Type="varchar" MaxLength="128" />
+          <Property Name="ExtraCode" Type="varchar" MaxLength="32" />
+          <Property Name="Fax" Type="varchar" MaxLength="128" />
+          <Property Name="FullName" Type="varchar" MaxLength="128" />
+          <Property Name="FullTextSearch" Type="varchar(max)" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="IconIndex" Type="int" Nullable="false" />
+          <Property Name="IndividualID" Type="bigint" />
+          <Property Name="IsCentralized" Type="bit" Nullable="false" />
+          <Property Name="IsCustomer" Type="bit" Nullable="false" />
+          <Property Name="IsDeleted" Type="bit" Nullable="false" />
+          <Property Name="IsImporter" Type="bit" Nullable="false" />
+          <Property Name="IsPrivate" Type="bit" Nullable="false" />
+          <Property Name="IsSupplier" Type="bit" Nullable="false" />
+          <Property Name="Kind" Type="varchar" MaxLength="32" />
+          <Property Name="LawAddressID" Type="bigint" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="OwnerID" Type="bigint" />
+          <Property Name="PaperRegistrationCode" Type="varchar" MaxLength="32" />
+          <Property Name="PaperVATCode" Type="varchar" MaxLength="32" />
+          <Property Name="PaperVATExtraNO" Type="varchar" MaxLength="32" />
+          <Property Name="ParentID" Type="bigint" />
+          <Property Name="PaymentTypeID" Type="bigint" />
+          <Property Name="Phone" Type="varchar" MaxLength="128" />
+          <Property Name="RemindTime" Type="int" Nullable="false" />
+          <Property Name="ShortName" Type="varchar" MaxLength="128" />
+          <Property Name="SID" Type="bigint" />
+          <Property Name="SpecificationID" Type="bigint" />
+          <Property Name="TaxTypeID" Type="bigint" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="WithoutStamp" Type="bit" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="TaxType">
+          <Key>
+            <PropertyRef Name="OID" />
+            
+            
+            
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="FullName" Type="varchar" MaxLength="128" />
+          <Property Name="GUID" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="Value" Type="varchar" MaxLength="128" />
+        </EntityType>
+        <Function Name="JournalSalePaged_GetDocuments_Entity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="OID" Type="bigint" Mode="In" />
+          <Parameter Name="Filter" Type="xml" Mode="In" />
+          <Parameter Name="DocOID" Type="xml" Mode="In" />
+          <Parameter Name="ObjectID" Type="bigint" Mode="In" />
+          <Parameter Name="BegDate" Type="datetime" Mode="In" />
+          <Parameter Name="EndDate" Type="datetime" Mode="In" />
+          <Parameter Name="FilterDocClassesXml" Type="xml" Mode="In" />
+          <Parameter Name="FilterStatusXml" Type="xml" Mode="In" />
+          <Parameter Name="IsExtended" Type="bit" Mode="In" />
+          <Parameter Name="ShowDeleted" Type="bit" Mode="In" />
+          <Parameter Name="CheckOperation" Type="bit" Mode="In" />
+          <Parameter Name="SecurityUser" Type="varchar" Mode="In" />
+          <Parameter Name="SecurityGroup" Type="xml" Mode="In" />
+          <Parameter Name="PerPage" Type="int" Mode="In" />
+          <Parameter Name="PageNumber" Type="int" Mode="In" />
+          <Parameter Name="FullTextFilter" Type="xml" Mode="In" />
+          <Parameter Name="OrderFilter" Type="xml" Mode="In" />
+          <Parameter Name="TotalRows" Type="int" Mode="InOut" />
+          <Parameter Name="Pages" Type="int" Mode="InOut" />
+          <Parameter Name="WhereQuery" Type="nvarchar(max)" Mode="In" />
+          <Parameter Name="WhereQueryTableAlias" Type="varchar" Mode="In" />
+          <Parameter Name="TST" Type="binary" Mode="InOut" />
+        </Function>
+        <EntityContainer Name="JournalSaleDocumentStoreContainer">
+          <EntitySet Name="Action" EntityType="Self.Action" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Action].[OID] AS [OID], 
+    [Action].[CID] AS [CID], 
+    [Action].[ActionMethod] AS [ActionMethod], 
+    [Action].[ActionName] AS [ActionName], 
+    [Action].[ActionTypeID] AS [ActionTypeID], 
+    [Action].[Caption] AS [Caption], 
+    [Action].[Comments] AS [Comments], 
+    [Action].[DelDate] AS [DelDate], 
+    [Action].[DotNetMethod] AS [DotNetMethod], 
+    [Action].[FullName] AS [FullName], 
+    [Action].[GUID] AS [GUID], 
+    [Action].[IconIndex] AS [IconIndex], 
+    [Action].[IsAuto] AS [IsAuto], 
+    [Action].[IsCardItem] AS [IsCardItem], 
+    [Action].[IsDeleted] AS [IsDeleted], 
+    [Action].[IsDocumentChanged] AS [IsDocumentChanged], 
+    [Action].[IsGroup] AS [IsGroup], 
+    [Action].[IsHidden] AS [IsHidden], 
+    [Action].[IsListItem] AS [IsListItem], 
+    [Action].[IsManual] AS [IsManual], 
+    [Action].[IsReset] AS [IsReset], 
+    [Action].[IsRowItem] AS [IsRowItem], 
+    [Action].[IsToolbarItem] AS [IsToolbarItem], 
+    [Action].[JournalClasses] AS [JournalClasses], 
+    [Action].[Name] AS [Name], 
+    [Action].[OwnerID] AS [OwnerID], 
+    [Action].[ParentID] AS [ParentID], 
+    [Action].[PrepareAction] AS [PrepareAction], 
+    [Action].[Shortcut] AS [Shortcut], 
+    [Action].[SID] AS [SID], 
+    [Action].[SortNO] AS [SortNO], 
+    [Action].[SQLMethod] AS [SQLMethod], 
+    [Action].[TargetStatusID] AS [TargetStatusID], 
+    [Action].[ToolTip] AS [ToolTip], 
+    [Action].[TST] AS [TST]
+    FROM [dbo].[Action] AS [Action]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Address" EntityType="Self.Address" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Address].[OID] AS [OID], 
+    [Address].[CID] AS [CID], 
+    [Address].[CODE] AS [CODE], 
+    [Address].[Comments] AS [Comments], 
+    [Address].[ExtraName] AS [ExtraName], 
+    [Address].[FlatNO] AS [FlatNO], 
+    [Address].[FullName] AS [FullName], 
+    [Address].[GUID] AS [GUID], 
+    [Address].[HouseNO] AS [HouseNO], 
+    [Address].[IconIndex] AS [IconIndex], 
+    [Address].[Location] AS [Location], 
+    [Address].[LOCCODE] AS [LOCCODE], 
+    [Address].[Name] AS [Name], 
+    [Address].[ParentID] AS [ParentID], 
+    [Address].[PostalCode] AS [PostalCode], 
+    [Address].[SettlementID] AS [SettlementID], 
+    [Address].[StreetID] AS [StreetID], 
+    [Address].[TST] AS [TST]
+    FROM [dbo].[Address] AS [Address]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Box" EntityType="Self.Box" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Box].[OID] AS [OID], 
+    [Box].[CID] AS [CID], 
+    [Box].[BoxCode] AS [BoxCode], 
+    [Box].[BoxTypeID] AS [BoxTypeID], 
+    [Box].[CloseDate] AS [CloseDate], 
+    [Box].[IsClosed] AS [IsClosed], 
+    [Box].[OpenDate] AS [OpenDate], 
+    [Box].[OwnerID] AS [OwnerID]
+    FROM [dbo].[Box] AS [Box]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="BusinessUnit" EntityType="Self.BusinessUnit" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [BusinessUnit].[OID] AS [OID], 
+    [BusinessUnit].[CID] AS [CID], 
+    [BusinessUnit].[Code] AS [Code], 
+    [BusinessUnit].[Comments] AS [Comments], 
+    [BusinessUnit].[DelDate] AS [DelDate], 
+    [BusinessUnit].[FullName] AS [FullName], 
+    [BusinessUnit].[GUID] AS [GUID], 
+    [BusinessUnit].[IconIndex] AS [IconIndex], 
+    [BusinessUnit].[IsDeleted] AS [IsDeleted], 
+    [BusinessUnit].[ManagerID] AS [ManagerID], 
+    [BusinessUnit].[Name] AS [Name], 
+    [BusinessUnit].[OwnerID] AS [OwnerID], 
+    [BusinessUnit].[ParentID] AS [ParentID], 
+    [BusinessUnit].[SID] AS [SID], 
+    [BusinessUnit].[TST] AS [TST]
+    FROM [dbo].[BusinessUnit] AS [BusinessUnit]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Classification" EntityType="Self.Classification" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Classification].[OID] AS [OID], 
+    [Classification].[CID] AS [CID], 
+    [Classification].[Code] AS [Code], 
+    [Classification].[Comments] AS [Comments], 
+    [Classification].[DelDate] AS [DelDate], 
+    [Classification].[FullName] AS [FullName], 
+    [Classification].[GUID] AS [GUID], 
+    [Classification].[IconIndex] AS [IconIndex], 
+    [Classification].[IsDeleted] AS [IsDeleted], 
+    [Classification].[Name] AS [Name], 
+    [Classification].[OwnerID] AS [OwnerID], 
+    [Classification].[ParentID] AS [ParentID], 
+    [Classification].[SID] AS [SID], 
+    [Classification].[TST] AS [TST]
+    FROM [dbo].[Classification] AS [Classification]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Contract" EntityType="Self.Contract" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Contract].[OID] AS [OID], 
+    [Contract].[CID] AS [CID], 
+    [Contract].[Comments] AS [Comments], 
+    [Contract].[ConditionID] AS [ConditionID], 
+    [Contract].[ContractKindID] AS [ContractKindID], 
+    [Contract].[ContractNO] AS [ContractNO], 
+    [Contract].[ContractTypeID] AS [ContractTypeID], 
+    [Contract].[DebtLimit] AS [DebtLimit], 
+    [Contract].[DelayLimit] AS [DelayLimit], 
+    [Contract].[DelDate] AS [DelDate], 
+    [Contract].[ExpireDate] AS [ExpireDate], 
+    [Contract].[ExtraContractNO] AS [ExtraContractNO], 
+    [Contract].[ExtraIssueDate] AS [ExtraIssueDate], 
+    [Contract].[FilialID] AS [FilialID], 
+    [Contract].[FirmID] AS [FirmID], 
+    [Contract].[FullName] AS [FullName], 
+    [Contract].[GrowthValue] AS [GrowthValue], 
+    [Contract].[GUID] AS [GUID], 
+    [Contract].[IconIndex] AS [IconIndex], 
+    [Contract].[IsArchived] AS [IsArchived], 
+    [Contract].[IsBlocked] AS [IsBlocked], 
+    [Contract].[IsDeleted] AS [IsDeleted], 
+    [Contract].[IsFixed] AS [IsFixed], 
+    [Contract].[IssueDate] AS [IssueDate], 
+    [Contract].[ManualDiscount] AS [ManualDiscount], 
+    [Contract].[Name] AS [Name], 
+    [Contract].[OwnerID] AS [OwnerID], 
+    [Contract].[ParentID] AS [ParentID], 
+    [Contract].[SID] AS [SID], 
+    [Contract].[SubjectID] AS [SubjectID], 
+    [Contract].[TST] AS [TST]
+    FROM [dbo].[Contract] AS [Contract]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Department" EntityType="Self.Department" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Department].[OID] AS [OID], 
+    [Department].[CID] AS [CID], 
+    [Department].[AddressID] AS [AddressID], 
+    [Department].[Comments] AS [Comments], 
+    [Department].[DelDate] AS [DelDate], 
+    [Department].[Email] AS [Email], 
+    [Department].[ExtraCode] AS [ExtraCode], 
+    [Department].[Fax] AS [Fax], 
+    [Department].[FullName] AS [FullName], 
+    [Department].[FullTextSearch] AS [FullTextSearch], 
+    [Department].[GUID] AS [GUID], 
+    [Department].[IconIndex] AS [IconIndex], 
+    [Department].[InnerCode] AS [InnerCode], 
+    [Department].[IsDeleted] AS [IsDeleted], 
+    [Department].[ManagerID] AS [ManagerID], 
+    [Department].[Name] AS [Name], 
+    [Department].[OwnerID] AS [OwnerID], 
+    [Department].[ParentID] AS [ParentID], 
+    [Department].[Phone] AS [Phone], 
+    [Department].[SID] AS [SID], 
+    [Department].[TST] AS [TST]
+    FROM [dbo].[Department] AS [Department]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Directory" EntityType="Self.Directory" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Directory].[OID] AS [OID], 
+    [Directory].[CID] AS [CID], 
+    [Directory].[Comments] AS [Comments], 
+    [Directory].[DelDate] AS [DelDate], 
+    [Directory].[FullName] AS [FullName], 
+    [Directory].[GUID] AS [GUID], 
+    [Directory].[IconIndex] AS [IconIndex], 
+    [Directory].[IsDeleted] AS [IsDeleted], 
+    [Directory].[Name] AS [Name], 
+    [Directory].[OwnerID] AS [OwnerID], 
+    [Directory].[ParentID] AS [ParentID], 
+    [Directory].[SID] AS [SID], 
+    [Directory].[TST] AS [TST]
+    FROM [dbo].[Directory] AS [Directory]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DocBoxLine" EntityType="Self.DocBoxLine" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DocBoxLine].[OID] AS [OID], 
+    [DocBoxLine].[CID] AS [CID], 
+    [DocBoxLine].[BoxID] AS [BoxID], 
+    [DocBoxLine].[DocID] AS [DocID], 
+    [DocBoxLine].[IsRemoved] AS [IsRemoved], 
+    [DocBoxLine].[Ordinal] AS [Ordinal], 
+    [DocBoxLine].[RemoveDate] AS [RemoveDate], 
+    [DocBoxLine].[TST] AS [TST]
+    FROM [dbo].[DocBoxLine] AS [DocBoxLine]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Employee" EntityType="Self.Employee" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Employee].[OID] AS [OID], 
+    [Employee].[CID] AS [CID], 
+    [Employee].[CodaUserID] AS [CodaUserID], 
+    [Employee].[Comments] AS [Comments], 
+    [Employee].[DelDate] AS [DelDate], 
+    [Employee].[DutyTypeID] AS [DutyTypeID], 
+    [Employee].[EMail] AS [EMail], 
+    [Employee].[FullName] AS [FullName], 
+    [Employee].[GUID] AS [GUID], 
+    [Employee].[IconIndex] AS [IconIndex], 
+    [Employee].[IndividualID] AS [IndividualID], 
+    [Employee].[IsDeleted] AS [IsDeleted], 
+    [Employee].[MedicalPaper] AS [MedicalPaper], 
+    [Employee].[MedPaperDateBegin] AS [MedPaperDateBegin], 
+    [Employee].[MedPaperDateEnd] AS [MedPaperDateEnd], 
+    [Employee].[Name] AS [Name], 
+    [Employee].[OwnerID] AS [OwnerID], 
+    [Employee].[ParentID] AS [ParentID], 
+    [Employee].[Phone] AS [Phone], 
+    [Employee].[Position] AS [Position], 
+    [Employee].[SellerID] AS [SellerID], 
+    [Employee].[SID] AS [SID], 
+    [Employee].[TST] AS [TST]
+    FROM [dbo].[Employee] AS [Employee]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Filial" EntityType="Self.Filial" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Filial].[OID] AS [OID], 
+    [Filial].[CID] AS [CID], 
+    [Filial].[AddressID] AS [AddressID], 
+    [Filial].[Comments] AS [Comments], 
+    [Filial].[DelDate] AS [DelDate], 
+    [Filial].[Email] AS [Email], 
+    [Filial].[ExtraCode] AS [ExtraCode], 
+    [Filial].[Fax] AS [Fax], 
+    [Filial].[FullName] AS [FullName], 
+    [Filial].[FullTextSearch] AS [FullTextSearch], 
+    [Filial].[GUID] AS [GUID], 
+    [Filial].[IconIndex] AS [IconIndex], 
+    [Filial].[InnerCode] AS [InnerCode], 
+    [Filial].[IsDeleted] AS [IsDeleted], 
+    [Filial].[ManagerID] AS [ManagerID], 
+    [Filial].[Name] AS [Name], 
+    [Filial].[OwnerID] AS [OwnerID], 
+    [Filial].[PaperRegistrationCode] AS [PaperRegistrationCode], 
+    [Filial].[ParentID] AS [ParentID], 
+    [Filial].[Phone] AS [Phone], 
+    [Filial].[SID] AS [SID], 
+    [Filial].[TST] AS [TST]
+    FROM [dbo].[Filial] AS [Filial]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Firm" EntityType="Self.Firm" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Firm].[OID] AS [OID], 
+    [Firm].[CID] AS [CID], 
+    [Firm].[Comments] AS [Comments], 
+    [Firm].[DelDate] AS [DelDate], 
+    [Firm].[FullName] AS [FullName], 
+    [Firm].[GUID] AS [GUID], 
+    [Firm].[IconIndex] AS [IconIndex], 
+    [Firm].[IsDeleted] AS [IsDeleted], 
+    [Firm].[Name] AS [Name], 
+    [Firm].[OwnerID] AS [OwnerID], 
+    [Firm].[ParentID] AS [ParentID], 
+    [Firm].[ProviderID] AS [ProviderID], 
+    [Firm].[SID] AS [SID], 
+    [Firm].[SubjectID] AS [SubjectID], 
+    [Firm].[TST] AS [TST], 
+    [Firm].[WorkflowID] AS [WorkflowID]
+    FROM [dbo].[Firm] AS [Firm]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="JournalSale_Documents" EntityType="Self.JournalSale_Documents" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [JournalSale_Documents].[OID] AS [OID], 
+    [JournalSale_Documents].[CID] AS [CID], 
+    [JournalSale_Documents].[Amount] AS [Amount], 
+    [JournalSale_Documents].[BranchID] AS [BranchID], 
+    [JournalSale_Documents].[ChangeDate] AS [ChangeDate], 
+    [JournalSale_Documents].[Comments] AS [Comments], 
+    [JournalSale_Documents].[CreateDate] AS [CreateDate], 
+    [JournalSale_Documents].[DelDate] AS [DelDate], 
+    [JournalSale_Documents].[DocCode] AS [DocCode], 
+    [JournalSale_Documents].[DocDate] AS [DocDate], 
+    [JournalSale_Documents].[EmployeeID] AS [EmployeeID], 
+    [JournalSale_Documents].[DeliverID] AS [DeliverID], 
+    [JournalSale_Documents].[ReceiverID] AS [ReceiverID], 
+    [JournalSale_Documents].[FirmID] AS [FirmID], 
+    [JournalSale_Documents].[FullName] AS [FullName], 
+    [JournalSale_Documents].[GUID] AS [GUID], 
+    [JournalSale_Documents].[IconIndex] AS [IconIndex], 
+    [JournalSale_Documents].[IsDeleted] AS [IsDeleted], 
+    [JournalSale_Documents].[Name] AS [Name], 
+    [JournalSale_Documents].[NodeID] AS [NodeID], 
+    [JournalSale_Documents].[RGB] AS [RGB], 
+    [JournalSale_Documents].[SourceDocID] AS [SourceDocID], 
+    [JournalSale_Documents].[DocGroupID] AS [DocGroupID], 
+    [JournalSale_Documents].[DocGroupPosition] AS [DocGroupPosition], 
+    [JournalSale_Documents].[TST] AS [TST], 
+    [JournalSale_Documents].[PriceSum] AS [PriceSum], 
+    [JournalSale_Documents].[VatSum] AS [VatSum], 
+    [JournalSale_Documents].[ContractID] AS [ContractID], 
+    [JournalSale_Documents].[CustomerID] AS [CustomerID], 
+    [JournalSale_Documents].[DepartmentID] AS [DepartmentID], 
+    [JournalSale_Documents].[CorrespondID] AS [CorrespondID], 
+    [JournalSale_Documents].[TaxCode] AS [TaxCode], 
+    [JournalSale_Documents].[TaxDate] AS [TaxDate], 
+    [JournalSale_Documents].[FilialID] AS [FilialID], 
+    [JournalSale_Documents].[PrintComments] AS [PrintComments], 
+    [JournalSale_Documents].[IsForeign] AS [IsForeign], 
+    [JournalSale_Documents].[RevenueID] AS [RevenueID], 
+    [JournalSale_Documents].[DelayLimit] AS [DelayLimit], 
+    [JournalSale_Documents].[VatPercent] AS [VatPercent], 
+    [JournalSale_Documents].[SourceDocCode] AS [SourceDocCode], 
+    [JournalSale_Documents].[IsChangedAfterPrint] AS [IsChangedAfterPrint], 
+    [JournalSale_Documents].[CasefillrateID] AS [CasefillrateID], 
+    [JournalSale_Documents].[SectorID] AS [SectorID], 
+    [JournalSale_Documents].[CreditComments] AS [CreditComments], 
+    [JournalSale_Documents].[VATNNSum] AS [VATNNSum], 
+    [JournalSale_Documents].[TaxInvoiceType] AS [TaxInvoiceType], 
+    [JournalSale_Documents].[LineCount] AS [LineCount], 
+    [JournalSale_Documents].[Coordinate] AS [Coordinate], 
+    [JournalSale_Documents].[BrandName] AS [BrandName]
+    FROM [dbo].[JournalSale_Documents] AS [JournalSale_Documents]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Revenue" EntityType="Self.Revenue" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Revenue].[OID] AS [OID], 
+    [Revenue].[CID] AS [CID], 
+    [Revenue].[Code] AS [Code], 
+    [Revenue].[Comments] AS [Comments], 
+    [Revenue].[DelDate] AS [DelDate], 
+    [Revenue].[FullName] AS [FullName], 
+    [Revenue].[GUID] AS [GUID], 
+    [Revenue].[IconIndex] AS [IconIndex], 
+    [Revenue].[IsDeleted] AS [IsDeleted], 
+    [Revenue].[Name] AS [Name], 
+    [Revenue].[OwnerID] AS [OwnerID], 
+    [Revenue].[ParentID] AS [ParentID], 
+    [Revenue].[SID] AS [SID], 
+    [Revenue].[TST] AS [TST]
+    FROM [dbo].[Revenue] AS [Revenue]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="Subject" EntityType="Self.Subject" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [Subject].[OID] AS [OID], 
+    [Subject].[CID] AS [CID], 
+    [Subject].[AccountantID] AS [AccountantID], 
+    [Subject].[AddressID] AS [AddressID], 
+    [Subject].[Comments] AS [Comments], 
+    [Subject].[DelDate] AS [DelDate], 
+    [Subject].[DirectorID] AS [DirectorID], 
+    [Subject].[Email] AS [Email], 
+    [Subject].[ExtraCode] AS [ExtraCode], 
+    [Subject].[Fax] AS [Fax], 
+    [Subject].[FullName] AS [FullName], 
+    [Subject].[FullTextSearch] AS [FullTextSearch], 
+    [Subject].[GUID] AS [GUID], 
+    [Subject].[IconIndex] AS [IconIndex], 
+    [Subject].[IndividualID] AS [IndividualID], 
+    [Subject].[IsCentralized] AS [IsCentralized], 
+    [Subject].[IsCustomer] AS [IsCustomer], 
+    [Subject].[IsDeleted] AS [IsDeleted], 
+    [Subject].[IsImporter] AS [IsImporter], 
+    [Subject].[IsPrivate] AS [IsPrivate], 
+    [Subject].[IsSupplier] AS [IsSupplier], 
+    [Subject].[Kind] AS [Kind], 
+    [Subject].[LawAddressID] AS [LawAddressID], 
+    [Subject].[Name] AS [Name], 
+    [Subject].[OwnerID] AS [OwnerID], 
+    [Subject].[PaperRegistrationCode] AS [PaperRegistrationCode], 
+    [Subject].[PaperVATCode] AS [PaperVATCode], 
+    [Subject].[PaperVATExtraNO] AS [PaperVATExtraNO], 
+    [Subject].[ParentID] AS [ParentID], 
+    [Subject].[PaymentTypeID] AS [PaymentTypeID], 
+    [Subject].[Phone] AS [Phone], 
+    [Subject].[RemindTime] AS [RemindTime], 
+    [Subject].[ShortName] AS [ShortName], 
+    [Subject].[SID] AS [SID], 
+    [Subject].[SpecificationID] AS [SpecificationID], 
+    [Subject].[TaxTypeID] AS [TaxTypeID], 
+    [Subject].[TST] AS [TST], 
+    [Subject].[WithoutStamp] AS [WithoutStamp]
+    FROM [dbo].[Subject] AS [Subject]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="TaxType" EntityType="Self.TaxType" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [TaxType].[OID] AS [OID], 
+    [TaxType].[CID] AS [CID], 
+    [TaxType].[FullName] AS [FullName], 
+    [TaxType].[GUID] AS [GUID], 
+    [TaxType].[Name] AS [Name], 
+    [TaxType].[TST] AS [TST], 
+    [TaxType].[Value] AS [Value]
+    FROM [dbo].[TaxType] AS [TaxType]</DefiningQuery>
+          </EntitySet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="JournalSaleDocument" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Action">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="ActionMethod" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ActionName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ActionTypeID" Type="Int64" Nullable="false" />
+          <Property Name="Caption" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DelDate" Type="DateTime" Precision="3" />
+          <Property Name="DotNetMethod" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="IconIndex" Type="Int32" Nullable="false" DefaultValue="-1" />
+          <Property Name="IsAuto" Type="Boolean" Nullable="false" />
+          <Property Name="IsCardItem" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsDocumentChanged" Type="Boolean" Nullable="false" />
+          <Property Name="IsGroup" Type="Boolean" Nullable="false" />
+          <Property Name="IsHidden" Type="Boolean" Nullable="false" />
+          <Property Name="IsListItem" Type="Boolean" Nullable="false" />
+          <Property Name="IsManual" Type="Boolean" Nullable="false" />
+          <Property Name="IsReset" Type="Boolean" Nullable="false" />
+          <Property Name="IsRowItem" Type="Boolean" Nullable="false" />
+          <Property Name="IsToolbarItem" Type="Boolean" Nullable="false" />
+          <Property Name="JournalClasses" Type="String" MaxLength="512" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OwnerID" Type="Int64" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="PrepareAction" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Shortcut" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="SID" Type="Int64" />
+          <Property Name="SortNO" Type="Int32" />
+          <Property Name="SQLMethod" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="TargetStatusID" Type="Int64" />
+          <Property Name="ToolTip" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="TST" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Address">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="CODE" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ExtraName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FlatNO" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="HouseNO" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="IconIndex" Type="Int32" Nullable="false" DefaultValue="-1" />
+          <Property Name="Location" Type="Int64" />
+          <Property Name="LOCCODE" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="PostalCode" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="SettlementID" Type="Int64" />
+          <Property Name="StreetID" Type="Int64" />
+          <Property Name="TST" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Box">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="BoxCode" Type="String" MaxLength="100" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="BoxTypeID" Type="Int64" Nullable="false" />
+          <Property Name="CloseDate" Type="DateTime" Precision="3" />
+          <Property Name="IsClosed" Type="Boolean" Nullable="false" />
+          <Property Name="OpenDate" Type="DateTime" Precision="3" />
+          <Property Name="OwnerID" Type="Int64" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BusinessUnit">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="Code" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DelDate" Type="DateTime" Precision="3" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="IconIndex" Type="Int32" Nullable="false" DefaultValue="-1" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="ManagerID" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OwnerID" Type="Int64" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="SID" Type="Int64" />
+          <Property Name="TST" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Classification">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="Code" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DelDate" Type="DateTime" Precision="3" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="IconIndex" Type="Int32" Nullable="false" DefaultValue="-1" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OwnerID" Type="Int64" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="SID" Type="Int64" />
+          <Property Name="TST" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Contract">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="Comments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ConditionID" Type="Int64" />
+          <Property Name="ContractKindID" Type="Int64" />
+          <Property Name="ContractNO" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ContractTypeID" Type="Int64" />
+          <Property Name="DebtLimit" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="DelayLimit" Type="Int64" />
+          <Property Name="DelDate" Type="DateTime" Precision="3" />
+          <Property Name="ExpireDate" Type="DateTime" Precision="3" />
+          <Property Name="ExtraContractNO" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ExtraIssueDate" Type="DateTime" Precision="3" />
+          <Property Name="FilialID" Type="Int64" />
+          <Property Name="FirmID" Type="Int64" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="GrowthValue" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="IconIndex" Type="Int32" Nullable="false" DefaultValue="-1" />
+          <Property Name="IsArchived" Type="Boolean" />
+          <Property Name="IsBlocked" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsFixed" Type="Boolean" />
+          <Property Name="IssueDate" Type="DateTime" Precision="3" />
+          <Property Name="ManualDiscount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OwnerID" Type="Int64" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="SID" Type="Int64" />
+          <Property Name="SubjectID" Type="Int64" Nullable="false" />
+          <Property Name="TST" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Department">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="AddressID" Type="Int64" />
+          <Property Name="Comments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DelDate" Type="DateTime" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ExtraCode" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FullTextSearch" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="IconIndex" Type="Int32" Nullable="false" DefaultValue="-1" />
+          <Property Name="InnerCode" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="ManagerID" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OwnerID" Type="Int64" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="Phone" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="SID" Type="Int64" />
+          <Property Name="TST" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Directory">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="Comments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DelDate" Type="DateTime" Precision="3" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="IconIndex" Type="Int32" Nullable="false" DefaultValue="-1" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OwnerID" Type="Int64" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="SID" Type="Int64" />
+          <Property Name="TST" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="DocBoxLine">
+          <Key>
+            <PropertyRef Name="OID" />
+            <PropertyRef Name="DocID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="BoxID" Type="Int64" Nullable="false" />
+          <Property Name="DocID" Type="Int64" Nullable="false" />
+          <Property Name="IsRemoved" Type="Boolean" Nullable="false" />
+          <Property Name="Ordinal" Type="Int32" Nullable="false" />
+          <Property Name="RemoveDate" Type="DateTime" Precision="3" />
+          <Property Name="TST" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Employee">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="CodaUserID" Type="Int64" />
+          <Property Name="Comments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DelDate" Type="DateTime" Precision="3" />
+          <Property Name="DutyTypeID" Type="Int64" />
+          <Property Name="EMail" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="IconIndex" Type="Int32" Nullable="false" DefaultValue="-1" />
+          <Property Name="IndividualID" Type="Int64" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="MedicalPaper" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="MedPaperDateBegin" Type="DateTime" Precision="3" />
+          <Property Name="MedPaperDateEnd" Type="DateTime" Precision="3" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OwnerID" Type="Int64" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="Phone" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Position" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="SellerID" Type="Int64" />
+          <Property Name="SID" Type="Int64" />
+          <Property Name="TST" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Filial">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="AddressID" Type="Int64" />
+          <Property Name="Comments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DelDate" Type="DateTime" Precision="3" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ExtraCode" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FullTextSearch" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="IconIndex" Type="Int32" Nullable="false" DefaultValue="-1" />
+          <Property Name="InnerCode" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="ManagerID" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OwnerID" Type="Int64" />
+          <Property Name="PaperRegistrationCode" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="Phone" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="SID" Type="Int64" />
+          <Property Name="TST" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Firm">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="Comments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DelDate" Type="DateTime" Precision="3" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="IconIndex" Type="Int32" Nullable="false" DefaultValue="-1" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OwnerID" Type="Int64" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="ProviderID" Type="Int64" />
+          <Property Name="SID" Type="Int64" />
+          <Property Name="SubjectID" Type="Int64" />
+          <Property Name="TST" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="WorkflowID" Type="Int64" />
+        </EntityType>
+        <EntityType Name="JournalSale_Documents">
+          <Key>
+            <PropertyRef Name="OID" />
+            <PropertyRef Name="FirmID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="Amount" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="BranchID" Type="Int64" />
+          <Property Name="ChangeDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="Comments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="CreateDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="DelDate" Type="DateTime" Precision="3" />
+          <Property Name="DocCode" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="DocDate" Type="DateTime" Precision="3" Nullable="false" />
+          <Property Name="EmployeeID" Type="Int64" />
+          <Property Name="DeliverID" Type="Int64" />
+          <Property Name="ReceiverID" Type="Int64" />
+          <Property Name="FirmID" Type="Int64" Nullable="false" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="IconIndex" Type="Int32" DefaultValue="-1" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="NodeID" Type="Int64" />
+          <Property Name="RGB" Type="String" MaxLength="1" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="SourceDocID" Type="Int64" />
+          <Property Name="DocGroupID" Type="Int64" />
+          <Property Name="DocGroupPosition" Type="Int64" />
+          <Property Name="TST" Type="Binary" MaxLength="8" FixedLength="true" annotation:StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="PriceSum" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="VatSum" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="ContractID" Type="Int64" />
+          <Property Name="CustomerID" Type="Int64" Nullable="false" />
+          <Property Name="DepartmentID" Type="Int64" />
+          <Property Name="CorrespondID" Type="Int64" />
+          <Property Name="TaxCode" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="TaxDate" Type="DateTime" Precision="3" />
+          <Property Name="FilialID" Type="Int64" />
+          <Property Name="PrintComments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="IsForeign" Type="Int32" Nullable="false" />
+          <Property Name="RevenueID" Type="Int64" />
+          <Property Name="DelayLimit" Type="Int64" />
+          <Property Name="VatPercent" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <Property Name="SourceDocCode" Type="String" MaxLength="40" FixedLength="false" Unicode="false" />
+          <Property Name="IsChangedAfterPrint" Type="Boolean" Nullable="false" />
+          <Property Name="CasefillrateID" Type="Int64" />
+          <Property Name="SectorID" Type="Int64" />
+          <Property Name="CreditComments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="VATNNSum" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="TaxInvoiceType" Type="String" MaxLength="12" FixedLength="false" Unicode="false" />
+          <Property Name="LineCount" Type="Int32" Nullable="false" />
+          <Property Name="Coordinate" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="BrandName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="Revenue">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="Code" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Comments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DelDate" Type="DateTime" Precision="3" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="IconIndex" Type="Int32" Nullable="false" DefaultValue="-1" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OwnerID" Type="Int64" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="SID" Type="Int64" />
+          <Property Name="TST" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+        </EntityType>
+        <EntityType Name="Subject">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="AccountantID" Type="Int64" />
+          <Property Name="AddressID" Type="Int64" />
+          <Property Name="Comments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="DelDate" Type="DateTime" Precision="3" />
+          <Property Name="DirectorID" Type="Int64" />
+          <Property Name="Email" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ExtraCode" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="Fax" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FullTextSearch" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="IconIndex" Type="Int32" Nullable="false" DefaultValue="-1" />
+          <Property Name="IndividualID" Type="Int64" />
+          <Property Name="IsCentralized" Type="Boolean" Nullable="false" />
+          <Property Name="IsCustomer" Type="Boolean" Nullable="false" />
+          <Property Name="IsDeleted" Type="Boolean" Nullable="false" />
+          <Property Name="IsImporter" Type="Boolean" Nullable="false" />
+          <Property Name="IsPrivate" Type="Boolean" Nullable="false" />
+          <Property Name="IsSupplier" Type="Boolean" Nullable="false" />
+          <Property Name="Kind" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="LawAddressID" Type="Int64" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="OwnerID" Type="Int64" />
+          <Property Name="PaperRegistrationCode" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="PaperVATCode" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="PaperVATExtraNO" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="ParentID" Type="Int64" />
+          <Property Name="PaymentTypeID" Type="Int64" />
+          <Property Name="Phone" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="RemindTime" Type="Int32" Nullable="false" />
+          <Property Name="ShortName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="SID" Type="Int64" />
+          <Property Name="SpecificationID" Type="Int64" />
+          <Property Name="TaxTypeID" Type="Int64" />
+          <Property Name="TST" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="WithoutStamp" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TaxType">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="FullName" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="GUID" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="128" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="TST" Type="Binary" MaxLength="8" FixedLength="true" Nullable="false" annotation:StoreGeneratedPattern="Computed" />
+          <Property Name="Value" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="codaJournal" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Action" EntityType="Self.Action" />
+          <EntitySet Name="Address" EntityType="Self.Address" />
+          <EntitySet Name="Box" EntityType="Self.Box" />
+          <EntitySet Name="BusinessUnit" EntityType="Self.BusinessUnit" />
+          <EntitySet Name="Classification" EntityType="Self.Classification" />
+          <EntitySet Name="Contract" EntityType="Self.Contract" />
+          <EntitySet Name="Department" EntityType="Self.Department" />
+          <EntitySet Name="Directory" EntityType="Self.Directory" />
+          <EntitySet Name="DocBoxLine" EntityType="Self.DocBoxLine" />
+          <EntitySet Name="Employee" EntityType="Self.Employee" />
+          <EntitySet Name="Filial" EntityType="Self.Filial" />
+          <EntitySet Name="Firm" EntityType="Self.Firm" />
+          <EntitySet Name="JournalSale_Documents" EntityType="Self.JournalSale_Documents" />
+          <EntitySet Name="Revenue" EntityType="Self.Revenue" />
+          <EntitySet Name="Subject" EntityType="Self.Subject" />
+          <EntitySet Name="TaxType" EntityType="Self.TaxType" />
+          <FunctionImport Name="JournalSalePaged_GetDocuments_Entity">
+            <Parameter Name="OID" Mode="In" Type="Int64" />
+            <Parameter Name="Filter" Mode="In" Type="String" />
+            <Parameter Name="DocOID" Mode="In" Type="String" />
+            <Parameter Name="ObjectID" Mode="In" Type="Int64" />
+            <Parameter Name="BegDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="FilterDocClassesXml" Mode="In" Type="String" />
+            <Parameter Name="FilterStatusXml" Mode="In" Type="String" />
+            <Parameter Name="IsExtended" Mode="In" Type="Boolean" />
+            <Parameter Name="ShowDeleted" Mode="In" Type="Boolean" />
+            <Parameter Name="CheckOperation" Mode="In" Type="Boolean" />
+            <Parameter Name="SecurityUser" Mode="In" Type="String" />
+            <Parameter Name="SecurityGroup" Mode="In" Type="String" />
+            <Parameter Name="PerPage" Mode="In" Type="Int32" />
+            <Parameter Name="PageNumber" Mode="In" Type="Int32" />
+            <Parameter Name="FullTextFilter" Mode="In" Type="String" />
+            <Parameter Name="OrderFilter" Mode="In" Type="String" />
+            <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+            <Parameter Name="Pages" Mode="InOut" Type="Int32" />
+            <Parameter Name="WhereQuery" Mode="In" Type="String" />
+            <Parameter Name="WhereQueryTableAlias" Mode="In" Type="String" />
+            <Parameter Name="TST" Mode="InOut" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="GetDocuments">
+            <ReturnType EntitySet="JournalSale_Documents" Type="Collection(JournalSaleDocument.JournalSale_Documents)" />
+            <ReturnType EntitySet="Firm" Type="Collection(JournalSaleDocument.Firm)" />
+            <ReturnType EntitySet="Filial" Type="Collection(JournalSaleDocument.Filial)" />
+            <ReturnType EntitySet="Classification" Type="Collection(JournalSaleDocument.Classification)" />
+            <ReturnType EntitySet="Employee" Type="Collection(JournalSaleDocument.Employee)" />
+            <ReturnType EntitySet="Directory" Type="Collection(JournalSaleDocument.Directory)" />
+            <ReturnType EntitySet="Subject" Type="Collection(JournalSaleDocument.Subject)" />
+            <ReturnType EntitySet="Revenue" Type="Collection(JournalSaleDocument.Revenue)" />
+            <ReturnType EntitySet="Contract" Type="Collection(JournalSaleDocument.Contract)" />
+            <ReturnType EntitySet="Department" Type="Collection(JournalSaleDocument.Department)" />
+            <ReturnType EntitySet="Address" Type="Collection(JournalSaleDocument.Address)" />
+            <ReturnType EntitySet="TaxType" Type="Collection(JournalSaleDocument.TaxType)" />
+            <ReturnType EntitySet="BusinessUnit" Type="Collection(JournalSaleDocument.BusinessUnit)" />
+            <ReturnType EntitySet="DocBoxLine" Type="Collection(JournalSaleDocument.DocBoxLine)" />
+            <ReturnType EntitySet="Box" Type="Collection(JournalSaleDocument.Box)" />
+            <ReturnType EntitySet="Action" Type="Collection(JournalSaleDocument.Action)" />
+            <Parameter Name="OID" Mode="In" Type="Int64" />
+            <Parameter Name="Filter" Mode="In" Type="String" />
+            <Parameter Name="DocOID" Mode="In" Type="String" />
+            <Parameter Name="ObjectID" Mode="In" Type="Int64" />
+            <Parameter Name="BegDate" Mode="In" Type="DateTime" />
+            <Parameter Name="EndDate" Mode="In" Type="DateTime" />
+            <Parameter Name="FilterDocClassesXml" Mode="In" Type="String" />
+            <Parameter Name="FilterStatusXml" Mode="In" Type="String" />
+            <Parameter Name="IsExtended" Mode="In" Type="Boolean" />
+            <Parameter Name="ShowDeleted" Mode="In" Type="Boolean" />
+            <Parameter Name="CheckOperation" Mode="In" Type="Boolean" />
+            <Parameter Name="SecurityUser" Mode="In" Type="String" />
+            <Parameter Name="SecurityGroup" Mode="In" Type="String" />
+            <Parameter Name="PerPage" Mode="In" Type="Int32" />
+            <Parameter Name="PageNumber" Mode="In" Type="Int32" />
+            <Parameter Name="FullTextFilter" Mode="In" Type="String" />
+            <Parameter Name="OrderFilter" Mode="In" Type="String" />
+            <Parameter Name="TotalRows" Mode="InOut" Type="Int32" />
+            <Parameter Name="Pages" Mode="InOut" Type="Int32" />
+            <Parameter Name="WhereQuery" Mode="In" Type="String" />
+            <Parameter Name="WhereQueryTableAlias" Mode="In" Type="String" />
+            <Parameter Name="TST" Mode="InOut" Type="Binary" />
+            </FunctionImport>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="JournalSaleDocumentStoreContainer" CdmEntityContainer="codaJournal">
+          <EntitySetMapping Name="Action">
+            <EntityTypeMapping TypeName="JournalSaleDocument.Action">
+              <MappingFragment StoreEntitySet="Action">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="ActionMethod" ColumnName="ActionMethod" />
+                <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+                <ScalarProperty Name="ActionTypeID" ColumnName="ActionTypeID" />
+                <ScalarProperty Name="Caption" ColumnName="Caption" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DelDate" ColumnName="DelDate" />
+                <ScalarProperty Name="DotNetMethod" ColumnName="DotNetMethod" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="IconIndex" ColumnName="IconIndex" />
+                <ScalarProperty Name="IsAuto" ColumnName="IsAuto" />
+                <ScalarProperty Name="IsCardItem" ColumnName="IsCardItem" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsDocumentChanged" ColumnName="IsDocumentChanged" />
+                <ScalarProperty Name="IsGroup" ColumnName="IsGroup" />
+                <ScalarProperty Name="IsHidden" ColumnName="IsHidden" />
+                <ScalarProperty Name="IsListItem" ColumnName="IsListItem" />
+                <ScalarProperty Name="IsManual" ColumnName="IsManual" />
+                <ScalarProperty Name="IsReset" ColumnName="IsReset" />
+                <ScalarProperty Name="IsRowItem" ColumnName="IsRowItem" />
+                <ScalarProperty Name="IsToolbarItem" ColumnName="IsToolbarItem" />
+                <ScalarProperty Name="JournalClasses" ColumnName="JournalClasses" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="PrepareAction" ColumnName="PrepareAction" />
+                <ScalarProperty Name="Shortcut" ColumnName="Shortcut" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="SortNO" ColumnName="SortNO" />
+                <ScalarProperty Name="SQLMethod" ColumnName="SQLMethod" />
+                <ScalarProperty Name="TargetStatusID" ColumnName="TargetStatusID" />
+                <ScalarProperty Name="ToolTip" ColumnName="ToolTip" />
+                <ScalarProperty Name="TST" ColumnName="TST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Address">
+            <EntityTypeMapping TypeName="JournalSaleDocument.Address">
+              <MappingFragment StoreEntitySet="Address">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="CODE" ColumnName="CODE" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="ExtraName" ColumnName="ExtraName" />
+                <ScalarProperty Name="FlatNO" ColumnName="FlatNO" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="HouseNO" ColumnName="HouseNO" />
+                <ScalarProperty Name="IconIndex" ColumnName="IconIndex" />
+                <ScalarProperty Name="Location" ColumnName="Location" />
+                <ScalarProperty Name="LOCCODE" ColumnName="LOCCODE" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="PostalCode" ColumnName="PostalCode" />
+                <ScalarProperty Name="SettlementID" ColumnName="SettlementID" />
+                <ScalarProperty Name="StreetID" ColumnName="StreetID" />
+                <ScalarProperty Name="TST" ColumnName="TST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Box">
+            <EntityTypeMapping TypeName="JournalSaleDocument.Box">
+              <MappingFragment StoreEntitySet="Box">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="BoxCode" ColumnName="BoxCode" />
+                <ScalarProperty Name="BoxTypeID" ColumnName="BoxTypeID" />
+                <ScalarProperty Name="CloseDate" ColumnName="CloseDate" />
+                <ScalarProperty Name="IsClosed" ColumnName="IsClosed" />
+                <ScalarProperty Name="OpenDate" ColumnName="OpenDate" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BusinessUnit">
+            <EntityTypeMapping TypeName="JournalSaleDocument.BusinessUnit">
+              <MappingFragment StoreEntitySet="BusinessUnit">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DelDate" ColumnName="DelDate" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="IconIndex" ColumnName="IconIndex" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="TST" ColumnName="TST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Classification">
+            <EntityTypeMapping TypeName="JournalSaleDocument.Classification">
+              <MappingFragment StoreEntitySet="Classification">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DelDate" ColumnName="DelDate" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="IconIndex" ColumnName="IconIndex" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="TST" ColumnName="TST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Contract">
+            <EntityTypeMapping TypeName="JournalSaleDocument.Contract">
+              <MappingFragment StoreEntitySet="Contract">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="ConditionID" ColumnName="ConditionID" />
+                <ScalarProperty Name="ContractKindID" ColumnName="ContractKindID" />
+                <ScalarProperty Name="ContractNO" ColumnName="ContractNO" />
+                <ScalarProperty Name="ContractTypeID" ColumnName="ContractTypeID" />
+                <ScalarProperty Name="DebtLimit" ColumnName="DebtLimit" />
+                <ScalarProperty Name="DelayLimit" ColumnName="DelayLimit" />
+                <ScalarProperty Name="DelDate" ColumnName="DelDate" />
+                <ScalarProperty Name="ExpireDate" ColumnName="ExpireDate" />
+                <ScalarProperty Name="ExtraContractNO" ColumnName="ExtraContractNO" />
+                <ScalarProperty Name="ExtraIssueDate" ColumnName="ExtraIssueDate" />
+                <ScalarProperty Name="FilialID" ColumnName="FilialID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="GrowthValue" ColumnName="GrowthValue" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="IconIndex" ColumnName="IconIndex" />
+                <ScalarProperty Name="IsArchived" ColumnName="IsArchived" />
+                <ScalarProperty Name="IsBlocked" ColumnName="IsBlocked" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsFixed" ColumnName="IsFixed" />
+                <ScalarProperty Name="IssueDate" ColumnName="IssueDate" />
+                <ScalarProperty Name="ManualDiscount" ColumnName="ManualDiscount" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="TST" ColumnName="TST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Department">
+            <EntityTypeMapping TypeName="JournalSaleDocument.Department">
+              <MappingFragment StoreEntitySet="Department">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DelDate" ColumnName="DelDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ExtraCode" ColumnName="ExtraCode" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="FullTextSearch" ColumnName="FullTextSearch" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="IconIndex" ColumnName="IconIndex" />
+                <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="TST" ColumnName="TST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Directory">
+            <EntityTypeMapping TypeName="JournalSaleDocument.Directory">
+              <MappingFragment StoreEntitySet="Directory">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DelDate" ColumnName="DelDate" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="IconIndex" ColumnName="IconIndex" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="TST" ColumnName="TST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="DocBoxLine">
+            <EntityTypeMapping TypeName="JournalSaleDocument.DocBoxLine">
+              <MappingFragment StoreEntitySet="DocBoxLine">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="BoxID" ColumnName="BoxID" />
+                <ScalarProperty Name="DocID" ColumnName="DocID" />
+                <ScalarProperty Name="IsRemoved" ColumnName="IsRemoved" />
+                <ScalarProperty Name="Ordinal" ColumnName="Ordinal" />
+                <ScalarProperty Name="RemoveDate" ColumnName="RemoveDate" />
+                <ScalarProperty Name="TST" ColumnName="TST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Employee">
+            <EntityTypeMapping TypeName="JournalSaleDocument.Employee">
+              <MappingFragment StoreEntitySet="Employee">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="CodaUserID" ColumnName="CodaUserID" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DelDate" ColumnName="DelDate" />
+                <ScalarProperty Name="DutyTypeID" ColumnName="DutyTypeID" />
+                <ScalarProperty Name="EMail" ColumnName="EMail" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="IconIndex" ColumnName="IconIndex" />
+                <ScalarProperty Name="IndividualID" ColumnName="IndividualID" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="MedicalPaper" ColumnName="MedicalPaper" />
+                <ScalarProperty Name="MedPaperDateBegin" ColumnName="MedPaperDateBegin" />
+                <ScalarProperty Name="MedPaperDateEnd" ColumnName="MedPaperDateEnd" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="Position" ColumnName="Position" />
+                <ScalarProperty Name="SellerID" ColumnName="SellerID" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="TST" ColumnName="TST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Filial">
+            <EntityTypeMapping TypeName="JournalSaleDocument.Filial">
+              <MappingFragment StoreEntitySet="Filial">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DelDate" ColumnName="DelDate" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ExtraCode" ColumnName="ExtraCode" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="FullTextSearch" ColumnName="FullTextSearch" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="IconIndex" ColumnName="IconIndex" />
+                <ScalarProperty Name="InnerCode" ColumnName="InnerCode" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="ManagerID" ColumnName="ManagerID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="PaperRegistrationCode" ColumnName="PaperRegistrationCode" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="TST" ColumnName="TST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Firm">
+            <EntityTypeMapping TypeName="JournalSaleDocument.Firm">
+              <MappingFragment StoreEntitySet="Firm">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DelDate" ColumnName="DelDate" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="IconIndex" ColumnName="IconIndex" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="ProviderID" ColumnName="ProviderID" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="SubjectID" ColumnName="SubjectID" />
+                <ScalarProperty Name="TST" ColumnName="TST" />
+                <ScalarProperty Name="WorkflowID" ColumnName="WorkflowID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="JournalSale_Documents">
+            <EntityTypeMapping TypeName="JournalSaleDocument.JournalSale_Documents">
+              <MappingFragment StoreEntitySet="JournalSale_Documents">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Amount" ColumnName="Amount" />
+                <ScalarProperty Name="BranchID" ColumnName="BranchID" />
+                <ScalarProperty Name="ChangeDate" ColumnName="ChangeDate" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="DelDate" ColumnName="DelDate" />
+                <ScalarProperty Name="DocCode" ColumnName="DocCode" />
+                <ScalarProperty Name="DocDate" ColumnName="DocDate" />
+                <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+                <ScalarProperty Name="DeliverID" ColumnName="DeliverID" />
+                <ScalarProperty Name="ReceiverID" ColumnName="ReceiverID" />
+                <ScalarProperty Name="FirmID" ColumnName="FirmID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="IconIndex" ColumnName="IconIndex" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="NodeID" ColumnName="NodeID" />
+                <ScalarProperty Name="RGB" ColumnName="RGB" />
+                <ScalarProperty Name="SourceDocID" ColumnName="SourceDocID" />
+                <ScalarProperty Name="DocGroupID" ColumnName="DocGroupID" />
+                <ScalarProperty Name="DocGroupPosition" ColumnName="DocGroupPosition" />
+                <ScalarProperty Name="TST" ColumnName="TST" />
+                <ScalarProperty Name="PriceSum" ColumnName="PriceSum" />
+                <ScalarProperty Name="VatSum" ColumnName="VatSum" />
+                <ScalarProperty Name="ContractID" ColumnName="ContractID" />
+                <ScalarProperty Name="CustomerID" ColumnName="CustomerID" />
+                <ScalarProperty Name="DepartmentID" ColumnName="DepartmentID" />
+                <ScalarProperty Name="CorrespondID" ColumnName="CorrespondID" />
+                <ScalarProperty Name="TaxCode" ColumnName="TaxCode" />
+                <ScalarProperty Name="TaxDate" ColumnName="TaxDate" />
+                <ScalarProperty Name="FilialID" ColumnName="FilialID" />
+                <ScalarProperty Name="PrintComments" ColumnName="PrintComments" />
+                <ScalarProperty Name="IsForeign" ColumnName="IsForeign" />
+                <ScalarProperty Name="RevenueID" ColumnName="RevenueID" />
+                <ScalarProperty Name="DelayLimit" ColumnName="DelayLimit" />
+                <ScalarProperty Name="VatPercent" ColumnName="VatPercent" />
+                <ScalarProperty Name="SourceDocCode" ColumnName="SourceDocCode" />
+                <ScalarProperty Name="IsChangedAfterPrint" ColumnName="IsChangedAfterPrint" />
+                <ScalarProperty Name="CasefillrateID" ColumnName="CasefillrateID" />
+                <ScalarProperty Name="SectorID" ColumnName="SectorID" />
+                <ScalarProperty Name="CreditComments" ColumnName="CreditComments" />
+                <ScalarProperty Name="VATNNSum" ColumnName="VATNNSum" />
+                <ScalarProperty Name="TaxInvoiceType" ColumnName="TaxInvoiceType" />
+                <ScalarProperty Name="LineCount" ColumnName="LineCount" />
+                <ScalarProperty Name="Coordinate" ColumnName="Coordinate" />
+                <ScalarProperty Name="BrandName" ColumnName="BrandName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Revenue">
+            <EntityTypeMapping TypeName="JournalSaleDocument.Revenue">
+              <MappingFragment StoreEntitySet="Revenue">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DelDate" ColumnName="DelDate" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="IconIndex" ColumnName="IconIndex" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="TST" ColumnName="TST" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Subject">
+            <EntityTypeMapping TypeName="JournalSaleDocument.Subject">
+              <MappingFragment StoreEntitySet="Subject">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="AccountantID" ColumnName="AccountantID" />
+                <ScalarProperty Name="AddressID" ColumnName="AddressID" />
+                <ScalarProperty Name="Comments" ColumnName="Comments" />
+                <ScalarProperty Name="DelDate" ColumnName="DelDate" />
+                <ScalarProperty Name="DirectorID" ColumnName="DirectorID" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="ExtraCode" ColumnName="ExtraCode" />
+                <ScalarProperty Name="Fax" ColumnName="Fax" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="FullTextSearch" ColumnName="FullTextSearch" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="IconIndex" ColumnName="IconIndex" />
+                <ScalarProperty Name="IndividualID" ColumnName="IndividualID" />
+                <ScalarProperty Name="IsCentralized" ColumnName="IsCentralized" />
+                <ScalarProperty Name="IsCustomer" ColumnName="IsCustomer" />
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsImporter" ColumnName="IsImporter" />
+                <ScalarProperty Name="IsPrivate" ColumnName="IsPrivate" />
+                <ScalarProperty Name="IsSupplier" ColumnName="IsSupplier" />
+                <ScalarProperty Name="Kind" ColumnName="Kind" />
+                <ScalarProperty Name="LawAddressID" ColumnName="LawAddressID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="OwnerID" ColumnName="OwnerID" />
+                <ScalarProperty Name="PaperRegistrationCode" ColumnName="PaperRegistrationCode" />
+                <ScalarProperty Name="PaperVATCode" ColumnName="PaperVATCode" />
+                <ScalarProperty Name="PaperVATExtraNO" ColumnName="PaperVATExtraNO" />
+                <ScalarProperty Name="ParentID" ColumnName="ParentID" />
+                <ScalarProperty Name="PaymentTypeID" ColumnName="PaymentTypeID" />
+                <ScalarProperty Name="Phone" ColumnName="Phone" />
+                <ScalarProperty Name="RemindTime" ColumnName="RemindTime" />
+                <ScalarProperty Name="ShortName" ColumnName="ShortName" />
+                <ScalarProperty Name="SID" ColumnName="SID" />
+                <ScalarProperty Name="SpecificationID" ColumnName="SpecificationID" />
+                <ScalarProperty Name="TaxTypeID" ColumnName="TaxTypeID" />
+                <ScalarProperty Name="TST" ColumnName="TST" />
+                <ScalarProperty Name="WithoutStamp" ColumnName="WithoutStamp" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaxType">
+            <EntityTypeMapping TypeName="JournalSaleDocument.TaxType">
+              <MappingFragment StoreEntitySet="TaxType">
+                <ScalarProperty Name="OID" ColumnName="OID" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="GUID" ColumnName="GUID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="TST" ColumnName="TST" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="JournalSalePaged_GetDocuments_Entity" FunctionName="JournalSaleDocument.Store.JournalSalePaged_GetDocuments_Entity" />
+          <FunctionImportMapping FunctionImportName="GetDocuments" FunctionName="JournalSaleDocument.Store.JournalSalePaged_GetDocuments_Entity" />
+          </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

@@ -1,0 +1,12 @@
+﻿@model IEnumerable<WebApplication3.Entity.JournalSale_Documents>
+@{
+    ViewBag.Title = " Documents Index";
+}
+
+<h2>Documents Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<div class="gridStyle" ng-grid="gridOptions">
+</div>
