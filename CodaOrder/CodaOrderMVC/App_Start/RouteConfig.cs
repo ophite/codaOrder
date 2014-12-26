@@ -19,6 +19,11 @@ namespace WebApplication3
                 defaults: new { controller = "JournalSale_Documents", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(
+                name: "Templates",
+                url: "template/{action}/{id}",
+                defaults: new { controller = "Template", action = "Index", id = UrlParameter.Optional }
+            );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { action = "Index", id = UrlParameter.Optional }

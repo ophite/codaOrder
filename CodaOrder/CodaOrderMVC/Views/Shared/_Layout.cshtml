@@ -10,13 +10,20 @@
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
     @Scripts.Render("~/bundles/angular")
+    @Scripts.Render("~/bundles/angular-ui")
     @Scripts.Render("~/bundles/ng-grid")
     @Scripts.Render("~/bundles/app")
     @Scripts.Render("~/bundles/appSubject")
     @Scripts.Render("~/bundles/appDocument")
+
     @RenderSection("scripts", required: false)
+
+    <script id="template/pagination/pagination.html" type="text/ng-template">
+        <div ng-include="'../template/pagination'"></div>
+    </script>
+
 </head>
-<body ng-controller="DocumentGridController">
+<body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -35,6 +42,7 @@
     </div>
 
     <div class="container body-content">
+
         @RenderBody()
         <hr />
         <footer>

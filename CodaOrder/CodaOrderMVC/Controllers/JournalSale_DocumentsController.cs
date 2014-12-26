@@ -36,11 +36,6 @@ namespace WebApplication3.Controllers
             return View();
         }
 
-        public ActionResult filterHeaderTemplate()
-        {
-            return View();
-        }
-
         // GET: JournalSale_Documents
         public string GetDocuments()
         {

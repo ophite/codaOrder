@@ -106,11 +106,11 @@
             //jqueryUIDraggable: true,
             headerRowHeight: 60, // give room for filter bar
             columnDefs: [
-                { field: 'Amount', displayName: 'Сумма', headerCellTemplate: '../JournalSale_Documents/filterHeaderTemplate' },
-                { field: 'DocCode', displayName: 'Код док-та', headerCellTemplate: '../JournalSale_Documents/filterHeaderTemplate' },
-                { field: 'DocDate', displayName: 'Дата док-та', headerCellTemplate: '../JournalSale_Documents/filterHeaderTemplate' },
-                { field: 'OID', displayName: 'ID', headerCellTemplate: '../JournalSale_Documents/filterHeaderTemplate' },
-                { field: 'Comments', displayName: 'Комментарий', headerCellTemplate: '../JournalSale_Documents/filterHeaderTemplate' }
+                { field: 'Amount', displayName: 'Сумма', headerCellTemplate: '../template/filterHeaderTemplate' },
+                { field: 'DocCode', displayName: 'Код док-та', headerCellTemplate: '../template/filterHeaderTemplate' },
+                { field: 'DocDate', displayName: 'Дата док-та', headerCellTemplate: '../template/filterHeaderTemplate' },
+                { field: 'OID', displayName: 'ID', headerCellTemplate: '../template/filterHeaderTemplate' },
+                { field: 'Comments', displayName: 'Комментарий', headerCellTemplate: '../template/filterHeaderTemplate' }
             ],
 
             enablePaging: true,

@@ -26,6 +26,11 @@ namespace WebApplication3
                 "~/Scripts/angular.js",
                 "~/Scripts/angular_source/angular-resource.js"));
 
+            //bundles.Add(new ScriptBundle("~/bundles/angular-ui").IncludeDirectory("~/Scripts/angular-ui", "*.js"));
+            bundles.Add(new ScriptBundle("~/bundles/angular-ui").Include(
+                "~/Scripts/angular-ui/ui-bootstrap-tpl.min.js",
+                "~/Scripts/angular-ui/ui-bootstrap.min.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/ng-grid").Include(
                 "~/Scripts/ng-grid.js"));
 

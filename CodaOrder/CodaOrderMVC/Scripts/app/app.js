@@ -10,7 +10,8 @@
 
         // 3rd Party Modules
         //'ui.grid',
-        'ngGrid'
+        'ngGrid',
+        'ui.bootstrap'
     ])
 
     //app.config(function ($locationProvider, $httpProvider) {

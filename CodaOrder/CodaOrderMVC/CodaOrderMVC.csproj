@@ -141,9 +141,14 @@
     <Content Include="Content\Site.css" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\document\DocumentGridController.js" />
     <Content Include="Scripts\app\document\DocumentGridService.js" />
+    <Content Include="Scripts\app\document\DocumentPaginationController.js" />
     <Content Include="Scripts\app\subject\GridController.js" />
     <Content Include="Scripts\app\subject\GridService.js" />
     <Content Include="Scripts\angular_source\angular-animate.js" />
@@ -976,7 +981,8 @@
     <Content Include="Views\JournalSale_Documents\Details.cshtml" />
     <Content Include="Views\JournalSale_Documents\Edit.cshtml" />
     <Content Include="Views\JournalSale_Documents\Index.cshtml" />
-    <Content Include="Views\JournalSale_Documents\filterHeaderTemplate.cshtml" />
+    <Content Include="Views\Template\FilterHeaderTemplate.cshtml" />
+    <Content Include="Views\Template\pagination.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -994,6 +1000,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\JournalSale_DocumentsController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
+    <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Entity\Action.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
@@ -1066,6 +1073,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
+    <Folder Include="Views\templateHtml\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
