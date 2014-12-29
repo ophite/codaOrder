@@ -146,6 +146,7 @@
     <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\document\DocumentDateController.js" />
     <Content Include="Scripts\app\document\DocumentGridController.js" />
     <Content Include="Scripts\app\document\DocumentGridService.js" />
     <Content Include="Scripts\app\document\DocumentPaginationController.js" />
@@ -984,6 +985,11 @@
     <Content Include="Views\Template\FilterHeaderTemplate.cshtml" />
     <Content Include="Views\Template\pagination.cshtml" />
     <Content Include="Views\Template\Pager.cshtml" />
+    <Content Include="Views\Template\datepicker\Datepicker.cshtml" />
+    <Content Include="Views\Template\datepicker\Day.cshtml" />
+    <Content Include="Views\Template\datepicker\Month.cshtml" />
+    <Content Include="Views\Template\datepicker\Year.cshtml" />
+    <Content Include="Views\Template\datepicker\Popup.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -14,6 +14,12 @@ namespace WebApplication3
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
+               name: "Template",
+               url: "documents/template/{productId}/{action}.html",
+               defaults: new { controller = "Template", action = "Index"},
+               constraints: new { productId = @"\w+" }
+            );
+            routes.MapRoute(
                 name: "Documents",
                 url: "documents/{action}/{id}",
                 defaults: new { controller = "JournalSale_Documents", action = "Index", id = UrlParameter.Optional }
