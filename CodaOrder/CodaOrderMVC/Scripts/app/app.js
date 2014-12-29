@@ -17,8 +17,12 @@
     //app.config(function ($locationProvider, $httpProvider) {
     //});
 
-    //app.run(['$rootScope',
-    //    function ($rootScope) {
-    //    }
-    //]);
+
+    app.run(['$rootScope',
+        function ($rootScope) {
+            $rootScope.$on('pageChanged', function (event, args) {
+                $rootScope.$broadcast('broadcastGetDocuments', args);
+            });
+        }
+    ]);
 })();

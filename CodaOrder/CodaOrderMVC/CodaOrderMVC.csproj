@@ -983,6 +983,7 @@
     <Content Include="Views\JournalSale_Documents\Index.cshtml" />
     <Content Include="Views\Template\FilterHeaderTemplate.cshtml" />
     <Content Include="Views\Template\pagination.cshtml" />
+    <Content Include="Views\Template\Pager.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
