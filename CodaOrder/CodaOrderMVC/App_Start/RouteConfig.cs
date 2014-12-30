@@ -15,9 +15,9 @@ namespace WebApplication3
 
             routes.MapRoute(
                name: "Template",
-               url: "documents/template/{productId}/{action}.html",
+               url: "documents/template/{template_subfolder}/{action}.html",
                defaults: new { controller = "Template", action = "Index"},
-               constraints: new { productId = @"\w+" }
+               constraints: new { template_subfolder = @"\w+" }
             );
             routes.MapRoute(
                 name: "Documents",

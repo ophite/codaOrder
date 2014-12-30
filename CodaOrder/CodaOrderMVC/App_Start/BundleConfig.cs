@@ -26,6 +26,10 @@ namespace WebApplication3
                 "~/Scripts/angular.js",
                 "~/Scripts/angular_source/angular-resource.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/linq").Include(
+                "~/Scripts/linq.js"
+            ));
+
             //bundles.Add(new ScriptBundle("~/bundles/angular-ui").IncludeDirectory("~/Scripts/angular-ui", "*.js"));
             bundles.Add(new ScriptBundle("~/bundles/angular-ui").Include(
                 "~/Scripts/angular-ui/ui-bootstrap-tpl.js",

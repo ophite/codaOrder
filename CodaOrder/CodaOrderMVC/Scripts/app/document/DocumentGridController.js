@@ -1,6 +1,8 @@
-﻿(function () {
+﻿
+(function () {
     'use strict';
 
+    // api goto Factory
     function GetDocuments($resource) {
 
         var promise = $resource("GetDocuments")
@@ -10,10 +12,14 @@
     GetDocuments.$inject = ['$resource'];
     angular.module('app').factory('GetDocuments', GetDocuments);
 
+
+
+    // controller
     function DocumentGridController($scope, $location, GetDocuments) {
 
         $scope.title = 'DocumentGridController';
 
+        // filter plugin
         var filterBarPlugin = {
 
             init: function (scope, grid) {
@@ -38,61 +44,6 @@
             scope: undefined,
             grid: undefined,
         };
-
-
-        // paging
-        //$scope.filterOptions = {
-        //    filterText: "",
-        //    useExternalFilter: true
-        //};
-        //$scope.totalServerItems = 0;
-        //$scope.pagingOptions = {
-        //    pageSizes: [5, 10, 20],
-        //    pageSize: 5,
-        //    currentPage: 1
-        //};
-        //$scope.setPagingData = function (data, page, pageSize) {
-        //    var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
-        //    $scope.documents = pagedData;
-        //    $scope.totalServerItems = data.length;
-        //    if (!$scope.$$phase) {
-        //        $scope.$apply();
-        //    }
-        //};
-        //$scope.getPagedDataAsync = function (pageSize, page, searchText) {
-        //    setTimeout(function () {
-        //        var data;
-        //        if (searchText) {
-        //            var ft = searchText.toLowerCase();
-        //            GetDocuments.query(function (largeLoad) {
-        //                //$scope.documents = data;
-        //                data = largeLoad.filter(function (item) {
-        //                    return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
-        //                });
-        //                $scope.setPagingData(data, page, pageSize);
-        //            });
-        //        } else {
-        //            GetDocuments.get(function (largeLoad) {
-        //                $scope.setPagingData(JSON.parse(largeLoad.Documents), page, pageSize);
-        //            });
-        //        }
-        //    }, 100);
-        //};
-
-        //$scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage);
-
-        //$scope.$watch('pagingOptions', function (newVal, oldVal) {
-        //    if (newVal !== oldVal && newVal.currentPage !== oldVal.currentPage) {
-        //        $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.gridOptions.$gridScope.filterText);
-        //    }
-        //}, true);
-        //$scope.$watch('filterOptions', function (newVal, oldVal) {
-        //    if (newVal !== oldVal) {
-        //        $scope.getPagedDataAsync($scope.pagingOptions.pageSize, $scope.pagingOptions.currentPage, $scope.filterOptions.filterText);
-        //    }
-        //}, true);
-        //
-
 
         $scope.gridOptions = {
 
@@ -129,31 +80,88 @@
             }
         };
 
+        // convert grid filter string to sql query where and full text query
+        function filterStrToSql(filterStr, columns) {
+
+            var dict = {
+
+                whereQuery: '',
+                fullTextQuery: '<Root/>'
+            };
+
+            if (filterStr.indexOf(';') < 0)
+                return dict;
+
+            var whereQueryArr = [];
+            var fullTextQueryArr = [];
+            var iColumns = Enumerable.From(columns);
+
+            function callBack(element, index, array) {
+
+                if (!element)
+                    return;
+
+                var captionValue = element.split(':');
+                var item = iColumns
+                    .Where(function (x) { return x.displayName === captionValue[0] })
+                    .Select(function (x) { return x })
+                    .FirstOrDefault()
+
+                var value = captionValue[1].replace(' ^', '');
+                var fieldStr = String(item.field);
+
+                //N'<Root><Filter TableID="-1" Not="false" Value="Новус" TableName="Subject" ColumnName="Name"/></Root>'
+                if (fieldStr.indexOf('_') > -1) {
+
+                    var table = fieldStr.split('_')[0];
+                    var field = fieldStr.split('_')[1];
+                    fullTextQueryArr.push('<Filter TableID ="-1" Not="false" Value="' + value + '" TableName="' + table + '" ColumnName="' + field + '"/>');
+                }
+                    //N' and ((isnull(charindex(''прод'', _journalalias_.name), 0) > 0) and (isnull(charindex(''71'', _journalalias_.doccode), 0) > 0))'
+                else {
+
+                    if (whereQueryArr.length > 0)
+                        whereQueryArr.push('and ');
+
+                    whereQueryArr.push('(isnull(charindex(\'\'' + value + '\'\', _journalalias_.' + fieldStr.toLowerCase() + '), 0) > 0) ');
+                }
+            }
+            filterStr.split(';').forEach(callBack)
+
+            if (fullTextQueryArr.length > 0) {
+
+                fullTextQueryArr.splice(0, 0, '<Root>');
+                fullTextQueryArr.push('</Root>');
+            }
+            else
+                fullTextQueryArr.push('<Root/>')
+
+            if (whereQueryArr.length > 0) {
+
+                whereQueryArr.splice(0, 0, ' and (');
+                whereQueryArr.push(')');
+            }
+
+            dict.whereQuery = whereQueryArr.join('');
+            dict.fullTextQuery = fullTextQueryArr.join('');
+
+            return dict;
+        }
+
+        var filterStr = "Сумма: ^41;Код док-та: ^48;ID: ^198;";
+        var res = filterStrToSql(filterStr, $scope.gridOptions.columnDefs)
+
         $scope.$on('broadcastGetDocuments', function (event, args) {
 
-            var searchText = filterBarPlugin.scope.$parent.filterText;
+            if (filterBarPlugin.scope != null) {
+
+                var searchText = filterBarPlugin.scope.$parent.filterText;
+            }
+
             GetDocuments.get(function (jsonData) {
 
                 $scope.setPagingData(JSON.parse(jsonData.Documents), args.currentPage, args.pageSize, searchText);
             });
-
-            //var data;
-            //if (searchText) {
-            //    var ft = searchText.toLowerCase();
-            //    GetDocuments.get(function (largeLoad) {
-            //    //GetDocuments.query(function (largeLoad) {
-            //        //$scope.documents = data;
-            //        data = JSON.parse(largeLoad.Documents).filter(function (item) {
-            //            return JSON.stringify(item).toLowerCase().indexOf(ft) != -1;
-            //        });
-            //        $scope.setPagingData(data, args.currentPage, args.pageSize);
-            //    });
-            //} else {
-            //    GetDocuments.get(function (largeLoad) {
-            //        $scope.setPagingData(JSON.parse(largeLoad.Documents), args.currentPage, args.pageSize);
-            //    });
-            //}
-            console.log(args)
         });
     }
 
