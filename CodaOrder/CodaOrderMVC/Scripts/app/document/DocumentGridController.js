@@ -2,19 +2,6 @@
 (function () {
     'use strict';
 
-    // api goto Factory
-    function GetDocuments($resource) {
-
-        var promise = $resource("GetDocuments")
-        return promise;
-    }
-
-    GetDocuments.$inject = ['$resource'];
-    angular.module('app').factory('GetDocuments', GetDocuments);
-
-
-
-    // controller
     function DocumentGridController($scope, $location, GetDocuments) {
 
         $scope.title = 'DocumentGridController';
@@ -45,6 +32,7 @@
             grid: undefined,
         };
 
+        // grid
         $scope.gridOptions = {
 
             data: 'documents',
@@ -69,6 +57,7 @@
             filterOptions: $scope.filterOptions
         }
 
+        // pagination
         $scope.setPagingData = function (data, page, pageSize, searchText) {
 
             var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
@@ -80,9 +69,24 @@
             }
         };
 
-        // convert grid filter string to sql query where and full text query
+        // listeners
+        $scope.$on('broadcastGetDocuments', function (event, args) {
+
+            if (filterBarPlugin.scope != null) {
+
+                var searchText = filterBarPlugin.scope.$parent.filterText;
+            }
+
+            GetDocuments.get(function (jsonData) {
+
+                $scope.setPagingData(JSON.parse(jsonData.Documents), args.currentPage, args.pageSize, searchText);
+            });
+        });
+
+        // helpers convert grid filter string to sql query where and full text query
         function filterStrToSql(filterStr, columns) {
 
+            // 1 prepare
             var dict = {
 
                 whereQuery: '',
@@ -96,6 +100,7 @@
             var fullTextQueryArr = [];
             var iColumns = Enumerable.From(columns);
 
+            // 2 main func
             function callBack(element, index, array) {
 
                 if (!element)
@@ -105,7 +110,7 @@
                 var item = iColumns
                     .Where(function (x) { return x.displayName === captionValue[0] })
                     .Select(function (x) { return x })
-                    .FirstOrDefault()
+                    .FirstOrDefault();
 
                 var value = captionValue[1].replace(' ^', '');
                 var fieldStr = String(item.field);
@@ -126,7 +131,7 @@
                     whereQueryArr.push('(isnull(charindex(\'\'' + value + '\'\', _journalalias_.' + fieldStr.toLowerCase() + '), 0) > 0) ');
                 }
             }
-            filterStr.split(';').forEach(callBack)
+            filterStr.split(';').forEach(callBack);
 
             if (fullTextQueryArr.length > 0) {
 
@@ -142,27 +147,16 @@
                 whereQueryArr.push(')');
             }
 
+            // 3 result
             dict.whereQuery = whereQueryArr.join('');
             dict.fullTextQuery = fullTextQueryArr.join('');
 
             return dict;
         }
 
-        var filterStr = "Сумма: ^41;Код док-та: ^48;ID: ^198;";
-        var res = filterStrToSql(filterStr, $scope.gridOptions.columnDefs)
-
-        $scope.$on('broadcastGetDocuments', function (event, args) {
-
-            if (filterBarPlugin.scope != null) {
-
-                var searchText = filterBarPlugin.scope.$parent.filterText;
-            }
-
-            GetDocuments.get(function (jsonData) {
-
-                $scope.setPagingData(JSON.parse(jsonData.Documents), args.currentPage, args.pageSize, searchText);
-            });
-        });
+        // test
+        //var filterStr = "Сумма: ^41;Код док-та: ^48;ID: ^198;";
+        //var res = filterStrToSql(filterStr, $scope.gridOptions.columnDefs)
     }
 
     DocumentGridController.$inject = ['$scope', '$location', 'GetDocuments'];
