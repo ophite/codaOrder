@@ -557,6 +557,15 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
           <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
           <Property Name="Value" Type="varchar" MaxLength="128" />
         </EntityType>
+        <Function Name="Directory_FindMatching_Remote_Short" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ClassName" Type="varchar" Mode="In" />
+          <Parameter Name="FieldName" Type="varchar" Mode="In" />
+          <Parameter Name="ParentID" Type="bigint" Mode="In" />
+          <Parameter Name="SearchString" Type="varchar" Mode="In" />
+          <Parameter Name="ShowDeleted" Type="bit" Mode="In" />
+          <Parameter Name="TopRecords" Type="int" Mode="In" />
+          <Parameter Name="GroupsXMLvarchar" Type="varchar(max)" Mode="In" />
+        </Function>
         <Function Name="JournalSalePaged_GetDocuments_Entity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="OID" Type="bigint" Mode="In" />
           <Parameter Name="Filter" Type="xml" Mode="In" />
@@ -1478,7 +1487,33 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
             <Parameter Name="WhereQueryTableAlias" Mode="In" Type="String" />
             <Parameter Name="TST" Mode="InOut" Type="Binary" />
             </FunctionImport>
+          <EntitySet Name="CodaJsonSet" EntityType="JournalSaleDocument.CodaJson" />
+          <FunctionImport Name="Directory_FindMatching_Remote_Short">
+            <Parameter Name="ClassName" Mode="In" Type="String" />
+            <Parameter Name="FieldName" Mode="In" Type="String" />
+            <Parameter Name="ParentID" Mode="In" Type="Int64" />
+            <Parameter Name="SearchString" Mode="In" Type="String" />
+            <Parameter Name="ShowDeleted" Mode="In" Type="Boolean" />
+            <Parameter Name="TopRecords" Mode="In" Type="Int32" />
+            <Parameter Name="GroupsXMLvarchar" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="FindObject" EntitySet="CodaJsonSet" ReturnType="Collection(JournalSaleDocument.CodaJson)">
+            <Parameter Name="ClassName" Mode="In" Type="String" />
+            <Parameter Name="FieldName" Mode="In" Type="String" />
+            <Parameter Name="ParentID" Mode="In" Type="Int64" />
+            <Parameter Name="SearchString" Mode="In" Type="String" />
+            <Parameter Name="ShowDeleted" Mode="In" Type="Boolean" />
+            <Parameter Name="TopRecords" Mode="In" Type="Int32" />
+            <Parameter Name="GroupsXMLvarchar" Mode="In" Type="String" />
+          </FunctionImport>
         </EntityContainer>
+        <EntityType Name="CodaJson">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FullName" Type="String" Nullable="false" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -1915,6 +1950,8 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="JournalSalePaged_GetDocuments_Entity" FunctionName="JournalSaleDocument.Store.JournalSalePaged_GetDocuments_Entity" />
           <FunctionImportMapping FunctionImportName="GetDocuments" FunctionName="JournalSaleDocument.Store.JournalSalePaged_GetDocuments_Entity" />
+          <FunctionImportMapping FunctionImportName="Directory_FindMatching_Remote_Short" FunctionName="JournalSaleDocument.Store.Directory_FindMatching_Remote_Short" />
+          <FunctionImportMapping FunctionImportName="FindObject" FunctionName="JournalSaleDocument.Store.Directory_FindMatching_Remote_Short" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

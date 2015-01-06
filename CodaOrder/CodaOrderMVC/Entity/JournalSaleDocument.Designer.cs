@@ -1,4 +1,4 @@
-﻿// T4 code generation is enabled for model 'C:\Users\kobernik.u\documents\visual studio 2013\Projects\WebApplication3\WebApplication3\Entity\JournalSaleDocument.edmx'. 
+﻿// T4 code generation is enabled for model 'C:\Users\kobernik.u\Documents\GitHub\codaOrder\CodaOrder\CodaOrderMVC\Entity\JournalSaleDocument.edmx'. 
 // To enable legacy code generation, change the value of the 'Code Generation Strategy' designer
 // property to 'Legacy ObjectContext'. This property is available in the Properties Window when the model
 // is open in the designer.

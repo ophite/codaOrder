@@ -13,22 +13,27 @@ namespace WebApplication3
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            routes.MapRoute(
-               name: "Template",
-               url: "documents/template/{template_subfolder}/{action}.html",
-               defaults: new { controller = "Template", action = "Index"},
-               constraints: new { template_subfolder = @"\w+" }
-            );
+            //routes.MapRoute(
+            //   name: "Template",
+            //   url: "documents/template/{template_subfolder}/{action}.html",
+            //   defaults: new { controller = "Template", action = "Index"},
+            //   constraints: new { template_subfolder = @"\w+" }
+            //);
             routes.MapRoute(
                 name: "Documents",
                 url: "documents/{action}/{id}",
                 defaults: new { controller = "JournalSale_Documents", action = "Index", id = UrlParameter.Optional }
             );
             routes.MapRoute(
-                name: "Templates",
-                url: "template/{action}/{id}",
-                defaults: new { controller = "Template", action = "Index", id = UrlParameter.Optional }
+                name: "Search",
+                url: "{controller}/{action}/{searchText}",
+                defaults: new { controller = "Search", action = "Find", searchText = UrlParameter.Optional }
             );
+            //routes.MapRoute(
+            //    name: "Templates",
+            //    url: "template/{action}/{id}",
+            //    defaults: new { controller = "Template", action = "Index", id = UrlParameter.Optional }
+            //);
             routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",

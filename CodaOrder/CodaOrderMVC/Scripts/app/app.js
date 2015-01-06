@@ -1,5 +1,6 @@
 ﻿(function () {
     'use strict';
+
     var app = angular.module('app', [
         // Angular modules 
         //'ngAnimate',
@@ -9,7 +10,8 @@
         // 3rd Party Modules
         //'ui.grid',
         'ngGrid',
-        'ui.bootstrap'
+        'ui.bootstrap',
+        'ui.bootstrap.tpls'
     ])
 
     //app.config(function ($locationProvider, $httpProvider) {

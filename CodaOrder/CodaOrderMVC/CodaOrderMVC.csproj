@@ -150,6 +150,8 @@
     <Content Include="Scripts\app\document\DocumentGridController.js" />
     <Content Include="Scripts\app\document\DocumentGridService.js" />
     <Content Include="Scripts\app\document\DocumentPaginationController.js" />
+    <Content Include="Scripts\app\search\SearchObjectController.js" />
+    <Content Include="Scripts\app\search\SearchObjectService.js" />
     <Content Include="Scripts\app\subject\GridController.js" />
     <Content Include="Scripts\app\subject\GridService.js" />
     <Content Include="Scripts\angular_source\angular-animate.js" />
@@ -986,13 +988,8 @@
     <Content Include="Views\JournalSale_Documents\Edit.cshtml" />
     <Content Include="Views\JournalSale_Documents\Index.cshtml" />
     <Content Include="Views\Template\FilterHeaderTemplate.cshtml" />
-    <Content Include="Views\Template\pagination.cshtml" />
-    <Content Include="Views\Template\Pager.cshtml" />
-    <Content Include="Views\Template\datepicker\Datepicker.cshtml" />
-    <Content Include="Views\Template\datepicker\Day.cshtml" />
-    <Content Include="Views\Template\datepicker\Month.cshtml" />
-    <Content Include="Views\Template\datepicker\Year.cshtml" />
-    <Content Include="Views\Template\datepicker\Popup.cshtml" />
+    <Content Include="Views\Shared\FindObjects.cshtml" />
+    <Content Include="Views\Search\Find.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1009,6 +1006,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\JournalSale_DocumentsController.cs" />
+    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Entity\Action.cs">
@@ -1025,6 +1023,9 @@
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Classification.cs">
+      <DependentUpon>JournalSaleDocument.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\CodaJson.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Contract.cs">
@@ -1083,7 +1084,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\templateHtml\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

@@ -18,48 +18,5 @@ namespace WebApplication3.Controllers
         {
             return View();
         }
-
-        // Filtering
-        public ActionResult FilterHeaderTemplateH()
-        {
-            return View();
-        }
-
-        // Pagination
-        public ActionResult Pagination()
-        {
-            return View();
-        }
-
-        public ActionResult Pager()
-        {
-            return View();
-        }
-
-        // Datepicker
-        public ActionResult Datepicker()
-        {
-            return View("~/views/template/datepicker/Datepicker.cshtml");
-        }
-
-        public ActionResult Popup()
-        {
-            return View("~/views/template/datepicker/Popup.cshtml");
-        }
-
-        public ActionResult Day()
-        {
-            return View("~/views/template/datepicker/Day.cshtml");
-        }
-
-        public ActionResult Month()
-        {
-            return View("~/views/template/datepicker/Month.cshtml");
-        }
-
-        public ActionResult Year()
-        {
-            return View("~/views/template/datepicker/Year.cshtml");
-        }
     }
 }

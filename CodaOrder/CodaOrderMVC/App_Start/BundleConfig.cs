@@ -26,26 +26,23 @@ namespace WebApplication3
                 "~/Scripts/angular.js",
                 "~/Scripts/angular_source/angular-resource.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/angular-ui").Include(
+                "~/Scripts/angular-ui/ui-bootstrap-tpls.js",
+                "~/Scripts/angular-ui/ui-bootstrap.js"));
+
             bundles.Add(new ScriptBundle("~/bundles/linq").Include(
                 "~/Scripts/linq.js"
             ));
 
-            //bundles.Add(new ScriptBundle("~/bundles/angular-ui").IncludeDirectory("~/Scripts/angular-ui", "*.js"));
-            bundles.Add(new ScriptBundle("~/bundles/angular-ui").Include(
-                "~/Scripts/angular-ui/ui-bootstrap-tpl.js",
-                "~/Scripts/angular-ui/ui-bootstrap.js"));
-
             bundles.Add(new ScriptBundle("~/bundles/ng-grid").Include(
-                "~/Scripts/ng-grid.js"));
+                "~/Scripts/ng-grid.js"
+            ));
 
-            //bundles.Add(new ScriptBundle("~/bundles/app").Include(
-            //    "~/Scripts/app/app.js",
-            //    "~/Scripts/app/GridController.js",
-            //    "~/Scripts/app/GridService.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/app").IncludeDirectory("~/Scripts/app", "*.js"));
             bundles.Add(new ScriptBundle("~/bundles/appSubject").IncludeDirectory("~/Scripts/app/subject", "*.js"));
             bundles.Add(new ScriptBundle("~/bundles/appDocument").IncludeDirectory("~/Scripts/app/document", "*.js"));
+            bundles.Add(new ScriptBundle("~/bundles/appSearch").IncludeDirectory("~/Scripts/app/search", "*.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
