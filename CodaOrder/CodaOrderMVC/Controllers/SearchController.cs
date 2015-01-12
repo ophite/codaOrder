@@ -27,6 +27,9 @@ namespace WebApplication3.Controllers
                 searchText = searchText ?? string.Empty;
                 var results = db.FindObject(className, fieldName, parentID, searchText, false, 10, null);
                 json = JsonConvert.SerializeObject(results);
+                //Dictionary<string, string> dict = new Dictionary<string, string>();
+                //dict.Add("data", json);
+                //json = JsonConvert.SerializeObject(dict);
             }
 
             return json;
