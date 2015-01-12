@@ -3,16 +3,10 @@
 
     function SearchObjectController($scope, $http, SearchObject) {
 
-        //var res = SearchObject.query("Стол", function (jsonData, header) {
-        //    alert(jsonData)
-        //});
-
         $scope.getObjects = function (val) {
 
             return SearchObject.query(val).query().$promise.then(function (response) {
-
                 return response.map(function (item) {
-
                     return item.FullName;
                 });
             });
