@@ -1,16 +1,16 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app').factory('SearchObject', ['$resource',
+    angular.module('app').factory('SearchSubject', ['$resource',
         function ($resource) {
             return {
-                query: function (textValue) {
-                    return $resource('http://localhost:35133/Search/Find', {}, {
+                query: function (textValue, className) {
+                    return $resource('http://localhost:35133/SearchCodaObject/Subject', {}, {
                         query: {
                             method: 'GET',
                             params: {
                                 searchText: textValue
-                            }, 
+                            },
                             isArray: true
                             //transformResponse: function (data, header) {
                             //}

@@ -40,9 +40,9 @@ namespace WebApplication3
 
 
             bundles.Add(new ScriptBundle("~/bundles/app").IncludeDirectory("~/Scripts/app", "*.js"));
-            bundles.Add(new ScriptBundle("~/bundles/appSubject").IncludeDirectory("~/Scripts/app/subject", "*.js"));
-            bundles.Add(new ScriptBundle("~/bundles/appDocument").IncludeDirectory("~/Scripts/app/document", "*.js"));
-            bundles.Add(new ScriptBundle("~/bundles/appSearch").IncludeDirectory("~/Scripts/app/search", "*.js"));
+            bundles.Add(new ScriptBundle("~/bundles/subject").IncludeDirectory("~/Scripts/app/subject", "*.js"));
+            bundles.Add(new ScriptBundle("~/bundles/document").IncludeDirectory("~/Scripts/app/document", "*.js"));
+            bundles.Add(new ScriptBundle("~/bundles/searchCodaObject").IncludeDirectory("~/Scripts/app/search", "*.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

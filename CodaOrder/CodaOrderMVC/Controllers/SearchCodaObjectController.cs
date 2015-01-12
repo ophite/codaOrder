@@ -8,15 +8,9 @@ using WebApplication3.Entity;
 
 namespace WebApplication3.Controllers
 {
-    public class SearchController : Controller
+    public class SearchCodaObjectController : Controller
     {
-        // GET: Search
-        public ActionResult Index()
-        {
-            return View();
-        }
-
-        public string Find(string searchText)
+        public string Subject(string searchText)
         {
             string json = string.Empty;
             using (var db = new codaJournal())
@@ -27,6 +21,8 @@ namespace WebApplication3.Controllers
                 searchText = searchText ?? string.Empty;
                 var results = db.FindObject(className, fieldName, parentID, searchText, false, 10, null);
                 json = JsonConvert.SerializeObject(results);
+
+                // not array
                 //Dictionary<string, string> dict = new Dictionary<string, string>();
                 //dict.Add("data", json);
                 //json = JsonConvert.SerializeObject(dict);

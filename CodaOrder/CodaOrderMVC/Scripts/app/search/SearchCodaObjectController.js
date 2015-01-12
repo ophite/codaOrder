@@ -1,11 +1,10 @@
 ﻿(function () {
     'use strict';
 
-    function SearchObjectController($scope, $http, SearchObject) {
+    function SearchCodaObjectController($scope, $http, SearchSubject) {
 
         $scope.getObjects = function (val) {
-
-            return SearchObject.query(val).query().$promise.then(function (response) {
+            return SearchSubject.query(val).query().$promise.then(function (response) {
                 return response.map(function (item) {
                     return item.FullName;
                 });
@@ -25,6 +24,6 @@
         };
     };
 
-    SearchObjectController.$inject = ['$scope', '$http', 'SearchObject'];
-    angular.module('app').controller('SearchObjectController', SearchObjectController);
+    SearchCodaObjectController.$inject = ['$scope', '$http', 'SearchSubject'];
+    angular.module('app').controller('SearchCodaObjectController', SearchCodaObjectController);
 })();

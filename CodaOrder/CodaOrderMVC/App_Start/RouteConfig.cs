@@ -27,7 +27,7 @@ namespace WebApplication3
             routes.MapRoute(
                 name: "Search",
                 url: "{controller}/{action}/{searchText}",
-                defaults: new { controller = "Search", action = "Find", searchText = UrlParameter.Optional }
+                defaults: new { controller = "SearchCodaObject", action = "Subject", searchText = UrlParameter.Optional }
             );
             //routes.MapRoute(
             //    name: "Templates",

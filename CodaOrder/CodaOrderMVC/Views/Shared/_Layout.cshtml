@@ -9,13 +9,19 @@
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+    
+    @* angular *@
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/angular-ui")
     @Scripts.Render("~/bundles/ng-grid")
+
+    @* angular app *@ 
     @Scripts.Render("~/bundles/app")
-    @Scripts.Render("~/bundles/appSubject")
-    @Scripts.Render("~/bundles/appDocument")
-    @Scripts.Render("~/bundles/appSearch")
+    @Scripts.Render("~/bundles/subject")
+    @Scripts.Render("~/bundles/document")
+    @Scripts.Render("~/bundles/searchCodaObject")
+
+    @* helpers *@
     @Scripts.Render("~/bundles/linq")
 
     @RenderSection("scripts", required: false)

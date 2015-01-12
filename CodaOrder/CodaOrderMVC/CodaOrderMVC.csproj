@@ -150,8 +150,8 @@
     <Content Include="Scripts\app\document\DocumentGridController.js" />
     <Content Include="Scripts\app\document\DocumentGridService.js" />
     <Content Include="Scripts\app\document\DocumentPaginationController.js" />
-    <Content Include="Scripts\app\search\SearchObjectController.js" />
-    <Content Include="Scripts\app\search\SearchObjectService.js" />
+    <Content Include="Scripts\app\search\SearchCodaObjectController.js" />
+    <Content Include="Scripts\app\search\SearchCodaObjectService.js" />
     <Content Include="Scripts\app\subject\GridController.js" />
     <Content Include="Scripts\app\subject\GridService.js" />
     <Content Include="Scripts\angular_source\angular-animate.js" />
@@ -989,7 +989,7 @@
     <Content Include="Views\JournalSale_Documents\Index.cshtml" />
     <Content Include="Views\Template\FilterHeaderTemplate.cshtml" />
     <Content Include="Views\Shared\FindObjects.cshtml" />
-    <Content Include="Views\Search\Find.cshtml" />
+    <Content Include="Views\SearchCodaObject\Subject.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1006,7 +1006,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\JournalSale_DocumentsController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
+    <Compile Include="Controllers\SearchCodaObjectController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="Entity\Action.cs">
