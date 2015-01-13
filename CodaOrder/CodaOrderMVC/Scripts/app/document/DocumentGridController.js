@@ -1,8 +1,7 @@
-﻿
-(function () {
+﻿(function () {
     'use strict';
 
-    function DocumentGridController($scope, $location, GetDocuments) {
+    function DocumentGridController($scope, $location, getDocuments, filterStrToSql) {
 
         $scope.title = 'DocumentGridController';
 
@@ -14,6 +13,7 @@
                 filterBarPlugin.scope = scope;
                 filterBarPlugin.grid = grid;
                 $scope.$watch(function () {
+
                     var searchQuery = "";
                     angular.forEach(filterBarPlugin.scope.columns, function (col) {
                         if (col.visible && col.filterText) {
@@ -21,8 +21,10 @@
                             searchQuery += col.displayName + ": " + filterText;
                         }
                     });
+
                     return searchQuery;
-                }, function (searchQuery) {
+                },
+                function (searchQuery) {
 
                     filterBarPlugin.scope.$parent.filterText = searchQuery;
                     filterBarPlugin.grid.searchProvider.evalFilter();
@@ -63,8 +65,8 @@
             var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
             $scope.documents = pagedData;
             $scope.totalServerItems = data.length;
-            if (!$scope.$$phase) {
 
+            if (!$scope.$$phase) {
                 $scope.$apply();
             }
         };
@@ -73,92 +75,21 @@
         $scope.$on('broadcastGetDocuments', function (event, args) {
 
             if (filterBarPlugin.scope != null) {
-
                 var searchText = filterBarPlugin.scope.$parent.filterText;
             }
 
-            GetDocuments.get(function (jsonData) {
-
+            getDocuments.get(function (jsonData) {
                 $scope.setPagingData(JSON.parse(jsonData.Documents), args.currentPage, args.pageSize, searchText);
             });
         });
 
-        // helpers convert grid filter string to sql query where and full text query
-        function filterStrToSql(filterStr, columns) {
-
-            // 1 prepare
-            var dict = {
-
-                whereQuery: '',
-                fullTextQuery: '<Root/>'
-            };
-
-            if (filterStr.indexOf(';') < 0)
-                return dict;
-
-            var whereQueryArr = [];
-            var fullTextQueryArr = [];
-            var iColumns = Enumerable.From(columns);
-
-            // 2 main func
-            function callBack(element, index, array) {
-
-                if (!element)
-                    return;
-
-                var captionValue = element.split(':');
-                var item = iColumns
-                    .Where(function (x) { return x.displayName === captionValue[0] })
-                    .Select(function (x) { return x })
-                    .FirstOrDefault();
-
-                var value = captionValue[1].replace(' ^', '');
-                var fieldStr = String(item.field);
-
-                //N'<Root><Filter TableID="-1" Not="false" Value="Новус" TableName="Subject" ColumnName="Name"/></Root>'
-                if (fieldStr.indexOf('_') > -1) {
-
-                    var table = fieldStr.split('_')[0];
-                    var field = fieldStr.split('_')[1];
-                    fullTextQueryArr.push('<Filter TableID ="-1" Not="false" Value="' + value + '" TableName="' + table + '" ColumnName="' + field + '"/>');
-                }
-                    //N' and ((isnull(charindex(''прод'', _journalalias_.name), 0) > 0) and (isnull(charindex(''71'', _journalalias_.doccode), 0) > 0))'
-                else {
-
-                    if (whereQueryArr.length > 0)
-                        whereQueryArr.push('and ');
-
-                    whereQueryArr.push('(isnull(charindex(\'\'' + value + '\'\', _journalalias_.' + fieldStr.toLowerCase() + '), 0) > 0) ');
-                }
-            }
-            filterStr.split(';').forEach(callBack);
-
-            if (fullTextQueryArr.length > 0) {
-
-                fullTextQueryArr.splice(0, 0, '<Root>');
-                fullTextQueryArr.push('</Root>');
-            }
-            else
-                fullTextQueryArr.push('<Root/>')
-
-            if (whereQueryArr.length > 0) {
-
-                whereQueryArr.splice(0, 0, ' and (');
-                whereQueryArr.push(')');
-            }
-
-            // 3 result
-            dict.whereQuery = whereQueryArr.join('');
-            dict.fullTextQuery = fullTextQueryArr.join('');
-
-            return dict;
-        }
 
         // test
         //var filterStr = "Сумма: ^41;Код док-та: ^48;ID: ^198;";
-        //var res = filterStrToSql(filterStr, $scope.gridOptions.columnDefs)
+        //var res = filterStrToSql.fn(filterStr, $scope.gridOptions.columnDefs)
+        //alert(res);
     }
 
-    DocumentGridController.$inject = ['$scope', '$location', 'GetDocuments'];
+    DocumentGridController.$inject = ['$scope', '$location', 'getDocuments', 'filterStrToSql'];
     angular.module('app').controller('DocumentGridController', DocumentGridController);
 })();

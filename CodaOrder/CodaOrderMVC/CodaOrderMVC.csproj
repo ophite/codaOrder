@@ -146,6 +146,7 @@
     <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\app\app.js" />
+    <Content Include="Scripts\app\common\FilterService.js" />
     <Content Include="Scripts\app\document\DocumentDateController.js" />
     <Content Include="Scripts\app\document\DocumentGridController.js" />
     <Content Include="Scripts\app\document\DocumentGridService.js" />

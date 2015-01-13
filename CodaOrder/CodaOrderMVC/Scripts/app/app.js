@@ -21,6 +21,5 @@
         $rootScope.$on('pageChanged', function (event, args) {
             $rootScope.$broadcast('broadcastGetDocuments', args);
         });
-    }
-    ]);
+    }]);
 })();

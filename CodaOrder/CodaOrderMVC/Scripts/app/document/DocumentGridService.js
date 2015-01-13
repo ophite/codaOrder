@@ -2,12 +2,12 @@
     'use strict';
 
     // api goto Factory
-    function GetDocuments($resource) {
+    function getDocuments($resource) {
 
-        var promise = $resource("GetDocuments");
+        var promise = $resource("getDocuments");
         return promise;
     }
 
-    GetDocuments.$inject = ['$resource'];
-    angular.module('app').factory('GetDocuments', GetDocuments);
+    getDocuments.$inject = ['$resource'];
+    angular.module('app').factory('getDocuments', getDocuments);
 })();

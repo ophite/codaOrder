@@ -22,6 +22,7 @@ namespace WebApplication3
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            // angular
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.js",
                 "~/Scripts/angular_source/angular-resource.js"));
@@ -30,20 +31,23 @@ namespace WebApplication3
                 "~/Scripts/angular-ui/ui-bootstrap-tpls.js",
                 "~/Scripts/angular-ui/ui-bootstrap.js"));
 
-            bundles.Add(new ScriptBundle("~/bundles/linq").Include(
-                "~/Scripts/linq.js"
-            ));
-
             bundles.Add(new ScriptBundle("~/bundles/ng-grid").Include(
                 "~/Scripts/ng-grid.js"
             ));
 
+            // helpers
+            bundles.Add(new ScriptBundle("~/bundles/linq").Include(
+                "~/Scripts/linq.js"
+            ));
 
+            // angular app
             bundles.Add(new ScriptBundle("~/bundles/app").IncludeDirectory("~/Scripts/app", "*.js"));
             bundles.Add(new ScriptBundle("~/bundles/subject").IncludeDirectory("~/Scripts/app/subject", "*.js"));
             bundles.Add(new ScriptBundle("~/bundles/document").IncludeDirectory("~/Scripts/app/document", "*.js"));
             bundles.Add(new ScriptBundle("~/bundles/searchCodaObject").IncludeDirectory("~/Scripts/app/search", "*.js"));
+            bundles.Add(new ScriptBundle("~/bundles/common").IncludeDirectory("~/Scripts/app/common", "*.js"));
 
+            // css
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",

@@ -16,19 +16,19 @@
 
         $scope.pageChanged = function () {
 
-            $scope.$emit('pageChanged', { 
+            $scope.$emit('pageChanged', {
                 currentPage: $scope.bigCurrentPage,
                 pageSize: $scope.maxSize
             });
             //$log.log('Page changed to: ' + $scope.currentPage);
-            $log.log('Page changed to: ' + $scope.bigCurrentPage);
+            //$log.log('Page changed to: ' + $scope.bigCurrentPage);
         };
 
         $scope.maxSize = 4;
         $scope.bigTotalItems = 111;
         $scope.bigCurrentPage = 1;
 
-        // 1 time
+        // init - 1 time 
         $scope.$emit('pageChanged', {
             currentPage: $scope.bigCurrentPage,
             pageSize: $scope.maxSize
