@@ -64,6 +64,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Newtonsoft.Json.6.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="Ninject">
+      <HintPath>..\packages\Ninject.3.2.2.0\lib\net45-full\Ninject.dll</HintPath>
+    </Reference>
     <Reference Include="System.Net.Http" />
     <Reference Include="System.Net.Http.Formatting, Version=5.2.2.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
@@ -1006,6 +1009,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\JournalSale_DocumentsController - Copy.cs" />
     <Compile Include="Controllers\JournalSale_DocumentsController.cs" />
     <Compile Include="Controllers\SearchCodaObjectController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
@@ -1017,6 +1021,7 @@
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\BaseEntity.cs" />
+    <Compile Include="Entity\BaseRepository.cs" />
     <Compile Include="Entity\Box.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
@@ -1041,6 +1046,7 @@
     <Compile Include="Entity\DocBoxLine.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\DocumentRepository.cs" />
     <Compile Include="Entity\Employee.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
@@ -1050,6 +1056,8 @@
     <Compile Include="Entity\Firm.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\IDocument.cs" />
+    <Compile Include="Entity\IRepository.cs" />
     <Compile Include="Entity\JournalSaleDocument.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1080,6 +1088,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
