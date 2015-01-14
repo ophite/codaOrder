@@ -1021,7 +1021,7 @@
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\BaseEntity.cs" />
-    <Compile Include="Entity\BaseRepository.cs" />
+    <Compile Include="Entity\Repositories\BaseRepository.cs" />
     <Compile Include="Entity\Box.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
@@ -1034,6 +1034,7 @@
     <Compile Include="Entity\CodaJson.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Repositories\CodaJsonRepository.cs" />
     <Compile Include="Entity\Contract.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
@@ -1046,7 +1047,7 @@
     <Compile Include="Entity\DocBoxLine.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\DocumentRepository.cs" />
+    <Compile Include="Entity\Repositories\DocumentRepository.cs" />
     <Compile Include="Entity\Employee.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
@@ -1056,8 +1057,10 @@
     <Compile Include="Entity\Firm.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\IDocument.cs" />
-    <Compile Include="Entity\IRepository.cs" />
+    <Compile Include="Entity\Interfaces\ICodaJsonRepository.cs" />
+    <Compile Include="Entity\Interfaces\IDocumentRepository.cs" />
+    <Compile Include="Entity\Interfaces\IRepository.cs" />
+    <Compile Include="Entity\Interfaces\IUow.cs" />
     <Compile Include="Entity\JournalSaleDocument.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -1085,6 +1088,7 @@
     <Compile Include="Entity\TaxType.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Repositories\Uow.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

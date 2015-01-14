@@ -6,9 +6,7 @@ using System.Web;
 
 namespace WebApplication3.Entity
 {
-    public interface IDocuments<T, D> : IRepository<T, D>
-        where T : class
-        where D : DbContext
+    public interface IDocumentRepository: IRepository<JournalSale_Documents>
     {
         string GetLinesJson();
     }

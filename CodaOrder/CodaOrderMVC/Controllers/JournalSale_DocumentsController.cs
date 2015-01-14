@@ -15,23 +15,17 @@ namespace WebApplication3.Controllers
 {
     public class JournalSale_DocumentsController : Controller
     {
-        private IDocuments<JournalSale_Documents, codaJournal> _repository { get; set; }
-        private codaJournal db = new codaJournal();
+        #region Properties
 
-        // GET: JournalSale_Documents
-        //public async Task<ActionResult> Index()
-        //{
-        //    return View(await db.JournalSale_Documents.ToListAsync());
-        //}
+        private IUow _uow;
 
-        public JournalSale_DocumentsController()
-            : this(new DocumentRepository<JournalSale_Documents, codaJournal>(new codaJournal()))
+        #endregion
+        #region Methods
+
+        //public JournalSale_DocumentsController() : this(new Uow(new codaJournal())) { }
+        public JournalSale_DocumentsController(IUow uow)
         {
-        }
-
-        public JournalSale_DocumentsController(IDocuments<JournalSale_Documents, codaJournal> repository)
-        {
-            this._repository = repository;
+            this._uow = uow;
         }
 
         public ActionResult Index()
@@ -42,21 +36,19 @@ namespace WebApplication3.Controllers
         // GET: JournalSale_Documents
         public string GetDocuments()
         {
-            return _repository.GetLinesJson();
+            return _uow.DocumentRepository.GetLinesJson();
         }
 
         // GET: JournalSale_Documents/Details/5
-        public async Task<ActionResult> Details(long? id)
+        public ActionResult Details(long? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            JournalSale_Documents journalSale_Documents = await db.JournalSale_Documents.FindAsync(id);
+
+            JournalSale_Documents journalSale_Documents = _uow.DocumentRepository.GetById((long)id);
             if (journalSale_Documents == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(journalSale_Documents);
         }
 
@@ -71,12 +63,11 @@ namespace WebApplication3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "OID,CID,Amount,BranchID,ChangeDate,Comments,CreateDate,DelDate,DocCode,DocDate,EmployeeID,DeliverID,ReceiverID,FirmID,FullName,GUID,IconIndex,IsDeleted,Name,NodeID,RGB,SourceDocID,DocGroupID,DocGroupPosition,TST,PriceSum,VatSum,ContractID,CustomerID,DepartmentID,CorrespondID,TaxCode,TaxDate,FilialID,PrintComments,IsForeign,RevenueID,DelayLimit,VatPercent,SourceDocCode,IsChangedAfterPrint,CasefillrateID,SectorID,CreditComments,VATNNSum,TaxInvoiceType,LineCount,Coordinate,BrandName")] JournalSale_Documents journalSale_Documents)
+        public ActionResult Create([Bind(Include = "OID,CID,Amount,BranchID,ChangeDate,Comments,CreateDate,DelDate,DocCode,DocDate,EmployeeID,DeliverID,ReceiverID,FirmID,FullName,GUID,IconIndex,IsDeleted,Name,NodeID,RGB,SourceDocID,DocGroupID,DocGroupPosition,TST,PriceSum,VatSum,ContractID,CustomerID,DepartmentID,CorrespondID,TaxCode,TaxDate,FilialID,PrintComments,IsForeign,RevenueID,DelayLimit,VatPercent,SourceDocCode,IsChangedAfterPrint,CasefillrateID,SectorID,CreditComments,VATNNSum,TaxInvoiceType,LineCount,Coordinate,BrandName")] JournalSale_Documents journalSale_Documents)
         {
             if (ModelState.IsValid)
             {
-                db.JournalSale_Documents.Add(journalSale_Documents);
-                await db.SaveChangesAsync();
+                _uow.DocumentRepository.Create(journalSale_Documents);
                 return RedirectToAction("Index");
             }
 
@@ -84,17 +75,15 @@ namespace WebApplication3.Controllers
         }
 
         // GET: JournalSale_Documents/Edit/5
-        public async Task<ActionResult> Edit(long? id)
+        public ActionResult Edit(long? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            JournalSale_Documents journalSale_Documents = await db.JournalSale_Documents.FindAsync(id);
+
+            JournalSale_Documents journalSale_Documents = _uow.DocumentRepository.GetById((long)id);
             if (journalSale_Documents == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(journalSale_Documents);
         }
 
@@ -103,50 +92,49 @@ namespace WebApplication3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "OID,CID,Amount,BranchID,ChangeDate,Comments,CreateDate,DelDate,DocCode,DocDate,EmployeeID,DeliverID,ReceiverID,FirmID,FullName,GUID,IconIndex,IsDeleted,Name,NodeID,RGB,SourceDocID,DocGroupID,DocGroupPosition,TST,PriceSum,VatSum,ContractID,CustomerID,DepartmentID,CorrespondID,TaxCode,TaxDate,FilialID,PrintComments,IsForeign,RevenueID,DelayLimit,VatPercent,SourceDocCode,IsChangedAfterPrint,CasefillrateID,SectorID,CreditComments,VATNNSum,TaxInvoiceType,LineCount,Coordinate,BrandName")] JournalSale_Documents journalSale_Documents)
+        public ActionResult Edit([Bind(Include = "OID,CID,Amount,BranchID,ChangeDate,Comments,CreateDate,DelDate,DocCode,DocDate,EmployeeID,DeliverID,ReceiverID,FirmID,FullName,GUID,IconIndex,IsDeleted,Name,NodeID,RGB,SourceDocID,DocGroupID,DocGroupPosition,TST,PriceSum,VatSum,ContractID,CustomerID,DepartmentID,CorrespondID,TaxCode,TaxDate,FilialID,PrintComments,IsForeign,RevenueID,DelayLimit,VatPercent,SourceDocCode,IsChangedAfterPrint,CasefillrateID,SectorID,CreditComments,VATNNSum,TaxInvoiceType,LineCount,Coordinate,BrandName")] JournalSale_Documents journalSale_Documents)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(journalSale_Documents).State = EntityState.Modified;
-                await db.SaveChangesAsync();
+                _uow.DocumentRepository.Edit(journalSale_Documents);
                 return RedirectToAction("Index");
             }
             return View(journalSale_Documents);
         }
 
         // GET: JournalSale_Documents/Delete/5
-        public async Task<ActionResult> Delete(long? id)
+        public ActionResult Delete(long? id)
         {
             if (id == null)
-            {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            JournalSale_Documents journalSale_Documents = await db.JournalSale_Documents.FindAsync(id);
+
+            JournalSale_Documents journalSale_Documents = _uow.DocumentRepository.GetById((long)id);
             if (journalSale_Documents == null)
-            {
                 return HttpNotFound();
-            }
+
             return View(journalSale_Documents);
         }
 
         // POST: JournalSale_Documents/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(long id)
+        public ActionResult DeleteConfirmed(long id)
         {
-            JournalSale_Documents journalSale_Documents = await db.JournalSale_Documents.FindAsync(id);
-            db.JournalSale_Documents.Remove(journalSale_Documents);
-            await db.SaveChangesAsync();
+            _uow.DocumentRepository.Delete(id);
             return RedirectToAction("Index");
         }
+
+        #endregion
+        #region IDispose
 
         protected override void Dispose(bool disposing)
         {
             if (disposing)
-            {
-                db.Dispose();
-            }
+                _uow.Dispose();
+
             base.Dispose(disposing);
         }
+
+        #endregion
     }
 }

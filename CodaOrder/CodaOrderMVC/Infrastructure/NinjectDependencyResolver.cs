@@ -30,7 +30,9 @@ namespace WebApplication3.Infrastructure
 
         private void AddBindings()
         {
-            kernel.Bind<IDocuments<JournalSale_Documents, codaJournal>>().To<DocumentRepository<JournalSale_Documents, codaJournal>>().WithConstructorArgument(new codaJournal());
+            kernel.Bind<IUow>().To<Uow>();
+            kernel.Bind<IDocumentRepository>().To<DocumentRepository>();
+            kernel.Bind<ICodaJsonRepository>().To<CodaJsonRepository>();
         }
     }
 }

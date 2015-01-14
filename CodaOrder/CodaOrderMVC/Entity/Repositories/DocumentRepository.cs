@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Web;
@@ -15,12 +16,10 @@ namespace WebApplication3.Entity
         public object Items { get; set; }
     }
 
-    public class DocumentRepository<T, D> : BaseRepository<T, D>, IDocuments<T, D>
-        where T : BaseEntity
-        where D : codaJournal
+    public class DocumentRepository : BaseRepository<JournalSale_Documents>, IDocumentRepository
     {
-        public DocumentRepository() : base() { }
-        public DocumentRepository(D dbContext) : base(dbContext) { }
+        //public DocumentRepository() : base() { }
+        public DocumentRepository(DbContext dbContext) : base(dbContext) { }
 
         public string GetLinesJson()
         {
@@ -50,7 +49,7 @@ namespace WebApplication3.Entity
             string WhereQueryTableAlias = "_journalalias_";
             ObjectParameter tST = new ObjectParameter("TST", typeof(byte[]));
 
-            var qDocs = dbContext.GetDocuments(OID, filter, docOID, objectID, dateBegin, dateEnd, docFilterClasses, statusFilter, isExtended, showDeleted,
+            var qDocs = ((codaJournal)dbContext).GetDocuments(OID, filter, docOID, objectID, dateBegin, dateEnd, docFilterClasses, statusFilter, isExtended, showDeleted,
                 checkOperation, securityUser, securityGroup, perPage, pageNumber, fullTextFilter, orderFilter, totalRows, pages, whereQuery,
                 WhereQueryTableAlias, tST);
 
