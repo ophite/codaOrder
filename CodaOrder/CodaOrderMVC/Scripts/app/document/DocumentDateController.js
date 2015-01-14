@@ -1,32 +1,43 @@
 ﻿(function () {
     'use strict';
 
-    function DocumentDateController($scope) {
-  
+    function DocumentDateController($scope, $filter) {
+        
+        $scope.format = 'dd.MM.yyyy';
+
         $scope.today = function () {
-            $scope.dt = new Date();
+            $scope.dateStart = $filter('date')(new Date(), $scope.format);
+            $scope.dateEnd = $filter('date')(new Date(), $scope.format);
         };
         $scope.today();
 
         $scope.clear = function () {
-            $scope.dt = null;
+            $scope.dateStart = null;
+            $scope.dateEnd = null;
         };
 
         // Disable weekend selection
-        $scope.disabled = function (date, mode) {
-            return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
-        };
+        //$scope.disabled = function (date, mode) {
+        //    return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
+        //};
 
         $scope.toggleMin = function () {
-            $scope.minDate = $scope.minDate ? null : new Date();
+            $scope.minDate = '31.12.2000'; // $scope.minDate ? null : new Date();
         };
         $scope.toggleMin();
 
-        $scope.open = function ($event) {
+        $scope.openDateStart = function ($event) {
             $event.preventDefault();
             $event.stopPropagation();
 
-            $scope.opened = true;
+            $scope.openedStart = true;
+        };
+
+        $scope.openDateEnd = function ($event) {
+            $event.preventDefault();
+            $event.stopPropagation();
+
+            $scope.openedEnd = true;
         };
 
         $scope.dateOptions = {
@@ -34,10 +45,8 @@
             startingDay: 1
         };
 
-        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-        $scope.format = $scope.formats[0];
     };
 
-    DocumentDateController.$inject = ['$scope'];
+    DocumentDateController.$inject = ['$scope', '$filter'];
     angular.module('app').controller('DocumentDateController', DocumentDateController);
 })();

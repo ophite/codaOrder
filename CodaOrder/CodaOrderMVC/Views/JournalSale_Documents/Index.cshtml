@@ -11,11 +11,21 @@
 
 <div ng-controller="DocumentDateController">
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-4">
             <p class="input-group">
-                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dt" is-open="opened" min-date="minDate" max-date="'2015-06-22'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dateStart" is-open="openedStart" min-date="2000-12-31" max-date="'2099-12-31'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
                 <span class="input-group-btn">
-                    <button type="button" class="btn btn-default" ng-click="open($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                    <button type="button" class="btn btn-default" ng-click="openDateStart($event)"><i class="glyphicon glyphicon-calendar"></i></button>
+                </span>
+            </p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-4">
+            <p class="input-group">
+                <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dateEnd" is-open="openedEnd" min-date="minDate" max-date="'2099-12-31'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
+                <span class="input-group-btn">
+                    <button type="button" class="btn btn-default" ng-click="openDateEnd($event)"><i class="glyphicon glyphicon-calendar"></i></button>
                 </span>
             </p>
         </div>
@@ -23,7 +33,8 @@
 </div>
 
 <div class='container-fluid' ng-controller="SearchCodaObjectController">
-    <input type="text" ng-model="searchCodaObject" placeholder="Enter subject name" typeahead="searchText for searchText in getObjects($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+    <input type="text" ng-model="searchCodaObject" placeholder="Enter subject name" typeahead="searchText as searchText.FullName for searchText in getObjects($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+    <pre>Selected: {{searchCodaObject.OID}}</pre>
 </div>
 
 <div ng-controller="DocumentGridController">

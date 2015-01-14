@@ -6,7 +6,7 @@
         $scope.getObjects = function (val) {
             return SearchSubject.query(val).query().$promise.then(function (response) {
                 return response.map(function (item) {
-                    return item.FullName;
+                    return item;
                 });
             });
 

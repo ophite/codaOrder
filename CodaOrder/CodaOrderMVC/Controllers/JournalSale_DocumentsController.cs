@@ -22,7 +22,6 @@ namespace WebApplication3.Controllers
         #endregion
         #region Methods
 
-        //public JournalSale_DocumentsController() : this(new Uow(new codaJournal())) { }
         public JournalSale_DocumentsController(IUow uow)
         {
             this._uow = uow;
