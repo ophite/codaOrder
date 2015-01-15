@@ -11,7 +11,7 @@
 
 <div ng-controller="DocumentDateController">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-2">
             <p class="input-group">
                 <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dateStart" is-open="openedStart" min-date="2000-12-31" max-date="'2099-12-31'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
                 <span class="input-group-btn">
@@ -19,9 +19,7 @@
                 </span>
             </p>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-md-4">
+        <div class="col-lg-2">
             <p class="input-group">
                 <input type="text" class="form-control" datepicker-popup="{{format}}" ng-model="dateEnd" is-open="openedEnd" min-date="minDate" max-date="'2099-12-31'" datepicker-options="dateOptions" date-disabled="disabled(date, mode)" ng-required="true" close-text="Close" />
                 <span class="input-group-btn">
@@ -33,18 +31,30 @@
 </div>
 
 <div class='container-fluid' ng-controller="SearchCodaObjectController">
-    <input type="text" ng-model="searchCodaObject" placeholder="Enter subject name" typeahead="searchText as searchText.FullName for searchText in getObjects($viewValue)" typeahead-loading="loadingLocations" class="form-control">
-    <pre>Selected: {{searchCodaObject.OID}}</pre>
+    <div class="row">
+        <div class="col-lg-4">
+            <input class="form-control" type="text" ng-model="searchCodaObject" placeholder="Enter subject name" typeahead="searchText as searchText.FullName for searchText in getObjects($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <pre>Selected: {{searchCodaObject.OID}}</pre>
+        </div>
+    </div>
 </div>
 
 <div ng-controller="DocumentTypeController">
-    <ui-select multiple ng-model="multipleDemo.selectedDocumentType" theme="bootstrap" ng-disabled="disabled" style="width: 400px;">
-        <ui-select-match placeholder="Select document type...">{{$item.name}}</ui-select-match>
-        <ui-select-choices repeat="docType.name as docType in documentType | filter: {name: $select.search}">
-            <div ng-bind-html="docType.name | highlight: $select.search"></div>
-        </ui-select-choices>
-    </ui-select>
-    <pre>Selected: {{multipleDemo.selectedDocumentType}}</pre>
+    <div class="row">
+        <div class="col-lg-4">
+            <ui-select class="form-control" multiple ng-model="multipleDemo.selectedDocumentType" theme="bootstrap" ng-disabled="disabled">
+                <ui-select-match placeholder="Select document type...">{{$item.name}}</ui-select-match>
+                <ui-select-choices repeat="docType.name as docType in documentType | filter: {name: $select.search}">
+                    <div ng-bind-html="docType.name | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+            <pre>Selected: {{multipleDemo.selectedDocumentType}}</pre>
+        </div>
+    </div>
 </div>
 
 <div ng-controller="DocumentGridController">

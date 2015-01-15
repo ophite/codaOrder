@@ -7,7 +7,9 @@
 
         $scope.today = function () {
             $scope.dateStart = $filter('date')(new Date(), $scope.format);
-            $scope.dateEnd = $filter('date')(new Date(), $scope.format);
+            var dateEnd = new Date();
+            dateEnd.setDate(dateEnd.getDate() + 7);
+            $scope.dateEnd = $filter('date')(dateEnd, $scope.format);
         };
         $scope.today();
 
