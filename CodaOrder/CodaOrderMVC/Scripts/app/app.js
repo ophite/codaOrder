@@ -22,6 +22,10 @@
     //});
 
     app.run(['$rootScope', function ($rootScope) {
+
+        $rootScope.$on('startLoadingDocuments', function (event, args) {
+            $rootScope.$broadcast('broadcastGetDocuments', args)
+        });
         $rootScope.$on('pageChanged', function (event, args) {
             $rootScope.$broadcast('broadcastGetDocuments', args);
         });

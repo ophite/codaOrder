@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    function DocumentPaginationController($scope, $log) {
+    function DocumentPaginationController($scope, $log, parameterService) {
 
         $scope.totalItems = 1;
         $scope.currentPage = 1;
@@ -16,6 +16,9 @@
 
         $scope.pageChanged = function () {
 
+            parameterService.setDocumentParams('currentPage', $scope.bigCurrentPage);
+            parameterService.setDocumentParams('pageSize', $scope.maxSize);
+
             $scope.$emit('pageChanged', {
                 currentPage: $scope.bigCurrentPage,
                 pageSize: $scope.maxSize
@@ -29,12 +32,9 @@
         $scope.bigCurrentPage = 1;
 
         // init - 1 time 
-        $scope.$emit('pageChanged', {
-            currentPage: $scope.bigCurrentPage,
-            pageSize: $scope.maxSize
-        });
+        $scope.pageChanged();
     }
 
-    DocumentPaginationController.$inject = ['$scope', '$log'];
+    DocumentPaginationController.$inject = ['$scope', '$log', 'parameterService'];
     angular.module('app').controller('DocumentPaginationController', DocumentPaginationController);
 })();

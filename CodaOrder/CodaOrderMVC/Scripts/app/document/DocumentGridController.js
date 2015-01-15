@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    function DocumentGridController($scope, $location, getDocuments, filterStrToSql) {
+    function DocumentGridController($scope, $location, getDocuments, filterStrToSql, parameterService) {
 
         $scope.title = 'DocumentGridController';
 
@@ -78,6 +78,9 @@
                 var searchText = filterBarPlugin.scope.$parent.filterText;
             }
 
+            var params = parameterService.getDocumentParams()
+            console.log(params);
+
             getDocuments.get(function (jsonData) {
                 $scope.setPagingData(JSON.parse(jsonData.Documents), args.currentPage, args.pageSize, searchText);
             });
@@ -88,8 +91,12 @@
         //var filterStr = "Сумма: ^41;Код док-та: ^48;ID: ^198;";
         //var res = filterStrToSql.fn(filterStr, $scope.gridOptions.columnDefs)
         //alert(res);
+
+        // test params
+        //var documentParams = parameterService.getDocumentsParams();
+        //console.log(documentParams);
     }
 
-    DocumentGridController.$inject = ['$scope', '$location', 'getDocuments', 'filterStrToSql'];
+    DocumentGridController.$inject = ['$scope', '$location', 'getDocuments', 'filterStrToSql', 'parameterService'];
     angular.module('app').controller('DocumentGridController', DocumentGridController);
 })();

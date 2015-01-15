@@ -1,10 +1,10 @@
 ﻿(function () {
     'use strict';
 
-    function SearchCodaObjectController($scope, $http, SearchSubject) {
+    function SearchCodaObjectController($scope, $http, searchSubject, parameterService) {
 
         $scope.getObjects = function (val) {
-            return SearchSubject.query(val).query().$promise.then(function (response) {
+            return searchSubject.query(val).query().$promise.then(function (response) {
                 return response.map(function (item) {
                     return item;
                 });
@@ -22,8 +22,15 @@
 
             //return items;
         };
+
+        $scope.$watch('searchCodaObject', function (newValue, oldValue) {
+            if (newValue != undefined && typeof (newValue) === 'object' && 'OID' in newValue)
+                parameterService.setDocumentParams('filter', newValue.OID);
+            else
+                parameterService.setDocumentParams('filter', null);
+        });
     };
 
-    SearchCodaObjectController.$inject = ['$scope', '$http', 'SearchSubject'];
+    SearchCodaObjectController.$inject = ['$scope', '$http', 'searchSubject', 'parameterService'];
     angular.module('app').controller('SearchCodaObjectController', SearchCodaObjectController);
 })();

@@ -1,7 +1,7 @@
 ﻿'use strict';
 
 var app = angular.module('app');
-app.controller('DocumentTypeController', function ($scope) {
+app.controller('DocumentTypeController', ['$scope', 'parameterService', function ($scope, parameterService) {
     $scope.disabled = undefined;
     $scope.searchEnabled = undefined;
 
@@ -28,6 +28,10 @@ app.controller('DocumentTypeController', function ($scope) {
       { name: 'Покупка возврат', code: 'DocBuyRet' },
     ];
 
-    $scope.multipleDemo = {};
-    $scope.multipleDemo.selectedDocumentType = ['Продажа'];
-});
+    $scope.$watchCollection('selectedDocumentType', function (newValues, oldValues) {
+
+        parameterService.setDocumentParams('documentType', newValues);
+    });
+
+    $scope.selectedDocumentType = ['Продажа'];
+}]);

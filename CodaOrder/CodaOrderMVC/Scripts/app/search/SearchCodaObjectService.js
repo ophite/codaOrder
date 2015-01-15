@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    angular.module('app').factory('SearchSubject', ['$resource',
+    angular.module('app').factory('searchSubject', ['$resource',
         function ($resource) {
             return {
                 query: function (textValue, className) {

@@ -1,7 +1,7 @@
 ﻿(function () {
     'use strict';
 
-    function DocumentDateController($scope, $filter) {
+    function DocumentDateController($scope, $filter, parameterService) {
         
         $scope.format = 'dd.MM.yyyy';
 
@@ -47,8 +47,14 @@
             startingDay: 1
         };
 
+        $scope.dates = [$scope.dateStart, $scope.dateEnd];
+        $scope.$watchCollection('dates', function (newValues, oldValues) {
+
+            parameterService.setDocumentParams('dateStart', newValues[0]);
+            parameterService.setDocumentParams('dateEnd', newValues[1]);
+        });
     };
 
-    DocumentDateController.$inject = ['$scope', '$filter'];
+    DocumentDateController.$inject = ['$scope', '$filter', 'parameterService'];
     angular.module('app').controller('DocumentDateController', DocumentDateController);
 })();
