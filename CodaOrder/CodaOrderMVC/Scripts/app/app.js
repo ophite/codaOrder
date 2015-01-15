@@ -11,7 +11,11 @@
         //'ui.grid',
         'ngGrid',
         'ui.bootstrap',
-        'ui.bootstrap.tpls'
+        'ui.bootstrap.tpls',
+
+        // ui-select
+        'ngSanitize',
+        'ui.select'
     ])
 
     //app.config(function ($locationProvider, $httpProvider) {

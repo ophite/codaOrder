@@ -37,6 +37,16 @@
     <pre>Selected: {{searchCodaObject.OID}}</pre>
 </div>
 
+<div ng-controller="DocumentTypeController">
+    <ui-select multiple ng-model="multipleDemo.selectedDocumentType" theme="bootstrap" ng-disabled="disabled" style="width: 400px;">
+        <ui-select-match placeholder="Select document type...">{{$item.name}}</ui-select-match>
+        <ui-select-choices repeat="docType.name as docType in documentType | filter: {name: $select.search}">
+            <div ng-bind-html="docType.name | highlight: $select.search"></div>
+        </ui-select-choices>
+    </ui-select>
+    <pre>Selected: {{multipleDemo.selectedDocumentType}}</pre>
+</div>
+
 <div ng-controller="DocumentGridController">
     <div class="gridStyle" ng-grid="gridOptions">
     </div>

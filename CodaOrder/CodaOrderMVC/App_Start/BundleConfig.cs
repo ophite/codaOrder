@@ -25,11 +25,13 @@ namespace WebApplication3
             // angular
             bundles.Add(new ScriptBundle("~/bundles/angular").Include(
                 "~/Scripts/angular.js",
-                "~/Scripts/angular_source/angular-resource.js"));
+                "~/Scripts/angular_source/angular-resource.js",
+                "~/Scripts/angular-sanitize.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/angular-ui").Include(
                 "~/Scripts/angular-ui/ui-bootstrap-tpls.js",
-                "~/Scripts/angular-ui/ui-bootstrap.js"));
+                "~/Scripts/angular-ui/ui-bootstrap.js",
+                "~/Scripts/angular-ui/ui-select.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/ng-grid").Include(
                 "~/Scripts/ng-grid.js"
@@ -52,7 +54,8 @@ namespace WebApplication3
                       "~/Content/bootstrap.css",
                       "~/Content/site.css",
                       "~/Content/ng-grid.css",
-                      "~/Content/angular_grid_custom.css"));
+                      "~/Content/angular_grid_custom.css",
+                      "~/Content/ui-select.css"));
         }
     }
 }
