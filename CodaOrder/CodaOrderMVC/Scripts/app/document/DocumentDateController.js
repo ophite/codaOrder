@@ -1,4 +1,5 @@
-﻿(function () {
+﻿/// <reference path="~/Scripts/app/common/Constant.js" />
+(function () {
     'use strict';
 
     function DocumentDateController($scope, $filter, parameterService) {
@@ -50,8 +51,8 @@
         $scope.dates = [$scope.dateStart, $scope.dateEnd];
         $scope.$watchCollection('dates', function (newValues, oldValues) {
 
-            parameterService.setDocumentParams('dateStart', newValues[0]);
-            parameterService.setDocumentParams('dateEnd', newValues[1]);
+            parameterService.setDocumentParams(ConstantHelper.Document.paramDateBegin.value, newValues[0]);
+            parameterService.setDocumentParams(ConstantHelper.Document.paramDateEnd.value, newValues[1]);
         });
     };
 

@@ -1,4 +1,6 @@
-﻿(function () {
+﻿/// <reference path="~/Scripts/app/common/Constant.js" />
+/// <reference path="~/Scripts/angular.js" />
+(function () {
     'use strict';
 
     function DocumentGridController($scope, $location, getDocuments, filterStrToSql, parameterService) {
@@ -60,7 +62,7 @@
         }
 
         // pagination
-        $scope.setPagingData = function (data, page, pageSize, searchText) {
+        $scope.setPagingData = function (data, page, pageSize) {
 
             var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
             $scope.documents = pagedData;
@@ -74,15 +76,17 @@
         // listeners
         $scope.$on('broadcastGetDocuments', function (event, args) {
 
-            if (filterBarPlugin.scope != null) {
-                var searchText = filterBarPlugin.scope.$parent.filterText;
-            }
+            var whereText = '';
+            if (filterBarPlugin.scope != null)
+                var whereText = filterBarPlugin.scope.$parent.filterText;
 
             var params = parameterService.getDocumentParams()
             console.log(params);
-            
-            getDocuments.get(function (jsonData) {
-                $scope.setPagingData(JSON.parse(jsonData.Documents), args.currentPage, args.pageSize, searchText);
+            //return searchSubject.query(val).query().$promise.then(function (response) {
+            var params = ConstantHelper.getAllDocumentParams(params);
+
+            var res = getDocuments.get(params).$promise.then(function (jsonData) {
+                $scope.setPagingData(JSON.parse(jsonData.Documents), params.currentPage, params.pageSize);
             });
         });
 

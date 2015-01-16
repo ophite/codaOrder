@@ -33,9 +33,9 @@ namespace WebApplication3.Controllers
         }
 
         // GET: JournalSale_Documents
-        public string GetDocuments()
+        public string GetDocuments(string subjectID, string dateBegin, string dateEnd, string docTypeClasses, int pageSize, int currentPage, string whereText)
         {
-            return _uow.DocumentRepository.GetLinesJson();
+            return _uow.DocumentRepository.GetLinesJson(subjectID, dateBegin, dateEnd, docTypeClasses, pageSize, currentPage, whereText);
         }
 
         // GET: JournalSale_Documents/Details/5

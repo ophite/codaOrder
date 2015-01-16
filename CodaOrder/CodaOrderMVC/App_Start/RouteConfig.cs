@@ -21,8 +21,19 @@ namespace WebApplication3
             //);
             routes.MapRoute(
                 name: "Documents",
-                url: "documents/{action}/{id}",
-                defaults: new { controller = "JournalSale_Documents", action = "Index", id = UrlParameter.Optional }
+                url: "documents/{action}/{subjectID}/{dateBegin}/{dateEnd}/{docTypeClasses}/{pageSize}/{currentPage}/{whereText}",
+                defaults: new
+                {
+                    controller = "JournalSale_Documents",
+                    action = "Index",
+                    subjectID = UrlParameter.Optional,
+                    dateBegin = UrlParameter.Optional,
+                    dateEnd = UrlParameter.Optional,
+                    docTypeClasses = UrlParameter.Optional,
+                    pageSize = UrlParameter.Optional,
+                    currentPage = UrlParameter.Optional,
+                    whereText = UrlParameter.Optional
+                }
             );
             routes.MapRoute(
                 name: "Search",
@@ -42,4 +53,3 @@ namespace WebApplication3
         }
     }
 }
-

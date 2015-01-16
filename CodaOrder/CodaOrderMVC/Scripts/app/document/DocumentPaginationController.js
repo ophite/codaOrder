@@ -1,4 +1,5 @@
-﻿(function () {
+﻿/// <reference path="~/Scripts/app/common/Constant.js" />
+(function () {
     'use strict';
 
     function DocumentPaginationController($scope, $log, parameterService) {
@@ -16,8 +17,8 @@
 
         $scope.pageChanged = function () {
 
-            parameterService.setDocumentParams('currentPage', $scope.bigCurrentPage);
-            parameterService.setDocumentParams('pageSize', $scope.maxSize);
+            parameterService.setDocumentParams(ConstantHelper.Document.paramCurrentPage.value, $scope.bigCurrentPage);
+            parameterService.setDocumentParams(ConstantHelper.Document.paramPageSize.value, $scope.maxSize);
 
             $scope.$emit('pageChanged', {
                 currentPage: $scope.bigCurrentPage,

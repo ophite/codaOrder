@@ -21,35 +21,35 @@ namespace WebApplication3.Entity
         //public DocumentRepository() : base() { }
         public DocumentRepository(DbContext dbContext) : base(dbContext) { }
 
-        public string GetLinesJson()
+        public string GetLinesJson(string subjectID, string dateBegin, string dateEnd, string docTypeClasses, int pageSize, int currentPage, string whereText)
         {
             string json = "";
             long OID = 8000010580984;
             string filter = "<Filter><ID>8000005797829</ID><ID>8000000241646</ID></Filter>";
             string docOID = "";
-            long? objectID = null;
-            DateTime? dateBegin = DateTime.Now.AddDays(-7);
-            DateTime? dateEnd = DateTime.Now;
-            dateBegin = new DateTime(2013, 5, 16);
-            dateEnd = new DateTime(2013, 5, 23);
-            string docFilterClasses = "<DocumentClasses><ClassName>DocSale</ClassName></DocumentClasses>";
+            long? objectID = CodaUtil.Util.TryParseLong(subjectID);
+            DateTime? dateBeginValue = DateTime.Now.AddDays(-7);
+            DateTime? dateEndValue = DateTime.Now;
+            dateBeginValue = new DateTime(2013, 5, 16);
+            dateEndValue = new DateTime(2013, 5, 23);
+            string docFilterClasses = string.IsNullOrEmpty(docTypeClasses) ? "<DocumentClasses><ClassName>DocSale</ClassName></DocumentClasses>" : docTypeClasses;
             string statusFilter = "<Status/>";
             bool isExtended = true;
             bool showDeleted = false;
             bool? checkOperation = null;
             string securityUser = @"TRITON\kobernik.u";
             string securityGroup = "<Groups><ID>20</ID><ID>11</ID><ID>92</ID><ID>48</ID><ID>44</ID></Groups>";
-            int perPage = 50;
-            int pageNumber = 1;
+            int perPage = pageSize == 0 ? 50 : pageSize;
+            int pageNumber = currentPage == 0 ? 1 : currentPage;
             string fullTextFilter = "<Root/>";
             string orderFilter = "<Root/>";
             ObjectParameter totalRows = new ObjectParameter("TotalRows", typeof(int));
             ObjectParameter pages = new ObjectParameter("Pages", typeof(int));
-            string whereQuery = "";
+            string whereQuery = whereText;
             string WhereQueryTableAlias = "_journalalias_";
             ObjectParameter tST = new ObjectParameter("TST", typeof(byte[]));
 
-            var qDocs = ((codaJournal)dbContext).GetDocuments(OID, filter, docOID, objectID, dateBegin, dateEnd, docFilterClasses, statusFilter, isExtended, showDeleted,
+            var qDocs = ((codaJournal)dbContext).GetDocuments(OID, filter, docOID, objectID, dateBeginValue, dateEndValue, docFilterClasses, statusFilter, isExtended, showDeleted,
                 checkOperation, securityUser, securityGroup, perPage, pageNumber, fullTextFilter, orderFilter, totalRows, pages, whereQuery,
                 WhereQueryTableAlias, tST);
 

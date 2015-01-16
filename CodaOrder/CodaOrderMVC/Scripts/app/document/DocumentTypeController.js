@@ -1,4 +1,5 @@
 ﻿/// <reference path="~/Scripts/linq-vsdoc.js" />
+/// <reference path="~/Scripts/app/common/Constant.js" />
 'use strict';
 
 var app = angular.module('app');
@@ -40,7 +41,7 @@ app.controller('DocumentTypeController', ['$scope', 'parameterService', function
             .Where(function (x) { return newValues.indexOf(x.name) != -1 })
             .Select(function (x) { return x.code })
             .ToArray();
-        parameterService.setDocumentParams('documentType', docTypesSelected);
+        parameterService.setDocumentParams(ConstantHelper.Document.paramDocTypeClasses.value, docTypesSelected);
     }, true);
 
 }]);

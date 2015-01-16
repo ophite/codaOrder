@@ -25,9 +25,9 @@
 
         $scope.$watch('searchCodaObject', function (newValue, oldValue) {
             if (newValue != undefined && typeof (newValue) === 'object' && 'OID' in newValue)
-                parameterService.setDocumentParams('filter', newValue.OID);
+                parameterService.setDocumentParams('filterID', newValue.OID);
             else
-                parameterService.setDocumentParams('filter', null);
+                parameterService.setDocumentParams('filterID', null);
         });
     };
 
