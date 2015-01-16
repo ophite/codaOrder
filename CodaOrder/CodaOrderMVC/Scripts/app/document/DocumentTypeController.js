@@ -1,7 +1,9 @@
-﻿'use strict';
+﻿/// <reference path="~/Scripts/linq-vsdoc.js" />
+'use strict';
 
 var app = angular.module('app');
 app.controller('DocumentTypeController', ['$scope', 'parameterService', function ($scope, parameterService) {
+
     $scope.disabled = undefined;
     $scope.searchEnabled = undefined;
 
@@ -19,7 +21,7 @@ app.controller('DocumentTypeController', ['$scope', 'parameterService', function
 
     $scope.disableSearch = function () {
         $scope.searchEnabled = false;
-    }
+    };
 
     $scope.documentType = [
       { name: 'Продажа', code: 'DocSale' },
@@ -28,10 +30,17 @@ app.controller('DocumentTypeController', ['$scope', 'parameterService', function
       { name: 'Покупка возврат', code: 'DocBuyRet' },
     ];
 
-    $scope.$watchCollection('selectedDocumentType', function (newValues, oldValues) {
+    $scope.data = {};
+    $scope.data.selectedDocumentType = ['Продажа', 'Продажа возврат'];
 
-        parameterService.setDocumentParams('documentType', newValues);
-    });
+    $scope.$watch('data.selectedDocumentType', function (newValues, oldValues) {
 
-    $scope.selectedDocumentType = ['Продажа'];
+        var docTypes = Enumerable.From($scope.documentType);
+        var docTypesSelected = docTypes
+            .Where(function (x) { return newValues.indexOf(x.name) != -1 })
+            .Select(function (x) { return x.code })
+            .ToArray();
+        parameterService.setDocumentParams('documentType', docTypesSelected);
+    }, true);
+
 }]);

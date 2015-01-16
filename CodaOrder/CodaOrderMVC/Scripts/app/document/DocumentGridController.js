@@ -4,7 +4,7 @@
     function DocumentGridController($scope, $location, getDocuments, filterStrToSql, parameterService) {
 
         $scope.title = 'DocumentGridController';
-
+        
         // filter plugin
         var filterBarPlugin = {
 
@@ -80,7 +80,7 @@
 
             var params = parameterService.getDocumentParams()
             console.log(params);
-
+            
             getDocuments.get(function (jsonData) {
                 $scope.setPagingData(JSON.parse(jsonData.Documents), args.currentPage, args.pageSize, searchText);
             });

@@ -6,12 +6,13 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
+
+    @* helpers *@
+    @Scripts.Render("~/bundles/linq")
     
     @* angular *@
-
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/angular-ui")
     @Scripts.Render("~/bundles/ng-grid")
@@ -22,11 +23,6 @@
     @Scripts.Render("~/bundles/document")
     @Scripts.Render("~/bundles/searchCodaObject")
     @Scripts.Render("~/bundles/common");
-
-    @* helpers *@
-    @Scripts.Render("~/bundles/linq")
-
-
 
     @RenderSection("scripts", required: false)
 </head>

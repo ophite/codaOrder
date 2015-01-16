@@ -1,4 +1,5 @@
-﻿(function () {
+﻿/// <reference path="~/Scripts/linq-vsdoc.js" />
+(function () {
     'use strict';
 
     // helpers convert grid filter string to sql query where and full text query

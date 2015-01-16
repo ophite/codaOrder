@@ -155,9 +155,11 @@
     <Content Include="Scripts\angular-ui\ui-select.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\common\FilterService.js" />
+    <Content Include="Scripts\app\common\ParameterService.js" />
     <Content Include="Scripts\app\document\DocumentDateController.js" />
     <Content Include="Scripts\app\document\DocumentGridController.js" />
     <Content Include="Scripts\app\document\DocumentGridService.js" />
+    <Content Include="Scripts\app\document\DocumentLoadController.js" />
     <Content Include="Scripts\app\document\DocumentPaginationController.js" />
     <Content Include="Scripts\app\document\DocumentTypeController.js" />
     <Content Include="Scripts\app\search\SearchCodaObjectController.js" />

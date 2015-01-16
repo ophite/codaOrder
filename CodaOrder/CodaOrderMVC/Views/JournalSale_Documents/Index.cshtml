@@ -50,13 +50,13 @@
 <div ng-controller="DocumentTypeController">
     <div class="row">
         <div class="col-lg-4">
-            <ui-select class="form-control" multiple ng-model="multipleDemo.selectedDocumentType" theme="bootstrap" ng-disabled="disabled">
+            <ui-select class="form-control" multiple ng-model="data.selectedDocumentType" theme="bootstrap" ng-disabled="disabled">
                 <ui-select-match placeholder="Select document type...">{{$item.name}}</ui-select-match>
                 <ui-select-choices repeat="docType.name as docType in documentType | filter: {name: $select.search}">
                     <div ng-bind-html="docType.name | highlight: $select.search"></div>
                 </ui-select-choices>
             </ui-select>
-            <pre>Selected: {{multipleDemo.selectedDocumentType}}</pre>
+            <pre>Selected: {{data.selectedDocumentType}}</pre>
         </div>
     </div>
 </div>
