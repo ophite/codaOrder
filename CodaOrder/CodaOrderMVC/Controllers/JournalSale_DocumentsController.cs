@@ -10,6 +10,8 @@ using System.Web.Mvc;
 using WebApplication3.Entity;
 using System.Data.Entity.Core.Objects;
 using Newtonsoft.Json;
+using System.IO;
+using Newtonsoft.Json.Linq;
 
 namespace WebApplication3.Controllers
 {
@@ -32,11 +34,34 @@ namespace WebApplication3.Controllers
             return View();
         }
 
-        // GET: JournalSale_Documents
-        public string GetDocuments(string subjectID, string dateBegin, string dateEnd, string docTypeClasses, int pageSize, int currentPage, string whereText)
+        [HttpPost]
+        [ValidateInput(false)]
+        public string GetDocumentsPost(FormCollection form)
         {
-            return _uow.DocumentRepository.GetLinesJson(subjectID, dateBegin, dateEnd, docTypeClasses, pageSize, currentPage, whereText);
+            var data = form["model"];
+            JObject js = (JObject)JsonConvert.DeserializeObject(data);
+            return _uow.DocumentRepository.GetLinesJson(js);
         }
+
+        // GET: JournalSale_Documents
+        //public string GetDocuments(string subjectID,
+        //    string dateBegin,
+        //    string dateEnd,
+        //    string docTypeClasses,
+        //    int pageSize,
+        //    int currentPage,
+        //    string fullTextFilter,
+        //    string whereText)
+        //{
+        //    return _uow.DocumentRepository.GetLinesJson(subjectID,
+        //        dateBegin,
+        //        dateEnd,
+        //        docTypeClasses,
+        //        pageSize,
+        //        currentPage,
+        //        fullTextFilter,
+        //        whereText);
+        //}
 
         // GET: JournalSale_Documents/Details/5
         public ActionResult Details(long? id)

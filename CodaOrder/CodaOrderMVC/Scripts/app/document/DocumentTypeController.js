@@ -33,15 +33,19 @@ app.controller('DocumentTypeController', ['$scope', 'parameterService', function
 
     $scope.data = {};
     $scope.data.selectedDocumentType = ['Продажа', 'Продажа возврат'];
+    setParams($scope.data.selectedDocumentType);
 
-    $scope.$watch('data.selectedDocumentType', function (newValues, oldValues) {
-
+    function setParams(params) {
         var docTypes = Enumerable.From($scope.documentType);
         var docTypesSelected = docTypes
-            .Where(function (x) { return newValues.indexOf(x.name) != -1 })
+            .Where(function (x) { return params.indexOf(x.name) != -1 })
             .Select(function (x) { return x.code })
             .ToArray();
-        parameterService.setDocumentParams(ConstantHelper.Document.paramDocTypeClasses.value, docTypesSelected);
+        parameterService.setDocumentParam(ConstantHelper.Document.paramDocTypeClasses.value, docTypesSelected);
+    }
+
+    $scope.$watch('data.selectedDocumentType', function (newValues, oldValues) {
+        setParams(newValues);
     }, true);
 
 }]);

@@ -1102,6 +1102,8 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Helpers\Constant.cs" />
+    <Compile Include="Helpers\FilterHelper.cs" />
     <Compile Include="Helpers\Uitl.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

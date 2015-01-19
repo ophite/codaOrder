@@ -1,4 +1,5 @@
 ﻿/// <reference path="~/Scripts/linq-vsdoc.js" />
+/// <reference path="~/Scripts/app/common/Constant.js" />
 (function () {
     'use strict';
 
@@ -47,7 +48,7 @@
                 if (whereQueryArr.length > 0)
                     whereQueryArr.push('and ');
 
-                whereQueryArr.push('(isnull(charindex(\'\'' + value + '\'\', _journalalias_.' + fieldStr.toLowerCase() + '), 0) > 0) ');
+                whereQueryArr.push('(isnull(charindex(\'' + value + '\', _journalalias_.' + fieldStr.toLowerCase() + '), 0) > 0) ');
             }
         }
         filterStr.split(';').forEach(callBack);
@@ -67,8 +68,8 @@
         }
 
         // 3 result
-        dict.whereQuery = whereQueryArr.join('');
-        dict.fullTextQuery = fullTextQueryArr.join('');
+        dict[ConstantHelper.Document.paramWhereText.value] = whereQueryArr.join('');
+        dict[ConstantHelper.Document.paramFullTextFilter.value] = fullTextQueryArr.join('');
 
         return dict;
     }

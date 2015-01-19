@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -6,8 +7,16 @@ using System.Web;
 
 namespace WebApplication3.Entity
 {
-    public interface IDocumentRepository: IRepository<JournalSale_Documents>
+    public interface IDocumentRepository : IRepository<JournalSale_Documents>
     {
-        string GetLinesJson(string subjectID, string dateBegin, string dateEnd, string docTypeClasses, int pageSize, int currentPage, string whereText);
+        //string GetLinesJson(string subjectID,
+        //    string dateBegin,
+        //    string dateEnd,
+        //    string docTypeClasses,
+        //    int pageSize,
+        //    int currentPage,
+        //    string fullTextFilter,
+        //    string whereText);
+        string GetLinesJson(JObject jObject);
     }
 }

@@ -29,5 +29,8 @@
         $rootScope.$on('pageChanged', function (event, args) {
             $rootScope.$broadcast('broadcastGetDocuments', args);
         });
+        $rootScope.$on('pagingChange', function (event, args) {
+            $rootScope.$broadcast('broadcastPagingChange', args);
+        });
     }]);
 })();

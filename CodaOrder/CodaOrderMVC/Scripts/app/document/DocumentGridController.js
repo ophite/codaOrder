@@ -1,12 +1,13 @@
 ﻿/// <reference path="~/Scripts/app/common/Constant.js" />
 /// <reference path="~/Scripts/angular.js" />
+
 (function () {
     'use strict';
 
     function DocumentGridController($scope, $location, getDocuments, filterStrToSql, parameterService) {
 
         $scope.title = 'DocumentGridController';
-        
+
         // filter plugin
         var filterBarPlugin = {
 
@@ -64,29 +65,35 @@
         // pagination
         $scope.setPagingData = function (data, page, pageSize) {
 
-            var pagedData = data.slice((page - 1) * pageSize, page * pageSize);
+            var pagedData = data;//data.slice((page - 1) * pageSize, page * pageSize);
             $scope.documents = pagedData;
-            $scope.totalServerItems = data.length;
+            //$scope.totalServerItems = data.length;
 
-            if (!$scope.$$phase) {
+            if (!$scope.$$phase)
                 $scope.$apply();
-            }
         };
 
         // listeners
         $scope.$on('broadcastGetDocuments', function (event, args) {
 
-            var whereText = '';
-            if (filterBarPlugin.scope != null)
-                var whereText = filterBarPlugin.scope.$parent.filterText;
+            if (filterBarPlugin.scope != null) {
+                var sqlFilter = filterBarPlugin.scope.$parent.filterText;
+                sqlFilter = filterStrToSql.fn(sqlFilter, $scope.gridOptions.columnDefs);
 
-            var params = parameterService.getDocumentParams()
-            console.log(params);
-            //return searchSubject.query(val).query().$promise.then(function (response) {
-            var params = ConstantHelper.getAllDocumentParams(params);
+                parameterService.setDocumentParam(ConstantHelper.Document.paramFullTextFilter.value, sqlFilter[ConstantHelper.Document.paramFullTextFilter.value]);
+                parameterService.setDocumentParam(ConstantHelper.Document.paramWhereText.value, sqlFilter[ConstantHelper.Document.paramWhereText.value]);
+            }
 
-            var res = getDocuments.get(params).$promise.then(function (jsonData) {
-                $scope.setPagingData(JSON.parse(jsonData.Documents), params.currentPage, params.pageSize);
+            var params = parameterService.getDocumentParams();
+            params = ConstantHelper.prepareAllDocumentParams(params);
+
+            var resPost = getDocuments.getDocs(params).save().$promise.then(function (jsonData) {
+                params[ConstantHelper.Document.paramTotalRows.value] = jsonData[ConstantHelper.Document.paramTotalRows.value];
+                params[ConstantHelper.Document.paramPagesCount.value] = jsonData[ConstantHelper.Document.paramPagesCount.value];
+
+                $scope.$emit('pagingChange', params);
+                $scope.setPagingData(JSON.parse(jsonData.Documents),
+                    params[ConstantHelper.Document.paramCurrentPage.value]);
             });
         });
 
@@ -95,10 +102,6 @@
         //var filterStr = "Сумма: ^41;Код док-та: ^48;ID: ^198;";
         //var res = filterStrToSql.fn(filterStr, $scope.gridOptions.columnDefs)
         //alert(res);
-
-        // test params
-        //var documentParams = parameterService.getDocumentsParams();
-        //console.log(documentParams);
     }
 
     DocumentGridController.$inject = ['$scope', '$location', 'getDocuments', 'filterStrToSql', 'parameterService'];

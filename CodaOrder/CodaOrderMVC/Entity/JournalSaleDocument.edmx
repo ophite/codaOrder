@@ -1317,7 +1317,7 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
           <Property Name="TaxDate" Type="DateTime" Precision="3" />
           <Property Name="FilialID" Type="Int64" />
           <Property Name="PrintComments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="IsForeign" Type="Int32" Nullable="false" />
+          <Property Name="IsForeign" Type="Int32" Nullable="true" />
           <Property Name="RevenueID" Type="Int64" />
           <Property Name="DelayLimit" Type="Int64" />
           <Property Name="VatPercent" Type="Decimal" Precision="19" Scale="4" Nullable="false" />

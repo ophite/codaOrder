@@ -1,4 +1,5 @@
-﻿(function () {
+﻿/// <reference path="~/Scripts/app/common/Constant.js" />
+(function () {
     'use strict';
 
     function SearchCodaObjectController($scope, $http, searchSubject, parameterService) {
@@ -23,11 +24,12 @@
             //return items;
         };
 
-        $scope.$watch('searchCodaObject', function (newValue, oldValue) {
+        $scope.data = {};
+        $scope.$watch('data.searchCodaObject', function (newValue, oldValue) {
             if (newValue != undefined && typeof (newValue) === 'object' && 'OID' in newValue)
-                parameterService.setDocumentParams('filterID', newValue.OID);
+                parameterService.setDocumentParam(ConstantHelper.Document.paramSubjectID.value, newValue.OID);
             else
-                parameterService.setDocumentParams('filterID', null);
+                parameterService.setDocumentParam(ConstantHelper.Document.paramSubjectID.value, null);
         });
     };
 

@@ -37,12 +37,12 @@
 <div class='container-fluid' ng-controller="SearchCodaObjectController">
     <div class="row">
         <div class="col-lg-4">
-            <input type="text" ng-model="searchCodaObject" placeholder="Enter subject name" typeahead="searchText as searchText.FullName for searchText in getObjects($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+            <input type="text" ng-model="data.searchCodaObject" placeholder="Enter subject name" typeahead="searchText as searchText.FullName for searchText in getObjects($viewValue)" typeahead-loading="loadingLocations" class="form-control">
         </div>
     </div>
     <div class="row">
         <div class="col-lg-4">
-            <pre>Selected: {{searchCodaObject.OID}}</pre>
+            <pre>Selected: {{data.searchCodaObject.OID}}</pre>
         </div>
     </div>
 </div>
@@ -67,5 +67,18 @@
 </div>
 
 <div ng-controller="DocumentPaginationController">
-    <pagination total-items="bigTotalItems" ng-model="bigCurrentPage" max-size="maxSize" class="pagination-sm" boundary-links="true" rotate="false" num-pages="numPages" previous-text="&lsaquo;" next-text="&rsaquo;" first-text="&laquo;" last-text="&raquo;" ng-change="pageChanged()"></pagination>
+    <pagination num-pages="numPages"
+                total-items="totalRows"
+                ng-model="currentPage"
+                items-per-page ="pageSize"
+                max-size="pageNumberCounts"
+                class="pagination-sm"
+                boundary-links="true"
+                rotate="false"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;"
+                first-text="&laquo;"
+                last-text="&raquo;"
+                ng-change="pageChanged()">
+    </pagination>
 </div>

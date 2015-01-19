@@ -4,35 +4,42 @@
 
     function DocumentPaginationController($scope, $log, parameterService) {
 
-        $scope.totalItems = 1;
-        $scope.currentPage = 1;
+        function saveParams() {
+            parameterService.setDocumentParam(ConstantHelper.Document.paramCurrentPage.value, $scope.currentPage);
+            parameterService.setDocumentParam(ConstantHelper.Document.paramTotalRows.value, $scope.totalRows);
+        }
 
-        $scope.selectPage = function (pageNo) {
-            $scope.currentPage = pageNo;
-        };
-
-        $scope.setPage = function (pageNo) {
-            $scope.currentPage = pageNo;
-        };
+        function loadParams(args) {
+            $scope.currentPage = args[ConstantHelper.Document.paramCurrentPage.value];
+            $scope.totalRows = args[ConstantHelper.Document.paramTotalRows.value];
+            $scope.pageNumberCounts = args[ConstantHelper.Document.paramPageNumberCount.value];
+            $scope.pageSize = args[ConstantHelper.Document.paramPageSize.value];
+        }
 
         $scope.pageChanged = function () {
+            saveParams();
+            var params = {};
+            params[ConstantHelper.Document.paramCurrentPage.value] = $scope.currentPage;
+            params[ConstantHelper.Document.paramTotalRows.value] = $scope.totalRows;
+            params[ConstantHelper.Document.paramPageSize.value] = $scope.pageSize;
 
-            parameterService.setDocumentParams(ConstantHelper.Document.paramCurrentPage.value, $scope.bigCurrentPage);
-            parameterService.setDocumentParams(ConstantHelper.Document.paramPageSize.value, $scope.maxSize);
-
-            $scope.$emit('pageChanged', {
-                currentPage: $scope.bigCurrentPage,
-                pageSize: $scope.maxSize
-            });
-            //$log.log('Page changed to: ' + $scope.currentPage);
-            //$log.log('Page changed to: ' + $scope.bigCurrentPage);
+            $scope.$emit('pageChanged', params);
         };
 
-        $scope.maxSize = 4;
-        $scope.bigTotalItems = 111;
-        $scope.bigCurrentPage = 1;
+        $scope.$on('broadcastPagingChange', function (event, args) {
+            loadParams(args);
+            saveParams();
+        });
 
         // init - 1 time 
+        var params = {
+            currentPage: ConstantHelper.Document.paramCurrentPage.default,
+            totalRows: ConstantHelper.Document.paramTotalRows.default,
+            // read-only
+            pageNumberCounts: ConstantHelper.Document.paramPageNumberCount.default,
+            pageSize: ConstantHelper.Document.paramPageSize.default
+        };
+        loadParams(params);
         $scope.pageChanged();
     }
 
