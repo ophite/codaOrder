@@ -1,4 +1,5 @@
-﻿(function () {
+﻿/// <reference path="~/Scripts/app/common/Constant.js" />
+(function () {
     'use strict';
 
     var app = angular.module('app', [
@@ -23,14 +24,14 @@
 
     app.run(['$rootScope', function ($rootScope) {
 
-        $rootScope.$on('startLoadingDocuments', function (event, args) {
-            $rootScope.$broadcast('broadcastGetDocuments', args)
+        $rootScope.$on(ConstantHelper.Watchers.startLoadingDocuments, function (event, args) {
+            $rootScope.$broadcast(ConstantHelper.Watchers.broadcastStartLoadingDocuments);
         });
-        $rootScope.$on('pageChanged', function (event, args) {
-            $rootScope.$broadcast('broadcastGetDocuments', args);
+        $rootScope.$on(ConstantHelper.Watchers.pageChanged, function (event, args) {
+            $rootScope.$broadcast(ConstantHelper.Watchers.broadcastGetDocuments, args);
         });
-        $rootScope.$on('pagingChange', function (event, args) {
-            $rootScope.$broadcast('broadcastPagingChange', args);
+        $rootScope.$on(ConstantHelper.Watchers.setPagingInfo, function (event, args) {
+            $rootScope.$broadcast(ConstantHelper.Watchers.broadcastPagingInfoChange, args);
         });
     }]);
 })();

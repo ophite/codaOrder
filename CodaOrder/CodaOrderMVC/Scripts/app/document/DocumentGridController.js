@@ -10,9 +10,7 @@
 
         // filter plugin
         var filterBarPlugin = {
-
             init: function (scope, grid) {
-
                 filterBarPlugin.scope = scope;
                 filterBarPlugin.grid = grid;
                 $scope.$watch(function () {
@@ -64,18 +62,14 @@
 
         // pagination
         $scope.setPagingData = function (data, page, pageSize) {
-
-            var pagedData = data;//data.slice((page - 1) * pageSize, page * pageSize);
-            $scope.documents = pagedData;
-            //$scope.totalServerItems = data.length;
-
+            $scope.documents = data;
             if (!$scope.$$phase)
                 $scope.$apply();
         };
 
         // listeners
-        $scope.$on('broadcastGetDocuments', function (event, args) {
-
+        $scope.$on(ConstantHelper.Watchers.broadcastGetDocuments, function (event, args) {
+            // filter
             if (filterBarPlugin.scope != null) {
                 var sqlFilter = filterBarPlugin.scope.$parent.filterText;
                 sqlFilter = filterStrToSql.fn(sqlFilter, $scope.gridOptions.columnDefs);
@@ -83,20 +77,18 @@
                 parameterService.setDocumentParam(ConstantHelper.Document.paramFullTextFilter.value, sqlFilter[ConstantHelper.Document.paramFullTextFilter.value]);
                 parameterService.setDocumentParam(ConstantHelper.Document.paramWhereText.value, sqlFilter[ConstantHelper.Document.paramWhereText.value]);
             }
-
+            // params
             var params = parameterService.getDocumentParams();
             params = ConstantHelper.prepareAllDocumentParams(params);
-
+            // get docs
             var resPost = getDocuments.getDocs(params).save().$promise.then(function (jsonData) {
                 params[ConstantHelper.Document.paramTotalRows.value] = jsonData[ConstantHelper.Document.paramTotalRows.value];
                 params[ConstantHelper.Document.paramPagesCount.value] = jsonData[ConstantHelper.Document.paramPagesCount.value];
-
-                $scope.$emit('pagingChange', params);
-                $scope.setPagingData(JSON.parse(jsonData.Documents),
-                    params[ConstantHelper.Document.paramCurrentPage.value]);
+                // change paging
+                $scope.$emit(ConstantHelper.Watchers.setPagingInfo, params);
+                $scope.setPagingData(JSON.parse(jsonData.Documents), params[ConstantHelper.Document.paramCurrentPage.value]);
             });
         });
-
 
         // test
         //var filterStr = "Сумма: ^41;Код док-та: ^48;ID: ^198;";

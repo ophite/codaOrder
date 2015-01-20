@@ -15,6 +15,11 @@
             $scope.pageNumberCounts = args[ConstantHelper.Document.paramPageNumberCount.value];
             $scope.pageSize = args[ConstantHelper.Document.paramPageSize.value];
         }
+        // was 2 times running getDocuments if when click Refresh run getDocuments. One time fire pageChanged (redundant)
+        $scope.$on(ConstantHelper.Watchers.broadcastStartLoadingDocuments, function (event, args) {
+            $scope.currentPage = ConstantHelper.Document.paramCurrentPage.default;
+            $scope.pageChanged();
+        });
 
         $scope.pageChanged = function () {
             saveParams();
@@ -22,11 +27,11 @@
             params[ConstantHelper.Document.paramCurrentPage.value] = $scope.currentPage;
             params[ConstantHelper.Document.paramTotalRows.value] = $scope.totalRows;
             params[ConstantHelper.Document.paramPageSize.value] = $scope.pageSize;
-
-            $scope.$emit('pageChanged', params);
+            // init get documents
+            $scope.$emit(ConstantHelper.Watchers.pageChanged, params);
         };
 
-        $scope.$on('broadcastPagingChange', function (event, args) {
+        $scope.$on(ConstantHelper.Watchers.broadcastPagingInfoChange, function (event, args) {
             loadParams(args);
             saveParams();
         });

@@ -2,6 +2,15 @@
 
 var ConstantHelper = new function () {
 
+    this.Watchers = new function () {
+        this.startLoadingDocuments = 'startLoadingDocuments';
+        this.broadcastStartLoadingDocuments = 'broadcastStartLoadingDocuments';
+        this.pageChanged = 'pageChanged';
+        this.setPagingInfo = 'setPagingInfo';
+        this.broadcastGetDocuments = 'broadcastGetDocuments';
+        this.broadcastPagingInfoChange = 'broadcastPagingInfoChange';
+    }
+
     this.Document = new function () {
         this.paramSubjectID = {
             value: 'subjectID',
@@ -19,6 +28,7 @@ var ConstantHelper = new function () {
             value: 'docTypeClasses',
             default: ''
         };
+        // paging
         this.paramPagesCount = {
             value: 'pagesCount',
             default: '1'
@@ -39,6 +49,7 @@ var ConstantHelper = new function () {
             value: 'totalRows',
             default: '0'
         };
+        // filtering
         this.paramFullTextFilter = {
             value: 'fullTextFilter',
             default: ''
