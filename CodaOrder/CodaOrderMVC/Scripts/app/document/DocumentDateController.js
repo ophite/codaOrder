@@ -1,4 +1,5 @@
 ﻿/// <reference path="~/Scripts/app/common/Constant.js" />
+
 (function () {
     'use strict';
 

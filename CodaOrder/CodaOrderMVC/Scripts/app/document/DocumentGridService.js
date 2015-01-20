@@ -2,13 +2,6 @@
 (function () {
     'use strict';
 
-    // api goto Factory
-    //function getDocuments($resource) {
-
-    //    var promise = $resource("getDocuments");
-    //    return promise;
-    //}
-
     angular.module('app').factory('getDocuments', ['$resource',
        function ($resource) {
            return {
@@ -47,7 +40,6 @@
     //            },
     //        };
     //    }]);
-
     //getDocuments.$inject = ['$resource'];
     //angular.module('app').factory('getDocuments', getDocuments);
 })();

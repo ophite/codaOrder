@@ -1,5 +1,6 @@
 ﻿/// <reference path="~/Scripts/linq-vsdoc.js" />
 /// <reference path="~/Scripts/app/common/Constant.js" />
+
 (function () {
     'use strict';
 
@@ -8,7 +9,6 @@
 
         // 1 prepare
         var dict = {
-
             whereQuery: '',
             fullTextQuery: '<Root/>'
         };
@@ -22,7 +22,6 @@
 
         // 2 main func
         function callBack(element, index, array) {
-
             if (!element)
                 return;
 
@@ -44,7 +43,6 @@
             }
                 //N' and ((isnull(charindex(''прод'', _journalalias_.name), 0) > 0) and (isnull(charindex(''71'', _journalalias_.doccode), 0) > 0))'
             else {
-
                 if (whereQueryArr.length > 0)
                     whereQueryArr.push('and ');
 
@@ -54,7 +52,6 @@
         filterStr.split(';').forEach(callBack);
 
         if (fullTextQueryArr.length > 0) {
-
             fullTextQueryArr.splice(0, 0, '<Root>');
             fullTextQueryArr.push('</Root>');
         }
@@ -62,7 +59,6 @@
             fullTextQueryArr.push('<Root/>')
 
         if (whereQueryArr.length > 0) {
-
             whereQueryArr.splice(0, 0, ' and (');
             whereQueryArr.push(')');
         }
@@ -75,7 +71,6 @@
     }
 
     angular.module('app').service('filterStrToSql', function () {
-
         this.fn = function (filterStr, columns) {
             return filterStrToSqlFunc(filterStr, columns);
         };
