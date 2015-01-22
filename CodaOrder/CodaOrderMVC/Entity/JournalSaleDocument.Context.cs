@@ -43,7 +43,7 @@ namespace WebApplication3.Entity
         public virtual DbSet<Revenue> Revenue { get; set; }
         public virtual DbSet<Subject> Subject { get; set; }
         public virtual DbSet<TaxType> TaxType { get; set; }
-        public virtual DbSet<CodaJson> CodaJsonSet { get; set; }
+        public virtual DbSet<CodaJson> CodaJson { get; set; }
     
         public virtual int JournalSalePaged_GetDocuments_Entity(Nullable<long> oID, string filter, string docOID, Nullable<long> objectID, Nullable<System.DateTime> begDate, Nullable<System.DateTime> endDate, string filterDocClassesXml, string filterStatusXml, Nullable<bool> isExtended, Nullable<bool> showDeleted, Nullable<bool> checkOperation, string securityUser, string securityGroup, Nullable<int> perPage, Nullable<int> pageNumber, string fullTextFilter, string orderFilter, ObjectParameter totalRows, ObjectParameter pages, string whereQuery, string whereQueryTableAlias, ObjectParameter tST)
         {
@@ -288,7 +288,7 @@ namespace WebApplication3.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<JournalSale_Documents>("GetDocuments", mergeOption, oIDParameter, filterParameter, docOIDParameter, objectIDParameter, begDateParameter, endDateParameter, filterDocClassesXmlParameter, filterStatusXmlParameter, isExtendedParameter, showDeletedParameter, checkOperationParameter, securityUserParameter, securityGroupParameter, perPageParameter, pageNumberParameter, fullTextFilterParameter, orderFilterParameter, totalRows, pages, whereQueryParameter, whereQueryTableAliasParameter, tST);
         }
     
-        public virtual int Directory_FindMatching_Remote_Short(string className, string fieldName, Nullable<long> parentID, string searchString, Nullable<bool> showDeleted, Nullable<int> topRecords, string groupsXMLvarchar)
+        public virtual ObjectResult<CodaJson> Directory_FindMatching_Remote_Short(string className, string fieldName, Nullable<long> parentID, string searchString, Nullable<bool> showDeleted, Nullable<int> topRecords, string groupsXMLvarchar)
         {
             var classNameParameter = className != null ?
                 new ObjectParameter("ClassName", className) :
@@ -318,7 +318,40 @@ namespace WebApplication3.Entity
                 new ObjectParameter("GroupsXMLvarchar", groupsXMLvarchar) :
                 new ObjectParameter("GroupsXMLvarchar", typeof(string));
     
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("Directory_FindMatching_Remote_Short", classNameParameter, fieldNameParameter, parentIDParameter, searchStringParameter, showDeletedParameter, topRecordsParameter, groupsXMLvarcharParameter);
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CodaJson>("Directory_FindMatching_Remote_Short", classNameParameter, fieldNameParameter, parentIDParameter, searchStringParameter, showDeletedParameter, topRecordsParameter, groupsXMLvarcharParameter);
+        }
+    
+        public virtual ObjectResult<CodaJson> Directory_FindMatching_Remote_Short(string className, string fieldName, Nullable<long> parentID, string searchString, Nullable<bool> showDeleted, Nullable<int> topRecords, string groupsXMLvarchar, MergeOption mergeOption)
+        {
+            var classNameParameter = className != null ?
+                new ObjectParameter("ClassName", className) :
+                new ObjectParameter("ClassName", typeof(string));
+    
+            var fieldNameParameter = fieldName != null ?
+                new ObjectParameter("FieldName", fieldName) :
+                new ObjectParameter("FieldName", typeof(string));
+    
+            var parentIDParameter = parentID.HasValue ?
+                new ObjectParameter("ParentID", parentID) :
+                new ObjectParameter("ParentID", typeof(long));
+    
+            var searchStringParameter = searchString != null ?
+                new ObjectParameter("SearchString", searchString) :
+                new ObjectParameter("SearchString", typeof(string));
+    
+            var showDeletedParameter = showDeleted.HasValue ?
+                new ObjectParameter("ShowDeleted", showDeleted) :
+                new ObjectParameter("ShowDeleted", typeof(bool));
+    
+            var topRecordsParameter = topRecords.HasValue ?
+                new ObjectParameter("TopRecords", topRecords) :
+                new ObjectParameter("TopRecords", typeof(int));
+    
+            var groupsXMLvarcharParameter = groupsXMLvarchar != null ?
+                new ObjectParameter("GroupsXMLvarchar", groupsXMLvarchar) :
+                new ObjectParameter("GroupsXMLvarchar", typeof(string));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CodaJson>("Directory_FindMatching_Remote_Short", mergeOption, classNameParameter, fieldNameParameter, parentIDParameter, searchStringParameter, showDeletedParameter, topRecordsParameter, groupsXMLvarcharParameter);
         }
     
         public virtual ObjectResult<CodaJson> FindObject(string className, string fieldName, Nullable<long> parentID, string searchString, Nullable<bool> showDeleted, Nullable<int> topRecords, string groupsXMLvarchar)

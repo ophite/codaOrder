@@ -11,13 +11,13 @@
 
     @* helpers *@
     @Scripts.Render("~/bundles/linq")
-    
+
     @* angular *@
     @Scripts.Render("~/bundles/angular")
     @Scripts.Render("~/bundles/angular-ui")
     @Scripts.Render("~/bundles/ng-grid")
 
-    @* angular app *@ 
+    @* angular app *@
     @Scripts.Render("~/bundles/app")
     @Scripts.Render("~/bundles/subject")
     @Scripts.Render("~/bundles/document")
@@ -39,6 +39,18 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
+                    @{
+                        if (User.Identity.IsAuthenticated)
+                        {
+                            <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
+                            <li><strong>@User.Identity.Name</strong></li>
+                        }
+                        else
+                        {
+                            <li>@Html.ActionLink("Login", "Login", "Account")</li>
+                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                        }
+                    }
                 </ul>
             </div>
         </div>

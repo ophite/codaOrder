@@ -5,6 +5,13 @@
     <!-- SSDL content -->
     <edmx:StorageModels>
     <Schema Namespace="JournalSaleDocument.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="CodaJson">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="FullName" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
         <!--Errors Found During Generation:
 warning 6002: The table/view 'coda.dbo.Action' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Action">
@@ -591,6 +598,7 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
           <Parameter Name="TST" Type="binary" Mode="InOut" />
         </Function>
         <EntityContainer Name="JournalSaleDocumentStoreContainer">
+          <EntitySet Name="CodaJson" EntityType="Self.CodaJson" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Action" EntityType="Self.Action" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
     [Action].[OID] AS [OID], 
@@ -1317,7 +1325,7 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
           <Property Name="TaxDate" Type="DateTime" Precision="3" />
           <Property Name="FilialID" Type="Int64" />
           <Property Name="PrintComments" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
-          <Property Name="IsForeign" Type="Int32" Nullable="true" />
+          <Property Name="IsForeign" Type="Int32" Nullable="false" />
           <Property Name="RevenueID" Type="Int64" />
           <Property Name="DelayLimit" Type="Int64" />
           <Property Name="VatPercent" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
@@ -1487,8 +1495,7 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
             <Parameter Name="WhereQueryTableAlias" Mode="In" Type="String" />
             <Parameter Name="TST" Mode="InOut" Type="Binary" />
             </FunctionImport>
-          <EntitySet Name="CodaJsonSet" EntityType="JournalSaleDocument.CodaJson" />
-          <FunctionImport Name="Directory_FindMatching_Remote_Short">
+          <FunctionImport Name="Directory_FindMatching_Remote_Short" EntitySet="CodaJson" ReturnType="Collection(JournalSaleDocument.CodaJson)">
             <Parameter Name="ClassName" Mode="In" Type="String" />
             <Parameter Name="FieldName" Mode="In" Type="String" />
             <Parameter Name="ParentID" Mode="In" Type="Int64" />
@@ -1497,7 +1504,7 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
             <Parameter Name="TopRecords" Mode="In" Type="Int32" />
             <Parameter Name="GroupsXMLvarchar" Mode="In" Type="String" />
           </FunctionImport>
-          <FunctionImport Name="FindObject" EntitySet="CodaJsonSet" ReturnType="Collection(JournalSaleDocument.CodaJson)">
+          <FunctionImport Name="FindObject" EntitySet="CodaJson" ReturnType="Collection(JournalSaleDocument.CodaJson)">
             <Parameter Name="ClassName" Mode="In" Type="String" />
             <Parameter Name="FieldName" Mode="In" Type="String" />
             <Parameter Name="ParentID" Mode="In" Type="Int64" />
@@ -1506,13 +1513,14 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
             <Parameter Name="TopRecords" Mode="In" Type="Int32" />
             <Parameter Name="GroupsXMLvarchar" Mode="In" Type="String" />
           </FunctionImport>
+          <EntitySet Name="CodaJson" EntityType="JournalSaleDocument.CodaJson" />
         </EntityContainer>
         <EntityType Name="CodaJson">
           <Key>
             <PropertyRef Name="OID" />
           </Key>
-          <Property Name="OID" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="FullName" Type="String" Nullable="false" />
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="FullName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1952,6 +1960,14 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
           <FunctionImportMapping FunctionImportName="GetDocuments" FunctionName="JournalSaleDocument.Store.JournalSalePaged_GetDocuments_Entity" />
           <FunctionImportMapping FunctionImportName="Directory_FindMatching_Remote_Short" FunctionName="JournalSaleDocument.Store.Directory_FindMatching_Remote_Short" />
           <FunctionImportMapping FunctionImportName="FindObject" FunctionName="JournalSaleDocument.Store.Directory_FindMatching_Remote_Short" />
+          <EntitySetMapping Name="CodaJson">
+            <EntityTypeMapping TypeName="JournalSaleDocument.CodaJson">
+              <MappingFragment StoreEntitySet="CodaJson">
+                <ScalarProperty Name="FullName" ColumnName="FullName" />
+                <ScalarProperty Name="OID" ColumnName="OID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

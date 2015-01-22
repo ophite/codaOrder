@@ -54,7 +54,7 @@ namespace WebApplication3.Entity
         public Nullable<System.DateTime> TaxDate { get; set; }
         public Nullable<long> FilialID { get; set; }
         public string PrintComments { get; set; }
-        public Nullable<int> IsForeign { get; set; }
+        public int IsForeign { get; set; }
         public Nullable<long> RevenueID { get; set; }
         public Nullable<long> DelayLimit { get; set; }
         public decimal VatPercent { get; set; }

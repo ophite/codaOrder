@@ -1,0 +1,22 @@
+﻿@using WebApplication3.Models
+@model Login
+
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2>Enter your credentials</h2>
+<div class="row">
+    <div class="col-md-3">
+        @using (@Html.BeginForm())
+        {
+            @Html.ValidationSummary()
+            @Html.AntiForgeryToken()
+            @Html.LabelFor(x => x.UserName, "Enter login")
+            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+            @Html.LabelFor(x => x.UserName, "Enter password")
+            @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+            <button class="btn btn-primary">Login</button>
+        }
+    </div>
+</div>

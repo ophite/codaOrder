@@ -56,6 +56,9 @@
     <Reference Include="Microsoft.Data.OData, Version=5.6.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.Data.OData.5.6.0\lib\net40\Microsoft.Data.OData.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Web.Helpers">
+      <HintPath>..\packages\Microsoft.AspNet.WebHelpers.3.2.2\lib\net45\Microsoft.Web.Helpers.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
@@ -133,6 +136,14 @@
     <Reference Include="System.EnterpriseServices" />
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.Data, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.Data.3.2.2\lib\net45\WebMatrix.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="WebMatrix.WebData, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.WebData.3.2.2\lib\net45\WebMatrix.WebData.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -1004,6 +1015,8 @@
     <Content Include="Views\Template\FilterHeaderTemplate.cshtml" />
     <Content Include="Views\Shared\FindObjects.cshtml" />
     <Content Include="Views\SearchCodaObject\Subject.cshtml" />
+    <Content Include="Views\Account\Login.cshtml" />
+    <Content Include="Views\Account\Register.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1019,6 +1032,7 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\JournalSale_DocumentsController - Copy.cs" />
     <Compile Include="Controllers\JournalSale_DocumentsController.cs" />
     <Compile Include="Controllers\SearchCodaObjectController.cs" />
@@ -1031,7 +1045,6 @@
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\BaseEntity.cs" />
-    <Compile Include="Entity\Repositories\BaseRepository.cs" />
     <Compile Include="Entity\Box.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
@@ -1044,7 +1057,6 @@
     <Compile Include="Entity\CodaJson.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Repositories\CodaJsonRepository.cs" />
     <Compile Include="Entity\Contract.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
@@ -1057,7 +1069,6 @@
     <Compile Include="Entity\DocBoxLine.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Repositories\DocumentRepository.cs" />
     <Compile Include="Entity\Employee.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
@@ -1067,6 +1078,12 @@
     <Compile Include="Entity\Firm.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\JournalSale_Documents.cs">
+      <DependentUpon>JournalSaleDocument.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\Repositories\BaseRepository.cs" />
+    <Compile Include="Entity\Repositories\CodaJsonRepository.cs" />
+    <Compile Include="Entity\Repositories\DocumentRepository.cs" />
     <Compile Include="Entity\Interfaces\ICodaJsonRepository.cs" />
     <Compile Include="Entity\Interfaces\IDocumentRepository.cs" />
     <Compile Include="Entity\Interfaces\IRepository.cs" />
@@ -1086,9 +1103,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>JournalSaleDocument.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Entity\JournalSale_Documents.cs">
-      <DependentUpon>JournalSaleDocument.tt</DependentUpon>
-    </Compile>
+    <Compile Include="Entity\Repositories\Uow.cs" />
     <Compile Include="Entity\Revenue.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
@@ -1098,19 +1113,22 @@
     <Compile Include="Entity\TaxType.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Repositories\Uow.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Constant.cs" />
     <Compile Include="Helpers\FilterHelper.cs" />
     <Compile Include="Helpers\Uitl.cs" />
+    <Compile Include="IdentityContextMigration\Configuration.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Models\IdentityContext.cs" />
+    <Compile Include="Models\Login.cs" />
+    <Compile Include="Models\Register.cs" />
+    <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Models\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
