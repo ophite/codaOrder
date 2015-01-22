@@ -147,6 +147,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Start\TODO.txt" />
     <Content Include="Content\angular_grid_custom.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -1117,7 +1118,6 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Helpers\Constant.cs" />
-    <Compile Include="Helpers\FilterHelper.cs" />
     <Compile Include="Helpers\Uitl.cs" />
     <Compile Include="IdentityContextMigration\201501221538010_Initial.cs" />
     <Compile Include="IdentityContextMigration\201501221538010_Initial.Designer.cs">

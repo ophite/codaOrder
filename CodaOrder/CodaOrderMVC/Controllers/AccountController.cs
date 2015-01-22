@@ -17,7 +17,6 @@ namespace WebApplication3.Controllers
             return View();
         }
 
-        [HttpGet]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Login(Login loginData, string returnUrl)
@@ -29,11 +28,14 @@ namespace WebApplication3.Controllers
                     if (!string.IsNullOrEmpty(returnUrl))
                         return Redirect(returnUrl);
 
-                    return RedirectToAction("GetDocumentsPost", "JournalSale_DocumentsController");
+                    return RedirectToAction("Index", "Documents");
                 }
+
+                ModelState.AddModelError("", "User name or password is invalid");
+                return View(loginData);
             }
 
-            ModelState.AddModelError("", "User name or password is invalid");
+
             return View(loginData);
         }
 
@@ -52,7 +54,7 @@ namespace WebApplication3.Controllers
                 try
                 {
                     WebSecurity.CreateUserAndAccount(registerData.UserName, registerData.Password);
-                    return RedirectToAction("Index", "JournalSale_DocumentsController");
+                    return RedirectToAction("Index", "Documents");
                 }
                 catch (MembershipCreateUserException ex)
                 {
@@ -69,7 +71,7 @@ namespace WebApplication3.Controllers
         public ActionResult Logout()
         {
             WebSecurity.Logout();
-            return RedirectToAction("Index", "JournalSale_DocumentsController");
+            return RedirectToAction("Index", "Documents");
         }
     }
 }
