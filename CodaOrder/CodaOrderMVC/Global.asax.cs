@@ -22,12 +22,6 @@ namespace WebApplication3
 
             var cs = System.Configuration.ConfigurationManager.ConnectionStrings["identityConnection"];
             WebSecurity.InitializeDatabaseConnection(cs.Name, "UserProfile", "UserID", "UserName", true);
-            //// UserProfile
-            //CREATE TABLE UserProfile
-            //(
-            //UserID          bigint NOT NULL PRIMARY KEY,
-            //UserName		varchar (128) NOT NULL 
-            //)
             //// Codajson
             //            CREATE TABLE CodaJson
             //(

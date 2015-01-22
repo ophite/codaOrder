@@ -25,6 +25,7 @@ namespace WebApplication3.Entity
 
         public string GetLinesJson(JObject jObject)
         {
+            // unpack json object
             string subjectID = jObject.GetValue(ConstantDocument.ParamSubjectID).Value<string>();
             string dateBegin = jObject.GetValue(ConstantDocument.ParamDateBegin).Value<string>();
             string dateEnd  = jObject.GetValue(ConstantDocument.ParamDateEnd).Value<string>();
