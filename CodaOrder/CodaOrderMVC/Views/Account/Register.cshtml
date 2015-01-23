@@ -11,13 +11,13 @@
         @using (@Html.BeginForm())
         {
             @Html.AntiForgeryToken()
-            @Html.ValidationSummary()
+            @Html.ValidationSummary("", new { @class = "has-error" })
             @Html.LabelFor(x => x.UserName)
             @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
-            @Html.ValidationMessageFor(x => x.UserName)
             @Html.LabelFor(x => x.Password)
             @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
-            @Html.ValidationMessageFor(x => x.Password)
+            @Html.LabelFor(x => x.PasswordConfirm, "Password confirm")
+            @Html.PasswordFor(x => x.PasswordConfirm, new { @class = "form-control" })
             <button class="btn btn-primary">Create</button>
         }
     </div>

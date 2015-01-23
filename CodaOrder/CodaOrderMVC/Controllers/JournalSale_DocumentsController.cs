@@ -29,6 +29,7 @@ namespace WebApplication3.Controllers
             this._uow = uow;
         }
 
+        [Authorize]
         public ActionResult Index()
         {
             return View();
@@ -36,6 +37,7 @@ namespace WebApplication3.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
+        [Authorize]
         public string GetDocumentsPost(FormCollection form)
         {
             var data = form["model"];

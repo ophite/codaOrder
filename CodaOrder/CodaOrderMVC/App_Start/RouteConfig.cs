@@ -12,41 +12,16 @@ namespace WebApplication3
         public static void RegisterRoutes(RouteCollection routes)
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
-
-            //routes.MapRoute(
-            //   name: "Template",
-            //   url: "documents/template/{template_subfolder}/{action}.html",
-            //   defaults: new { controller = "Template", action = "Index"},
-            //   constraints: new { template_subfolder = @"\w+" }
-            //);
-            //routes.MapRoute(
-            //    name: "Documents",
-            //    url: "documents/{action}/{subjectID}/{dateBegin}/{dateEnd}/{docTypeClasses}/{pageSize}/{currentPage}/{fullTextFilter}/{whereText}",
-            //    defaults: new
-            //    {
-            //        controller = "JournalSale_Documents",
-            //        action = "GetDocuments",
-            //        subjectID = UrlParameter.Optional,
-            //        dateBegin = UrlParameter.Optional,
-            //        dateEnd = UrlParameter.Optional,
-            //        docTypeClasses = UrlParameter.Optional,
-            //        pageSize = UrlParameter.Optional,
-            //        currentPage = UrlParameter.Optional,
-            //        fullTextFilter = UrlParameter.Optional,
-            //        whereText = UrlParameter.Optional
-            //    }
-            //);
             routes.MapRoute(
                 name: "DocumentsPost",
                 url: "documents/{action}/{id}",
                 defaults: new
                 {
                     controller = "JournalSale_Documents",
-                    action = "Index",
+                    //action = "Index",
                     id = UrlParameter.Optional
                 }
             );
-
             routes.MapRoute(
                 name: "Search",
                 url: "{controller}/{action}/{searchText}",
