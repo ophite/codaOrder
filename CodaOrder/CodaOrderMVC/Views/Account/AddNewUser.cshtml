@@ -1,0 +1,24 @@
+﻿@using WebApplication3.Models
+@model Register
+
+@{
+    ViewBag.Title = "AddNewUser";
+}
+
+<h2>Please register new user</h2>
+<div class="row">
+    <div class="col-md-3">
+        @using (@Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary("", new { @class = "has-error" })
+            @Html.LabelFor(x => x.UserName)
+            @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
+            @Html.LabelFor(x => x.Password)
+            @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+            @Html.LabelFor(x => x.PasswordConfirm)
+            @Html.PasswordFor(x => x.PasswordConfirm, new { @class = "form-control" })
+            <button class="btn btn-primary">Create</button>
+        }
+    </div>
+</div>

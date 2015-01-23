@@ -6,15 +6,15 @@ using System.Web.Mvc;
 
 namespace WebApplication3.Controllers
 {
-    public class TemplateController : Controller
+    public partial class TemplateController : Controller
     {
         // GET: Template
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             return View();
         }
 
-        public ActionResult FilterHeaderTemplate()
+        public virtual ActionResult FilterHeaderTemplate()
         {
             return View();
         }

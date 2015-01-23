@@ -8,7 +8,7 @@ using WebApplication3.Entity;
 
 namespace WebApplication3.Controllers
 {
-    public class SearchCodaObjectController : Controller
+    public partial class SearchCodaObjectController : Controller
     {
         private IUow _uow;
 

@@ -13,13 +13,13 @@ using System.Data.Entity.Core.Objects;
 
 namespace WebApplication3.Controllers
 {
-    public class SubjectsController : Controller
+    public partial class SubjectsController : Controller
     {
         private codaJournal db = new codaJournal();
 
         // GET: Subjects
         //public async Task<ActionResult> Index()
-        public ActionResult Index()
+        public virtual ActionResult Index()
         {
             //return View(await db.Subjects.Where( i => !i.IsDeleted).Take(10).ToListAsync());
             return View();
@@ -163,13 +163,13 @@ namespace WebApplication3.Controllers
             return json;
         }
 
-        public ActionResult filterHeaderTemplate()
+        public virtual ActionResult filterHeaderTemplate()
         {
             return View();
         }
 
         // GET: Subjects/Details/5
-        public async Task<ActionResult> Details(long? id)
+        public virtual async Task<ActionResult> Details(long? id)
         {
             if (id == null)
             {
@@ -184,7 +184,7 @@ namespace WebApplication3.Controllers
         }
 
         // GET: Subjects/Create
-        public ActionResult Create()
+        public virtual ActionResult Create()
         {
             return View();
         }
@@ -194,7 +194,7 @@ namespace WebApplication3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Create([Bind(Include = "ID,CID,AccountantID,AddressID,Comments,DelDate,DirectorID,Email,ExtraCode,Fax,FullName,FullTextSearch,GUID,IconIndex,IndividualID,IsCentralized,IsCustomer,IsDeleted,IsImporter,IsPrivate,IsSupplier,Kind,LawAddressID,Name,OwnerID,PaperRegistrationCode,PaperVATCode,PaperVATExtraNO,ParentID,PaymentTypeID,Phone,RemindTime,ShortName,SID,SpecificationID,TaxTypeID,TST,WithoutStamp")] Subject subject)
+        public virtual async Task<ActionResult> Create([Bind(Include = "ID,CID,AccountantID,AddressID,Comments,DelDate,DirectorID,Email,ExtraCode,Fax,FullName,FullTextSearch,GUID,IconIndex,IndividualID,IsCentralized,IsCustomer,IsDeleted,IsImporter,IsPrivate,IsSupplier,Kind,LawAddressID,Name,OwnerID,PaperRegistrationCode,PaperVATCode,PaperVATExtraNO,ParentID,PaymentTypeID,Phone,RemindTime,ShortName,SID,SpecificationID,TaxTypeID,TST,WithoutStamp")] Subject subject)
         {
             if (ModelState.IsValid)
             {
@@ -207,7 +207,7 @@ namespace WebApplication3.Controllers
         }
 
         // GET: Subjects/Edit/5
-        public async Task<ActionResult> Edit(long? id)
+        public virtual async Task<ActionResult> Edit(long? id)
         {
             if (id == null)
             {
@@ -226,7 +226,7 @@ namespace WebApplication3.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit([Bind(Include = "ID,CID,AccountantID,AddressID,Comments,DelDate,DirectorID,Email,ExtraCode,Fax,FullName,FullTextSearch,GUID,IconIndex,IndividualID,IsCentralized,IsCustomer,IsDeleted,IsImporter,IsPrivate,IsSupplier,Kind,LawAddressID,Name,OwnerID,PaperRegistrationCode,PaperVATCode,PaperVATExtraNO,ParentID,PaymentTypeID,Phone,RemindTime,ShortName,SID,SpecificationID,TaxTypeID,TST,WithoutStamp")] Subject subject)
+        public virtual async Task<ActionResult> Edit([Bind(Include = "ID,CID,AccountantID,AddressID,Comments,DelDate,DirectorID,Email,ExtraCode,Fax,FullName,FullTextSearch,GUID,IconIndex,IndividualID,IsCentralized,IsCustomer,IsDeleted,IsImporter,IsPrivate,IsSupplier,Kind,LawAddressID,Name,OwnerID,PaperRegistrationCode,PaperVATCode,PaperVATExtraNO,ParentID,PaymentTypeID,Phone,RemindTime,ShortName,SID,SpecificationID,TaxTypeID,TST,WithoutStamp")] Subject subject)
         {
             if (ModelState.IsValid)
             {
@@ -238,7 +238,7 @@ namespace WebApplication3.Controllers
         }
 
         // GET: Subjects/Delete/5
-        public async Task<ActionResult> Delete(long? id)
+        public virtual async Task<ActionResult> Delete(long? id)
         {
             if (id == null)
             {
@@ -255,7 +255,7 @@ namespace WebApplication3.Controllers
         // POST: Subjects/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> DeleteConfirmed(long id)
+        public virtual async Task<ActionResult> DeleteConfirmed(long id)
         {
             Subject subject = await db.Subject.FindAsync(id);
             db.Subject.Remove(subject);

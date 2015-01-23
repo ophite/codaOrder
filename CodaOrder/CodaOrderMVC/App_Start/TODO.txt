@@ -7,3 +7,4 @@ Enable-Migrations -ContextTypeName:WebApplication3.Models.IdentityContext -Migra
 Add-Migration -configuration WebApplication3.IdentityContextMigration.Configuration Initial
 
 3. Update-Database -configuration <DbContext-Migrations-Configuration-Class-with-Namespaces> -Verbose
+Update-Database -configuration WebApplication3.IdentityContextMigration.Configuration -Verbose

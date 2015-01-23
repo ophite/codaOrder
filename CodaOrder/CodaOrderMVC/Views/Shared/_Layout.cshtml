@@ -35,20 +35,25 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Coda order online", MVC.JournalSale_Documents.Index().AddRouteValues(new { area = "" }), new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     @{
                         if (User.Identity.IsAuthenticated)
                         {
-                            <li>@Html.ActionLink("Logout", "Logout", "Account")</li>
-                            <li><strong>@User.Identity.Name</strong></li>
+                            <li>@Html.ActionLink("Logout", MVC.Account.Logout())</li>
+                            <li><strong style="color:white">@User.Identity.Name</strong></li>
+                            <li>@Html.ActionLink("Change password", MVC.Account.ChangePassword())</li>
+                            if (User.IsInRole("admin"))
+                            {
+                                <li>@Html.ActionLink("Add new user", MVC.Account.AddNewUser())</li>
+                            }
                         }
                         else
                         {
-                            <li>@Html.ActionLink("Login", "Login", "Account")</li>
-                            <li>@Html.ActionLink("Register", "Register", "Account")</li>
+                            <li>@Html.ActionLink("Login", MVC.Account.Login())</li>
+                            <li>@Html.ActionLink("Register", MVC.Account.Register())</li>
                         }
                     }
                 </ul>

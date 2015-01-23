@@ -10,6 +10,7 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using WebApplication3.Infrastructure;
+using WebApplication3.Models;
 using WebMatrix.Data;
 using WebMatrix.WebData;
 
@@ -19,16 +20,7 @@ namespace WebApplication3
     {
         protected void Application_Start()
         {
-
-            var cs = System.Configuration.ConfigurationManager.ConnectionStrings["identityConnection"];
-            WebSecurity.InitializeDatabaseConnection(cs.Name, "UserProfile", "UserID", "UserName", true);
-            //// Codajson
-            //            CREATE TABLE CodaJson
-            //(
-            //OID          bigint NOT NULL PRIMARY KEY,
-            //FullName		varchar (128) NOT NULL 
-            //)
-
+            IdentityContext.InitializeDatabase();
             AreaRegistration.RegisterAllAreas();
             DependencyResolver.SetResolver(new NinjectDependencyResolver());
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
