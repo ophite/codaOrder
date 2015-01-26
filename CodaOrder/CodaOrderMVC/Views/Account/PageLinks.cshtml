@@ -1,0 +1,17 @@
+﻿@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <li>@Html.ActionLink("Logout", MVC.Account.Logout())</li>
+        <li><strong style="color:white">@User.Identity.Name</strong></li>
+        <li>@Html.ActionLink("Change password", MVC.Account.ChangePassword())</li>
+        if (User.IsInRole("admin"))
+        {
+            <li>@Html.ActionLink("Add new user", MVC.Account.AddNewUser())</li>
+        }
+    }
+    else
+    {
+        <li>@Html.ActionLink("Login", MVC.Account.Login())</li>
+        <li>@Html.ActionLink("Register", MVC.Account.Register())</li>
+    }
+}

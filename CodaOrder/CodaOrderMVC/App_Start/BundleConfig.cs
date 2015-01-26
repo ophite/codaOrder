@@ -1,61 +1,90 @@
 ﻿using System.Web;
 using System.Web.Optimization;
+using System.Linq;
 
 namespace WebApplication3
 {
+    public class BundleHelper
+    {
+        private static readonly string _bundles = "~/bundles/";
+        public static readonly string JQUERY = _bundles + "jquery";
+        public static readonly string JQUERY_VALIDATE = _bundles + "jqueryval";
+        public static readonly string MODERNIZR = _bundles + "modernizr";
+        public static readonly string BOOTSTRAP = _bundles + "bootstrap";
+        public static readonly string ANGULAR = _bundles + "angular";
+        public static readonly string ANGULAR_UI = _bundles + "angular-ui";
+        public static readonly string ANGULAR_NG_GRID = _bundles + "ng-grid";
+        public static readonly string LINQ = _bundles + "linq";
+
+        public static readonly string APP = _bundles + "app";
+        public static readonly string APP_SUBJECT = _bundles + "app_subject";
+        public static readonly string APP_DOCUMENT = _bundles + "app_document";
+        public static readonly string APP_SEARCH_CODA_OBJECT = _bundles + "app_searchCodaObject";
+        public static readonly string APP_COMMON = _bundles + "app_common";
+
+        private static readonly string _content = "~/Content/";
+        public static readonly string CSS = _content + "css";
+    }
+
     public class BundleConfig
     {
+        public static Bundle IncludeT4MVC(Bundle bundle, params string[] virtualPaths)
+        {
+            bundle.Include(virtualPaths.Select(path => T4MVCPathToServerPath(path)).ToArray());
+            return bundle;
+        }
+
+        public static string T4MVCPathToServerPath(string path)
+        {
+            return VirtualPathUtility.ToAppRelative(path);
+        }
+
+        public static Bundle IncludeT4MVCDirectoryJS(Bundle bundle, string directory)
+        {
+            return bundle.IncludeDirectory(T4MVCPathToServerPath(directory), "*.js");
+        }
+
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
-            bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
-                        "~/Scripts/jquery-{version}.js"));
-
-            bundles.Add(new ScriptBundle("~/bundles/jqueryval").Include(
-                        "~/Scripts/jquery.validate*"));
+            bundles.Add(IncludeT4MVC(new ScriptBundle(BundleHelper.JQUERY), Links.Scripts.jquery_2_1_1_js));
+            bundles.Add(IncludeT4MVC(new ScriptBundle(BundleHelper.JQUERY_VALIDATE), Links.Scripts.jquery_validate_js));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're
             // ready for production, use the build tool at http://modernizr.com to pick only the tests you need.
-            bundles.Add(new ScriptBundle("~/bundles/modernizr").Include(
-                        "~/Scripts/modernizr-*"));
-
-            bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
-                      "~/Scripts/bootstrap.js"));
+            bundles.Add(IncludeT4MVC(new ScriptBundle(BundleHelper.MODERNIZR), Links.Scripts.modernizr_2_6_2_js));
+            bundles.Add(IncludeT4MVC(new ScriptBundle(BundleHelper.BOOTSTRAP), Links.Scripts.bootstrap_js));
 
             // angular
-            bundles.Add(new ScriptBundle("~/bundles/angular").Include(
-                "~/Scripts/angular.js",
-                "~/Scripts/angular_source/angular-resource.js",
-                "~/Scripts/angular-sanitize.js"));
+            bundles.Add(IncludeT4MVC(new ScriptBundle(BundleHelper.ANGULAR),
+                Links.Scripts.angular_js,
+                Links.Scripts.angular_source.angular_resource_js,
+                Links.Scripts.angular_source.angular_sanitize_js));
 
-            bundles.Add(new ScriptBundle("~/bundles/angular-ui").Include(
-                "~/Scripts/angular-ui/ui-bootstrap-tpls.js",
-                "~/Scripts/angular-ui/ui-bootstrap.js",
-                "~/Scripts/angular-ui/ui-select.js"));
+            bundles.Add(IncludeT4MVC(new ScriptBundle(BundleHelper.ANGULAR_UI),
+                Links.Scripts.angular_ui.ui_bootstrap_tpls_js,
+                Links.Scripts.angular_ui.ui_bootstrap_js,
+                Links.Scripts.angular_ui.ui_select_js));
 
-            bundles.Add(new ScriptBundle("~/bundles/ng-grid").Include(
-                "~/Scripts/ng-grid.js"
-            ));
+            bundles.Add(IncludeT4MVC(new ScriptBundle(BundleHelper.ANGULAR_NG_GRID), Links.Scripts.ng_grid_js));
 
             // helpers
-            bundles.Add(new ScriptBundle("~/bundles/linq").Include(
-                "~/Scripts/linq.js"
-            ));
+            bundles.Add(IncludeT4MVC(new ScriptBundle(BundleHelper.LINQ), Links.Scripts.linq_js));
 
             // angular app
-            bundles.Add(new ScriptBundle("~/bundles/app").IncludeDirectory("~/Scripts/app", "*.js"));
-            bundles.Add(new ScriptBundle("~/bundles/subject").IncludeDirectory("~/Scripts/app/subject", "*.js"));
-            bundles.Add(new ScriptBundle("~/bundles/document").IncludeDirectory("~/Scripts/app/document", "*.js"));
-            bundles.Add(new ScriptBundle("~/bundles/searchCodaObject").IncludeDirectory("~/Scripts/app/search", "*.js"));
-            bundles.Add(new ScriptBundle("~/bundles/common").IncludeDirectory("~/Scripts/app/common", "*.js"));
+            bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP), Links.Scripts.app.Url()));
+            bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_SUBJECT), Links.Scripts.app.subject.Url()));
+            bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_DOCUMENT), Links.Scripts.app.document.Url()));
+            bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_SEARCH_CODA_OBJECT), Links.Scripts.app.search.Url()));
+            bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_COMMON), Links.Scripts.app.common.Url()));
 
             // css
-            bundles.Add(new StyleBundle("~/Content/css").Include(
-                      "~/Content/bootstrap.css",
-                      "~/Content/site.css",
-                      "~/Content/ng-grid.css",
-                      "~/Content/angular_grid_custom.css",
-                      "~/Content/ui-select.css"));
+            bundles.Add(IncludeT4MVC(new StyleBundle(BundleHelper.CSS),
+                Links.Content.bootstrap_css,
+                Links.Content.Site_css,
+                Links.Content.ng_grid_css,
+                Links.Content.angular_grid_custom_css,
+                Links.Content.ui_select_css));
         }
     }
 }

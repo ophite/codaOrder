@@ -35,7 +35,6 @@ namespace WebApplication3.Controllers
                 return View(loginData);
             }
 
-
             return View(loginData);
         }
 
@@ -127,6 +126,12 @@ namespace WebApplication3.Controllers
         {
             WebSecurity.Logout();
             return RedirectToAction("Index", "Documents");
+        }
+
+        [ChildActionOnly]
+        public virtual ActionResult PageLinks()
+        {
+            return View();
         }
     }
 }

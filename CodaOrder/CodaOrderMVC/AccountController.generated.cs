@@ -78,6 +78,7 @@ namespace WebApplication3.Controllers
             public readonly string AddNewUser = "AddNewUser";
             public readonly string ChangePassword = "ChangePassword";
             public readonly string Logout = "Logout";
+            public readonly string PageLinks = "PageLinks";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -88,6 +89,7 @@ namespace WebApplication3.Controllers
             public const string AddNewUser = "AddNewUser";
             public const string ChangePassword = "ChangePassword";
             public const string Logout = "Logout";
+            public const string PageLinks = "PageLinks";
         }
 
 
@@ -137,11 +139,13 @@ namespace WebApplication3.Controllers
                 public readonly string AddNewUser = "AddNewUser";
                 public readonly string ChangePassword = "ChangePassword";
                 public readonly string Login = "Login";
+                public readonly string PageLinks = "PageLinks";
                 public readonly string Register = "Register";
             }
             public readonly string AddNewUser = "~/Views/Account/AddNewUser.cshtml";
             public readonly string ChangePassword = "~/Views/Account/ChangePassword.cshtml";
             public readonly string Login = "~/Views/Account/Login.cshtml";
+            public readonly string PageLinks = "~/Views/Account/PageLinks.cshtml";
             public readonly string Register = "~/Views/Account/Register.cshtml";
         }
     }
@@ -252,6 +256,17 @@ namespace WebApplication3.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Logout);
             LogoutOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void PageLinksOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult PageLinks()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.PageLinks);
+            PageLinksOverride(callInfo);
             return callInfo;
         }
 

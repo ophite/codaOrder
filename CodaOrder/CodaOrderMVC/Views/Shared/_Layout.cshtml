@@ -4,25 +4,25 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
-    @Styles.Render("~/Content/css")
-    @Scripts.Render("~/bundles/modernizr")
-    @Scripts.Render("~/bundles/jquery")
-    @Scripts.Render("~/bundles/bootstrap")
+    @Styles.Render(BundleHelper.CSS)
+    @Scripts.Render(BundleHelper.MODERNIZR)
+    @Scripts.Render(BundleHelper.JQUERY)
+    @Scripts.Render(BundleHelper.BOOTSTRAP)
 
     @* helpers *@
-    @Scripts.Render("~/bundles/linq")
+    @Scripts.Render(BundleHelper.LINQ)
 
     @* angular *@
-    @Scripts.Render("~/bundles/angular")
-    @Scripts.Render("~/bundles/angular-ui")
-    @Scripts.Render("~/bundles/ng-grid")
+    @Scripts.Render(BundleHelper.ANGULAR)
+    @Scripts.Render(BundleHelper.ANGULAR_UI)
+    @Scripts.Render(BundleHelper.ANGULAR_NG_GRID)
 
     @* angular app *@
-    @Scripts.Render("~/bundles/app")
-    @Scripts.Render("~/bundles/subject")
-    @Scripts.Render("~/bundles/document")
-    @Scripts.Render("~/bundles/searchCodaObject")
-    @Scripts.Render("~/bundles/common");
+    @Scripts.Render(BundleHelper.APP)
+    @Scripts.Render(BundleHelper.APP_SUBJECT)
+    @Scripts.Render(BundleHelper.APP_DOCUMENT)
+    @Scripts.Render(BundleHelper.APP_SEARCH_CODA_OBJECT)
+    @Scripts.Render(BundleHelper.APP_COMMON);
 
     @RenderSection("scripts", required: false)
 </head>
@@ -39,23 +39,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @{
-                        if (User.Identity.IsAuthenticated)
-                        {
-                            <li>@Html.ActionLink("Logout", MVC.Account.Logout())</li>
-                            <li><strong style="color:white">@User.Identity.Name</strong></li>
-                            <li>@Html.ActionLink("Change password", MVC.Account.ChangePassword())</li>
-                            if (User.IsInRole("admin"))
-                            {
-                                <li>@Html.ActionLink("Add new user", MVC.Account.AddNewUser())</li>
-                            }
-                        }
-                        else
-                        {
-                            <li>@Html.ActionLink("Login", MVC.Account.Login())</li>
-                            <li>@Html.ActionLink("Register", MVC.Account.Register())</li>
-                        }
-                    }
+                    @Html.Partial(MVC.Account.Views.PageLinks)
                 </ul>
             </div>
         </div>
