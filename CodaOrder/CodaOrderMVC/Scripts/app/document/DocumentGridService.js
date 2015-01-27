@@ -11,7 +11,6 @@
                        save: {
                            method: 'POST',
                            params: paramDict,
-                           //isArray: true
                            transformRequest: function (data, headersGetter) {
                                var headers = headersGetter();
                                //headers['Content-Type'] = 'application/json';

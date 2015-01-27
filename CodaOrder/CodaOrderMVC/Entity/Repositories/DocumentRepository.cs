@@ -23,7 +23,7 @@ namespace WebApplication3.Entity
         //public DocumentRepository() : base() { }
         public DocumentRepository(DbContext dbContext) : base(dbContext) { }
 
-        public Dictionary<string, object> GetLinesJson(JObject jObject)
+        public object GetLinesJson(JObject jObject)
         {
             // unpack json object
             string subjectID = jObject.GetValue(ConstantDocument.ParamSubjectID).Value<string>();
@@ -43,7 +43,7 @@ namespace WebApplication3.Entity
                        "</DocumentClasses>";
             };
 
-            string json = "";
+            //string json = "";
             long OID = 8000010580984;
             string filter = "<Filter><ID>8000005797829</ID><ID>8000000241646</ID></Filter>";
             string docOID = "";

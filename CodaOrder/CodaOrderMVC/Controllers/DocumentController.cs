@@ -42,7 +42,7 @@ namespace WebApplication3.Controllers
         {
             var data = form["model"];
             JObject js = (JObject)JsonConvert.DeserializeObject(data);
-            return Json((object)_uow.DocumentRepository.GetLinesJson(js));
+            return Json(_uow.DocumentRepository.GetLinesJson(js));
         }
 
         // GET: Document/Details/5
