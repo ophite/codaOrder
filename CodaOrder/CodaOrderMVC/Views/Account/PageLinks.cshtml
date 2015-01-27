@@ -8,6 +8,10 @@
         {
             <li>@Html.ActionLink("Add new user", MVC.Account.AddNewUser())</li>
         }
+        <li>
+            <div>this is testc Url </div>
+            @Url.Action(MVC.Account.Login())
+        </li>
     }
     else
     {

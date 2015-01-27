@@ -4,7 +4,10 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+    @* css *@
     @Styles.Render(BundleHelper.CSS)
+
+    @* base *@
     @Scripts.Render(BundleHelper.MODERNIZR)
     @Scripts.Render(BundleHelper.JQUERY)
     @Scripts.Render(BundleHelper.BOOTSTRAP)
@@ -16,15 +19,16 @@
     @Scripts.Render(BundleHelper.ANGULAR)
     @Scripts.Render(BundleHelper.ANGULAR_UI)
     @Scripts.Render(BundleHelper.ANGULAR_NG_GRID)
+    
+    @RenderSection("documents", required: false)
 
     @* angular app *@
     @Scripts.Render(BundleHelper.APP)
     @Scripts.Render(BundleHelper.APP_SUBJECT)
     @Scripts.Render(BundleHelper.APP_DOCUMENT)
     @Scripts.Render(BundleHelper.APP_SEARCH_CODA_OBJECT)
-    @Scripts.Render(BundleHelper.APP_COMMON);
+    @Scripts.Render(BundleHelper.APP_COMMON)
 
-    @RenderSection("scripts", required: false)
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -35,7 +39,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Coda order online", MVC.JournalSale_Documents.Index().AddRouteValues(new { area = "" }), new { @class = "navbar-brand" })
+                @Html.ActionLink("Coda order online", MVC.Document.Index().AddRouteValues(new { area = "" }), new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">

@@ -6,7 +6,7 @@
        function ($resource) {
            return {
                getDocs: function (paramDict) {
-                   return $resource('http://localhost:35133/Documents/GetDocumentsPost', {}, {
+                   return $resource('http://localhost:35133/Document/GetDocumentsPost', {}, {
                        save: {
                            method: 'POST',
                            params: paramDict,

@@ -1,0 +1,402 @@
+﻿@model WebApplication3.Entity.JournalSale_Documents
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Details</title>
+</head>
+<body>
+    <div>
+        <h4>JournalSale_Documents</h4>
+        <hr />
+        <dl class="dl-horizontal">
+            <dt>
+                @Html.DisplayNameFor(model => model.CID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Amount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Amount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BranchID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BranchID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ChangeDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ChangeDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Comments)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Comments)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreateDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreateDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DelDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DelDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DocCode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DocCode)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DocDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DocDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.EmployeeID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.EmployeeID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DeliverID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DeliverID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ReceiverID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ReceiverID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FullName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FullName)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.GUID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.GUID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IconIndex)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IconIndex)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsDeleted)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsDeleted)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.NodeID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.NodeID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RGB)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RGB)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SourceDocID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SourceDocID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DocGroupID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DocGroupID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DocGroupPosition)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DocGroupPosition)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TST)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TST)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PriceSum)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PriceSum)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.VatSum)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.VatSum)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.ContractID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.ContractID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CustomerID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CustomerID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DepartmentID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DepartmentID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CorrespondID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CorrespondID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TaxCode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TaxCode)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TaxDate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TaxDate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.FilialID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.FilialID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.PrintComments)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.PrintComments)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsForeign)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsForeign)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.RevenueID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.RevenueID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.DelayLimit)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.DelayLimit)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.VatPercent)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.VatPercent)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SourceDocCode)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SourceDocCode)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.IsChangedAfterPrint)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.IsChangedAfterPrint)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CasefillrateID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CasefillrateID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.SectorID)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.SectorID)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.CreditComments)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.CreditComments)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.VATNNSum)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.VATNNSum)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.TaxInvoiceType)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.TaxInvoiceType)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.LineCount)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.LineCount)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.Coordinate)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.Coordinate)
+            </dd>
+    
+            <dt>
+                @Html.DisplayNameFor(model => model.BrandName)
+            </dt>
+    
+            <dd>
+                @Html.DisplayFor(model => model.BrandName)
+            </dd>
+    
+        </dl>
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { /* id = Model.PrimaryKey */ }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+</body>
+</html>

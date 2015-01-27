@@ -26,7 +26,8 @@ using T4MVC;
 public static partial class MVC
 {
     public static WebApplication3.Controllers.AccountController Account = new WebApplication3.Controllers.T4MVC_AccountController();
-    public static WebApplication3.Controllers.JournalSale_DocumentsController JournalSale_Documents = new WebApplication3.Controllers.T4MVC_JournalSale_DocumentsController();
+    public static WebApplication3.Controllers.DocumentController Document = new WebApplication3.Controllers.T4MVC_DocumentController();
+    public static WebApplication3.Controllers.ErrorController Error = new WebApplication3.Controllers.T4MVC_ErrorController();
     public static WebApplication3.Controllers.SearchCodaObjectController SearchCodaObject = new WebApplication3.Controllers.T4MVC_SearchCodaObjectController();
     public static WebApplication3.Controllers.SubjectsController Subjects = new WebApplication3.Controllers.T4MVC_SubjectsController();
     public static WebApplication3.Controllers.TemplateController Template = new WebApplication3.Controllers.T4MVC_TemplateController();

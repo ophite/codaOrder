@@ -8,3 +8,14 @@ Add-Migration -configuration WebApplication3.IdentityContextMigration.Configurat
 
 3. Update-Database -configuration <DbContext-Migrations-Configuration-Class-with-Namespaces> -Verbose
 Update-Database -configuration WebApplication3.IdentityContextMigration.Configuration -Verbose
+
+
+Installed
+-T4MVC
+-Glimpse mvc5
+-ng-grid
+-ui-bootstrap
+-ninject
+-angularjs
+-angularui
+-linq.js
