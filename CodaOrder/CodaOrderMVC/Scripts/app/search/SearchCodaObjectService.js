@@ -1,19 +1,25 @@
-﻿(function () {
+﻿/// <reference path="~/Scripts/angular.js" />
+(function () {
     'use strict';
 
     angular.module('app').factory('searchSubject', ['$resource',
         function ($resource) {
             return {
-                query: function (textValue, className) {
+                query: function (textValue) {
                     return $resource('http://localhost:35133/SearchCodaObject/Subject', {}, {
                         query: {
                             method: 'GET',
                             params: {
                                 searchText: textValue
                             },
-                            isArray: true
-                            //transformResponse: function (data, header) {
-                            //}
+                            isArray: true,
+                            //transformResponse: function (data, headersGetter) {
+                            //},
+                            transformRequest: function (data, headersGetter) {
+                                var headers = headersGetter();
+                                headers['X-Requested-With'] = 'XMLHttpRequest';
+                                return data;
+                            }
                         }
                     });
                 }
