@@ -7,7 +7,7 @@
        function ($resource) {
            return {
                getDocs: function (paramDict, url_getDocument) {
-                   return $resource('http://localhost:35133/' + url_getDocument, {}, {
+                   return $resource(window.location.origin + url_getDocument, {}, {
                        save: {
                            method: 'POST',
                            params: paramDict,

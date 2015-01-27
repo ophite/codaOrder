@@ -54,6 +54,12 @@ namespace WebApplication3.Controllers
             return RedirectToActionPermanent(taskResult.Result);
         }
 
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.JsonResult Subject()
+        {
+            return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.Subject);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public SearchCodaObjectController Actions { get { return MVC.SearchCodaObject; } }
@@ -70,14 +76,24 @@ namespace WebApplication3.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
+            public readonly string Subject = "Subject";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
+            public const string Subject = "Subject";
         }
 
 
+        static readonly ActionParamsClass_Subject s_params_Subject = new ActionParamsClass_Subject();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_Subject SubjectParams { get { return s_params_Subject; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_Subject
+        {
+            public readonly string searchText = "searchText";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -98,6 +114,18 @@ namespace WebApplication3.Controllers
     public partial class T4MVC_SearchCodaObjectController : WebApplication3.Controllers.SearchCodaObjectController
     {
         public T4MVC_SearchCodaObjectController() : base(Dummy.Instance) { }
+
+        [NonAction]
+        partial void SubjectOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, string searchText);
+
+        [NonAction]
+        public override System.Web.Mvc.JsonResult Subject(string searchText)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.Subject);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "searchText", searchText);
+            SubjectOverride(callInfo, searchText);
+            return callInfo;
+        }
 
     }
 }

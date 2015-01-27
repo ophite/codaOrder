@@ -5,8 +5,8 @@
     angular.module('app').factory('searchSubject', ['$resource',
         function ($resource) {
             return {
-                query: function (textValue) {
-                    return $resource('http://localhost:35133/SearchCodaObject/Subject', {}, {
+                query: function (textValue, url_searchSubject) {
+                    return $resource(window.location.origin + url_searchSubject, {}, {
                         query: {
                             method: 'GET',
                             params: {

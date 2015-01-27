@@ -4,8 +4,11 @@
 
     function SearchCodaObjectController($scope, $http, searchSubject, parameterService) {
 
+        $scope.init = function(url_searchSubject) {
+            $scope.url_searchSubject = url_searchSubject;
+        };
         $scope.getObjects = function (val) {
-            return searchSubject.query(val).query().$promise.then(function (response) {
+            return searchSubject.query(val, $scope.url_searchSubject).query().$promise.then(function (response) {
                 return response.map(function (item) {
                     return item;
                 });

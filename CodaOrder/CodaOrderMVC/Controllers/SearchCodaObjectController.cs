@@ -17,9 +17,10 @@ namespace WebApplication3.Controllers
             this._uow = uow;
         }
 
-        public string Subject(string searchText)
+        [HttpGet]
+        public virtual JsonResult Subject(string searchText)
         {
-            return _uow.CodaJsonRepository.FindSubject(searchText);
+            return Json(_uow.CodaJsonRepository.FindSubject(searchText), JsonRequestBehavior.AllowGet);
         }
 
         #region IDispose

@@ -8,6 +8,6 @@ namespace WebApplication3.Entity
 {
     public interface ICodaJsonRepository : IRepository<CodaJson>
     {
-        string FindSubject(string searchText);
+        object FindSubject(string searchText);
     }
 }

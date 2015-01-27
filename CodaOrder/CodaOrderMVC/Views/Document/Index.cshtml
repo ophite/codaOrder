@@ -6,10 +6,10 @@
 <h2>Documents Index</h2>
 
 @*@section documents {
-    <script>
-        var url_GetDocuments = '@Url.Action(@MVC.Document.ActionNames.GetDocumentsPost, @MVC.Document.Name)';
-    </script>
-}*@
+        <script>
+            var url_GetDocuments = '@Url.Action(@MVC.Document.ActionNames.GetDocumentsPost, @MVC.Document.Name)';
+        </script>
+    }*@
 
 <p>
     @Html.ActionLink("Create New", MVC.Document.ActionNames.Create)
@@ -40,7 +40,7 @@
     </div>
 </div>
 
-<div class='container-fluid' ng-controller="SearchCodaObjectController">
+<div class='container-fluid' ng-controller="SearchCodaObjectController" ng-init="init('@Url.Action(@MVC.SearchCodaObject.ActionNames.Subject, @MVC.SearchCodaObject.Name)')">
     <div class="row">
         <div class="col-lg-4">
             <input type="text" ng-model="data.searchCodaObject" placeholder="Enter subject name" typeahead="searchText as searchText.FullName for searchText in getObjects($viewValue)" typeahead-loading="loadingLocations" class="form-control">

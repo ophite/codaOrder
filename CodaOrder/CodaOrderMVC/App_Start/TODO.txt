@@ -19,3 +19,4 @@ Installed
 -angularjs
 -angularui
 -linq.js
+-JsonConverter
