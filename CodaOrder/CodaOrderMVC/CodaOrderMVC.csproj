@@ -1042,6 +1042,7 @@
     </None>
     <Content Include="Views\Account\PageLinks.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
+    <Content Include="Views\Document\NewOrder.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -102,6 +102,7 @@ namespace WebApplication3.Controllers
         {
             public readonly string Index = "Index";
             public readonly string GetDocumentsPost = "GetDocumentsPost";
+            public readonly string NewOrder = "NewOrder";
             public readonly string Details = "Details";
             public readonly string Create = "Create";
             public readonly string Edit = "Edit";
@@ -114,6 +115,7 @@ namespace WebApplication3.Controllers
         {
             public const string Index = "Index";
             public const string GetDocumentsPost = "GetDocumentsPost";
+            public const string NewOrder = "NewOrder";
             public const string Details = "Details";
             public const string Create = "Create";
             public const string Edit = "Edit";
@@ -127,6 +129,14 @@ namespace WebApplication3.Controllers
         public ActionParamsClass_GetDocumentsPost GetDocumentsPostParams { get { return s_params_GetDocumentsPost; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_GetDocumentsPost
+        {
+            public readonly string form = "form";
+        }
+        static readonly ActionParamsClass_NewOrder s_params_NewOrder = new ActionParamsClass_NewOrder();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_NewOrder NewOrderParams { get { return s_params_NewOrder; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_NewOrder
         {
             public readonly string form = "form";
         }
@@ -186,12 +196,14 @@ namespace WebApplication3.Controllers
                 public readonly string Details = "Details";
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
+                public readonly string NewOrder = "NewOrder";
             }
             public readonly string Create = "~/Views/Document/Create.cshtml";
             public readonly string Delete = "~/Views/Document/Delete.cshtml";
             public readonly string Details = "~/Views/Document/Details.cshtml";
             public readonly string Edit = "~/Views/Document/Edit.cshtml";
             public readonly string Index = "~/Views/Document/Index.cshtml";
+            public readonly string NewOrder = "~/Views/Document/NewOrder.cshtml";
         }
     }
 
@@ -220,6 +232,29 @@ namespace WebApplication3.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetDocumentsPost);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "form", form);
             GetDocumentsPostOverride(callInfo, form);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void NewOrderOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult NewOrder()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.NewOrder);
+            NewOrderOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void NewOrderOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Web.Mvc.FormCollection form);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult NewOrder(System.Web.Mvc.FormCollection form)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.NewOrder);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "form", form);
+            NewOrderOverride(callInfo, form);
             return callInfo;
         }
 

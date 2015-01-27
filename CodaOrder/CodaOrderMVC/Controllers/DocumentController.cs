@@ -45,6 +45,20 @@ namespace WebApplication3.Controllers
             return Json(_uow.DocumentRepository.GetLinesJson(js));
         }
 
+        [HttpGet]
+        [Authorize]
+        public virtual ActionResult NewOrder()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [Authorize]
+        public virtual ActionResult NewOrder(FormCollection form)
+        {
+            return View(form);
+        }
+
         // GET: Document/Details/5
         public virtual ActionResult Details(long? id)
         {
