@@ -48,7 +48,7 @@
     </div>
     <div class="row">
         <div class="col-lg-4">
-            <pre>Selected: {{data.searchCodaObject.OID}}</pre>
+            <pre ng-cloak>Selected: {{data.searchCodaObject.OID}}</pre>
         </div>
     </div>
 </div>
@@ -57,12 +57,12 @@
     <div class="row">
         <div class="col-lg-4">
             <ui-select class="form-control" multiple ng-model="data.selectedDocumentType" theme="bootstrap" ng-disabled="disabled">
-                <ui-select-match placeholder="Select document type...">{{$item.name}}</ui-select-match>
-                <ui-select-choices repeat="docType.name as docType in documentType | filter: {name: $select.search}">
+                <ui-select-match ng-cloak placeholder="Select document type...">{{$item.name}}</ui-select-match>
+                <ui-select-choices ng-cloak repeat="docType.name as docType in documentType | filter: {name: $select.search}">
                     <div ng-bind-html="docType.name | highlight: $select.search"></div>
                 </ui-select-choices>
             </ui-select>
-            <pre>Selected: {{data.selectedDocumentType}}</pre>
+            <pre ng-cloak>Selected: {{data.selectedDocumentType}}</pre>
         </div>
     </div>
 </div>
