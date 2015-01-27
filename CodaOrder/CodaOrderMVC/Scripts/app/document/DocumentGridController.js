@@ -67,6 +67,11 @@
                 $scope.$apply();
         };
 
+        // send url from MVC .net
+        $scope.init = function (url_GetDocument) {
+            $scope.url_GetDocument = url_GetDocument;
+        };
+
         // listeners
         $scope.$on(ConstantHelper.Watchers.broadcastGetDocuments, function (event, args) {
             // filter
@@ -81,7 +86,7 @@
             var params = parameterService.getDocumentParams();
             params = ConstantHelper.prepareAllDocumentParams(params);
             // get docs
-            var resPost = getDocuments.getDocs(params).save().$promise.then(function (jsonData) {
+            var resPost = getDocuments.getDocs(params, $scope.url_GetDocument).save().$promise.then(function (jsonData) {
                 params[ConstantHelper.Document.paramTotalRows.value] = jsonData[ConstantHelper.Document.paramTotalRows.value];
                 params[ConstantHelper.Document.paramPagesCount.value] = jsonData[ConstantHelper.Document.paramPagesCount.value];
                 // change paging

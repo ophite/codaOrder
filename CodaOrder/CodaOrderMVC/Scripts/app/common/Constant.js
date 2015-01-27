@@ -9,7 +9,7 @@ var ConstantHelper = new function () {
         this.setPagingInfo = 'setPagingInfo';
         this.broadcastGetDocuments = 'broadcastGetDocuments';
         this.broadcastPagingInfoChange = 'broadcastPagingInfoChange';
-    }
+    };
 
     this.Document = new function () {
         this.paramSubjectID = {

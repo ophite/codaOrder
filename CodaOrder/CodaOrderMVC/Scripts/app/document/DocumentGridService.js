@@ -1,12 +1,13 @@
 ﻿/// <reference path="~/Scripts/angular.js" />
+
 (function () {
     'use strict';
 
     angular.module('app').factory('getDocuments', ['$resource',
        function ($resource) {
            return {
-               getDocs: function (paramDict) {
-                   return $resource('http://localhost:35133/Document/GetDocumentsPost', {}, {
+               getDocs: function (paramDict, url_getDocument) {
+                   return $resource('http://localhost:35133/' + url_getDocument, {}, {
                        save: {
                            method: 'POST',
                            params: paramDict,

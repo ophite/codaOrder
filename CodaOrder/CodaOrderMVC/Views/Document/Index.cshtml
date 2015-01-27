@@ -5,16 +5,14 @@
 
 <h2>Documents Index</h2>
 
-@section documents {
-    @*<script>
-        var url_GetDocuments = '@Url.Action("GetDocumentsPost", "Documents")';
-        alert(url_GetDocuments);
-    </script>*@
-}
+@*@section documents {
+    <script>
+        var url_GetDocuments = '@Url.Action(@MVC.Document.ActionNames.GetDocumentsPost, @MVC.Document.Name)';
+    </script>
+}*@
 
 <p>
-    @*@Html.RouteLink("test", new { controller = "Document", action = "GetDocumentsPost" })*@
-    @Html.ActionLink("Create New", MVC.Document.Create())
+    @Html.ActionLink("Create New", MVC.Document.ActionNames.Create)
 </p>
 
 <div ng-controller="DocumentLoadController">
@@ -69,7 +67,7 @@
     </div>
 </div>
 
-<div ng-controller="DocumentGridController">
+<div ng-controller="DocumentGridController" ng-init="init('@Url.Action(@MVC.Document.ActionNames.GetDocumentsPost, @MVC.Document.Name)')">
     <div class="gridStyle" ng-grid="gridOptions">
     </div>
 </div>

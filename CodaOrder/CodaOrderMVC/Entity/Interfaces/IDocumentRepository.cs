@@ -17,6 +17,6 @@ namespace WebApplication3.Entity
         //    int currentPage,
         //    string fullTextFilter,
         //    string whereText);
-        string GetLinesJson(JObject jObject);
+        Dictionary<string, object> GetLinesJson(JObject jObject);
     }
 }

@@ -23,7 +23,7 @@ namespace WebApplication3.Entity
         //public DocumentRepository() : base() { }
         public DocumentRepository(DbContext dbContext) : base(dbContext) { }
 
-        public string GetLinesJson(JObject jObject)
+        public Dictionary<string, object> GetLinesJson(JObject jObject)
         {
             // unpack json object
             string subjectID = jObject.GetValue(ConstantDocument.ParamSubjectID).Value<string>();
@@ -150,9 +150,10 @@ namespace WebApplication3.Entity
                     {ConstantDocument.ParamPageSize, perPage},
                 };
 
-            json = JsonConvert.SerializeObject(resultJson);
+            //json = JsonConvert.SerializeObject(resultJson);
+            //return json;
 
-            return json;
+            return resultJson;
         }
 
         //public string GetLinesJson(string subjectID,

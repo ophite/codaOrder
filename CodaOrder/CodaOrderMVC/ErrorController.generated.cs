@@ -95,7 +95,9 @@ namespace WebApplication3.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string NotFound = "NotFound";
             }
+            public readonly string NotFound = "~/Views/Error/NotFound.cshtml";
         }
     }
 

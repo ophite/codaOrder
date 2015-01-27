@@ -19,8 +19,6 @@
     @Scripts.Render(BundleHelper.ANGULAR)
     @Scripts.Render(BundleHelper.ANGULAR_UI)
     @Scripts.Render(BundleHelper.ANGULAR_NG_GRID)
-    
-    @RenderSection("documents", required: false)
 
     @* angular app *@
     @Scripts.Render(BundleHelper.APP)
@@ -28,6 +26,8 @@
     @Scripts.Render(BundleHelper.APP_DOCUMENT)
     @Scripts.Render(BundleHelper.APP_SEARCH_CODA_OBJECT)
     @Scripts.Render(BundleHelper.APP_COMMON)
+
+    @RenderSection("documents", required: false)
 
 </head>
 <body>

@@ -128,7 +128,7 @@ namespace WebApplication3.Controllers
             return RedirectToAction("Index", "Documents");
         }
 
-        //[ChildActionOnly]
+        [ChildActionOnly]
         public virtual ActionResult PageLinks()
         {
             return PartialView();

@@ -56,6 +56,12 @@ namespace WebApplication3.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.JsonResult GetDocumentsPost()
+        {
+            return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetDocumentsPost);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult Details()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Details);
@@ -95,6 +101,7 @@ namespace WebApplication3.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string GetDocumentsPost = "GetDocumentsPost";
             public readonly string Details = "Details";
             public readonly string Create = "Create";
             public readonly string Edit = "Edit";
@@ -106,6 +113,7 @@ namespace WebApplication3.Controllers
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string GetDocumentsPost = "GetDocumentsPost";
             public const string Details = "Details";
             public const string Create = "Create";
             public const string Edit = "Edit";
@@ -114,6 +122,14 @@ namespace WebApplication3.Controllers
         }
 
 
+        static readonly ActionParamsClass_GetDocumentsPost s_params_GetDocumentsPost = new ActionParamsClass_GetDocumentsPost();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_GetDocumentsPost GetDocumentsPostParams { get { return s_params_GetDocumentsPost; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_GetDocumentsPost
+        {
+            public readonly string form = "form";
+        }
         static readonly ActionParamsClass_Details s_params_Details = new ActionParamsClass_Details();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_Details DetailsParams { get { return s_params_Details; } }
@@ -192,6 +208,18 @@ namespace WebApplication3.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void GetDocumentsPostOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, System.Web.Mvc.FormCollection form);
+
+        [NonAction]
+        public override System.Web.Mvc.JsonResult GetDocumentsPost(System.Web.Mvc.FormCollection form)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetDocumentsPost);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "form", form);
+            GetDocumentsPostOverride(callInfo, form);
             return callInfo;
         }
 

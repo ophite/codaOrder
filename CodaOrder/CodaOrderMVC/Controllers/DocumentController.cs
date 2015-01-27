@@ -38,11 +38,11 @@ namespace WebApplication3.Controllers
         [HttpPost]
         [ValidateInput(false)]
         [Authorize]
-        public string GetDocumentsPost(FormCollection form)
+        public virtual JsonResult GetDocumentsPost(FormCollection form)
         {
             var data = form["model"];
             JObject js = (JObject)JsonConvert.DeserializeObject(data);
-            return _uow.DocumentRepository.GetLinesJson(js);
+            return Json((object)_uow.DocumentRepository.GetLinesJson(js));
         }
 
         // GET: Document/Details/5
