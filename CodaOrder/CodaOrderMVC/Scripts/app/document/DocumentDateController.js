@@ -77,9 +77,6 @@
                   var validateDateRange = function (inputValue) {
                       var fromDate = $filter('date')(inputValue, 'short');
                       var toDate = $filter('date')(attrs.dateLowerThan, 'short');
-
-                      console.log('dateLowerThan: => fromDate:', fromDate, '||| toDate:', toDate);
-
                       var isValid = isValidDateRange(fromDate, toDate, attrs.datepickerPopup);
                       ctrl.$setValidity('dateLowerThan', isValid);
                       return inputValue;
@@ -104,7 +101,6 @@
                   var validateDateRange = function (inputValue) {
                       var fromDate = $filter('date')(attrs.dateGreaterThan, 'short');
                       var toDate = $filter('date')(inputValue, 'short');
-                      console.log('dateGreaterThan: => fromDate:', fromDate, '||| toDate:', toDate);
                       var isValid = isValidDateRange(fromDate, toDate, attrs.datepickerPopup);
                       ctrl.$setValidity('dateGreaterThan', isValid);
                       return inputValue;
@@ -125,29 +121,29 @@
             return false;
 
         var dateTime = Date.parse(dateStr, dateFormat);
-        if (isNaN(dateTime)) {
-
+        if (isNaN(dateTime))
             return false;
-        }
+
         return true;
     };
 
-    var getDateDifference = function (fromDate, toDate) {
-        return Date.parse(toDate) - Date.parse(fromDate);
+    var getDateDifference = function (fromDate, toDate, dateFormat) {
+        return Date.parse(toDate, dateFormat) - Date.parse(fromDate, dateFormat);
     };
 
     var isValidDateRange = function (fromDate, toDate, dateFormat) {
         if (fromDate === "" || toDate === "")
             return true;
-        if (isValidDate(fromDate, dateFormat) === false) {
+
+        if (isValidDate(fromDate, dateFormat) === false)
             return false;
-        }
+
         if (isValidDate(toDate, dateFormat) === true) {
-            var days = getDateDifference(fromDate, toDate);
-            if (days < 0) {
+            var days = getDateDifference(fromDate, toDate, dateFormat);
+            if (days < 0)
                 return false;
-            }
         }
+
         return true;
     };
 })();
