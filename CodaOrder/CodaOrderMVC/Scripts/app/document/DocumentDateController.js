@@ -4,7 +4,7 @@
     'use strict';
 
     function DocumentDateController($scope, $filter, parameterService) {
-        
+
         $scope.format = 'dd.MM.yyyy';
 
         function formatDate(dateRow) {
@@ -12,10 +12,10 @@
         }
 
         $scope.today = function () {
-            $scope.dateStart = formatDate(new Date());
-            var dateEnd = new Date();
-            dateEnd.setDate(dateEnd.getDate() + 7);
-            $scope.dateEnd = formatDate(dateEnd);
+            var date = new Date();
+            $scope.dateStart = formatDate(date);
+            date.setDate(date.getDate() + 7);
+            $scope.dateEnd = formatDate(date);
 
             //test
             $scope.dateStart = '01.01.2014';
@@ -67,4 +67,87 @@
 
     DocumentDateController.$inject = ['$scope', '$filter', 'parameterService'];
     angular.module('app').controller('DocumentDateController', DocumentDateController);
+
+    angular.module('app').directive('dateLowerThan', ["$filter",
+      function ($filter) {
+          return {
+              restrict: 'A',
+              require: 'ngModel',
+              link: function (scope, elm, attrs, ctrl) {
+                  var validateDateRange = function (inputValue) {
+                      var fromDate = $filter('date')(inputValue, 'short');
+                      var toDate = $filter('date')(attrs.dateLowerThan, 'short');
+
+                      console.log('dateLowerThan: => fromDate:', fromDate, '||| toDate:', toDate);
+
+                      var isValid = isValidDateRange(fromDate, toDate, attrs.datepickerPopup);
+                      ctrl.$setValidity('dateLowerThan', isValid);
+                      return inputValue;
+                  };
+
+                  ctrl.$parsers.unshift(validateDateRange);
+                  ctrl.$formatters.push(validateDateRange);
+                  attrs.$observe('dateLowerThan', function () {
+                      validateDateRange(ctrl.$viewValue);
+                  });
+              }
+          };
+      }
+    ]);
+
+    angular.module('app').directive('dateGreaterThan', ["$filter",
+      function ($filter) {
+          return {
+              restrict: 'A',
+              require: 'ngModel',
+              link: function (scope, elm, attrs, ctrl) {
+                  var validateDateRange = function (inputValue) {
+                      var fromDate = $filter('date')(attrs.dateGreaterThan, 'short');
+                      var toDate = $filter('date')(inputValue, 'short');
+                      console.log('dateGreaterThan: => fromDate:', fromDate, '||| toDate:', toDate);
+                      var isValid = isValidDateRange(fromDate, toDate, attrs.datepickerPopup);
+                      ctrl.$setValidity('dateGreaterThan', isValid);
+                      return inputValue;
+                  };
+
+                  ctrl.$parsers.unshift(validateDateRange);
+                  ctrl.$formatters.push(validateDateRange);
+                  attrs.$observe('dateGreaterThan', function () {
+                      validateDateRange(ctrl.$viewValue);
+                  });
+              }
+          };
+      }
+    ]);
+
+    var isValidDate = function (dateStr, dateFormat) {
+        if (dateStr === undefined)
+            return false;
+
+        var dateTime = Date.parse(dateStr, dateFormat);
+        if (isNaN(dateTime)) {
+
+            return false;
+        }
+        return true;
+    };
+
+    var getDateDifference = function (fromDate, toDate) {
+        return Date.parse(toDate) - Date.parse(fromDate);
+    };
+
+    var isValidDateRange = function (fromDate, toDate, dateFormat) {
+        if (fromDate === "" || toDate === "")
+            return true;
+        if (isValidDate(fromDate, dateFormat) === false) {
+            return false;
+        }
+        if (isValidDate(toDate, dateFormat) === true) {
+            var days = getDateDifference(fromDate, toDate);
+            if (days < 0) {
+                return false;
+            }
+        }
+        return true;
+    };
 })();

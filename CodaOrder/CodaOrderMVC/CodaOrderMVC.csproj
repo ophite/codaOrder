@@ -179,6 +179,7 @@
     <Content Include="Scripts\angular-ui\ui-select.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\common\Constant.js" />
+    <Content Include="Scripts\app\common\date.js" />
     <Content Include="Scripts\app\common\FilterService.js" />
     <Content Include="Scripts\app\common\ParameterService.js" />
     <Content Include="Scripts\app\document\DocumentDateController.js" />

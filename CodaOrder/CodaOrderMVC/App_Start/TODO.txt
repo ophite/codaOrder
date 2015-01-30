@@ -20,3 +20,4 @@ Installed
 -angularui
 -linq.js
 -JsonConverter
+-date.js
