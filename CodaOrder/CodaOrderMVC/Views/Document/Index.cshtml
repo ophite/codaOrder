@@ -21,66 +21,11 @@
 </div>
 
 <div ng-controller="DocumentDateController">
-    <form name="frmDateRange" novalidate="">
-        <div class="row">
-            <div class="col-lg-2">
-                <p class="input-group">
-                    <input type="text"
-                           class="form-control"
-                           datepicker-popup="{{format}}"
-                           ng-model="dateStart"
-                           is-open="openedStart"
-                           min-date="minDate"
-                           max-date="'2099-12-31'"
-                           datepicker-options="dateOptions"
-                           date-disabled="disabled(date, mode)"
-                           required=""
-                           name="dateStart"
-                           date-lower-than="{{dateEnd| date:'short'}}"
-                           close-text="Close" />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="openDateStart($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </p>
-            </div>
-            <div class="col-lg-2">
-                <p class="input-group">
-                    <input type="text"
-                           class="form-control"
-                           datepicker-popup="{{format}}"
-                           ng-model="dateEnd"
-                           is-open="openedEnd"
-                           min-date="minDate"
-                           max-date="'2099-12-31'"
-                           datepicker-options="dateOptions"
-                           date-disabled="disabled(date, mode)"
-                           required=""
-                           name="dateEnd"
-                           date-greater-than="{{dateStart| date:'short'}}"
-                           close-text="Close" />
-                    <span class="input-group-btn">
-                        <button type="button" class="btn btn-default" ng-click="openDateEnd($event)"><i class="glyphicon glyphicon-calendar"></i></button>
-                    </span>
-                </p>
-            </div>
-            <div class="col-md-4 offset0">
-                <span ng-show="frmDateRange.dateStart.$error.required &&
-                                !frmDateRange.dateStart.$pristine">
-                    Invalid or Empty from date
-                </span>
-                <span ng-show="frmDateRange.dateStart.$error.dateLowerThan">
-                    From date must be lower than To date
-                </span>
-                <span ng-show="frmDateRange.dateEnd.$error.required
-                                && !frmDateRange.dateEnd.$pristine">
-                    Invalid or Empty to date
-                </span>
-                <span ng-show="frmDateRange.dateEnd.$error.dateGreaterThan">
-                    To date must be greater than from date
-                </span>
-            </div>
-        </div>
-    </form>
+    <div class="row">
+        <div><dir-date-picker ng-model="dates.dateStart" date-format="{{format}}" /></div>
+        <div><dir-date-picker ng-model="dates.dateEnd" date-format="{{format}}" /></div>
+        <dir-dates-validation ng-model="dates" date-start-validate="{{dates.dateStart| date:'short'}}" date-end-validate="{{dates.dateEnd| date:'short'}}" date-format="{{format}}" />
+    </div>
 </div>
 
 <div class='container-fluid' ng-controller="SearchCodaObjectController" ng-init="init('@Url.Action(@MVC.SearchCodaObject.ActionNames.Subject, @MVC.SearchCodaObject.Name)')">

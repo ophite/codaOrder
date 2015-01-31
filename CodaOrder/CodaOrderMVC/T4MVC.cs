@@ -26,6 +26,7 @@ using T4MVC;
 public static partial class MVC
 {
     public static WebApplication3.Controllers.AccountController Account = new WebApplication3.Controllers.T4MVC_AccountController();
+    public static WebApplication3.Controllers.DirectiveController Directive = new WebApplication3.Controllers.T4MVC_DirectiveController();
     public static WebApplication3.Controllers.DocumentController Document = new WebApplication3.Controllers.T4MVC_DocumentController();
     public static WebApplication3.Controllers.ErrorController Error = new WebApplication3.Controllers.T4MVC_ErrorController();
     public static WebApplication3.Controllers.SearchCodaObjectController SearchCodaObject = new WebApplication3.Controllers.T4MVC_SearchCodaObjectController();
@@ -57,6 +58,19 @@ internal partial class T4MVC_System_Web_Mvc_ActionResult : System.Web.Mvc.Action
     }
      
     public override void ExecuteResult(System.Web.Mvc.ControllerContext context) { }
+    
+    public string Controller { get; set; }
+    public string Action { get; set; }
+    public string Protocol { get; set; }
+    public RouteValueDictionary RouteValueDictionary { get; set; }
+}
+[GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+internal partial class T4MVC_System_Web_Mvc_PartialViewResult : System.Web.Mvc.PartialViewResult, IT4MVCActionResult
+{
+    public T4MVC_System_Web_Mvc_PartialViewResult(string area, string controller, string action, string protocol = null): base()
+    {
+        this.InitMVCT4Result(area, controller, action, protocol);
+    }
     
     public string Controller { get; set; }
     public string Action { get; set; }
@@ -155,6 +169,7 @@ namespace Links
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string Constant_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Constant.min.js") ? Url("Constant.min.js") : Url("Constant.js");
+                public static readonly string date_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/date.min.js") ? Url("date.min.js") : Url("date.js");
                 public static readonly string FilterService_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/FilterService.min.js") ? Url("FilterService.min.js") : Url("FilterService.js");
                 public static readonly string ParameterService_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ParameterService.min.js") ? Url("ParameterService.min.js") : Url("ParameterService.js");
             }

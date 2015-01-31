@@ -1044,6 +1044,8 @@
     <Content Include="Views\Account\PageLinks.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Document\NewOrder.cshtml" />
+    <Content Include="Views\Directive\DocumentDatepicker.cshtml" />
+    <Content Include="Views\Directive\DatesValidation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1063,11 +1065,15 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\DirectiveController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\SearchCodaObjectController.cs" />
     <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TemplateController.cs" />
+    <Compile Include="DirectiveController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="DocumentController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>

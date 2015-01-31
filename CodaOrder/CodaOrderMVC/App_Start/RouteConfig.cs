@@ -33,6 +33,11 @@ namespace WebApplication3
             //    defaults: new { controller = "Template", action = "Index", id = UrlParameter.Optional }
             //);
             routes.MapRoute(
+                name: "Directive",
+                url: "directive/{action}",
+                defaults: new { controller = MVC.Directive.Name }
+            );
+            routes.MapRoute(
                 name: "Default",
                 url: "{controller}/{action}/{id}",
                 defaults: new { action = MVC.Document.ActionNames.Index, id = UrlParameter.Optional }

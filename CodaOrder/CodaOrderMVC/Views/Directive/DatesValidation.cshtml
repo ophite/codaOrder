@@ -1,0 +1,7 @@
+﻿<form name="formValidateDateRange" novalidate="" >
+    <div class="col-md-4 offset0" name="validateDates">
+        <span ng-show="formValidateDateRange.$error.DateRangeError "> From date must be lower than To date.</span>
+        <span ng-show="formValidateDateRange.$error.FromDateError "> From date is empty.</span>
+        <span ng-show="formValidateDateRange.$error.ToDateError "> To date is empty.</span>
+    </div>
+</form>
