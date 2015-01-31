@@ -1,6 +1,7 @@
 ﻿using System.Web;
 using System.Web.Optimization;
 using System.Linq;
+using System.IO;
 
 namespace WebApplication3
 {
@@ -19,7 +20,6 @@ namespace WebApplication3
         public static readonly string APP = _bundles + "app";
         public static readonly string APP_SUBJECT = _bundles + "app_subject";
         public static readonly string APP_DOCUMENT = _bundles + "app_document";
-        public static readonly string APP_DOCUMENT_DIRECTIVE = _bundles + "app_document_directive";
         public static readonly string APP_SEARCH_CODA_OBJECT = _bundles + "app_searchCodaObject";
         public static readonly string APP_COMMON = _bundles + "app_common";
 
@@ -40,9 +40,9 @@ namespace WebApplication3
             return VirtualPathUtility.ToAppRelative(path);
         }
 
-        public static Bundle IncludeT4MVCDirectoryJS(Bundle bundle, string directory)
+        public static Bundle IncludeT4MVCDirectoryJS(Bundle bundle, string directory, bool searchSubdirectories = false)
         {
-            return bundle.IncludeDirectory(T4MVCPathToServerPath(directory), "*.js");
+            return bundle.IncludeDirectory(T4MVCPathToServerPath(directory), "*.js", searchSubdirectories);
         }
 
         // For more information on bundling, visit http://go.microsoft.com/fwlink/?LinkId=301862
@@ -75,8 +75,7 @@ namespace WebApplication3
             // angular app
             bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP), Links.Scripts.app.Url()));
             bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_SUBJECT), Links.Scripts.app.subject.Url()));
-            bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_DOCUMENT), Links.Scripts.app.document.Url()));
-            bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_DOCUMENT_DIRECTIVE), Links.Scripts.app.document.directive.Url()));
+            bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_DOCUMENT), Links.Scripts.app.document.Url(), true));
             bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_SEARCH_CODA_OBJECT), Links.Scripts.app.search.Url()));
             bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_COMMON), Links.Scripts.app.common.Url()));
 
