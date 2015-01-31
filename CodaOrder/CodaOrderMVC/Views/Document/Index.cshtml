@@ -5,12 +5,6 @@
 
 <h2>Documents Index</h2>
 
-@*@section documents {
-        <script>
-            var url_GetDocuments = '@Url.Action(@MVC.Document.ActionNames.GetDocumentsPost, @MVC.Document.Name)';
-        </script>
-    }*@
-
 <p>
     @Html.ActionLink("Create New", MVC.Document.ActionNames.Create)
     @Html.ActionLink("new order", MVC.Document.ActionNames.NewOrder)

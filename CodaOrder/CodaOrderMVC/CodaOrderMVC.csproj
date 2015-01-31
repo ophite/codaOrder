@@ -182,6 +182,7 @@
     <Content Include="Scripts\app\common\date.js" />
     <Content Include="Scripts\app\common\FilterService.js" />
     <Content Include="Scripts\app\common\ParameterService.js" />
+    <Content Include="Scripts\app\document\directive\DateDirecive.js" />
     <Content Include="Scripts\app\document\DocumentDateController.js" />
     <Content Include="Scripts\app\document\DocumentGridController.js" />
     <Content Include="Scripts\app\document\DocumentGridService.js" />
@@ -1044,8 +1045,8 @@
     <Content Include="Views\Account\PageLinks.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Document\NewOrder.cshtml" />
-    <Content Include="Views\Directive\DocumentDatepicker.cshtml" />
-    <Content Include="Views\Directive\DatesValidation.cshtml" />
+    <Content Include="Views\Directive\DirDatePicker.cshtml" />
+    <Content Include="Views\Directive\DirDatesValidation.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -19,6 +19,7 @@ namespace WebApplication3
         public static readonly string APP = _bundles + "app";
         public static readonly string APP_SUBJECT = _bundles + "app_subject";
         public static readonly string APP_DOCUMENT = _bundles + "app_document";
+        public static readonly string APP_DOCUMENT_DIRECTIVE = _bundles + "app_document_directive";
         public static readonly string APP_SEARCH_CODA_OBJECT = _bundles + "app_searchCodaObject";
         public static readonly string APP_COMMON = _bundles + "app_common";
 
@@ -75,6 +76,7 @@ namespace WebApplication3
             bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP), Links.Scripts.app.Url()));
             bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_SUBJECT), Links.Scripts.app.subject.Url()));
             bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_DOCUMENT), Links.Scripts.app.document.Url()));
+            bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_DOCUMENT_DIRECTIVE), Links.Scripts.app.document.directive.Url()));
             bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_SEARCH_CODA_OBJECT), Links.Scripts.app.search.Url()));
             bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_COMMON), Links.Scripts.app.common.Url()));
 

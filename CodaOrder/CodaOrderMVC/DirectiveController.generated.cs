@@ -74,14 +74,16 @@ namespace WebApplication3.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
-            public readonly string DateGreaterThan = "DateGreaterThan";
+            public readonly string DirDatePicker = "DirDatePicker";
+            public readonly string DirDatesValidation = "DirDatesValidation";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Index = "Index";
-            public const string DateGreaterThan = "DateGreaterThan";
+            public const string DirDatePicker = "DirDatePicker";
+            public const string DirDatesValidation = "DirDatesValidation";
         }
 
 
@@ -95,9 +97,11 @@ namespace WebApplication3.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string DateGreaterThan = "DateGreaterThan";
+                public readonly string DirDatePicker = "DirDatePicker";
+                public readonly string DirDatesValidation = "DirDatesValidation";
             }
-            public readonly string DateGreaterThan = "~/Views/Directive/DateGreaterThan.cshtml";
+            public readonly string DirDatePicker = "~/Views/Directive/DirDatePicker.cshtml";
+            public readonly string DirDatesValidation = "~/Views/Directive/DirDatesValidation.cshtml";
         }
     }
 
@@ -118,13 +122,24 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void DateGreaterThanOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
+        partial void DirDatePickerOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.PartialViewResult DocumentDatepicker()
+        public override System.Web.Mvc.PartialViewResult DirDatePicker()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.DateGreaterThan);
-            DateGreaterThanOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.DirDatePicker);
+            DirDatePickerOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DirDatesValidationOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.PartialViewResult DirDatesValidation()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.DirDatesValidation);
+            DirDatesValidationOverride(callInfo);
             return callInfo;
         }
 

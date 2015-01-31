@@ -179,6 +179,14 @@ namespace Links
                 private const string URLPATH = "~/Scripts/app/document";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class directive {
+                    private const string URLPATH = "~/Scripts/app/document/directive";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    public static readonly string DateDirecive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/DateDirecive.min.js") ? Url("DateDirecive.min.js") : Url("DateDirecive.js");
+                }
+            
                 public static readonly string DocumentDateController_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/DocumentDateController.min.js") ? Url("DocumentDateController.min.js") : Url("DocumentDateController.js");
                 public static readonly string DocumentGridController_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/DocumentGridController.min.js") ? Url("DocumentGridController.min.js") : Url("DocumentGridController.js");
                 public static readonly string DocumentGridService_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/DocumentGridService.min.js") ? Url("DocumentGridService.min.js") : Url("DocumentGridService.js");

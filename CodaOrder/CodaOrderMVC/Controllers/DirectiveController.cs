@@ -14,12 +14,12 @@ namespace WebApplication3.Controllers
             return View();
         }
 
-        public virtual PartialViewResult DocumentDatepicker()
+        public virtual PartialViewResult DirDatePicker()
         {
             return PartialView();
         }
 
-        public PartialViewResult DatesValidation()
+        public virtual PartialViewResult DirDatesValidation()
         {
             return PartialView();
         }
