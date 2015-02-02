@@ -28,7 +28,7 @@ namespace WebApplication3.Controllers
                     if (!string.IsNullOrEmpty(returnUrl))
                         return Redirect(returnUrl);
 
-                    return RedirectToAction("Index", "Documents");
+                    return RedirectToAction(MVC.Document.ActionNames.Index, MVC.Document.Name);
                 }
 
                 ModelState.AddModelError("", "User name or password is invalid");
@@ -53,7 +53,7 @@ namespace WebApplication3.Controllers
                 try
                 {
                     WebSecurity.CreateUserAndAccount(registerData.UserName, registerData.Password);
-                    return RedirectToAction("Index", "Documents");
+                    return RedirectToAction(MVC.Document.ActionNames.Index, MVC.Document.Name);
                 }
                 catch (MembershipCreateUserException ex)
                 {
@@ -82,7 +82,7 @@ namespace WebApplication3.Controllers
                 try
                 {
                     WebSecurity.CreateUserAndAccount(registerData.UserName, registerData.Password);
-                    return RedirectToAction("AddNewUser", "Action");
+                    return RedirectToAction(MVC.Account.ActionNames.AddNewUser, MVC.Account.Name);
                 }
                 catch (MembershipCreateUserException ex)
                 {
@@ -114,7 +114,7 @@ namespace WebApplication3.Controllers
                     return View(chgPwdData);
                 }
 
-                return RedirectToAction("Index", "Documents");
+                return RedirectToAction(MVC.Document.ActionNames.Index, MVC.Document.Name);
             }
 
             return View(chgPwdData);
@@ -125,7 +125,7 @@ namespace WebApplication3.Controllers
         public virtual ActionResult Logout()
         {
             WebSecurity.Logout();
-            return RedirectToAction("Index", "Documents");
+            return RedirectToAction(MVC.Document.ActionNames.Index, MVC.Document.Name);
         }
 
         [ChildActionOnly]
