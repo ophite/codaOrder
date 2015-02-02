@@ -6,6 +6,7 @@
         @Html.ActionLink("Logout", MVC.Account.Logout())
         <strong style="color:white"> / </strong>
         @Html.ActionLink("Change password", MVC.Account.ChangePassword())
+    
         if (User.IsInRole("admin"))
         {
             <strong style="color:white"> / </strong>
@@ -14,7 +15,6 @@
     }
     else
     {
-
         if (@Url.RequestContext.HttpContext.Request.Url.AbsolutePath != @Url.Action(MVC.Account.ActionNames.Login, MVC.Account.Name))
         {
             @Html.ActionLink("Login", MVC.Account.Login())

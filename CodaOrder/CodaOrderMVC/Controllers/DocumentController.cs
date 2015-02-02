@@ -22,7 +22,7 @@ namespace WebApplication3.Controllers
         private IUow _uow;
 
         #endregion
-        #region Methods
+        #region iOrder
 
         public DocumentController(IUow uow)
         {
@@ -51,6 +51,23 @@ namespace WebApplication3.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult OrdersDraft()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        [Authorize]
+        public ActionResult OrdersHistory()
+        {
+            return View();
+        }
+
+        #endregion
+        #region Methods
 
         [HttpPost]
         [Authorize]
