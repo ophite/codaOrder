@@ -28,7 +28,6 @@
     @Scripts.Render(BundleHelper.APP_COMMON)
 
     @RenderSection("documents", required: false)
-
 </head>
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -48,15 +47,27 @@
             </div>
         </div>
     </div>
-
-    <div class="container body-content">
-
-        @RenderBody()
-        <hr />
-        <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
-        </footer>
+    <div>
+        <div class="col-md-2 column">
+            <div class="list-group">
+                <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
+                <a href="#" class="list-group-item">Morbi leo risus</a>
+                <a href="#" class="list-group-item">Porta ac consectetur ac</a>
+                <a href="#" class="list-group-item">Vestibulum at eros</a>
+            </div>
+        </div>
+        <div class="col-md-10 column">
+            @RenderBody()
+        </div>
     </div>
-
+    <div>
+        <div class="col-md-2 column">
+        </div>
+        <div class="col-md-10 column">
+            <h3>
+                h3. FOOTER
+            </h3>
+        </div>
+    </div>
 </body>
 </html>
