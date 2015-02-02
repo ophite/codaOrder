@@ -1041,11 +1041,12 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>T4MVC.cs</LastGenOutput>
     </None>
-    <Content Include="Views\Account\PageLinks.cshtml" />
+    <Content Include="Views\Account\TopMenuLinks.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Document\NewOrder.cshtml" />
     <Content Include="Views\Directive\DirDatePicker.cshtml" />
     <Content Include="Views\Directive\DirDatesValidation.cshtml" />
+    <Content Include="Views\Account\LeftMenuLinks.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

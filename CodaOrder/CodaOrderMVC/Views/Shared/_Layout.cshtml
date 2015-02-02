@@ -42,7 +42,7 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    @Html.Partial(MVC.Account.Views.PageLinks)
+                    @Html.Partial(MVC.Account.Views.TopMenuLinks)
                 </ul>
             </div>
         </div>
@@ -50,14 +50,7 @@
     <div>
         <div class="col-md-2 column">
             <div class="list-group">
-                <p>
-                    @Html.ActionLink("Create New", MVC.Document.ActionNames.Create)
-                    @Html.ActionLink("new order", MVC.Document.ActionNames.NewOrder)
-                </p>
-                <a href="#" class="list-group-item">Dapibus ac facilisis in</a>
-                <a href="#" class="list-group-item">Morbi leo risus</a>
-                <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-                <a href="#" class="list-group-item">Vestibulum at eros</a>
+                @Html.Partial(MVC.Account.Views.LeftMenuLinks)
             </div>
         </div>
         <div class="col-md-10 column">

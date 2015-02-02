@@ -78,7 +78,8 @@ namespace WebApplication3.Controllers
             public readonly string AddNewUser = "AddNewUser";
             public readonly string ChangePassword = "ChangePassword";
             public readonly string Logout = "Logout";
-            public readonly string PageLinks = "PageLinks";
+            public readonly string TopMenuLinks = "TopMenuLinks";
+            public readonly string LeftMenuLinks = "LeftMenuLinks";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -89,7 +90,8 @@ namespace WebApplication3.Controllers
             public const string AddNewUser = "AddNewUser";
             public const string ChangePassword = "ChangePassword";
             public const string Logout = "Logout";
-            public const string PageLinks = "PageLinks";
+            public const string TopMenuLinks = "TopMenuLinks";
+            public const string LeftMenuLinks = "LeftMenuLinks";
         }
 
 
@@ -138,15 +140,17 @@ namespace WebApplication3.Controllers
             {
                 public readonly string AddNewUser = "AddNewUser";
                 public readonly string ChangePassword = "ChangePassword";
+                public readonly string LeftMenuLinks = "LeftMenuLinks";
                 public readonly string Login = "Login";
-                public readonly string PageLinks = "PageLinks";
                 public readonly string Register = "Register";
+                public readonly string TopMenuLinks = "TopMenuLinks";
             }
             public readonly string AddNewUser = "~/Views/Account/AddNewUser.cshtml";
             public readonly string ChangePassword = "~/Views/Account/ChangePassword.cshtml";
+            public readonly string LeftMenuLinks = "~/Views/Account/LeftMenuLinks.cshtml";
             public readonly string Login = "~/Views/Account/Login.cshtml";
-            public readonly string PageLinks = "~/Views/Account/PageLinks.cshtml";
             public readonly string Register = "~/Views/Account/Register.cshtml";
+            public readonly string TopMenuLinks = "~/Views/Account/TopMenuLinks.cshtml";
         }
     }
 
@@ -260,13 +264,24 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void PageLinksOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void TopMenuLinksOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult PageLinks()
+        public override System.Web.Mvc.PartialViewResult TopMenuLinks()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.PageLinks);
-            PageLinksOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.TopMenuLinks);
+            TopMenuLinksOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void LeftMenuLinksOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.PartialViewResult LeftMenuLinks()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.LeftMenuLinks);
+            LeftMenuLinksOverride(callInfo);
             return callInfo;
         }
 

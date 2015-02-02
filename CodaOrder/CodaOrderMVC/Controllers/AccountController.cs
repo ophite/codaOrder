@@ -129,7 +129,13 @@ namespace WebApplication3.Controllers
         }
 
         [ChildActionOnly]
-        public virtual ActionResult PageLinks()
+        public virtual PartialViewResult TopMenuLinks()
+        {
+            return PartialView();
+        }
+
+        [ChildActionOnly]
+        public virtual PartialViewResult LeftMenuLinks()
         {
             return PartialView();
         }
