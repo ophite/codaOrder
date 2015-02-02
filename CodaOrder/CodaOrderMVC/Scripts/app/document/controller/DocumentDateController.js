@@ -29,7 +29,7 @@
         $scope.today();
 
         // watch change
-        $scope.$watchCollection('[dateStart, dateEnd]', function (newValues, oldValues) {
+        $scope.$watchCollection('[dates.dateStart, dates.dateEnd]', function (newValues, oldValues) {
             parameterService.setDocumentParam(ConstantHelper.Document.paramDateBegin.value, formatDate(newValues[0]));
             parameterService.setDocumentParam(ConstantHelper.Document.paramDateEnd.value, formatDate(newValues[1]));
         });

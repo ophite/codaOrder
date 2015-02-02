@@ -1,15 +1,7 @@
 ﻿@model IEnumerable<WebApplication3.Entity.JournalSale_Documents>
 @{
-    //Layout = "~/Views/Shared/_BaseLayout.cshtml";
     ViewBag.Title = " Documents Index";
 }
-
-<h2>Documents Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", MVC.Document.ActionNames.Create)
-    @Html.ActionLink("new order", MVC.Document.ActionNames.NewOrder)
-</p>
 
 <div ng-controller="DocumentLoadController">
     <button class="btn btn-success" ng-click="refresh()">Refresh</button>
