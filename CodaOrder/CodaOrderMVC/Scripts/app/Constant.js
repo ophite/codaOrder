@@ -3,17 +3,36 @@
 var ConstantHelper = new function () {
 
     // document
-    this.urlDocuments = "";
-    this.templateDocuments = "";
-    // add new order
-    this.urlAddNew = "";
-    this.templateAddNew = "";
-    // orders draft
-    this.urlOrdersDraft = "";
-    this.templateOrdersDraft = "";
-    // orders history
-    this.urlOrdersHistory = "";
-    this.templateOrdersHistory = "";
+    this.router = {
+        documents: {
+            order: 1,
+            name: "documents",
+            fullName: "documents",
+            url: "",
+            templateUrl: ""
+        },
+        newOrder: {
+            order: 2,
+            name: "newOrder",
+            fullName: "new order",
+            url: "",
+            templateUrl: ""
+        },
+        ordersDraft: {
+            order: 3,
+            name: "ordersDraft",
+            fullName: "orders draft",
+            url: "",
+            templateUrl: ""
+        },
+        ordersHistory: {
+            order: 4,
+            name: "ordersHistory",
+            fullName: "orders history",
+            url: "",
+            templateUrl: ""
+        },
+    };
 
     this.Watchers = new function () {
         this.startLoadingDocuments = 'startLoadingDocuments';

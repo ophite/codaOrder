@@ -207,6 +207,7 @@
     <Content Include="Scripts\app\document\directive\DateDirecive.js" />
     <Content Include="Scripts\app\document\controller\DocumentDateController.js" />
     <Content Include="Scripts\app\document\controller\DocumentGridController.js" />
+    <Content Include="Scripts\app\document\directive\LeftMenuLinksDirective.js" />
     <Content Include="Scripts\app\document\service\DocumentGridService.js" />
     <Content Include="Scripts\app\document\controller\DocumentLoadController.js" />
     <Content Include="Scripts\app\document\controller\DocumentPaginationController.js" />

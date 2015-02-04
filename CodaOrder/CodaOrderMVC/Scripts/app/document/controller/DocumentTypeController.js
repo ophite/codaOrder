@@ -47,5 +47,4 @@ app.controller('DocumentTypeController', ['$scope', 'parameterService', function
     $scope.$watch('data.selectedDocumentType', function (newValues, oldValues) {
         setParams(newValues);
     }, true);
-
 }]);

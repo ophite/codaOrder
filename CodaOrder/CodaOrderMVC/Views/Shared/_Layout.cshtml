@@ -34,18 +34,19 @@
 
     @* init var instead of magical strings *@
     <script type="text/javascript">
+        /// <reference path="~/Scripts/app/Constant.js" />
         // document
-        ConstantHelper.urlDocuments = "@Url.Action(MVC.Document.ActionNames.Documents, MVC.Document.Name)";
-        ConstantHelper.templateDocuments = "@Url.Action(MVC.Document.ActionNames.Documents, MVC.Document.Name)";
+        ConstantHelper.router.documents.url = "@Url.Action(MVC.Document.ActionNames.Documents, MVC.Document.Name)";
+        ConstantHelper.router.documents.templateUrl = "@Url.Action(MVC.Document.ActionNames.Documents, MVC.Document.Name)";
         // add new order
-        ConstantHelper.urlAddNew = "@Url.Action(MVC.Document.ActionNames.NewOrder, MVC.Document.Name)";
-        ConstantHelper.templateAddNew = "@Url.Action(MVC.Document.ActionNames.NewOrder, MVC.Document.Name)";
+        ConstantHelper.router.newOrder.url = "@Url.Action(MVC.Document.ActionNames.NewOrder, MVC.Document.Name)";
+        ConstantHelper.router.newOrder.templateUrl = "@Url.Action(MVC.Document.ActionNames.NewOrder, MVC.Document.Name)";
         // orders draft
-        ConstantHelper.urlOrdersDraft = "@Url.Action(MVC.Document.ActionNames.OrdersDraft, MVC.Document.Name)";
-        ConstantHelper.templateOrdersDraft = "@Url.Action(MVC.Document.ActionNames.OrdersDraft, MVC.Document.Name)";
+        ConstantHelper.router.ordersDraft.url = "@Url.Action(MVC.Document.ActionNames.OrdersDraft, MVC.Document.Name)";
+        ConstantHelper.router.ordersDraft.templateUrl = "@Url.Action(MVC.Document.ActionNames.OrdersDraft, MVC.Document.Name)";
         // orders history
-        ConstantHelper.urlOrdersHistory = "@Url.Action(MVC.Document.ActionNames.OrdersHistory, MVC.Document.Name)";
-        ConstantHelper.templateOrdersHistory = "@Url.Action(MVC.Document.ActionNames.OrdersHistory, MVC.Document.Name)";
+        ConstantHelper.router.ordersHistory.url = "@Url.Action(MVC.Document.ActionNames.OrdersHistory, MVC.Document.Name)";
+        ConstantHelper.router.ordersHistory.templateUrl = "@Url.Action(MVC.Document.ActionNames.OrdersHistory, MVC.Document.Name)";
     </script>
 
     @* angular app *@

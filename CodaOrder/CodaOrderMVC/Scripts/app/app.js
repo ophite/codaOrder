@@ -28,21 +28,21 @@
 
             //$urlRouterProvider.otherwise('Account/Login');
             $stateProvider
-                .state('documents', {
-                    url: ConstantHelper.urlDocuments,
-                    templateUrl: ConstantHelper.templateDocuments
+                .state(ConstantHelper.router.documents.name, {
+                    url: ConstantHelper.router.documents.url,
+                    templateUrl: ConstantHelper.router.documents.templateUrl
                 })
-                .state('newOrder', {
-                    url: ConstantHelper.urlAddNew,
-                    templateUrl: ConstantHelper.templateAddNew
+                .state(ConstantHelper.router.newOrder.name, {
+                    url: ConstantHelper.router.newOrder.url,
+                    templateUrl: ConstantHelper.router.newOrder.templateUrl
                 })
-                .state('ordersDraft', {
-                    url: ConstantHelper.urlOrdersDraft,
-                    templateUrl: ConstantHelper.templateOrdersDraft
+                .state(ConstantHelper.router.ordersDraft.name, {
+                    url: ConstantHelper.router.ordersDraft.url,
+                    templateUrl: ConstantHelper.router.ordersDraft.templateUrl
                 })
-                .state('ordersHistory', {
-                    url: ConstantHelper.urlOrdersHistory,
-                    templateUrl: ConstantHelper.templateOrdersHistory
+                .state(ConstantHelper.router.ordersHistory.name, {
+                    url: ConstantHelper.router.ordersHistory.url,
+                    templateUrl: ConstantHelper.router.ordersHistory.templateUrl
                 });
         }
     ]);
