@@ -1,9 +1,12 @@
 ﻿@{
     if (User.Identity.IsAuthenticated)
     {
-        <a href="@Url.Action(MVC.Document.ActionNames.NewOrder, MVC.Document.Name)" class="list-group-item">New order</a>
-        <a href="@Url.Action(MVC.Document.ActionNames.Create, MVC.Document.Name)" class="list-group-item">Create</a>
-        <a href="#" class="list-group-item">Porta ac consectetur ac</a>
-        <a href="#" class="list-group-item">Vestibulum at eros</a>
+        @*<a href="@Url.Action(MVC.Document.ActionNames.NewOrder, MVC.Document.Name)" class="list-group-item">New order</a>
+            <a href="@Url.Action(MVC.Document.ActionNames.Create, MVC.Document.Name)" class="list-group-item">Create</a>*@
+
+        <a ui-sref="documents" class="list-group-item">documents</a>
+        <a ui-sref="newOrder" class="list-group-item">new order</a>
+        <a ui-sref="ordersDraft" class="list-group-item">orders draft</a>
+        <a ui-sref="ordersHistory" class="list-group-item">orders history</a>
     }
 }

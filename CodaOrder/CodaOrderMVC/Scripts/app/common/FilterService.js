@@ -1,5 +1,5 @@
 ﻿/// <reference path="~/Scripts/linq-vsdoc.js" />
-/// <reference path="~/Scripts/app/common/Constant.js" />
+/// <reference path="~/Scripts/app/Constant.js" />
 
 (function () {
     'use strict';

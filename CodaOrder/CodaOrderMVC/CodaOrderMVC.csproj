@@ -143,8 +143,9 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="T4MVCExtensions">
-      <HintPath>..\packages\T4MVCExtensions.3.11.0\lib\net40\T4MVCExtensions.dll</HintPath>
+    <Reference Include="T4MVCExtensions, Version=3.0.0.0, Culture=neutral, PublicKeyToken=7b26dc2a43f6a0d4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\T4MVCExtensions.3.12.0\lib\net40\T4MVCExtensions.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <HintPath>..\packages\WebGrease.1.5.2\lib\WebGrease.dll</HintPath>
@@ -163,22 +164,43 @@
     <Content Include="Content\angular_grid_custom.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\img\logo.png" />
     <Content Include="Content\ng-grid.css" />
     <Content Include="Content\ng-grid.min.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Content\ui-select.css" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
+    <Content Include="Scripts\angular-animate.js" />
+    <Content Include="Scripts\angular-animate.min.js" />
+    <Content Include="Scripts\angular-aria.js" />
+    <Content Include="Scripts\angular-aria.min.js" />
+    <Content Include="Scripts\angular-cookies.js" />
+    <Content Include="Scripts\angular-cookies.min.js" />
+    <Content Include="Scripts\angular-csp.css" />
+    <Content Include="Scripts\angular-loader.js" />
+    <Content Include="Scripts\angular-loader.min.js" />
+    <Content Include="Scripts\angular-messages.js" />
+    <Content Include="Scripts\angular-messages.min.js" />
     <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular-resource.js" />
+    <Content Include="Scripts\angular-resource.min.js" />
+    <Content Include="Scripts\angular-route.js" />
+    <Content Include="Scripts\angular-route.min.js" />
     <Content Include="Scripts\angular-sanitize.js" />
     <Content Include="Scripts\angular-sanitize.min.js" />
+    <Content Include="Scripts\angular-scenario.js" />
+    <Content Include="Scripts\angular-touch.js" />
+    <Content Include="Scripts\angular-touch.min.js" />
+    <Content Include="Scripts\angular-ui\angular-ui-router.js" />
+    <Content Include="Scripts\angular-ui\angular-ui-router.min.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular-ui\ui-select.js" />
     <Content Include="Scripts\app\app.js" />
-    <Content Include="Scripts\app\common\Constant.js" />
+    <Content Include="Scripts\app\Constant.js" />
     <Content Include="Scripts\app\common\date.js" />
     <Content Include="Scripts\app\common\FilterService.js" />
     <Content Include="Scripts\app\common\ParameterService.js" />
@@ -220,7 +242,6 @@
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\angular.min.js.map" />
     <Content Include="Scripts\angular_source\angular-route.min.js.map" />
-    <Content Include="Scripts\errors.json" />
     <Content Include="Scripts\angular_source\angular-touch.min.js.map" />
     <Content Include="Scripts\angular_source\angular-sanitize.min.js.map" />
     <Content Include="Scripts\angular_source\angular-resource.min.js.map" />
@@ -229,6 +250,34 @@
     <Content Include="Scripts\angular_source\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular_source\angular-aria.min.js.map" />
     <Content Include="Scripts\angular_source\angular-animate.min.js.map" />
+    <EntityDeploy Include="Entity\JournalSaleDocument.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>JournalSaleDocument.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Entity\JournalSaleDocument.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JournalSaleDocument.edmx</DependentUpon>
+      <LastGenOutput>JournalSaleDocument.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Entity\JournalSaleDocument.edmx.diagram">
+      <DependentUpon>JournalSaleDocument.edmx</DependentUpon>
+    </Content>
+    <Content Include="Entity\JournalSaleDocument.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>JournalSaleDocument.edmx</DependentUpon>
+      <LastGenOutput>JournalSaleDocument.cs</LastGenOutput>
+    </Content>
+    <Content Include="Scripts\errors.json" />
+    <Content Include="Scripts\angular-touch.min.js.map" />
+    <Content Include="Scripts\angular-sanitize.min.js.map" />
+    <Content Include="Scripts\angular-route.min.js.map" />
+    <Content Include="Scripts\angular-resource.min.js.map" />
+    <Content Include="Scripts\angular-messages.min.js.map" />
+    <Content Include="Scripts\angular-loader.min.js.map" />
+    <Content Include="Scripts\angular-cookies.min.js.map" />
+    <Content Include="Scripts\angular-aria.min.js.map" />
+    <Content Include="Scripts\angular-animate.min.js.map" />
+    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-dj.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-er.js" />
     <Content Include="Scripts\i18n\angular-locale_aa-et.js" />
@@ -972,25 +1021,6 @@
     <Content Include="Scripts\i18n\angular-locale_zh.js" />
     <Content Include="Scripts\i18n\angular-locale_zu-za.js" />
     <Content Include="Scripts\i18n\angular-locale_zu.js" />
-    <EntityDeploy Include="Entity\JournalSaleDocument.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>JournalSaleDocument.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Entity\JournalSaleDocument.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JournalSaleDocument.edmx</DependentUpon>
-      <LastGenOutput>JournalSaleDocument.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Entity\JournalSaleDocument.edmx.diagram">
-      <DependentUpon>JournalSaleDocument.edmx</DependentUpon>
-    </Content>
-    <Content Include="Entity\JournalSaleDocument.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>JournalSaleDocument.edmx</DependentUpon>
-      <LastGenOutput>JournalSaleDocument.cs</LastGenOutput>
-    </Content>
-    <Content Include="Scripts\angular-sanitize.min.js.map" />
-    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery-2.1.1.min.js" />
     <Content Include="Scripts\jquery-2.1.1.min.map" />
@@ -1005,6 +1035,7 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\ng-grid.js" />
     <Content Include="Scripts\ng-grid.min.js" />
+    <Content Include="Scripts\version.json" />
     <None Include="T4MVC.tt.settings.xml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -1021,7 +1052,6 @@
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Scripts\version.json" />
     <Content Include="Views\Subjects\GetSubjects.cshtml" />
     <Content Include="Views\Subjects\filterHeaderTemplate.cshtml" />
     <Content Include="Views\Subjects\GetDocuments.cshtml" />
@@ -1047,6 +1077,9 @@
     <Content Include="Views\Directive\DirDatePicker.cshtml" />
     <Content Include="Views\Directive\DirDatesValidation.cshtml" />
     <Content Include="Views\Account\LeftMenuLinks.cshtml" />
+    <Content Include="Views\Document\OrdersDraft.cshtml" />
+    <Content Include="Views\Document\OrdersHistory.cshtml" />
+    <Content Include="Views\Document\Documents.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1169,6 +1202,7 @@
     <Compile Include="IdentityContextMigration\Configuration.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
     <Compile Include="Models\ChangePassword.cs" />
+    <Compile Include="Models\DocumentsParamsViewModel.cs" />
     <Compile Include="Models\IdentityContext.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Register.cs" />

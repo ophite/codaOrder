@@ -1,0 +1,62 @@
+﻿@model IEnumerable<WebApplication3.Entity.JournalSale_Documents>
+
+<div ng-controller="DocumentLoadController">
+    <button class="btn btn-success" ng-click="refresh()">Refresh</button>
+</div>
+
+<div ng-controller="DocumentDateController">
+    <div class="row">
+        <div><dir-date-picker ng-model="dates.dateStart" date-format="{{format}}" /></div>
+        <div><dir-date-picker ng-model="dates.dateEnd" date-format="{{format}}" /></div>
+        <dir-dates-validation ng-model="dates" date-start-validate="{{dates.dateStart| date:'short'}}" date-end-validate="{{dates.dateEnd| date:'short'}}" date-format="{{format}}" />
+    </div>
+</div>
+
+<div class='container-fluid' ng-controller="SearchCodaObjectController" ng-init="init('@Url.Action(@MVC.SearchCodaObject.ActionNames.Subject, @MVC.SearchCodaObject.Name)')">
+    <div class="row">
+        <div class="col-lg-4">
+            <input type="text" ng-model="data.searchCodaObject" placeholder="Enter subject name" typeahead="searchText as searchText.FullName for searchText in getObjects($viewValue)" typeahead-loading="loadingLocations" class="form-control">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-4">
+            <pre ng-cloak>Selected: {{data.searchCodaObject.OID}}</pre>
+        </div>
+    </div>
+</div>
+
+<div ng-controller="DocumentTypeController">
+    <div class="row">
+        <div class="col-lg-4">
+            <ui-select class="form-control" multiple ng-model="data.selectedDocumentType" theme="bootstrap" ng-disabled="disabled">
+                <ui-select-match ng-cloak placeholder="Select document type...">{{$item.name}}</ui-select-match>
+                <ui-select-choices ng-cloak repeat="docType.name as docType in documentType | filter: {name: $select.search}">
+                    <div ng-bind-html="docType.name | highlight: $select.search"></div>
+                </ui-select-choices>
+            </ui-select>
+            <pre ng-cloak>Selected: {{data.selectedDocumentType}}</pre>
+        </div>
+    </div>
+</div>
+
+<div ng-controller="DocumentGridController" ng-init="init('@Url.Action(@MVC.Document.ActionNames.GetDocumentsPost, @MVC.Document.Name)')">
+    <div class="gridStyle" ng-grid="gridOptions">
+    </div>
+</div>
+
+<div ng-controller="DocumentPaginationController">
+    <pagination num-pages="numPages"
+                total-items="totalRows"
+                ng-model="currentPage"
+                items-per-page="pageSize"
+                max-size="pageNumberCounts"
+                class="pagination-sm"
+                boundary-links="true"
+                rotate="false"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;"
+                first-text="&laquo;"
+                last-text="&raquo;"
+                ng-change="pageChanged()">
+    </pagination>
+</div>

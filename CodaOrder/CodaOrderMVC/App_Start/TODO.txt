@@ -21,3 +21,5 @@ Installed
 -linq.js
 -JsonConverter
 -date.js
+-ui-select.js
+-ui-router.js

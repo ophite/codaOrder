@@ -7,6 +7,7 @@ using System.Data.Entity.Core.Objects;
 using System.Linq;
 using System.Web;
 using WebApplication3.Helpers;
+using WebApplication3.Models;
 
 namespace WebApplication3.Entity
 {
@@ -23,22 +24,12 @@ namespace WebApplication3.Entity
         //public DocumentRepository() : base() { }
         public DocumentRepository(DbContext dbContext) : base(dbContext) { }
 
-        public object GetLinesJson(JObject jObject)
+        public object GetLinesJson(DocumentsParamsViewModel model)
         {
-            // unpack json object
-            string subjectID = jObject.GetValue(ConstantDocument.ParamSubjectID).Value<string>();
-            string dateBegin = jObject.GetValue(ConstantDocument.ParamDateBegin).Value<string>();
-            string dateEnd  = jObject.GetValue(ConstantDocument.ParamDateEnd).Value<string>();
-            string docTypeClasses = jObject.GetValue(ConstantDocument.ParamDocTypeClasses).Value<string>();
-            int pageSize = jObject.GetValue(ConstantDocument.ParamPageSize).Value<int>();
-            int currentPage = jObject.GetValue(ConstantDocument.ParamCurrentPage).Value<int>();
-            string fullTextFilter = jObject.GetValue(ConstantDocument.ParamFullTextFilter).Value<string>();
-            string whereText = jObject.GetValue(ConstantDocument.ParamWhereText).Value<string>();
-
             Func<string, string> jsClassesToSql = (string classes) =>
             {
                 return "<DocumentClasses>" +
-                            String.Concat(docTypeClasses.Split(new char[] { ',' })
+                            String.Concat(model.docTypeClasses.Split(new char[] { ',' })
                                   .Select(i => "<ClassName>" + i + "</ClassName>")) +
                        "</DocumentClasses>";
             };
@@ -47,25 +38,25 @@ namespace WebApplication3.Entity
             long OID = 8000010580984;
             string filter = "<Filter><ID>8000005797829</ID><ID>8000000241646</ID></Filter>";
             string docOID = "";
-            long? objectID = CodaUtil.Util.TryParseLong(subjectID);
+            long? objectID = CodaUtil.Util.TryParseLong(model.subjectID);
             DateTime? dateBeginValue = DateTime.Now.AddDays(-7);
             DateTime? dateEndValue = DateTime.Now;
-            dateBeginValue = string.IsNullOrEmpty(dateBegin) ? dateBeginValue : CodaUtil.Util.TryParseDateTime(dateBegin);
-            dateEndValue = string.IsNullOrEmpty(dateEnd) ? dateEndValue : CodaUtil.Util.TryParseDateTime(dateEnd);
-            string docFilterClasses = string.IsNullOrEmpty(docTypeClasses) ? "<DocumentClasses><ClassName>DocSale</ClassName></DocumentClasses>" : jsClassesToSql(docTypeClasses);
+            dateBeginValue = string.IsNullOrEmpty(model.dateBegin) ? dateBeginValue : CodaUtil.Util.TryParseDateTime(model.dateBegin);
+            dateEndValue = string.IsNullOrEmpty(model.dateEnd) ? dateEndValue : CodaUtil.Util.TryParseDateTime(model.dateEnd);
+            string docFilterClasses = string.IsNullOrEmpty(model.docTypeClasses) ? "<DocumentClasses><ClassName>DocSale</ClassName></DocumentClasses>" : jsClassesToSql(model.docTypeClasses);
             string statusFilter = "<Status/>";
             bool isExtended = true;
             bool showDeleted = false;
             bool? checkOperation = null;
             string securityUser = @"TRITON\kobernik.u";
             string securityGroup = "<Groups><ID>20</ID><ID>11</ID><ID>92</ID><ID>48</ID><ID>44</ID></Groups>";
-            int perPage = pageSize == 0 ? 50 : pageSize;
-            int pageNumber = currentPage == 0 ? 1 : currentPage;
-            string fullTextFilterValue = string.IsNullOrEmpty(fullTextFilter) ? "<Root/>" : fullTextFilter;
+            int perPage = model.pageSize == 0 ? 50 : model.pageSize;
+            int pageNumber = model.currentPage == 0 ? 1 : model.currentPage;
+            string fullTextFilterValue = string.IsNullOrEmpty(model.fullTextFilter) ? "<Root/>" : model.fullTextFilter;
             string orderFilter = "<Root/>";
             ObjectParameter totalRows = new ObjectParameter("TotalRows", typeof(int));
             ObjectParameter pages = new ObjectParameter("Pages", typeof(int));
-            string whereQuery = whereText;
+            string whereQuery = model.whereText;
             string WhereQueryTableAlias = "_journalalias_";
             ObjectParameter tST = new ObjectParameter("TST", typeof(byte[]));
 
@@ -154,6 +145,21 @@ namespace WebApplication3.Entity
             //return json;
 
             return resultJson;
+        }
+
+        public object GetLinesJson(JObject jObject)
+        {
+            // unpack json object
+            DocumentsParamsViewModel model = new DocumentsParamsViewModel();
+            model.subjectID = jObject.GetValue(ConstantDocument.ParamSubjectID).Value<string>();
+            model.dateBegin = jObject.GetValue(ConstantDocument.ParamDateBegin).Value<string>();
+            model.dateEnd = jObject.GetValue(ConstantDocument.ParamDateEnd).Value<string>();
+            model.docTypeClasses = jObject.GetValue(ConstantDocument.ParamDocTypeClasses).Value<string>();
+            model.pageSize = jObject.GetValue(ConstantDocument.ParamPageSize).Value<int>();
+            model.currentPage = jObject.GetValue(ConstantDocument.ParamCurrentPage).Value<int>();
+            model.fullTextFilter = jObject.GetValue(ConstantDocument.ParamFullTextFilter).Value<string>();
+            model.whereText = jObject.GetValue(ConstantDocument.ParamWhereText).Value<string>();
+            return GetLinesJson(model);
         }
 
         //public string GetLinesJson(string subjectID,

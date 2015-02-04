@@ -101,8 +101,11 @@ namespace WebApplication3.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
+            public readonly string Documents = "Documents";
             public readonly string GetDocumentsPost = "GetDocumentsPost";
             public readonly string NewOrder = "NewOrder";
+            public readonly string OrdersDraft = "OrdersDraft";
+            public readonly string OrdersHistory = "OrdersHistory";
             public readonly string Details = "Details";
             public readonly string Create = "Create";
             public readonly string Edit = "Edit";
@@ -114,8 +117,11 @@ namespace WebApplication3.Controllers
         public class ActionNameConstants
         {
             public const string Index = "Index";
+            public const string Documents = "Documents";
             public const string GetDocumentsPost = "GetDocumentsPost";
             public const string NewOrder = "NewOrder";
+            public const string OrdersDraft = "OrdersDraft";
+            public const string OrdersHistory = "OrdersHistory";
             public const string Details = "Details";
             public const string Create = "Create";
             public const string Edit = "Edit";
@@ -130,7 +136,7 @@ namespace WebApplication3.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionParamsClass_GetDocumentsPost
         {
-            public readonly string form = "form";
+            public readonly string model = "model";
         }
         static readonly ActionParamsClass_NewOrder s_params_NewOrder = new ActionParamsClass_NewOrder();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -194,16 +200,22 @@ namespace WebApplication3.Controllers
                 public readonly string Create = "Create";
                 public readonly string Delete = "Delete";
                 public readonly string Details = "Details";
+                public readonly string Documents = "Documents";
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
                 public readonly string NewOrder = "NewOrder";
+                public readonly string OrdersDraft = "OrdersDraft";
+                public readonly string OrdersHistory = "OrdersHistory";
             }
             public readonly string Create = "~/Views/Document/Create.cshtml";
             public readonly string Delete = "~/Views/Document/Delete.cshtml";
             public readonly string Details = "~/Views/Document/Details.cshtml";
+            public readonly string Documents = "~/Views/Document/Documents.cshtml";
             public readonly string Edit = "~/Views/Document/Edit.cshtml";
             public readonly string Index = "~/Views/Document/Index.cshtml";
             public readonly string NewOrder = "~/Views/Document/NewOrder.cshtml";
+            public readonly string OrdersDraft = "~/Views/Document/OrdersDraft.cshtml";
+            public readonly string OrdersHistory = "~/Views/Document/OrdersHistory.cshtml";
         }
     }
 
@@ -224,25 +236,58 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void GetDocumentsPostOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, System.Web.Mvc.FormCollection form);
+        partial void DocumentsOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.JsonResult GetDocumentsPost(System.Web.Mvc.FormCollection form)
+        public override System.Web.Mvc.PartialViewResult Documents()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetDocumentsPost);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "form", form);
-            GetDocumentsPostOverride(callInfo, form);
+            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.Documents);
+            DocumentsOverride(callInfo);
             return callInfo;
         }
 
         [NonAction]
-        partial void NewOrderOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+        partial void GetDocumentsPostOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, WebApplication3.Models.DocumentsParamsViewModel model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult NewOrder()
+        public override System.Web.Mvc.JsonResult GetDocumentsPost(WebApplication3.Models.DocumentsParamsViewModel model)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.NewOrder);
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetDocumentsPost);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            GetDocumentsPostOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void NewOrderOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.PartialViewResult NewOrder()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.NewOrder);
             NewOrderOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void OrdersDraftOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.PartialViewResult OrdersDraft()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.OrdersDraft);
+            OrdersDraftOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void OrdersHistoryOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.PartialViewResult OrdersHistory()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.OrdersHistory);
+            OrdersHistoryOverride(callInfo);
             return callInfo;
         }
 

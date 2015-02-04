@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using WebApplication3.Models;
 
 namespace WebApplication3.Entity
 {
@@ -18,5 +19,6 @@ namespace WebApplication3.Entity
         //    string fullTextFilter,
         //    string whereText);
         object GetLinesJson(JObject jObject);
+        object GetLinesJson(DocumentsParamsViewModel model);
     }
 }

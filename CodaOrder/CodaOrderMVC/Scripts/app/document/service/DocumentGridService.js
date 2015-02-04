@@ -14,8 +14,9 @@
                            transformRequest: function (data, headersGetter) {
                                var headers = headersGetter();
                                //headers['Content-Type'] = 'application/json';
-                               headers['Content-Type'] = 'multipart/form-data';
-                               headers['X-Requested-With'] = 'XMLHttpRequest';
+                               //headers['Content-Type'] = 'multipart/form-data';
+                               headers['Content-Type'] = 'application/x-www-form-urlencoded';
+                               //headers['X-Requested-With'] = 'XMLHttpRequest';
                                var formData = new FormData();
                                formData.append("model", angular.toJson(paramDict))
                                return formData;

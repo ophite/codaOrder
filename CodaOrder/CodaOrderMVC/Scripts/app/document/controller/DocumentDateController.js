@@ -1,4 +1,4 @@
-﻿/// <reference path="~/Scripts/app/common/Constant.js" />
+﻿/// <reference path="~/Scripts/app/Constant.js" />
 /// <reference path="~/Scripts/angular.js" />
 
 (function () {

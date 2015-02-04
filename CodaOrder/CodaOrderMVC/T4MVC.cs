@@ -100,15 +100,44 @@ namespace Links
         private const string URLPATH = "~/Scripts";
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+        public static readonly string angular_animate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-animate.min.js") ? Url("angular-animate.min.js") : Url("angular-animate.js");
+        public static readonly string angular_animate_min_js = Url("angular-animate.min.js");
+        public static readonly string angular_animate_min_js_map = Url("angular-animate.min.js.map");
+        public static readonly string angular_aria_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-aria.min.js") ? Url("angular-aria.min.js") : Url("angular-aria.js");
+        public static readonly string angular_aria_min_js = Url("angular-aria.min.js");
+        public static readonly string angular_aria_min_js_map = Url("angular-aria.min.js.map");
+        public static readonly string angular_cookies_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-cookies.min.js") ? Url("angular-cookies.min.js") : Url("angular-cookies.js");
+        public static readonly string angular_cookies_min_js = Url("angular-cookies.min.js");
+        public static readonly string angular_cookies_min_js_map = Url("angular-cookies.min.js.map");
+        public static readonly string angular_csp_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-csp.min.css") ? Url("angular-csp.min.css") : Url("angular-csp.css");
+             
+        public static readonly string angular_loader_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-loader.min.js") ? Url("angular-loader.min.js") : Url("angular-loader.js");
+        public static readonly string angular_loader_min_js = Url("angular-loader.min.js");
+        public static readonly string angular_loader_min_js_map = Url("angular-loader.min.js.map");
+        public static readonly string angular_messages_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-messages.min.js") ? Url("angular-messages.min.js") : Url("angular-messages.js");
+        public static readonly string angular_messages_min_js = Url("angular-messages.min.js");
+        public static readonly string angular_messages_min_js_map = Url("angular-messages.min.js.map");
         public static readonly string angular_mocks_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-mocks.min.js") ? Url("angular-mocks.min.js") : Url("angular-mocks.js");
+        public static readonly string angular_resource_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-resource.min.js") ? Url("angular-resource.min.js") : Url("angular-resource.js");
+        public static readonly string angular_resource_min_js = Url("angular-resource.min.js");
+        public static readonly string angular_resource_min_js_map = Url("angular-resource.min.js.map");
+        public static readonly string angular_route_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-route.min.js") ? Url("angular-route.min.js") : Url("angular-route.js");
+        public static readonly string angular_route_min_js = Url("angular-route.min.js");
+        public static readonly string angular_route_min_js_map = Url("angular-route.min.js.map");
         public static readonly string angular_sanitize_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-sanitize.min.js") ? Url("angular-sanitize.min.js") : Url("angular-sanitize.js");
         public static readonly string angular_sanitize_min_js = Url("angular-sanitize.min.js");
         public static readonly string angular_sanitize_min_js_map = Url("angular-sanitize.min.js.map");
+        public static readonly string angular_scenario_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-scenario.min.js") ? Url("angular-scenario.min.js") : Url("angular-scenario.js");
+        public static readonly string angular_touch_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-touch.min.js") ? Url("angular-touch.min.js") : Url("angular-touch.js");
+        public static readonly string angular_touch_min_js = Url("angular-touch.min.js");
+        public static readonly string angular_touch_min_js_map = Url("angular-touch.min.js.map");
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public static class angular_ui {
             private const string URLPATH = "~/Scripts/angular-ui";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string angular_ui_router_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-ui-router.min.js") ? Url("angular-ui-router.min.js") : Url("angular-ui-router.js");
+            public static readonly string angular_ui_router_min_js = Url("angular-ui-router.min.js");
             public static readonly string ui_bootstrap_tpls_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ui-bootstrap-tpls.min.js") ? Url("ui-bootstrap-tpls.min.js") : Url("ui-bootstrap-tpls.js");
             public static readonly string ui_bootstrap_tpls_min_js = Url("ui-bootstrap-tpls.min.js");
             public static readonly string ui_bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ui-bootstrap.min.js") ? Url("ui-bootstrap.min.js") : Url("ui-bootstrap.js");
@@ -168,12 +197,12 @@ namespace Links
                 private const string URLPATH = "~/Scripts/app/common";
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-                public static readonly string Constant_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Constant.min.js") ? Url("Constant.min.js") : Url("Constant.js");
                 public static readonly string date_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/date.min.js") ? Url("date.min.js") : Url("date.js");
                 public static readonly string FilterService_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/FilterService.min.js") ? Url("FilterService.min.js") : Url("FilterService.js");
                 public static readonly string ParameterService_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ParameterService.min.js") ? Url("ParameterService.min.js") : Url("ParameterService.js");
             }
         
+            public static readonly string Constant_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Constant.min.js") ? Url("Constant.min.js") : Url("Constant.js");
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
             public static class document {
                 private const string URLPATH = "~/Scripts/app/document";
@@ -1010,6 +1039,14 @@ namespace Links
         public static readonly string bootstrap_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.css") ? Url("bootstrap.min.css") : Url("bootstrap.css");
              
         public static readonly string bootstrap_min_css = Url("bootstrap.min.css");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class img {
+            private const string URLPATH = "~/Content/img";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string logo_png = Url("logo.png");
+        }
+    
         public static readonly string ng_grid_css = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ng-grid.min.css") ? Url("ng-grid.min.css") : Url("ng-grid.css");
              
         public static readonly string ng_grid_min_css = Url("ng-grid.min.css");

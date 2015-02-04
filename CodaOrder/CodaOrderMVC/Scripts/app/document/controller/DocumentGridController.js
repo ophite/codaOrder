@@ -1,4 +1,4 @@
-﻿/// <reference path="~/Scripts/app/common/Constant.js" />
+﻿/// <reference path="~/Scripts/app/Constant.js" />
 /// <reference path="~/Scripts/angular.js" />
 
 (function () {
@@ -82,9 +82,11 @@
                 parameterService.setDocumentParam(ConstantHelper.Document.paramFullTextFilter.value, sqlFilter[ConstantHelper.Document.paramFullTextFilter.value]);
                 parameterService.setDocumentParam(ConstantHelper.Document.paramWhereText.value, sqlFilter[ConstantHelper.Document.paramWhereText.value]);
             }
+
             // params
             var params = parameterService.getDocumentParams();
             params = ConstantHelper.prepareAllDocumentParams(params);
+
             // get docs
             var resPost = getDocuments.getDocs(params, $scope.url_GetDocument).save().$promise.then(function (jsonData) {
                 params[ConstantHelper.Document.paramTotalRows.value] = jsonData[ConstantHelper.Document.paramTotalRows.value];

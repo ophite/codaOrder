@@ -12,6 +12,7 @@ using System.Data.Entity.Core.Objects;
 using Newtonsoft.Json;
 using System.IO;
 using Newtonsoft.Json.Linq;
+using WebApplication3.Models;
 
 namespace WebApplication3.Controllers
 {
@@ -35,35 +36,49 @@ namespace WebApplication3.Controllers
             return View();
         }
 
+        [Authorize]
+        public virtual PartialViewResult Documents()
+        {
+            return PartialView();
+        }
+
+        //[HttpPost]
+        //[ValidateInput(false)]
+        //[Authorize]
+        //public virtual JsonResult GetDocumentsPost(FormCollection form)
+        //{
+        //    var data = form["model"];
+        //    JObject js = (JObject)JsonConvert.DeserializeObject(data);
+        //    return Json(_uow.DocumentRepository.GetLinesJson(js));
+        //}
+
         [HttpPost]
         [ValidateInput(false)]
         [Authorize]
-        public virtual JsonResult GetDocumentsPost(FormCollection form)
+        public virtual JsonResult GetDocumentsPost(DocumentsParamsViewModel model)
         {
-            var data = form["model"];
-            JObject js = (JObject)JsonConvert.DeserializeObject(data);
-            return Json(_uow.DocumentRepository.GetLinesJson(js));
+            return Json(_uow.DocumentRepository.GetLinesJson(model));
         }
 
         [HttpGet]
         [Authorize]
-        public virtual ActionResult NewOrder()
+        public virtual PartialViewResult NewOrder()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpGet]
         [Authorize]
-        public ActionResult OrdersDraft()
+        public virtual PartialViewResult OrdersDraft()
         {
-            return View();
+            return PartialView();
         }
 
         [HttpGet]
         [Authorize]
-        public ActionResult OrdersHistory()
+        public virtual PartialViewResult OrdersHistory()
         {
-            return View();
+            return PartialView();
         }
 
         #endregion

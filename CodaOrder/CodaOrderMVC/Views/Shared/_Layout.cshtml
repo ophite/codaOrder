@@ -4,24 +4,52 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>@ViewBag.Title - My ASP.NET Application</title>
+
     @* css *@
-    @Styles.Render(BundleHelper.CSS)
+    @Styles.Render(Links.Content.bootstrap_css)
+    @Styles.Render(Links.Content.Site_css)
+    @Styles.Render(Links.Content.ng_grid_css)
+    @Styles.Render(Links.Content.angular_grid_custom_css)
+    @Styles.Render(Links.Content.ui_select_css)
 
     @* base *@
-    @Scripts.Render(BundleHelper.MODERNIZR)
-    @Scripts.Render(BundleHelper.JQUERY)
-    @Scripts.Render(BundleHelper.BOOTSTRAP)
-
-    @* helpers *@
-    @Scripts.Render(BundleHelper.LINQ)
+    @Scripts.Render(Links.Scripts.modernizr_2_6_2_js)
+    @Scripts.Render(Links.Scripts.jquery_2_1_1_js)
+    @Scripts.Render(Links.Scripts.jquery_validate_js)
+    @Scripts.Render(Links.Scripts.bootstrap_js)
 
     @* angular *@
-    @Scripts.Render(BundleHelper.ANGULAR)
-    @Scripts.Render(BundleHelper.ANGULAR_UI)
-    @Scripts.Render(BundleHelper.ANGULAR_NG_GRID)
+    @Scripts.Render(Links.Scripts.angular_js)
+    @Scripts.Render(Links.Scripts.angular_source.angular_resource_js)
+    @Scripts.Render(Links.Scripts.angular_source.angular_sanitize_js)
+    @Scripts.Render(Links.Scripts.angular_ui.ui_bootstrap_tpls_js)
+    @Scripts.Render(Links.Scripts.angular_ui.ui_bootstrap_js)
+    @Scripts.Render(Links.Scripts.angular_ui.ui_select_js)
+    @Scripts.Render(Links.Scripts.angular_ui.angular_ui_router_js)
+    @Scripts.Render(Links.Scripts.ng_grid_js)
+
+    @* helpers *@
+    @Scripts.Render(Links.Scripts.linq_js)
+    @Scripts.Render(Links.Scripts.app.Constant_js)
+
+    @* init var instead of magical strings *@
+    <script type="text/javascript">
+        // document
+        ConstantHelper.urlDocuments = "@Url.Action(MVC.Document.ActionNames.Documents, MVC.Document.Name)";
+        ConstantHelper.templateDocuments = "@Url.Action(MVC.Document.ActionNames.Documents, MVC.Document.Name)";
+        // add new order
+        ConstantHelper.urlAddNew = "@Url.Action(MVC.Document.ActionNames.NewOrder, MVC.Document.Name)";
+        ConstantHelper.templateAddNew = "@Url.Action(MVC.Document.ActionNames.NewOrder, MVC.Document.Name)";
+        // orders draft
+        ConstantHelper.urlOrdersDraft = "@Url.Action(MVC.Document.ActionNames.OrdersDraft, MVC.Document.Name)";
+        ConstantHelper.templateOrdersDraft = "@Url.Action(MVC.Document.ActionNames.OrdersDraft, MVC.Document.Name)";
+        // orders history
+        ConstantHelper.urlOrdersHistory = "@Url.Action(MVC.Document.ActionNames.OrdersHistory, MVC.Document.Name)";
+        ConstantHelper.templateOrdersHistory = "@Url.Action(MVC.Document.ActionNames.OrdersHistory, MVC.Document.Name)";
+    </script>
 
     @* angular app *@
-    @Scripts.Render(BundleHelper.APP)
+    @Scripts.Render(Links.Scripts.app.app_js)
     @Scripts.Render(BundleHelper.APP_SUBJECT)
     @Scripts.Render(BundleHelper.APP_DOCUMENT)
     @Scripts.Render(BundleHelper.APP_SEARCH_CODA_OBJECT)
@@ -38,7 +66,8 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Coda order online", MVC.Document.Index().AddRouteValues(new { area = "" }), new { @class = "navbar-brand" })
+                <img src="@Links.Content.img.logo_png" class="img-rounded" />
+                @*@Html.ActionLink("Coda order online", MVC.Document.Index().AddRouteValues(new { area = "" }), new { @class = "navbar-brand" })*@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav navbar-right">
@@ -50,7 +79,7 @@
     <div>
         <div class="col-md-2 column">
             <div class="list-group">
-                @Html.Partial(MVC.Account.Views.LeftMenuLinks)
+                @RenderSection("leftMenu", false)
             </div>
         </div>
         <div class="col-md-10 column">
