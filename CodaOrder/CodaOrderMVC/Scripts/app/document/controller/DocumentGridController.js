@@ -1,10 +1,11 @@
 ﻿/// <reference path="~/Scripts/app/Constant.js" />
 /// <reference path="~/Scripts/angular.js" />
+/// <reference path="~/Scripts/angular-cache.js" />
 
 (function () {
     'use strict';
 
-    function DocumentGridController($scope, $location, getDocuments, filterStrToSql, parameterService) {
+    function DocumentGridController($scope, $location, documentService, filterStrToSql, parameterService, DSCacheFactory) {
 
         $scope.title = 'DocumentGridController';
 
@@ -45,12 +46,15 @@
             //showGroupPanel: true,
             //jqueryUIDraggable: true,
             headerRowHeight: 60, // give room for filter bar
+            enableCellSelection: true,
+            enableRowSelection: false,
+            enableCellEdit: true,
             columnDefs: [
-                { field: 'Amount', displayName: 'Сумма', headerCellTemplate: '../template/filterHeaderTemplate' },
-                { field: 'DocCode', displayName: 'Код док-та', headerCellTemplate: '../template/filterHeaderTemplate' },
-                { field: 'DocDate', displayName: 'Дата док-та', headerCellTemplate: '../template/filterHeaderTemplate' },
-                { field: 'OID', displayName: 'ID', headerCellTemplate: '../template/filterHeaderTemplate' },
-                { field: 'Comments', displayName: 'Комментарий', headerCellTemplate: '../template/filterHeaderTemplate' }
+                { enableCellEdit: true, field: 'Amount', displayName: 'Сумма', headerCellTemplate: '../template/filterHeaderTemplate' },
+                { enableCellEdit: false, field: 'DocCode', displayName: 'Код док-та', headerCellTemplate: '../template/filterHeaderTemplate' },
+                { enableCellEdit: false, field: 'DocDate', displayName: 'Дата док-та', headerCellTemplate: '../template/filterHeaderTemplate' },
+                { enableCellEdit: false, field: 'OID', displayName: 'ID', headerCellTemplate: '../template/filterHeaderTemplate' },
+                { enableCellEdit: false, field: 'Comments', displayName: 'Комментарий', headerCellTemplate: '../template/filterHeaderTemplate' }
             ],
 
             //enablePaging: true,
@@ -59,6 +63,12 @@
             //pagingOptions: $scope.pagingOptions,
             filterOptions: $scope.filterOptions
         }
+
+        $scope.$on('ngGridEventEndCellEdit',
+            function (element) {
+                console.log(element.targetScope.row.entity);
+            }); //focus the input element on 'start cell edit'
+
 
         // pagination
         $scope.setPagingData = function (data, page, pageSize) {
@@ -88,13 +98,27 @@
             params = ConstantHelper.prepareAllDocumentParams(params);
 
             // get docs
-            var resPost = getDocuments.getDocs(params, $scope.url_GetDocument).save().$promise.then(function (jsonData) {
+            var successFunc = function (jsonData) {
+
                 params[ConstantHelper.Document.paramTotalRows.value] = jsonData[ConstantHelper.Document.paramTotalRows.value];
                 params[ConstantHelper.Document.paramPagesCount.value] = jsonData[ConstantHelper.Document.paramPagesCount.value];
                 // change paging
                 $scope.$emit(ConstantHelper.Watchers.setPagingInfo, params);
                 $scope.setPagingData(JSON.parse(jsonData.Documents), params[ConstantHelper.Document.paramCurrentPage.value]);
-            });
+            };
+
+            var defaultCache = DSCacheFactory.get('defaultCache');
+            if (defaultCache.get(angular.toJson(params))) {
+                successFunc(defaultCache.get(angular.toJson(params)))
+            }
+            else {
+                var resPost = documentService.get(params, $scope.url_GetDocument).fn().$promise.then(
+                    function (jsonData) {
+                        var defaultCache = DSCacheFactory.get('defaultCache');
+                        defaultCache.put(angular.toJson(params), jsonData)
+                        successFunc(jsonData);
+                    });
+            }
         });
 
         // test
@@ -103,6 +127,6 @@
         //alert(res);
     }
 
-    DocumentGridController.$inject = ['$scope', '$location', 'getDocuments', 'filterStrToSql', 'parameterService'];
+    DocumentGridController.$inject = ['$scope', '$location', 'documentService', 'filterStrToSql', 'parameterService', 'DSCacheFactory'];
     angular.module('app').controller('DocumentGridController', DocumentGridController);
 })();

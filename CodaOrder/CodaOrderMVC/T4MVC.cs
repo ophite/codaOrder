@@ -106,6 +106,9 @@ namespace Links
         public static readonly string angular_aria_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-aria.min.js") ? Url("angular-aria.min.js") : Url("angular-aria.js");
         public static readonly string angular_aria_min_js = Url("angular-aria.min.js");
         public static readonly string angular_aria_min_js_map = Url("angular-aria.min.js.map");
+        public static readonly string angular_cache_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-cache.min.js") ? Url("angular-cache.min.js") : Url("angular-cache.js");
+        public static readonly string angular_cache_min_js = Url("angular-cache.min.js");
+        public static readonly string angular_cache_min_map = Url("angular-cache.min.map");
         public static readonly string angular_cookies_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-cookies.min.js") ? Url("angular-cookies.min.js") : Url("angular-cookies.js");
         public static readonly string angular_cookies_min_js = Url("angular-cookies.min.js");
         public static readonly string angular_cookies_min_js_map = Url("angular-cookies.min.js.map");
@@ -226,6 +229,7 @@ namespace Links
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                     public static readonly string DateDirecive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/DateDirecive.min.js") ? Url("DateDirecive.min.js") : Url("DateDirecive.js");
+                    public static readonly string LeftMenuLinksDirective_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/LeftMenuLinksDirective.min.js") ? Url("LeftMenuLinksDirective.min.js") : Url("LeftMenuLinksDirective.js");
                 }
             
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

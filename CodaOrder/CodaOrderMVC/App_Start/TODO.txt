@@ -23,3 +23,4 @@ Installed
 -date.js
 -ui-select.js
 -ui-router.js
+-angular-cache

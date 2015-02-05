@@ -20,7 +20,8 @@
         'ngSanitize',
         'ui.select',
         //'ngRoute',
-        'ui.router'
+        'ui.router',
+        'angular-data.DSCacheFactory'
     ])
 
     app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
@@ -47,7 +48,7 @@
         }
     ]);
 
-    app.run(['$rootScope', function ($rootScope) {
+    app.run(['$rootScope', 'DSCacheFactory', function ($rootScope, DSCacheFactory) {
         $rootScope.$on(ConstantHelper.Watchers.startLoadingDocuments, function (event, args) {
             $rootScope.$broadcast(ConstantHelper.Watchers.broadcastStartLoadingDocuments);
         });
@@ -56,6 +57,12 @@
         });
         $rootScope.$on(ConstantHelper.Watchers.setPagingInfo, function (event, args) {
             $rootScope.$broadcast(ConstantHelper.Watchers.broadcastPagingInfoChange, args);
+        });
+
+        DSCacheFactory('defaultCache', {
+            maxAge: 900000, // Items added to this cache expire after 15 minutes.
+            cacheFlushInterval: 6000000, // This cache will clear itself every hour.
+            deleteOnExpire: 'aggressive' // Items will be deleted from this cache right when they expire.
         });
     }]);
 
