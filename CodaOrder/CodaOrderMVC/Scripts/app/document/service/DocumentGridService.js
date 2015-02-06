@@ -8,18 +8,6 @@
             return {
                 get: function (paramDict, url_getDocument) {
 
-                    //var deferred = $q.defer();
-                    //var defaultCache = DSCacheFactory.get('defaultCache');
-                    //if (defaultCache.get(angular.toJson(paramDict))) {
-
-                    //    deferred.resolve(defaultCache.get(angular.toJson(paramDict)));
-                    //    return {
-                    //        fn: function () {
-                    //            return deferred;
-                    //        }
-                    //    };
-                    //}
-
                     return $resource(window.location.origin + url_getDocument, {}, {
                         fn: {
                             method: 'POST',
@@ -41,6 +29,30 @@
                 }
             };
         }]);
+
+    angular.module('app').factory('apiService', ['documentService', 'DSCacheFactory',
+        function (documentService, DSCacheFactory) {
+            return {
+                getDocuments: function (paramDict, url_getDocument, callbackFunc) {
+
+                    var defaultCache = DSCacheFactory.get('defaultCache');
+                    var result = defaultCache.get(angular.toJson(paramDict));
+
+                    if (result) {
+                        callbackFunc(result)
+                    }
+                    else {
+                        var resPost = documentService.get(paramDict, url_getDocument).fn().$promise.then(
+                            function (jsonData) {
+                                var defaultCache = DSCacheFactory.get('defaultCache');
+                                defaultCache.put(angular.toJson(paramDict), jsonData)
+                                callbackFunc(jsonData);
+                            });
+                    }
+                }
+            }
+        }
+    ]);
 
     //angular.module('app').factory('getDocuments', ['$resource',
     //    function ($resource) {

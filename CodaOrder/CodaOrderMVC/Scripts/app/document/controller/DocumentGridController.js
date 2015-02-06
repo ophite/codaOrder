@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    function DocumentGridController($scope, $location, documentService, filterStrToSql, parameterService, DSCacheFactory) {
+    function DocumentGridController($scope, $location, apiService, filterStrToSql, parameterService, DSCacheFactory) {
 
         $scope.title = 'DocumentGridController';
 
@@ -98,27 +98,16 @@
             params = ConstantHelper.prepareAllDocumentParams(params);
 
             // get docs
-            var successFunc = function (jsonData) {
-
+            var callbackFunc = function (jsonData) {
+                // sending params
                 params[ConstantHelper.Document.paramTotalRows.value] = jsonData[ConstantHelper.Document.paramTotalRows.value];
                 params[ConstantHelper.Document.paramPagesCount.value] = jsonData[ConstantHelper.Document.paramPagesCount.value];
-                // change paging
                 $scope.$emit(ConstantHelper.Watchers.setPagingInfo, params);
+                // filling grid
                 $scope.setPagingData(JSON.parse(jsonData.Documents), params[ConstantHelper.Document.paramCurrentPage.value]);
             };
 
-            var defaultCache = DSCacheFactory.get('defaultCache');
-            if (defaultCache.get(angular.toJson(params))) {
-                successFunc(defaultCache.get(angular.toJson(params)))
-            }
-            else {
-                var resPost = documentService.get(params, $scope.url_GetDocument).fn().$promise.then(
-                    function (jsonData) {
-                        var defaultCache = DSCacheFactory.get('defaultCache');
-                        defaultCache.put(angular.toJson(params), jsonData)
-                        successFunc(jsonData);
-                    });
-            }
+            apiService.getDocuments(params, $scope.url_GetDocument, callbackFunc);
         });
 
         // test
@@ -127,6 +116,6 @@
         //alert(res);
     }
 
-    DocumentGridController.$inject = ['$scope', '$location', 'documentService', 'filterStrToSql', 'parameterService', 'DSCacheFactory'];
+    DocumentGridController.$inject = ['$scope', '$location', 'apiService', 'filterStrToSql', 'parameterService'];
     angular.module('app').controller('DocumentGridController', DocumentGridController);
 })();
