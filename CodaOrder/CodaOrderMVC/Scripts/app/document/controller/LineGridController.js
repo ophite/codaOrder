@@ -97,5 +97,5 @@
     }
 
     LineGridController.$inject = ['$scope', '$location', 'apiService', 'filterStrToSql', 'parameterService', 'DSCacheFactory'];
-    angular.module('app').controller('LineGridController', LineGridController);
+    angular.module(ConstantHelper.App).controller('LineGridController', LineGridController);
 })();

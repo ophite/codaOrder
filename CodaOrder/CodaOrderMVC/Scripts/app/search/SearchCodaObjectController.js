@@ -1,4 +1,5 @@
 ﻿/// <reference path="~/Scripts/app/Constant.js" />
+
 (function () {
     'use strict';
 
@@ -37,5 +38,5 @@
     };
 
     SearchCodaObjectController.$inject = ['$scope', '$http', 'searchSubject', 'parameterService'];
-    angular.module('app').controller('SearchCodaObjectController', SearchCodaObjectController);
+    angular.module(ConstantHelper.App).controller('SearchCodaObjectController', SearchCodaObjectController);
 })();

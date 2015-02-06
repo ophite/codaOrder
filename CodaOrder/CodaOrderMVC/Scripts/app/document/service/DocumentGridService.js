@@ -1,9 +1,10 @@
 ﻿/// <reference path="~/Scripts/angular.js" />
+/// <reference path="~/Scripts/app/Constant.js" />
 
 (function () {
     'use strict';
 
-    angular.module('app').factory('documentService', ['$resource', 'DSCacheFactory', '$q',
+    angular.module(ConstantHelper.App).factory('documentService', ['$resource', 'DSCacheFactory', '$q',
         function ($resource, DSCacheFactory, $q) {
             return {
                 get: function (paramDict, urlGetDocument) {
@@ -31,7 +32,7 @@
         }]);
 
 
-    angular.module('app').factory('apiService', ['documentService', 'DSCacheFactory',
+    angular.module(ConstantHelper.App).factory('apiService', ['documentService', 'DSCacheFactory',
         function (documentService, DSCacheFactory) {
             return {
                 getDocuments: function (paramDict, urlGetDocument, callbackFunc) {
@@ -55,7 +56,7 @@
         }
     ]);
 
-    //angular.module('app').factory('getDocuments', ['$resource',
+    //angular.module(ConstantHelper.App).factory('getDocuments', ['$resource',
     //    function ($resource) {
     //        return {
     //            get: function (paramDict) {
@@ -71,5 +72,5 @@
     //        };
     //    }]);
     //getDocuments.$inject = ['$resource'];
-    //angular.module('app').factory('getDocuments', getDocuments);
+    //angular.module(ConstantHelper.App).factory('getDocuments', getDocuments);
 })();

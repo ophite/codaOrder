@@ -135,6 +135,12 @@ namespace WebApplication3.Controllers
         }
 
         [ChildActionOnly]
+        public virtual PartialViewResult Profile()
+        {
+            return PartialView();
+        }
+
+        [ChildActionOnly]
         public virtual PartialViewResult LeftMenuLinks()
         {
             return PartialView();

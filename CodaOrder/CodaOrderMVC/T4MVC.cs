@@ -194,6 +194,21 @@ namespace Links
             private const string URLPATH = "~/Scripts/app";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class account {
+                private const string URLPATH = "~/Scripts/app/account";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class controller {
+                    private const string URLPATH = "~/Scripts/app/account/controller";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    public static readonly string ProfileController_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ProfileController.min.js") ? Url("ProfileController.min.js") : Url("ProfileController.js");
+                }
+            
+            }
+        
             public static readonly string app_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/app.min.js") ? Url("app.min.js") : Url("app.js");
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
             public static class common {
@@ -221,6 +236,7 @@ namespace Links
                     public static readonly string DocumentLoadController_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/DocumentLoadController.min.js") ? Url("DocumentLoadController.min.js") : Url("DocumentLoadController.js");
                     public static readonly string DocumentPaginationController_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/DocumentPaginationController.min.js") ? Url("DocumentPaginationController.min.js") : Url("DocumentPaginationController.js");
                     public static readonly string DocumentTypeController_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/DocumentTypeController.min.js") ? Url("DocumentTypeController.min.js") : Url("DocumentTypeController.js");
+                    public static readonly string LineGridController_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/LineGridController.min.js") ? Url("LineGridController.min.js") : Url("LineGridController.js");
                 }
             
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

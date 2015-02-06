@@ -201,6 +201,7 @@
     <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular-ui\ui-select.js" />
+    <Content Include="Scripts\app\account\controller\ProfileController.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\Constant.js" />
     <Content Include="Scripts\app\common\date.js" />
@@ -1086,6 +1087,7 @@
     <Content Include="Views\Document\OrdersHistory.cshtml" />
     <Content Include="Views\Document\Documents.cshtml" />
     <Content Include="Views\Document\Lines.cshtml" />
+    <Content Include="Views\Account\Profile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

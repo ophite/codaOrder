@@ -70,7 +70,7 @@
         return dict;
     }
 
-    angular.module('app').service('filterStrToSql', function () {
+    angular.module(ConstantHelper.App).service('filterStrToSql', function () {
         this.fn = function (filterStr, columns) {
             return filterStrToSqlFunc(filterStr, columns);
         };

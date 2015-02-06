@@ -2,7 +2,7 @@
 /// <reference path="~/Scripts/app/Constant.js" />
 'use strict';
 
-var app = angular.module('app');
+var app = angular.module(ConstantHelper.App);
 app.controller('DocumentTypeController', ['$scope', 'parameterService', function ($scope, parameterService) {
 
     $scope.disabled = undefined;

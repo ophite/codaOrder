@@ -42,5 +42,5 @@
     };
 
     DocumentDateController.$inject = ['$scope', '$filter', 'parameterService'];
-    angular.module('app').controller('DocumentDateController', DocumentDateController);
+    angular.module(ConstantHelper.App).controller('DocumentDateController', DocumentDateController);
 })();

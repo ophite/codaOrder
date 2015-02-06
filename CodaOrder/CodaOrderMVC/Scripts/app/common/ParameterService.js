@@ -1,6 +1,8 @@
-﻿'use strict';
+﻿/// <reference path="~/Scripts/app/Constant.js" />
 
-var app = angular.module('app');
+'use strict';
+
+var app = angular.module(ConstantHelper.App);
 app.service('parameterService', function () {
 
     var paramDict = {};

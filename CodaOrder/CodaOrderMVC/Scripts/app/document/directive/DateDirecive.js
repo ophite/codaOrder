@@ -4,7 +4,7 @@
 (function () {
     'use strict';
 
-    angular.module('app').directive('dirDatePicker', ["$filter",
+    angular.module(ConstantHelper.App).directive('dirDatePicker', ["$filter",
         function ($filter) {
             return {
                 restrict: 'E',
@@ -32,7 +32,7 @@
         }
     ]);
 
-    angular.module('app').directive('dirDatesValidation', ["$filter",
+    angular.module(ConstantHelper.App).directive('dirDatesValidation', ["$filter",
         function ($filter) {
 
             // help functions

@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    angular.module('app').directive('dirLeftMenuLinks', ["$compile",
+    angular.module(ConstantHelper.App).directive('dirLeftMenuLinks', ["$compile",
         function ($compile) {
             return {
                 restrict: 'E',

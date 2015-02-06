@@ -123,5 +123,5 @@
     }
 
     DocumentGridController.$inject = ['$scope', '$location', 'apiService', 'filterStrToSql', 'parameterService', 'DSCacheFactory'];
-    angular.module('app').controller('DocumentGridController', DocumentGridController);
+    angular.module(ConstantHelper.App).controller('DocumentGridController', DocumentGridController);
 })();

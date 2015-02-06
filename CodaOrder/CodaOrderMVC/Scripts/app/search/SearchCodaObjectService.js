@@ -1,8 +1,10 @@
 ﻿/// <reference path="~/Scripts/angular.js" />
+/// <reference path="~/Scripts/app/Constant.js" />
+
 (function () {
     'use strict';
 
-    angular.module('app').factory('searchSubject', ['$resource',
+    angular.module(ConstantHelper.App).factory('searchSubject', ['$resource',
         function ($resource) {
             return {
                 query: function (textValue, url_searchSubject) {
@@ -35,5 +37,5 @@
     //}
 
     //SearchObject.$inject = ['$resource'];
-    //angular.module('app').factory('SearchObject', SearchObject);
+    //angular.module(ConstantHelper.App).factory('SearchObject', SearchObject);
 })();

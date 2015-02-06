@@ -49,5 +49,5 @@
     }
 
     DocumentPaginationController.$inject = ['$scope', '$log', 'parameterService'];
-    angular.module('app').controller('DocumentPaginationController', DocumentPaginationController);
+    angular.module(ConstantHelper.App).controller('DocumentPaginationController', DocumentPaginationController);
 })();

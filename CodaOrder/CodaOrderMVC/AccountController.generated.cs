@@ -79,6 +79,7 @@ namespace WebApplication3.Controllers
             public readonly string ChangePassword = "ChangePassword";
             public readonly string Logout = "Logout";
             public readonly string TopMenuLinks = "TopMenuLinks";
+            public readonly string Profile = "Profile";
             public readonly string LeftMenuLinks = "LeftMenuLinks";
         }
 
@@ -91,6 +92,7 @@ namespace WebApplication3.Controllers
             public const string ChangePassword = "ChangePassword";
             public const string Logout = "Logout";
             public const string TopMenuLinks = "TopMenuLinks";
+            public const string Profile = "Profile";
             public const string LeftMenuLinks = "LeftMenuLinks";
         }
 
@@ -142,6 +144,7 @@ namespace WebApplication3.Controllers
                 public readonly string ChangePassword = "ChangePassword";
                 public readonly string LeftMenuLinks = "LeftMenuLinks";
                 public readonly string Login = "Login";
+                public readonly string Profile = "Profile";
                 public readonly string Register = "Register";
                 public readonly string TopMenuLinks = "TopMenuLinks";
             }
@@ -149,6 +152,7 @@ namespace WebApplication3.Controllers
             public readonly string ChangePassword = "~/Views/Account/ChangePassword.cshtml";
             public readonly string LeftMenuLinks = "~/Views/Account/LeftMenuLinks.cshtml";
             public readonly string Login = "~/Views/Account/Login.cshtml";
+            public readonly string Profile = "~/Views/Account/Profile.cshtml";
             public readonly string Register = "~/Views/Account/Register.cshtml";
             public readonly string TopMenuLinks = "~/Views/Account/TopMenuLinks.cshtml";
         }
@@ -271,6 +275,17 @@ namespace WebApplication3.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.TopMenuLinks);
             TopMenuLinksOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ProfileOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.PartialViewResult Profile()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.Profile);
+            ProfileOverride(callInfo);
             return callInfo;
         }
 
