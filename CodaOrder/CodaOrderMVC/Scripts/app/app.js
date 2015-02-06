@@ -1,7 +1,6 @@
 ﻿/// <reference path="~/Scripts/app/Constant.js" />
 /// <reference path="~/Scripts/angular.js" />
 
-
 (function () {
     'use strict';
 
@@ -16,7 +15,6 @@
         'ui.bootstrap',
         'ui.bootstrap.tpls',
 
-        // ui-select
         'ngSanitize',
         'ui.select',
         //'ngRoute',
@@ -44,11 +42,16 @@
                 .state(ConstantHelper.router.ordersHistory.name, {
                     url: ConstantHelper.router.ordersHistory.url,
                     templateUrl: ConstantHelper.router.ordersHistory.templateUrl
+                })
+                .state(ConstantHelper.router.lines.name, {
+                    url: ConstantHelper.router.lines.url,
+                    templateUrl: ConstantHelper.router.lines.templateUrl
                 });
         }
     ]);
 
     app.run(['$rootScope', 'DSCacheFactory', function ($rootScope, DSCacheFactory) {
+        // listeners
         $rootScope.$on(ConstantHelper.Watchers.startLoadingDocuments, function (event, args) {
             $rootScope.$broadcast(ConstantHelper.Watchers.broadcastStartLoadingDocuments);
         });
@@ -58,13 +61,11 @@
         $rootScope.$on(ConstantHelper.Watchers.setPagingInfo, function (event, args) {
             $rootScope.$broadcast(ConstantHelper.Watchers.broadcastPagingInfoChange, args);
         });
-
+        // cache
         DSCacheFactory('defaultCache', {
             maxAge: 900000, // Items added to this cache expire after 15 minutes.
             cacheFlushInterval: 6000000, // This cache will clear itself every hour.
             deleteOnExpire: 'aggressive' // Items will be deleted from this cache right when they expire.
         });
     }]);
-
-
 })();

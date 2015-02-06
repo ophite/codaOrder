@@ -24,7 +24,26 @@ namespace WebApplication3.Entity
         //public DocumentRepository() : base() { }
         public DocumentRepository(DbContext dbContext) : base(dbContext) { }
 
-        public object GetLinesJson(DocumentsParamsViewModel model)
+        public object GetLinesJson(string documentID)
+        {
+            long? parentID = CodaUtil.Util.TryParseLong(documentID);
+            ObjectParameter tST = new ObjectParameter("TST", typeof(byte[]));
+            var qLines = ((codaJournal)dbContext).GetLines(parentID, false, false, tST);
+            int index = 0;
+            List<EntityClassSetting> items = new List<EntityClassSetting>();
+            EntityClassSetting item = new EntityClassSetting() { ClassName = "DocTradeLine", Index = ++index, Items = qLines.ToList() };
+            item.Json = JsonConvert.SerializeObject(item.Items);
+            items.Add(item);
+
+            Dictionary<string, string> resultJson = new Dictionary<string, string>()
+            {
+             {ConstantDocument.GridData, items.Where( i => i.Index == 1).Select( i => i.Json).First()},
+            };
+
+            return resultJson;
+        }
+
+        public object GetDocumentsJson(DocumentsParamsViewModel model)
         {
             Func<string, string> jsClassesToSql = (string classes) =>
             {
@@ -134,7 +153,7 @@ namespace WebApplication3.Entity
                 cls.Json = JsonConvert.SerializeObject(cls.Items);
 
             Dictionary<string, object> resultJson = new Dictionary<string, object>() {
-                    {"Documents", items.Where( i => i.Index == 1).Select( i => i.Json).First()},
+                    {ConstantDocument.GridData, items.Where( i => i.Index == 1).Select( i => i.Json).First()},
                     {ConstantDocument.ParamCurrentPage, pageNumber},
                     {ConstantDocument.ParamPagesCount, pages.Value},
                     {ConstantDocument.ParamTotalRows, totalRows.Value},
@@ -147,7 +166,7 @@ namespace WebApplication3.Entity
             return resultJson;
         }
 
-        public object GetLinesJson(JObject jObject)
+        public object GetDocumentsJson(JObject jObject)
         {
             // unpack json object
             DocumentsParamsViewModel model = new DocumentsParamsViewModel();
@@ -159,7 +178,7 @@ namespace WebApplication3.Entity
             model.currentPage = jObject.GetValue(ConstantDocument.ParamCurrentPage).Value<int>();
             model.fullTextFilter = jObject.GetValue(ConstantDocument.ParamFullTextFilter).Value<string>();
             model.whereText = jObject.GetValue(ConstantDocument.ParamWhereText).Value<string>();
-            return GetLinesJson(model);
+            return GetDocumentsJson(model);
         }
 
         //public string GetLinesJson(string subjectID,

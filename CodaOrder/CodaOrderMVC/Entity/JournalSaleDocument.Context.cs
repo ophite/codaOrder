@@ -44,6 +44,7 @@ namespace WebApplication3.Entity
         public virtual DbSet<Subject> Subject { get; set; }
         public virtual DbSet<TaxType> TaxType { get; set; }
         public virtual DbSet<CodaJson> CodaJson { get; set; }
+        public virtual DbSet<DocTradeLine> DocTradeLine { get; set; }
     
         public virtual int JournalSalePaged_GetDocuments_Entity(Nullable<long> oID, string filter, string docOID, Nullable<long> objectID, Nullable<System.DateTime> begDate, Nullable<System.DateTime> endDate, string filterDocClassesXml, string filterStatusXml, Nullable<bool> isExtended, Nullable<bool> showDeleted, Nullable<bool> checkOperation, string securityUser, string securityGroup, Nullable<int> perPage, Nullable<int> pageNumber, string fullTextFilter, string orderFilter, ObjectParameter totalRows, ObjectParameter pages, string whereQuery, string whereQueryTableAlias, ObjectParameter tST)
         {
@@ -418,6 +419,57 @@ namespace WebApplication3.Entity
                 new ObjectParameter("GroupsXMLvarchar", typeof(string));
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<CodaJson>("FindObject", mergeOption, classNameParameter, fieldNameParameter, parentIDParameter, searchStringParameter, showDeletedParameter, topRecordsParameter, groupsXMLvarcharParameter);
+        }
+    
+        public virtual int DocTradeLine_GetChildren(Nullable<long> parentID, Nullable<bool> showDeleted, Nullable<bool> isExtended, ObjectParameter tST)
+        {
+            var parentIDParameter = parentID.HasValue ?
+                new ObjectParameter("ParentID", parentID) :
+                new ObjectParameter("ParentID", typeof(long));
+    
+            var showDeletedParameter = showDeleted.HasValue ?
+                new ObjectParameter("ShowDeleted", showDeleted) :
+                new ObjectParameter("ShowDeleted", typeof(bool));
+    
+            var isExtendedParameter = isExtended.HasValue ?
+                new ObjectParameter("IsExtended", isExtended) :
+                new ObjectParameter("IsExtended", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DocTradeLine_GetChildren", parentIDParameter, showDeletedParameter, isExtendedParameter, tST);
+        }
+    
+        public virtual ObjectResult<DocTradeLine> GetLines(Nullable<long> parentID, Nullable<bool> showDeleted, Nullable<bool> isExtended, ObjectParameter tST)
+        {
+            var parentIDParameter = parentID.HasValue ?
+                new ObjectParameter("ParentID", parentID) :
+                new ObjectParameter("ParentID", typeof(long));
+    
+            var showDeletedParameter = showDeleted.HasValue ?
+                new ObjectParameter("ShowDeleted", showDeleted) :
+                new ObjectParameter("ShowDeleted", typeof(bool));
+    
+            var isExtendedParameter = isExtended.HasValue ?
+                new ObjectParameter("IsExtended", isExtended) :
+                new ObjectParameter("IsExtended", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocTradeLine>("GetLines", parentIDParameter, showDeletedParameter, isExtendedParameter, tST);
+        }
+    
+        public virtual ObjectResult<DocTradeLine> GetLines(Nullable<long> parentID, Nullable<bool> showDeleted, Nullable<bool> isExtended, ObjectParameter tST, MergeOption mergeOption)
+        {
+            var parentIDParameter = parentID.HasValue ?
+                new ObjectParameter("ParentID", parentID) :
+                new ObjectParameter("ParentID", typeof(long));
+    
+            var showDeletedParameter = showDeleted.HasValue ?
+                new ObjectParameter("ShowDeleted", showDeleted) :
+                new ObjectParameter("ShowDeleted", typeof(bool));
+    
+            var isExtendedParameter = isExtended.HasValue ?
+                new ObjectParameter("IsExtended", isExtended) :
+                new ObjectParameter("IsExtended", typeof(bool));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocTradeLine>("GetLines", mergeOption, parentIDParameter, showDeletedParameter, isExtendedParameter, tST);
         }
     }
 }

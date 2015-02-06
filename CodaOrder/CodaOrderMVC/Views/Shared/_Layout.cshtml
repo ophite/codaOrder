@@ -1,4 +1,6 @@
-﻿<!DOCTYPE html>
+﻿@using WebApplication3.Helpers;
+
+<!DOCTYPE html>
 <html ng-app="app">
 <head>
     <meta charset="utf-8" />
@@ -36,6 +38,7 @@
     @* init var instead of magical strings *@
     <script type="text/javascript">
         /// <reference path="~/Scripts/app/Constant.js" />
+
         // document
         ConstantHelper.router.documents.url = "@Url.Action(MVC.Document.ActionNames.Documents, MVC.Document.Name)";
         ConstantHelper.router.documents.templateUrl = "@Url.Action(MVC.Document.ActionNames.Documents, MVC.Document.Name)";
@@ -48,6 +51,24 @@
         // orders history
         ConstantHelper.router.ordersHistory.url = "@Url.Action(MVC.Document.ActionNames.OrdersHistory, MVC.Document.Name)";
         ConstantHelper.router.ordersHistory.templateUrl = "@Url.Action(MVC.Document.ActionNames.OrdersHistory, MVC.Document.Name)";
+        // lines
+        ConstantHelper.router.lines.url = "@Url.Action(MVC.Document.ActionNames.Lines, MVC.Document.Name)";
+        ConstantHelper.router.lines.templateUrl = "@Url.Action(MVC.Document.ActionNames.Lines, MVC.Document.Name)";
+        ConstantHelper.router.lines.urlGetJSON = "@Url.Action(@MVC.Document.ActionNames.GetLines, @MVC.Document.Name)";
+
+        // helpers
+        ConstantHelper.GridData = "@ConstantDocument.GridData";
+        ConstantHelper.Document.paramCurrentPage.value = "@ConstantDocument.ParamCurrentPage";
+        ConstantHelper.Document.paramDateBegin.value = "@ConstantDocument.ParamDateBegin";
+        ConstantHelper.Document.paramDateEnd.value = "@ConstantDocument.ParamDateEnd";
+        ConstantHelper.Document.paramDocTypeClasses.value = "@ConstantDocument.ParamDocTypeClasses";
+        ConstantHelper.Document.paramFullTextFilter.value = "@ConstantDocument.ParamFullTextFilter";
+        ConstantHelper.Document.paramPageNumberCount.value = "@ConstantDocument.ParamPageNumberCount";
+        ConstantHelper.Document.paramPagesCount.value = "@ConstantDocument.ParamPagesCount";
+        ConstantHelper.Document.paramPageSize.value = "@ConstantDocument.ParamPageSize";
+        ConstantHelper.Document.paramSubjectID.value = "@ConstantDocument.ParamSubjectID";
+        ConstantHelper.Document.paramTotalRows.value = "@ConstantDocument.ParamTotalRows";
+        ConstantHelper.Document.paramWhereText.value = "@ConstantDocument.ParamWhereText";
     </script>
 
     @* angular app *@

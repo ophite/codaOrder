@@ -1,0 +1,26 @@
+﻿@model IEnumerable<WebApplication3.Entity.DocTradeLine>
+
+<div ng-controller="DocumentLoadController">
+    <button class="btn btn-success" ng-click="refresh()">Refresh</button>
+</div>
+
+<div ng-controller="LineGridController">
+    <div class="gridStyle" ng-grid="gridOptions" />
+</div>
+
+<div ng-controller="DocumentPaginationController">
+    <pagination num-pages="numPages"
+                total-items="totalRows"
+                ng-model="currentPage"
+                items-per-page="pageSize"
+                max-size="pageNumberCounts"
+                class="pagination-sm"
+                boundary-links="true"
+                rotate="false"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;"
+                first-text="&laquo;"
+                last-text="&raquo;"
+                ng-change="pageChanged()">
+    </pagination>
+</div>

@@ -14,6 +14,7 @@
                 link: function (scope, element, attrs) {
 
                     var template = Enumerable.From(ConstantHelper.router)
+                        .Where(function (x) { return x.Value.isMenu === true })
                         .OrderBy(function (x) { return x.Value.order })
                         .Select(function (x) { return '<a ui-sref="' + x.Value.name + '" class="list-group-item">' + x.Value.fullName + '</a>' })
                         .Aggregate(function (a, b) { return a + b });

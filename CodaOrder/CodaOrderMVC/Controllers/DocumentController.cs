@@ -42,6 +42,12 @@ namespace WebApplication3.Controllers
             return PartialView();
         }
 
+        [Authorize]
+        public virtual PartialViewResult Lines()
+        {
+            return PartialView();
+        }
+
         //[HttpPost]
         //[ValidateInput(false)]
         //[Authorize]
@@ -57,7 +63,15 @@ namespace WebApplication3.Controllers
         [Authorize]
         public virtual JsonResult GetDocumentsPost(DocumentsParamsViewModel model)
         {
-            return Json(_uow.DocumentRepository.GetLinesJson(model));
+            return Json(_uow.DocumentRepository.GetDocumentsJson(model));
+        }
+
+        [HttpPost]
+        [ValidateInput(false)]
+        [Authorize]
+        public virtual JsonResult GetLines(string documentID)
+        {
+            return Json(_uow.DocumentRepository.GetLinesJson(documentID));
         }
 
         [HttpGet]

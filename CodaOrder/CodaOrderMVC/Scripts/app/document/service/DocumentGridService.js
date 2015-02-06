@@ -6,9 +6,9 @@
     angular.module('app').factory('documentService', ['$resource', 'DSCacheFactory', '$q',
         function ($resource, DSCacheFactory, $q) {
             return {
-                get: function (paramDict, url_getDocument) {
+                get: function (paramDict, urlGetDocument) {
 
-                    return $resource(window.location.origin + url_getDocument, {}, {
+                    return $resource(window.location.origin + urlGetDocument, {}, {
                         fn: {
                             method: 'POST',
                             params: paramDict,
@@ -26,14 +26,15 @@
                             cache: true
                         }
                     });
-                }
+                },
             };
         }]);
+
 
     angular.module('app').factory('apiService', ['documentService', 'DSCacheFactory',
         function (documentService, DSCacheFactory) {
             return {
-                getDocuments: function (paramDict, url_getDocument, callbackFunc) {
+                getDocuments: function (paramDict, urlGetDocument, callbackFunc) {
 
                     var defaultCache = DSCacheFactory.get('defaultCache');
                     var result = defaultCache.get(angular.toJson(paramDict));
@@ -42,7 +43,7 @@
                         callbackFunc(result)
                     }
                     else {
-                        var resPost = documentService.get(paramDict, url_getDocument).fn().$promise.then(
+                        var resPost = documentService.get(paramDict, urlGetDocument).fn().$promise.then(
                             function (jsonData) {
                                 var defaultCache = DSCacheFactory.get('defaultCache');
                                 defaultCache.put(angular.toJson(paramDict), jsonData)

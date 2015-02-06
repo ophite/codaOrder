@@ -7,6 +7,9 @@ namespace WebApplication3.Helpers
 {
     public class ConstantDocument
     {
+        // helpers
+        public static string GridData = "gridData";
+
         public static string ParamSubjectID = "subjectID";
         public static string ParamDateBegin = "dateBegin";
         public static string ParamDateEnd = "dateEnd";

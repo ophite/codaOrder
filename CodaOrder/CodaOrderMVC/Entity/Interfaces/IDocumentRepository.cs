@@ -18,7 +18,8 @@ namespace WebApplication3.Entity
         //    int currentPage,
         //    string fullTextFilter,
         //    string whereText);
-        object GetLinesJson(JObject jObject);
-        object GetLinesJson(DocumentsParamsViewModel model);
+        object GetDocumentsJson(JObject jObject);
+        object GetDocumentsJson(DocumentsParamsViewModel model);
+        object GetLinesJson(string documentID);
     }
 }

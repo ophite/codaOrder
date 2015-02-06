@@ -206,6 +206,7 @@
     <Content Include="Scripts\app\common\date.js" />
     <Content Include="Scripts\app\common\FilterService.js" />
     <Content Include="Scripts\app\common\ParameterService.js" />
+    <Content Include="Scripts\app\document\controller\LineGridController.js" />
     <Content Include="Scripts\app\document\directive\DateDirecive.js" />
     <Content Include="Scripts\app\document\controller\DocumentDateController.js" />
     <Content Include="Scripts\app\document\controller\DocumentGridController.js" />
@@ -1084,6 +1085,7 @@
     <Content Include="Views\Document\OrdersDraft.cshtml" />
     <Content Include="Views\Document\OrdersHistory.cshtml" />
     <Content Include="Views\Document\Documents.cshtml" />
+    <Content Include="Views\Document\Lines.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1144,6 +1146,9 @@
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\DocBoxLine.cs">
+      <DependentUpon>JournalSaleDocument.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Entity\DocTradeLine.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
     <Compile Include="Entity\Employee.cs">

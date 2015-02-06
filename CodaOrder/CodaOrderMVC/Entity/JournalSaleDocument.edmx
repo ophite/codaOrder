@@ -295,6 +295,31 @@ warning 6002: The table/view 'coda.dbo.DocBoxLine' does not have a primary key d
           <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
         </EntityType>
         <!--Errors Found During Generation:
+warning 6002: The table/view 'coda.dbo.DocTradeLine' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="DocTradeLine">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="bigint" Nullable="false" />
+          <Property Name="CID" Type="int" />
+          <Property Name="Available" Type="money" Nullable="false" />
+          <Property Name="BasePrice" Type="money" Nullable="false" />
+          <Property Name="CasefillrateID" Type="bigint" />
+          <Property Name="CostSum" Type="money" Nullable="false" />
+          <Property Name="CustomPrice" Type="money" />
+          <Property Name="Discount" Type="money" Nullable="false" />
+          <Property Name="DocID" Type="bigint" Nullable="false" />
+          <Property Name="IconIndex" Type="int" Nullable="false" />
+          <Property Name="ItemID" Type="bigint" Nullable="false" />
+          <Property Name="Ordered" Type="money" Nullable="false" />
+          <Property Name="Price" Type="money" Nullable="false" />
+          <Property Name="Quantity" Type="money" Nullable="false" />
+          <Property Name="SortNO" Type="varchar" MaxLength="32" />
+          <Property Name="TST" Type="timestamp" StoreGeneratedPattern="Computed" Nullable="false" />
+          <Property Name="VatPercent" Type="money" Nullable="false" />
+          <Property Name="VatSum" Type="money" Nullable="false" />
+        </EntityType>
+        <!--Errors Found During Generation:
 warning 6002: The table/view 'coda.dbo.Employee' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
         <EntityType Name="Employee">
           <Key>
@@ -573,6 +598,12 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
           <Parameter Name="TopRecords" Type="int" Mode="In" />
           <Parameter Name="GroupsXMLvarchar" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="DocTradeLine_GetChildren" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ParentID" Type="bigint" Mode="In" />
+          <Parameter Name="ShowDeleted" Type="bit" Mode="In" />
+          <Parameter Name="IsExtended" Type="bit" Mode="In" />
+          <Parameter Name="TST" Type="binary" Mode="InOut" />
+        </Function>
         <Function Name="JournalSalePaged_GetDocuments_Entity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="OID" Type="bigint" Mode="In" />
           <Parameter Name="Filter" Type="xml" Mode="In" />
@@ -797,6 +828,28 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
     [DocBoxLine].[RemoveDate] AS [RemoveDate], 
     [DocBoxLine].[TST] AS [TST]
     FROM [dbo].[DocBoxLine] AS [DocBoxLine]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="DocTradeLine" EntityType="Self.DocTradeLine" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [DocTradeLine].[OID] AS [OID], 
+    [DocTradeLine].[CID] AS [CID], 
+    [DocTradeLine].[Available] AS [Available], 
+    [DocTradeLine].[BasePrice] AS [BasePrice], 
+    [DocTradeLine].[CasefillrateID] AS [CasefillrateID], 
+    [DocTradeLine].[CostSum] AS [CostSum], 
+    [DocTradeLine].[CustomPrice] AS [CustomPrice], 
+    [DocTradeLine].[Discount] AS [Discount], 
+    [DocTradeLine].[DocID] AS [DocID], 
+    [DocTradeLine].[IconIndex] AS [IconIndex], 
+    [DocTradeLine].[ItemID] AS [ItemID], 
+    [DocTradeLine].[Ordered] AS [Ordered], 
+    [DocTradeLine].[Price] AS [Price], 
+    [DocTradeLine].[Quantity] AS [Quantity], 
+    [DocTradeLine].[SortNO] AS [SortNO], 
+    [DocTradeLine].[TST] AS [TST], 
+    [DocTradeLine].[VatPercent] AS [VatPercent], 
+    [DocTradeLine].[VatSum] AS [VatSum]
+    FROM [dbo].[DocTradeLine] AS [DocTradeLine]</DefiningQuery>
           </EntitySet>
           <EntitySet Name="Employee" EntityType="Self.Employee" store:Type="Views" store:Schema="dbo">
             <DefiningQuery>SELECT 
@@ -1514,6 +1567,19 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
             <Parameter Name="GroupsXMLvarchar" Mode="In" Type="String" />
           </FunctionImport>
           <EntitySet Name="CodaJson" EntityType="JournalSaleDocument.CodaJson" />
+          <EntitySet Name="DocTradeLine" EntityType="JournalSaleDocument.DocTradeLine" />
+          <FunctionImport Name="DocTradeLine_GetChildren">
+            <Parameter Name="ParentID" Mode="In" Type="Int64" />
+            <Parameter Name="ShowDeleted" Mode="In" Type="Boolean" />
+            <Parameter Name="IsExtended" Mode="In" Type="Boolean" />
+            <Parameter Name="TST" Mode="InOut" Type="Binary" />
+          </FunctionImport>
+          <FunctionImport Name="GetLines" EntitySet="DocTradeLine" ReturnType="Collection(JournalSaleDocument.DocTradeLine)">
+            <Parameter Name="ParentID" Mode="In" Type="Int64" />
+            <Parameter Name="ShowDeleted" Mode="In" Type="Boolean" />
+            <Parameter Name="IsExtended" Mode="In" Type="Boolean" />
+            <Parameter Name="TST" Mode="InOut" Type="Binary" />
+          </FunctionImport>
         </EntityContainer>
         <EntityType Name="CodaJson">
           <Key>
@@ -1521,6 +1587,28 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
           </Key>
           <Property Name="OID" Type="Int64" Nullable="false" />
           <Property Name="FullName" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="DocTradeLine">
+          <Key>
+            <PropertyRef Name="OID" />
+          </Key>
+          <Property Name="OID" Type="Int64" Nullable="false" />
+          <Property Name="CID" Type="Int32" />
+          <Property Name="Available" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="BasePrice" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CasefillrateID" Type="Int64" />
+          <Property Name="CostSum" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="CustomPrice" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="Discount" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="DocID" Type="Int64" Nullable="false" />
+          <Property Name="IconIndex" Type="Int32" Nullable="false" />
+          <Property Name="ItemID" Type="Int64" Nullable="false" />
+          <Property Name="Ordered" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Price" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="Quantity" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="SortNO" Type="String" MaxLength="32" FixedLength="false" Unicode="false" />
+          <Property Name="VatPercent" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
+          <Property Name="VatSum" Type="Decimal" Nullable="false" Precision="19" Scale="4" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -1968,6 +2056,31 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="DocTradeLine">
+            <EntityTypeMapping TypeName="JournalSaleDocument.DocTradeLine">
+              <MappingFragment StoreEntitySet="DocTradeLine">
+                <ScalarProperty Name="VatSum" ColumnName="VatSum" />
+                <ScalarProperty Name="VatPercent" ColumnName="VatPercent" />
+                <ScalarProperty Name="SortNO" ColumnName="SortNO" />
+                <ScalarProperty Name="Quantity" ColumnName="Quantity" />
+                <ScalarProperty Name="Price" ColumnName="Price" />
+                <ScalarProperty Name="Ordered" ColumnName="Ordered" />
+                <ScalarProperty Name="ItemID" ColumnName="ItemID" />
+                <ScalarProperty Name="IconIndex" ColumnName="IconIndex" />
+                <ScalarProperty Name="DocID" ColumnName="DocID" />
+                <ScalarProperty Name="Discount" ColumnName="Discount" />
+                <ScalarProperty Name="CustomPrice" ColumnName="CustomPrice" />
+                <ScalarProperty Name="CostSum" ColumnName="CostSum" />
+                <ScalarProperty Name="CasefillrateID" ColumnName="CasefillrateID" />
+                <ScalarProperty Name="BasePrice" ColumnName="BasePrice" />
+                <ScalarProperty Name="Available" ColumnName="Available" />
+                <ScalarProperty Name="CID" ColumnName="CID" />
+                <ScalarProperty Name="OID" ColumnName="OID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="DocTradeLine_GetChildren" FunctionName="JournalSaleDocument.Store.DocTradeLine_GetChildren" />
+          <FunctionImportMapping FunctionImportName="GetLines" FunctionName="JournalSaleDocument.Store.DocTradeLine_GetChildren" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

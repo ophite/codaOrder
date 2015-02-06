@@ -5,6 +5,7 @@ var ConstantHelper = new function () {
     // document
     this.router = {
         documents: {
+            isMenu: true,
             order: 1,
             name: "documents",
             fullName: "documents",
@@ -12,6 +13,7 @@ var ConstantHelper = new function () {
             templateUrl: ""
         },
         newOrder: {
+            isMenu: true,
             order: 2,
             name: "newOrder",
             fullName: "new order",
@@ -19,6 +21,7 @@ var ConstantHelper = new function () {
             templateUrl: ""
         },
         ordersDraft: {
+            isMenu: true,
             order: 3,
             name: "ordersDraft",
             fullName: "orders draft",
@@ -26,11 +29,21 @@ var ConstantHelper = new function () {
             templateUrl: ""
         },
         ordersHistory: {
+            isMenu: true,
             order: 4,
             name: "ordersHistory",
             fullName: "orders history",
             url: "",
             templateUrl: ""
+        },
+        lines: {
+            isMenu: false,
+            order: 1,
+            name: "lines",
+            fullName: "lines",
+            url: "",
+            templateUrl: "",
+            urlGetJSON: "",
         },
     };
 
@@ -43,51 +56,54 @@ var ConstantHelper = new function () {
         this.broadcastPagingInfoChange = 'broadcastPagingInfoChange';
     };
 
+    this.GridData = '';
+    this.DocumentID = 'documentID';
+
     this.Document = new function () {
         this.paramSubjectID = {
-            value: 'subjectID',
+            value: '',
             default: ''
         };
         this.paramDateBegin = {
-            value: 'dateBegin',
+            value: '',
             default: ''
         };
         this.paramDateEnd = {
-            value: 'dateEnd',
+            value: '',
             default: ''
         };
         this.paramDocTypeClasses = {
-            value: 'docTypeClasses',
+            value: '',
             default: ''
         };
         // paging
         this.paramPagesCount = {
-            value: 'pagesCount',
+            value: '',
             default: '1'
         };
         this.paramPageSize = {
-            value: 'pageSize',
+            value: '',
             default: '20'
         };
         this.paramPageNumberCount = {
-            value: 'pageNumberCount',
+            value: '',
             default: '5'
         };
         this.paramCurrentPage = {
-            value: 'currentPage',
+            value: '',
             default: '1'
         };
         this.paramTotalRows = {
-            value: 'totalRows',
+            value: '',
             default: '0'
         };
         // filtering
         this.paramFullTextFilter = {
-            value: 'fullTextFilter',
+            value: '',
             default: ''
         };
         this.paramWhereText = {
-            value: 'whereText',
+            value: '',
             default: ''
         };
     };

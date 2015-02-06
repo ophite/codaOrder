@@ -22,6 +22,7 @@
         <EntityTypeShape EntityType="JournalSaleDocument.Subject" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JournalSaleDocument.TaxType" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="JournalSaleDocument.CodaJson" Width="1.5" PointX="7.375" PointY="12.75" />
+        <EntityTypeShape EntityType="JournalSaleDocument.DocTradeLine" Width="1.5" PointX="13.375" PointY="3.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

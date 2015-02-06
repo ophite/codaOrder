@@ -40,8 +40,7 @@
 </div>
 
 <div ng-controller="DocumentGridController" ng-init="init('@Url.Action(@MVC.Document.ActionNames.GetDocumentsPost, @MVC.Document.Name)')">
-    <div class="gridStyle" ng-grid="gridOptions">
-    </div>
+    <div class="gridStyle" ng-grid="gridOptions" />
 </div>
 
 <div ng-controller="DocumentPaginationController">

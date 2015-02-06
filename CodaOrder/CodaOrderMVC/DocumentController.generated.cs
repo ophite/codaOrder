@@ -62,6 +62,12 @@ namespace WebApplication3.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.JsonResult GetLines()
+        {
+            return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetLines);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult Details()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Details);
@@ -102,7 +108,9 @@ namespace WebApplication3.Controllers
         {
             public readonly string Index = "Index";
             public readonly string Documents = "Documents";
+            public readonly string Lines = "Lines";
             public readonly string GetDocumentsPost = "GetDocumentsPost";
+            public readonly string GetLines = "GetLines";
             public readonly string NewOrder = "NewOrder";
             public readonly string OrdersDraft = "OrdersDraft";
             public readonly string OrdersHistory = "OrdersHistory";
@@ -118,7 +126,9 @@ namespace WebApplication3.Controllers
         {
             public const string Index = "Index";
             public const string Documents = "Documents";
+            public const string Lines = "Lines";
             public const string GetDocumentsPost = "GetDocumentsPost";
+            public const string GetLines = "GetLines";
             public const string NewOrder = "NewOrder";
             public const string OrdersDraft = "OrdersDraft";
             public const string OrdersHistory = "OrdersHistory";
@@ -137,6 +147,14 @@ namespace WebApplication3.Controllers
         public class ActionParamsClass_GetDocumentsPost
         {
             public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_GetLines s_params_GetLines = new ActionParamsClass_GetLines();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_GetLines GetLinesParams { get { return s_params_GetLines; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_GetLines
+        {
+            public readonly string documentID = "documentID";
         }
         static readonly ActionParamsClass_NewOrder s_params_NewOrder = new ActionParamsClass_NewOrder();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -203,6 +221,7 @@ namespace WebApplication3.Controllers
                 public readonly string Documents = "Documents";
                 public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
+                public readonly string Lines = "Lines";
                 public readonly string NewOrder = "NewOrder";
                 public readonly string OrdersDraft = "OrdersDraft";
                 public readonly string OrdersHistory = "OrdersHistory";
@@ -213,6 +232,7 @@ namespace WebApplication3.Controllers
             public readonly string Documents = "~/Views/Document/Documents.cshtml";
             public readonly string Edit = "~/Views/Document/Edit.cshtml";
             public readonly string Index = "~/Views/Document/Index.cshtml";
+            public readonly string Lines = "~/Views/Document/Lines.cshtml";
             public readonly string NewOrder = "~/Views/Document/NewOrder.cshtml";
             public readonly string OrdersDraft = "~/Views/Document/OrdersDraft.cshtml";
             public readonly string OrdersHistory = "~/Views/Document/OrdersHistory.cshtml";
@@ -247,6 +267,17 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
+        partial void LinesOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.PartialViewResult Lines()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.Lines);
+            LinesOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
         partial void GetDocumentsPostOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, WebApplication3.Models.DocumentsParamsViewModel model);
 
         [NonAction]
@@ -255,6 +286,18 @@ namespace WebApplication3.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetDocumentsPost);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             GetDocumentsPostOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void GetLinesOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, string documentID);
+
+        [NonAction]
+        public override System.Web.Mvc.JsonResult GetLines(string documentID)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetLines);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "documentID", documentID);
+            GetLinesOverride(callInfo, documentID);
             return callInfo;
         }
 
