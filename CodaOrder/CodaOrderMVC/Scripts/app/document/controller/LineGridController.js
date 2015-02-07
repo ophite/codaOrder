@@ -5,9 +5,12 @@
 (function () {
     'use strict';
 
-    function LineGridController($scope, $location, apiService, filterStrToSql, parameterService, DSCacheFactory) {
+    function LineGridController($scope, $location, apiService, filterStrToSql, parameterService, DSCacheFactory, $routeParams, $urlRouterProvider) {
 
-        $scope.model = {};
+        $scope.model = {
+            isEditable: false,
+            isDirty: false,
+        };
 
         // filter plugin
         var filterBarPlugin = {
@@ -48,15 +51,18 @@
             headerRowHeight: 60, // give room for filter bar
             enableCellSelection: true,
             enableRowSelection: false,
-            enableCellEdit: true,
+            //enableCellEdit: false,
             columnDefs: [
                 { enableCellEdit: false, field: 'OID', displayName: 'ID', headerCellTemplate: '../template/filterHeaderTemplate' },
                 { enableCellEdit: false, field: 'ItemID', displayName: 'Товар ID', headerCellTemplate: '../template/filterHeaderTemplate' },
-                { enableCellEdit: true, field: 'Quantity', displayName: 'Количество', headerCellTemplate: '../template/filterHeaderTemplate' },
                 { enableCellEdit: false, field: 'SortNO', displayName: 'Сортировка', headerCellTemplate: '../template/filterHeaderTemplate' },
                 { enableCellEdit: false, field: 'Price', displayName: 'Цена', headerCellTemplate: '../template/filterHeaderTemplate' },
+                {
+                    enableCellEdit: true, field: 'Quantity', displayName: 'Количество', headerCellTemplate: '../template/filterHeaderTemplate',
+                    cellTemplate: '<div class="ngCellText" ng-class="{isDirtyCell: row.entity.Quantity != row.entity.Ordered}"><span ng-cell-text>{{row.getProperty(col.field)}}</span></div>',
+                },
             ],
-
+            //$scope.model.isEditable,
             //enablePaging: true,
             showFooter: false,
             //totalServerItems: 'totalServerItems',
@@ -67,6 +73,7 @@
         $scope.$on('ngGridEventEndCellEdit',
             function (element) {
                 console.log(element.targetScope.row.entity);
+                $scope.model.isDirty = true;
             }); //focus the input element on 'start cell edit'
 
 
@@ -78,8 +85,7 @@
         };
 
         // listeners
-        var defaultCache = DSCacheFactory.get('defaultCache');
-        var documentID = defaultCache.get(ConstantHelper.DocumentID);
+        var documentID = $routeParams.documentID;
         if (documentID) {
 
             // params
@@ -88,14 +94,21 @@
 
             var callbackFunc = function (jsonData) {
                 $scope.setPagingData(JSON.parse(jsonData[ConstantHelper.GridData]), params[ConstantHelper.Document.paramCurrentPage.value]);
+                $scope.model.isEditable = JSON.parse(String(jsonData[ConstantHelper.IsEditable]).toLowerCase());
+                $scope.gridOptions.columnDefs[4].enableCellEdit = true;
             }
 
             var paramDict = {};
             paramDict[ConstantHelper.DocumentID] = documentID;
             apiService.getDocuments(paramDict, ConstantHelper.router.lines.urlGetJSON, callbackFunc);
         }
+
+        //api
+        $scope.saveDocument = function () {
+            console.log('save');
+        };
     }
 
-    LineGridController.$inject = ['$scope', '$location', 'apiService', 'filterStrToSql', 'parameterService', 'DSCacheFactory'];
+    LineGridController.$inject = ['$scope', '$location', 'apiService', 'filterStrToSql', 'parameterService', 'DSCacheFactory', '$routeParams', '$urlRouterProvider'];
     angular.module(ConstantHelper.App).controller('LineGridController', LineGridController);
 })();

@@ -58,6 +58,7 @@ var ConstantHelper = new function () {
 
     this.GridData = '';
     this.DocumentID = 'documentID';
+    this.IsEditable = '';
     this.App = 'app';
 
     this.Document = new function () {

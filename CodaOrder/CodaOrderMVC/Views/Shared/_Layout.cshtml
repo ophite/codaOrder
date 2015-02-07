@@ -27,6 +27,7 @@
     @Scripts.Render(Links.Scripts.angular_ui.ui_bootstrap_tpls_js)
     @Scripts.Render(Links.Scripts.angular_ui.ui_bootstrap_js)
     @Scripts.Render(Links.Scripts.angular_ui.ui_select_js)
+    @Scripts.Render(Links.Scripts.angular_route_js)
     @Scripts.Render(Links.Scripts.angular_ui.angular_ui_router_js)
     @Scripts.Render(Links.Scripts.ng_grid_js)
 
@@ -52,12 +53,13 @@
         ConstantHelper.router.ordersHistory.url = "@Url.Action(MVC.Document.ActionNames.OrdersHistory, MVC.Document.Name)";
         ConstantHelper.router.ordersHistory.templateUrl = "@Url.Action(MVC.Document.ActionNames.OrdersHistory, MVC.Document.Name)";
         // lines
-        ConstantHelper.router.lines.url = "@Url.Action(MVC.Document.ActionNames.Lines, MVC.Document.Name)";
+        ConstantHelper.router.lines.url = "@Url.Action(MVC.Document.ActionNames.Lines, MVC.Document.Name, new { documentID = ""})";
         ConstantHelper.router.lines.templateUrl = "@Url.Action(MVC.Document.ActionNames.Lines, MVC.Document.Name)";
         ConstantHelper.router.lines.urlGetJSON = "@Url.Action(@MVC.Document.ActionNames.GetLines, @MVC.Document.Name)";
 
         // helpers
         ConstantHelper.GridData = "@ConstantDocument.GridData";
+        ConstantHelper.IsEditable = "@ConstantDocument.IsEditable";
         ConstantHelper.Document.paramCurrentPage.value = "@ConstantDocument.ParamCurrentPage";
         ConstantHelper.Document.paramDateBegin.value = "@ConstantDocument.ParamDateBegin";
         ConstantHelper.Document.paramDateEnd.value = "@ConstantDocument.ParamDateEnd";

@@ -9,6 +9,7 @@ namespace WebApplication3.Helpers
     {
         // helpers
         public static string GridData = "gridData";
+        public static string IsEditable = "isEditable";
 
         public static string ParamSubjectID = "subjectID";
         public static string ParamDateBegin = "dateBegin";

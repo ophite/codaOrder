@@ -38,6 +38,7 @@ namespace WebApplication3.Entity
             Dictionary<string, string> resultJson = new Dictionary<string, string>()
             {
              {ConstantDocument.GridData, items.Where( i => i.Index == 1).Select( i => i.Json).First()},
+             {ConstantDocument.IsEditable, true.ToString()}
             };
 
             return resultJson;
