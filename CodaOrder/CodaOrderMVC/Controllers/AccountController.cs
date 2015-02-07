@@ -135,7 +135,7 @@ namespace WebApplication3.Controllers
         }
 
         [ChildActionOnly]
-        public virtual PartialViewResult Profile()
+        public virtual PartialViewResult UserProfile()
         {
             return PartialView();
         }

@@ -79,7 +79,7 @@ namespace WebApplication3.Controllers
             public readonly string ChangePassword = "ChangePassword";
             public readonly string Logout = "Logout";
             public readonly string TopMenuLinks = "TopMenuLinks";
-            public readonly string Profile = "Profile";
+            public readonly string UserProfile = "UserProfile";
             public readonly string LeftMenuLinks = "LeftMenuLinks";
         }
 
@@ -92,7 +92,7 @@ namespace WebApplication3.Controllers
             public const string ChangePassword = "ChangePassword";
             public const string Logout = "Logout";
             public const string TopMenuLinks = "TopMenuLinks";
-            public const string Profile = "Profile";
+            public const string UserProfile = "UserProfile";
             public const string LeftMenuLinks = "LeftMenuLinks";
         }
 
@@ -144,17 +144,17 @@ namespace WebApplication3.Controllers
                 public readonly string ChangePassword = "ChangePassword";
                 public readonly string LeftMenuLinks = "LeftMenuLinks";
                 public readonly string Login = "Login";
-                public readonly string Profile = "Profile";
                 public readonly string Register = "Register";
                 public readonly string TopMenuLinks = "TopMenuLinks";
+                public readonly string UserProfile = "UserProfile";
             }
             public readonly string AddNewUser = "~/Views/Account/AddNewUser.cshtml";
             public readonly string ChangePassword = "~/Views/Account/ChangePassword.cshtml";
             public readonly string LeftMenuLinks = "~/Views/Account/LeftMenuLinks.cshtml";
             public readonly string Login = "~/Views/Account/Login.cshtml";
-            public readonly string Profile = "~/Views/Account/Profile.cshtml";
             public readonly string Register = "~/Views/Account/Register.cshtml";
             public readonly string TopMenuLinks = "~/Views/Account/TopMenuLinks.cshtml";
+            public readonly string UserProfile = "~/Views/Account/UserProfile.cshtml";
         }
     }
 
@@ -279,13 +279,13 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void ProfileOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
+        partial void UserProfileOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.PartialViewResult Profile()
+        public override System.Web.Mvc.PartialViewResult UserProfile()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.Profile);
-            ProfileOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.UserProfile);
+            UserProfileOverride(callInfo);
             return callInfo;
         }
 

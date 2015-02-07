@@ -1087,7 +1087,7 @@
     <Content Include="Views\Document\OrdersHistory.cshtml" />
     <Content Include="Views\Document\Documents.cshtml" />
     <Content Include="Views\Document\Lines.cshtml" />
-    <Content Include="Views\Account\Profile.cshtml" />
+    <Content Include="Views\Account\UserProfile.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
