@@ -17,15 +17,20 @@
 
         'ngSanitize',
         'ui.select',
-        //'ngRoute',
+        'ngRoute',
         'ui.router',
         'angular-data.DSCacheFactory'
     ])
 
     app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         function ($stateProvider, $urlRouterProvider, $locationProvider) {
-
+           
             //$urlRouterProvider.otherwise('Account/Login');
+            $locationProvider.html5Mode({
+                enabled: false,
+                requireBase: false
+            });
+            $locationProvider.hashPrefix('!');
             $stateProvider
                 .state(ConstantHelper.router.documents.name, {
                     url: ConstantHelper.router.documents.url,
@@ -44,7 +49,7 @@
                     templateUrl: ConstantHelper.router.ordersHistory.templateUrl
                 })
                 .state(ConstantHelper.router.lines.name, {
-                    url: ConstantHelper.router.lines.url,
+                    url: ConstantHelper.router.lines.url + '/:documentID',
                     templateUrl: ConstantHelper.router.lines.templateUrl
                 });
         }

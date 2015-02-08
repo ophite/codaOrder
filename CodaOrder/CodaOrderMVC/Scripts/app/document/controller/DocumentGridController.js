@@ -65,10 +65,8 @@
             filterOptions: $scope.filterOptions
         }
 
-        $scope.onDblClickRow = function (rowItem) {
-            var defaultCache = DSCacheFactory.get('defaultCache');
-            defaultCache.put(ConstantHelper.DocumentID, rowItem.entity.OID);
-            $location.path(ConstantHelper.router.lines.url);
+        $scope.onDblClickRow = function (row) {
+            $location.path(ConstantHelper.router.lines.url + '/' + row.entity.OID);
         };
 
         $scope.$on('ngGridEventEndCellEdit', function (element) {

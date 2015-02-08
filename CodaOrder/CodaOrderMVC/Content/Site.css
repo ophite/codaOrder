@@ -21,3 +21,8 @@ textarea {
     max-width: 280px;
 }*/
 
+
+.isDirtyCell {
+    background-color: #93A5F6;
+    color: white;
+}
