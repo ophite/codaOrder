@@ -68,6 +68,12 @@ namespace WebApplication3.Controllers
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.JsonResult SaveLines()
+        {
+            return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.SaveLines);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult Details()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Details);
@@ -111,6 +117,7 @@ namespace WebApplication3.Controllers
             public readonly string Lines = "Lines";
             public readonly string GetDocumentsPost = "GetDocumentsPost";
             public readonly string GetLines = "GetLines";
+            public readonly string SaveLines = "SaveLines";
             public readonly string NewOrder = "NewOrder";
             public readonly string OrdersDraft = "OrdersDraft";
             public readonly string OrdersHistory = "OrdersHistory";
@@ -129,6 +136,7 @@ namespace WebApplication3.Controllers
             public const string Lines = "Lines";
             public const string GetDocumentsPost = "GetDocumentsPost";
             public const string GetLines = "GetLines";
+            public const string SaveLines = "SaveLines";
             public const string NewOrder = "NewOrder";
             public const string OrdersDraft = "OrdersDraft";
             public const string OrdersHistory = "OrdersHistory";
@@ -155,6 +163,14 @@ namespace WebApplication3.Controllers
         public class ActionParamsClass_GetLines
         {
             public readonly string documentID = "documentID";
+        }
+        static readonly ActionParamsClass_SaveLines s_params_SaveLines = new ActionParamsClass_SaveLines();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_SaveLines SaveLinesParams { get { return s_params_SaveLines; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_SaveLines
+        {
+            public readonly string model = "model";
         }
         static readonly ActionParamsClass_NewOrder s_params_NewOrder = new ActionParamsClass_NewOrder();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -298,6 +314,18 @@ namespace WebApplication3.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetLines);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "documentID", documentID);
             GetLinesOverride(callInfo, documentID);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void SaveLinesOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, WebApplication3.Models.LinesViewModel model);
+
+        [NonAction]
+        public override System.Web.Mvc.JsonResult SaveLines(WebApplication3.Models.LinesViewModel model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.SaveLines);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            SaveLinesOverride(callInfo, model);
             return callInfo;
         }
 

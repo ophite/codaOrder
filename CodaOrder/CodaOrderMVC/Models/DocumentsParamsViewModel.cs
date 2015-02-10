@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using WebApplication3.Entity;
 
 namespace WebApplication3.Models
 {
@@ -18,5 +19,11 @@ namespace WebApplication3.Models
         public string totalRows { get; set; }
         public string fullTextFilter { get; set; }
         public string whereText { get; set; }
+    }
+
+
+    public class LinesViewModel
+    {
+        public DocTradeLine[] lines { get; set; }
     }
 }

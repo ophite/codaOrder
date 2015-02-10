@@ -471,5 +471,35 @@ namespace WebApplication3.Entity
     
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocTradeLine>("GetLines", mergeOption, parentIDParameter, showDeletedParameter, isExtendedParameter, tST);
         }
+    
+        public virtual int DocTradeLine_CreateBatch()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DocTradeLine_CreateBatch");
+        }
+    
+        public virtual int DocTradeLine_UpdateBatch()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DocTradeLine_UpdateBatch");
+        }
+    
+        public virtual ObjectResult<DocTradeLine> Line_CreateBatch()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocTradeLine>("Line_CreateBatch");
+        }
+    
+        public virtual ObjectResult<DocTradeLine> Line_CreateBatch(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocTradeLine>("Line_CreateBatch", mergeOption);
+        }
+    
+        public virtual ObjectResult<DocTradeLine> Line_UpdateBatch()
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocTradeLine>("Line_UpdateBatch");
+        }
+    
+        public virtual ObjectResult<DocTradeLine> Line_UpdateBatch(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocTradeLine>("Line_UpdateBatch", mergeOption);
+        }
     }
 }

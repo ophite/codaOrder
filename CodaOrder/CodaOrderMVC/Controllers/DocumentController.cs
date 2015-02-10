@@ -74,6 +74,15 @@ namespace WebApplication3.Controllers
             return Json(_uow.DocumentRepository.GetLinesJson(documentID));
         }
 
+        [HttpPost]
+        [ValidateInput(false)]
+        [Authorize]
+        public virtual JsonResult SaveLines(LinesViewModel model)
+        {
+            //return Json(_uow.DocumentRepository.GetLinesJson(documentID));
+            return Json("hello world");
+        }
+
         [HttpGet]
         [Authorize]
         public virtual PartialViewResult NewOrder()

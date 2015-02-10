@@ -9,7 +9,9 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using WebApplication3.Entity;
 using WebApplication3.Infrastructure;
+using WebApplication3.ModelBinder;
 using WebApplication3.Models;
 using WebMatrix.Data;
 using WebMatrix.WebData;
@@ -26,6 +28,7 @@ namespace WebApplication3
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            ModelBinders.Binders.Add(typeof(LinesViewModel), new LineBinder());
         }
     }
 }

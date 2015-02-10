@@ -299,6 +299,19 @@ warning 6002: The table/view 'coda.dbo.DocTradeLine' does not have a primary key
         <EntityType Name="DocTradeLine">
           <Key>
             <PropertyRef Name="OID" />
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
+            
           </Key>
           <Property Name="OID" Type="bigint" Nullable="false" />
           <Property Name="CID" Type="int" />
@@ -598,12 +611,14 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
           <Parameter Name="TopRecords" Type="int" Mode="In" />
           <Parameter Name="GroupsXMLvarchar" Type="varchar(max)" Mode="In" />
         </Function>
+        <Function Name="DocTradeLine_CreateBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="DocTradeLine_GetChildren" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="ParentID" Type="bigint" Mode="In" />
           <Parameter Name="ShowDeleted" Type="bit" Mode="In" />
           <Parameter Name="IsExtended" Type="bit" Mode="In" />
           <Parameter Name="TST" Type="binary" Mode="InOut" />
         </Function>
+        <Function Name="DocTradeLine_UpdateBatch" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
         <Function Name="JournalSalePaged_GetDocuments_Entity" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="OID" Type="bigint" Mode="In" />
           <Parameter Name="Filter" Type="xml" Mode="In" />
@@ -1580,6 +1595,10 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
             <Parameter Name="IsExtended" Mode="In" Type="Boolean" />
             <Parameter Name="TST" Mode="InOut" Type="Binary" />
           </FunctionImport>
+          <FunctionImport Name="DocTradeLine_CreateBatch" />
+          <FunctionImport Name="DocTradeLine_UpdateBatch" />
+          <FunctionImport Name="Line_CreateBatch" EntitySet="DocTradeLine" ReturnType="Collection(JournalSaleDocument.DocTradeLine)" />
+          <FunctionImport Name="Line_UpdateBatch" EntitySet="DocTradeLine" ReturnType="Collection(JournalSaleDocument.DocTradeLine)" />
         </EntityContainer>
         <EntityType Name="CodaJson">
           <Key>
@@ -2081,6 +2100,10 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
           </EntitySetMapping>
           <FunctionImportMapping FunctionImportName="DocTradeLine_GetChildren" FunctionName="JournalSaleDocument.Store.DocTradeLine_GetChildren" />
           <FunctionImportMapping FunctionImportName="GetLines" FunctionName="JournalSaleDocument.Store.DocTradeLine_GetChildren" />
+          <FunctionImportMapping FunctionImportName="DocTradeLine_CreateBatch" FunctionName="JournalSaleDocument.Store.DocTradeLine_CreateBatch" />
+          <FunctionImportMapping FunctionImportName="DocTradeLine_UpdateBatch" FunctionName="JournalSaleDocument.Store.DocTradeLine_UpdateBatch" />
+          <FunctionImportMapping FunctionImportName="Line_CreateBatch" FunctionName="JournalSaleDocument.Store.DocTradeLine_CreateBatch" />
+          <FunctionImportMapping FunctionImportName="Line_UpdateBatch" FunctionName="JournalSaleDocument.Store.DocTradeLine_UpdateBatch" />
           </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>

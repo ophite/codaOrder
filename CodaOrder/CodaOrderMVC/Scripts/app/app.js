@@ -24,7 +24,7 @@
 
     app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
         function ($stateProvider, $urlRouterProvider, $locationProvider) {
-           
+
             //$urlRouterProvider.otherwise('Account/Login');
             $locationProvider.html5Mode({
                 enabled: false,
@@ -52,6 +52,10 @@
                     url: ConstantHelper.router.lines.url + '/:documentID',
                     templateUrl: ConstantHelper.router.lines.templateUrl
                 });
+            //.state('saveLines', {
+            //    url: ConstantHelper.router.lines.urlSaveJSON + '/:documentID',
+            //    templateUrl: ConstantHelper.router.lines.templateUrl
+            //});
         }
     ]);
 

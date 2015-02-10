@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    function DocumentGridController($scope, $location, apiService, filterStrToSql, parameterService, DSCacheFactory) {
+    function DocumentGridController($scope, $location, apiService, filterStrToSql, parameterService) {
 
         $scope.model = {};
 
@@ -120,6 +120,6 @@
         //alert(res);
     }
 
-    DocumentGridController.$inject = ['$scope', '$location', 'apiService', 'filterStrToSql', 'parameterService', 'DSCacheFactory'];
+    DocumentGridController.$inject = ['$scope', '$location', 'apiService', 'filterStrToSql', 'parameterService'];
     angular.module(ConstantHelper.App).controller('DocumentGridController', DocumentGridController);
 })();

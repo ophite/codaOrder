@@ -1212,6 +1212,7 @@
     </Compile>
     <Compile Include="IdentityContextMigration\Configuration.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="ModelBinder\CustomBinders.cs" />
     <Compile Include="Models\ChangePassword.cs" />
     <Compile Include="Models\DocumentsParamsViewModel.cs" />
     <Compile Include="Models\IdentityContext.cs" />

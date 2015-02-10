@@ -44,6 +44,11 @@ namespace WebApplication3.Entity
             return resultJson;
         }
 
+        //public object UpdateLines(DocTradeLine[] lines)
+        //{
+
+        //}
+
         public object GetDocumentsJson(DocumentsParamsViewModel model)
         {
             Func<string, string> jsClassesToSql = (string classes) =>

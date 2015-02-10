@@ -4,6 +4,7 @@
 (function () {
     'use strict';
 
+    // service 
     angular.module(ConstantHelper.App).factory('documentService', ['$resource', 'DSCacheFactory', '$q',
         function ($resource, DSCacheFactory, $q) {
             return {
@@ -28,10 +29,24 @@
                         }
                     });
                 },
+                save: function (paramDict, urlGetDocument) {
+
+                    return $resource(window.location.origin + urlGetDocument, {}, {
+                        fn: {
+                            method: 'POST',
+                            params: paramDict,
+                            transformRequest: function (data, headersGetter) {
+                                var headers = headersGetter();
+                                headers['Content-Type'] = 'application/json';
+                                headers['Data-Type'] = 'json';
+                            },
+                        }
+                    });
+                },
             };
         }]);
 
-
+    // wrapper
     angular.module(ConstantHelper.App).factory('apiService', ['documentService', 'DSCacheFactory',
         function (documentService, DSCacheFactory) {
             return {
@@ -51,6 +66,12 @@
                                 callbackFunc(jsonData);
                             });
                     }
+                },
+                saveDocument: function (paramsDict, urlSaveDocument, callbackFunc) {
+                    var resPost = documentService.save(paramsDict, urlSaveDocument).fn().$promise.then(
+                            function (jsonData) {
+                                callbackFunc(jsonData);
+                            });
                 }
             }
         }

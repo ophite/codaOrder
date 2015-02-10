@@ -1,6 +1,6 @@
 ﻿@model IEnumerable<WebApplication3.Entity.DocTradeLine>
 
-<div ng-controller="LineGridController">
+<div ng-controller="LineGridController" ng-init="init('@Url.Action(@MVC.Document.ActionNames.SaveLines, @MVC.Document.Name)')">
     <div class="gridStyle" ng-grid="gridOptions" />
 
     <div ng-controller="DocumentPaginationController">

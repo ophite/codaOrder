@@ -44,6 +44,7 @@ var ConstantHelper = new function () {
             url: "",
             templateUrl: "",
             urlGetJSON: "",
+            urlSaveJSON: "",
         },
     };
 
@@ -112,6 +113,9 @@ var ConstantHelper = new function () {
 
     this.prepareAllDocumentParams = function (paramsDict) {
         var resultDict = {};
+        if (paramsDict === undefined || paramsDict === null)
+            return resultDict;
+
         for (var propName in this.Document) {
 
             var prop = this.Document[propName];
