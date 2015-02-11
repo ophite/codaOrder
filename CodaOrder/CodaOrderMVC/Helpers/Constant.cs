@@ -8,6 +8,8 @@ namespace WebApplication3.Helpers
     public class ConstantDocument
     {
         // helpers
+        public static string IsResponseError = "isResponseError";
+        public static string ResponseErrorMessage = "responseErrorMessage";
         public static string GridData = "gridData";
         public static string IsEditable = "isEditable";
 

@@ -11,18 +11,17 @@ using WebApplication3.Models;
 
 namespace WebApplication3.ModelBinder
 {
-    public class LineBinder : IModelBinder
+    public class LineBinder : DefaultModelBinder
     {
-        public object BindModel(ControllerContext controllerContext, ModelBindingContext modelContext)
+        public override object BindModel(ControllerContext controllerContext, ModelBindingContext modelContext)
         {
-            HttpRequestBase req = controllerContext.HttpContext.Request;
-            LinesViewModel item = new LinesViewModel(); 
-            var lines = req["0"];
-            if (lines == null)
+            LinesViewModel item = new LinesViewModel();
+            // send array from one element (our lines)
+            ValueProviderResult result = modelContext.ValueProvider.GetValue("0");
+            if (result == null || string.IsNullOrEmpty(result.AttemptedValue))
                 return item;
 
-            DocTradeLine[] tradeLines = JsonConvert.DeserializeObject<DocTradeLine[]>(lines);
-            item.lines = tradeLines.ToArray();
+            item.lines = JsonConvert.DeserializeObject<DocTradeLine[]>(result.AttemptedValue);
             return item;
         }
     }

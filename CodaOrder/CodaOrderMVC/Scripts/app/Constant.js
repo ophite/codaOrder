@@ -57,6 +57,8 @@ var ConstantHelper = new function () {
         this.broadcastPagingInfoChange = 'broadcastPagingInfoChange';
     };
 
+    this.IsResponseError = '';
+    this.ResponseErrorMessage = '';
     this.GridData = '';
     this.DocumentID = 'documentID';
     this.IsEditable = '';

@@ -6,7 +6,7 @@
 (function () {
     'use strict';
 
-    function LineGridController($scope, $location, apiService, filterStrToSql, parameterService, $stateParams) {
+    function LineGridController($scope, $location, apiService, filterStrToSql, parameterService, $stateParams, $modal) {
 
         $scope.model = {
             isEditable: false,
@@ -114,15 +114,56 @@
             apiService.getDocuments(paramDict, ConstantHelper.router.lines.urlGetJSON, callbackFunc);
         }
 
+        $scope.openError = function (errorDescription) {
+
+            var modalInstance = $modal.open({
+                templateUrl: 'error.html',
+                controller: 'ErrorControllerModal',
+                resolve: {
+                    errorTitle: function () { return 'Error during save document lines'; },
+                    errorDescription: function () { return errorDescription; }
+                }
+            });
+
+            modalInstance.result.then(function (errorDescriptionFromModel) {
+                $scope.errorDescription = errorDescriptionFromModel;
+            }, function () {
+                $log.info('Modal dismissed at: ' + new Date());
+            });
+        };
+
         //api
         $scope.saveDocument = function () {
             var callbackFunc = function (jsonData) {
                 console.log(jsonData);
+                var isError = jsonData[ConstantHelper.IsResponseError];
+                if (isError.toLowerCase() === 'true') {
+                    $scope.openError(jsonData[ConstantHelper.ResponseErrorMessage]);
+                }
             };
             apiService.saveDocument([angular.toJson($scope.model.data)], $scope.model.urlSaveDocument, callbackFunc);
         };
     }
 
-    LineGridController.$inject = ['$scope', '$location', 'apiService', 'filterStrToSql', 'parameterService', '$stateParams'];
+    LineGridController.$inject = ['$scope', '$location', 'apiService', 'filterStrToSql', 'parameterService', '$stateParams', '$modal'];
     angular.module(ConstantHelper.App).controller('LineGridController', LineGridController);
+
+
+    // Please note that $modalInstance represents a modal window (instance) dependency.
+    // It is not the same as the $modal service used above.
+    angular.module(ConstantHelper.App).controller('ErrorControllerModal', function ($scope, $modalInstance, errorTitle, errorDescription) {
+
+        $scope.model = {}
+        $scope.model.errorTitle = errorTitle;
+        $scope.model.errorDescription = errorDescription;
+
+        $scope.ok = function () {
+            $modalInstance.close($scope.errorDesctiption);
+        };
+
+        $scope.cancel = function () {
+            $modalInstance.dismiss('cancel');
+        };
+    });
+
 })();

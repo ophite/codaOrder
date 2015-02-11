@@ -1191,6 +1191,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>JournalSaleDocument.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Repositories\SqlMessage.cs" />
+    <Compile Include="Entity\Repositories\Tools.cs" />
     <Compile Include="Entity\Repositories\Uow.cs" />
     <Compile Include="Entity\Revenue.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>

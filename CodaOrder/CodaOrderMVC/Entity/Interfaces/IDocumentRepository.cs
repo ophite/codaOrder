@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using WebApplication3.Entity.Repositories;
 using WebApplication3.Models;
 
 namespace WebApplication3.Entity
@@ -18,9 +19,9 @@ namespace WebApplication3.Entity
         //    int currentPage,
         //    string fullTextFilter,
         //    string whereText);
-        object GetDocumentsJson(JObject jObject);
-        object GetDocumentsJson(DocumentsParamsViewModel model);
-        object GetLinesJson(string documentID);
-        object UpdateLines(DocTradeLine[] lines);
+        SqlResult GetDocumentsJson(JObject jObject);
+        SqlResult GetDocumentsJson(DocumentsParamsViewModel model);
+        SqlResult GetLinesJson(string documentID);
+        SqlResult UpdateLines(DocTradeLine[] lines);
     }
 }

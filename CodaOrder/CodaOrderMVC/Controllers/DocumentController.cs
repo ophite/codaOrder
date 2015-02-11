@@ -13,6 +13,8 @@ using Newtonsoft.Json;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using WebApplication3.Models;
+using WebApplication3.Entity.Repositories;
+using WebApplication3.Helpers;
 
 namespace WebApplication3.Controllers
 {
@@ -63,7 +65,7 @@ namespace WebApplication3.Controllers
         [Authorize]
         public virtual JsonResult GetDocumentsPost(DocumentsParamsViewModel model)
         {
-            return Json(_uow.DocumentRepository.GetDocumentsJson(model));
+            return Json(_uow.DocumentRepository.GetDocumentsJson(model).Result);
         }
 
         [HttpPost]
@@ -71,7 +73,7 @@ namespace WebApplication3.Controllers
         [Authorize]
         public virtual JsonResult GetLines(string documentID)
         {
-            return Json(_uow.DocumentRepository.GetLinesJson(documentID));
+            return Json(_uow.DocumentRepository.GetLinesJson(documentID).Result);
         }
 
         [HttpPost]
@@ -79,9 +81,14 @@ namespace WebApplication3.Controllers
         [Authorize]
         public virtual JsonResult SaveLines(LinesViewModel model)
         {
-            //return Json(_uow.DocumentRepository.GetLinesJson(documentID));
-            _uow.DocumentRepository.UpdateLines(model.lines);
-            return Json("hello world");
+            SqlResult result = _uow.DocumentRepository.UpdateLines(model.lines);
+            Dictionary<string, string> msg = new Dictionary<string, string>();
+            msg[ConstantDocument.IsResponseError] = result.IsError.ToString();
+
+            if (result.IsError)
+                msg[ConstantDocument.ResponseErrorMessage] = result.Message.Message;
+
+            return Json(msg);
         }
 
         [HttpGet]

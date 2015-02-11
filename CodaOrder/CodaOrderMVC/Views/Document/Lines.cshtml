@@ -1,6 +1,20 @@
 ﻿@model IEnumerable<WebApplication3.Entity.DocTradeLine>
 
 <div ng-controller="LineGridController" ng-init="init('@Url.Action(@MVC.Document.ActionNames.SaveLines, @MVC.Document.Name)')">
+
+    <script type="text/ng-template" id="error.html">
+        <div class="modal-header">
+            <h3 class="modal-title">{{model.errorTitle}}</h3>
+        </div>
+        <div class="modal-body">
+            {{model.errorDescription}}
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" ng-click="ok()">OK</button>
+            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
+        </div>
+    </script>
+
     <div class="gridStyle" ng-grid="gridOptions" />
 
     <div ng-controller="DocumentPaginationController">
