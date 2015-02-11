@@ -7,7 +7,7 @@ app.service('parameterService', function () {
 
     var paramDict = {};
     var getDocuments = 'getDocuments';
-    
+
     this.setDocumentParam = function (paramName, paramValue) {
         this.setParametrForFunc(getDocuments, paramName, paramValue);
     };

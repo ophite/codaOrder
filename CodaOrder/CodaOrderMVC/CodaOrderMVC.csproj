@@ -211,6 +211,7 @@
     <Content Include="Scripts\app\common\date.js" />
     <Content Include="Scripts\app\common\FilterService.js" />
     <Content Include="Scripts\app\common\ParameterService.js" />
+    <Content Include="Scripts\app\document\service\ErrorService.js" />
     <Content Include="Scripts\app\document\controller\LineGridController.js" />
     <Content Include="Scripts\app\document\directive\DateDirecive.js" />
     <Content Include="Scripts\app\document\controller\DocumentDateController.js" />
@@ -220,6 +221,7 @@
     <Content Include="Scripts\app\document\controller\DocumentLoadController.js" />
     <Content Include="Scripts\app\document\controller\DocumentPaginationController.js" />
     <Content Include="Scripts\app\document\controller\DocumentTypeController.js" />
+    <Content Include="Scripts\app\document\directive\ShowErrorDirective.js" />
     <Content Include="Scripts\app\search\SearchCodaObjectController.js" />
     <Content Include="Scripts\app\search\SearchCodaObjectService.js" />
     <Content Include="Scripts\app\subject\GridController.js" />
@@ -1092,6 +1094,7 @@
     <Content Include="Views\Document\Documents.cshtml" />
     <Content Include="Views\Document\Lines.cshtml" />
     <Content Include="Views\Account\UserProfile.cshtml" />
+    <Content Include="Views\Directive\DirShowError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

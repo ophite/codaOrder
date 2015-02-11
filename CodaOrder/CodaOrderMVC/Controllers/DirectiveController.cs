@@ -23,5 +23,10 @@ namespace WebApplication3.Controllers
         {
             return PartialView();
         }
+
+        public PartialViewResult DirShowError()
+        {
+            return PartialView();
+        }
     }
 }

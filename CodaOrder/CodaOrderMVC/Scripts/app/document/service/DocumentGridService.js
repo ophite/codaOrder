@@ -73,7 +73,7 @@
                                 callbackFunc(jsonData);
                             });
                 }
-            }
+            };
         }
     ]);
 

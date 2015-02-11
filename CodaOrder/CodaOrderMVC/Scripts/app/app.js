@@ -70,6 +70,7 @@
         $rootScope.$on(ConstantHelper.Watchers.setPagingInfo, function (event, args) {
             $rootScope.$broadcast(ConstantHelper.Watchers.broadcastPagingInfoChange, args);
         });
+
         // cache
         DSCacheFactory('defaultCache', {
             maxAge: 900000, // Items added to this cache expire after 15 minutes.
