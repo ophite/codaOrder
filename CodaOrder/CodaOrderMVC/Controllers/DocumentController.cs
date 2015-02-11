@@ -80,6 +80,7 @@ namespace WebApplication3.Controllers
         public virtual JsonResult SaveLines(LinesViewModel model)
         {
             //return Json(_uow.DocumentRepository.GetLinesJson(documentID));
+            _uow.DocumentRepository.UpdateLines(model.lines);
             return Json("hello world");
         }
 

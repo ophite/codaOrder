@@ -21,5 +21,6 @@ namespace WebApplication3.Entity
         object GetDocumentsJson(JObject jObject);
         object GetDocumentsJson(DocumentsParamsViewModel model);
         object GetLinesJson(string documentID);
+        object UpdateLines(DocTradeLine[] lines);
     }
 }

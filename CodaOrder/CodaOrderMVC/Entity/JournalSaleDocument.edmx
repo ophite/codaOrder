@@ -1596,7 +1596,7 @@ warning 6002: The table/view 'coda.dbo.TaxType' does not have a primary key defi
             <Parameter Name="TST" Mode="InOut" Type="Binary" />
           </FunctionImport>
           <FunctionImport Name="DocTradeLine_CreateBatch" />
-          <FunctionImport Name="DocTradeLine_UpdateBatch" />
+          <FunctionImport Name="DocTradeLine_UpdateBatch" EntitySet="DocTradeLine" ReturnType="Collection(JournalSaleDocument.DocTradeLine)" />
           <FunctionImport Name="Line_CreateBatch" EntitySet="DocTradeLine" ReturnType="Collection(JournalSaleDocument.DocTradeLine)" />
           <FunctionImport Name="Line_UpdateBatch" EntitySet="DocTradeLine" ReturnType="Collection(JournalSaleDocument.DocTradeLine)" />
         </EntityContainer>

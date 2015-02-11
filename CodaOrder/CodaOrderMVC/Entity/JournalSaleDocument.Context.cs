@@ -477,9 +477,14 @@ namespace WebApplication3.Entity
             return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DocTradeLine_CreateBatch");
         }
     
-        public virtual int DocTradeLine_UpdateBatch()
+        public virtual ObjectResult<DocTradeLine> DocTradeLine_UpdateBatch()
         {
-            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("DocTradeLine_UpdateBatch");
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocTradeLine>("DocTradeLine_UpdateBatch");
+        }
+    
+        public virtual ObjectResult<DocTradeLine> DocTradeLine_UpdateBatch(MergeOption mergeOption)
+        {
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<DocTradeLine>("DocTradeLine_UpdateBatch", mergeOption);
         }
     
         public virtual ObjectResult<DocTradeLine> Line_CreateBatch()
