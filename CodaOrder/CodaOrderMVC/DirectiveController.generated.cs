@@ -76,6 +76,7 @@ namespace WebApplication3.Controllers
             public readonly string Index = "Index";
             public readonly string DirDatePicker = "DirDatePicker";
             public readonly string DirDatesValidation = "DirDatesValidation";
+            public readonly string DirShowError = "DirShowError";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -84,6 +85,7 @@ namespace WebApplication3.Controllers
             public const string Index = "Index";
             public const string DirDatePicker = "DirDatePicker";
             public const string DirDatesValidation = "DirDatesValidation";
+            public const string DirShowError = "DirShowError";
         }
 
 
@@ -99,9 +101,11 @@ namespace WebApplication3.Controllers
             {
                 public readonly string DirDatePicker = "DirDatePicker";
                 public readonly string DirDatesValidation = "DirDatesValidation";
+                public readonly string DirShowError = "DirShowError";
             }
             public readonly string DirDatePicker = "~/Views/Directive/DirDatePicker.cshtml";
             public readonly string DirDatesValidation = "~/Views/Directive/DirDatesValidation.cshtml";
+            public readonly string DirShowError = "~/Views/Directive/DirShowError.cshtml";
         }
     }
 
@@ -140,6 +144,17 @@ namespace WebApplication3.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.DirDatesValidation);
             DirDatesValidationOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void DirShowErrorOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.PartialViewResult DirShowError()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.DirShowError);
+            DirShowErrorOverride(callInfo);
             return callInfo;
         }
 

@@ -4,51 +4,51 @@
 (function () {
     'use strict';
 
-    angular.module(ConstantHelper.App).controller('ProfileController', ['$scope', '$modal', '$log',
-        function ($scope, $modal, $log) {
+    angular.module(ConstantHelper.App).factory('userProfileService', ['$resource', 'DSCacheFactory',
+        function ($resource, DSCacheFactory) {
+            return {
+                getUserProfile: function (urlGetUserProfile) {
+                    return $resource(window.location.origin + urlGetUserProfile), {}, {
 
-            $scope.items = ['item1', 'item2', 'item3'];
-
-            $scope.open = function (size) {
-
-                var modalInstance = $modal.open({
-                    templateUrl: 'profile.html',
-                    controller: 'ProfileControllerModal',
-                    size: size,
-                    resolve: {
-                        items: function () {
-                            return $scope.items;
+                        fn: {
+                            method: 'POST',
+                            transformRequest: function (data, headersGetter) {
+                                var headers = headersGetter();
+                                headers['Content-Type'] = 'application/json';
+                                headers['Data-Type'] = 'json';
+                            },
+                            cache: true,
                         }
                     }
-                });
-
-                modalInstance.result.then(function (selectedItem) {
-                    $scope.selected = selectedItem;
-                }, function () {
-                    $log.info('Modal dismissed at: ' + new Date());
-                });
+                },
             };
         }
     ]);
 
-    // Please note that $modalInstance represents a modal window (instance) dependency.
-    // It is not the same as the $modal service used above.
-    angular.module(ConstantHelper.App).controller('ProfileControllerModal', ['$scope', '$modalInstance', 'items',
-        function ($scope, $modalInstance, items) {
+    angular.module(ConstantHelper.App).controller('UserProfileController', ['$scope', 'userProfileService',
+        function ($scope, userProfileService) {
 
-            $scope.items = items;
-            $scope.selected = {
-                item: $scope.items[0]
+            $scope.model = {};
+            $scope.model.items = [];
+            $scope.init = function (urlGetUserProfile) {
+                $scope.urlGetUserProfile = urlGetUserProfile;
             };
 
-            $scope.ok = function () {
-                $modalInstance.close($scope.selected.item);
-            };
+            userProfileService.getUserProfile($scope.urlGetUserProfile).fn().$promise.then(
+                function (jsonData) {
+                    console.log(jsonData);
+                });
 
-            $scope.cancel = function () {
-                $modalInstance.dismiss('cancel');
+            $scope.tabs = [
+   { title: 'Dynamic Title 1', content: 'Dynamic content 1' },
+   { title: 'Dynamic Title 2', content: 'Dynamic content 2', disabled: true }
+            ];
+
+            $scope.alertMe = function () {
+                setTimeout(function () {
+                    $window.alert('You\'ve selected the alert tab!');
+                });
             };
         }
     ]);
-
 })();

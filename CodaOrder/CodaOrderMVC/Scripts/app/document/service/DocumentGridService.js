@@ -4,7 +4,6 @@
 (function () {
     'use strict';
 
-    // service 
     angular.module(ConstantHelper.App).factory('documentService', ['$resource', 'DSCacheFactory', '$q',
         function ($resource, DSCacheFactory, $q) {
             return {

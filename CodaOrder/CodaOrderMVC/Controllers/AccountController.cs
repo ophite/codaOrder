@@ -4,6 +4,8 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using WebApplication3.Entity;
+using WebApplication3.Entity.Repositories;
 using WebApplication3.Models;
 using WebMatrix.WebData;
 
@@ -11,6 +13,18 @@ namespace WebApplication3.Controllers
 {
     public partial class AccountController : Controller
     {
+        #region Properties
+
+        private IUow _uow;
+
+        #endregion
+        #region Methods
+
+        public AccountController(IUow uow)
+        {
+            this._uow = uow;
+        }
+
         [HttpGet]
         public virtual ActionResult Login()
         {
@@ -137,7 +151,16 @@ namespace WebApplication3.Controllers
         [Authorize]
         public virtual PartialViewResult UserProfile()
         {
+            SqlResult result = _uow.AccountRepository.GetUserProfile(this.User.Identity.Name);
             return PartialView();
+        }
+        
+        [Authorize]
+        [HttpPost]
+        public virtual JsonResult UserProfilePost()
+        {
+            SqlResult result = _uow.AccountRepository.GetUserProfile(this.User.Identity.Name);
+            return Json(result.Result);
         }
 
         [HttpGet]
@@ -146,5 +169,7 @@ namespace WebApplication3.Controllers
         {
             return PartialView();
         }
+
+        #endregion
     }
 }

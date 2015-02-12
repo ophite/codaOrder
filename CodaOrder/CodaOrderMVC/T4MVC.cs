@@ -207,6 +207,13 @@ namespace Links
                     public static readonly string ProfileController_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ProfileController.min.js") ? Url("ProfileController.min.js") : Url("ProfileController.js");
                 }
             
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class service {
+                    private const string URLPATH = "~/Scripts/app/account/service";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                }
+            
             }
         
             public static readonly string app_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/app.min.js") ? Url("app.min.js") : Url("app.js");
@@ -246,6 +253,7 @@ namespace Links
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                     public static readonly string DateDirecive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/DateDirecive.min.js") ? Url("DateDirecive.min.js") : Url("DateDirecive.js");
                     public static readonly string LeftMenuLinksDirective_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/LeftMenuLinksDirective.min.js") ? Url("LeftMenuLinksDirective.min.js") : Url("LeftMenuLinksDirective.js");
+                    public static readonly string ShowErrorDirective_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ShowErrorDirective.min.js") ? Url("ShowErrorDirective.min.js") : Url("ShowErrorDirective.js");
                 }
             
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -254,6 +262,8 @@ namespace Links
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                     public static readonly string DocumentGridService_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/DocumentGridService.min.js") ? Url("DocumentGridService.min.js") : Url("DocumentGridService.js");
+                    public static readonly string ErrorService_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ErrorService.min.js") ? Url("ErrorService.min.js") : Url("ErrorService.js");
+                    public static readonly string GridService_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/GridService.min.js") ? Url("GridService.min.js") : Url("GridService.js");
                 }
             
             }

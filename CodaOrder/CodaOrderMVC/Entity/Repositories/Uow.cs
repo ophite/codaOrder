@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
+using WebApplication3.Entity.Interfaces;
+using WebApplication3.Entity.Repositories;
 
 namespace WebApplication3.Entity
 {
@@ -60,6 +62,18 @@ namespace WebApplication3.Entity
                     _codaJsonRepository = new CodaJsonRepository(_dbContext);
 
                 return _codaJsonRepository;
+            }
+        }
+
+        private IAccountRepository _accountRepository;
+        public IAccountRepository AccountRepository
+        {
+            get
+            {
+                if (_accountRepository == null)
+                    _accountRepository = new AccountRepository(_dbContext);
+
+                return _accountRepository;
             }
         }
 

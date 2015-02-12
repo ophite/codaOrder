@@ -222,7 +222,7 @@
     <Content Include="Scripts\app\document\controller\DocumentPaginationController.js" />
     <Content Include="Scripts\app\document\controller\DocumentTypeController.js" />
     <Content Include="Scripts\app\document\directive\ShowErrorDirective.js" />
-    <Content Include="Scripts\app\document\service\gridService.js" />
+    <Content Include="Scripts\app\document\service\GridService.js" />
     <Content Include="Scripts\app\search\SearchCodaObjectController.js" />
     <Content Include="Scripts\app\search\SearchCodaObjectService.js" />
     <Content Include="Scripts\app\subject\GridController.js" />
@@ -1170,9 +1170,11 @@
     <Compile Include="Entity\Firm.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Interfaces\IAccountRepository.cs" />
     <Compile Include="Entity\JournalSale_Documents.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
+    <Compile Include="Entity\Repositories\AccountRepository.cs" />
     <Compile Include="Entity\Repositories\BaseRepository.cs" />
     <Compile Include="Entity\Repositories\CodaJsonRepository.cs" />
     <Compile Include="Entity\Repositories\DocumentRepository.cs" />
@@ -1195,8 +1197,8 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>JournalSaleDocument.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Repositories\SqlMessage.cs" />
-    <Compile Include="Entity\Repositories\Tools.cs" />
+    <Compile Include="Entity\Repositories\Helpers\SqlMessage.cs" />
+    <Compile Include="Entity\Repositories\Helpers\Tools.cs" />
     <Compile Include="Entity\Repositories\Uow.cs" />
     <Compile Include="Entity\Revenue.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
@@ -1250,6 +1252,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Scripts\app\account\service\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

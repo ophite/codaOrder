@@ -26,9 +26,6 @@ namespace WebApplication3.Controllers
     public partial class AccountController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public AccountController() { }
-
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected AccountController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -80,6 +77,7 @@ namespace WebApplication3.Controllers
             public readonly string Logout = "Logout";
             public readonly string TopMenuLinks = "TopMenuLinks";
             public readonly string UserProfile = "UserProfile";
+            public readonly string UserProfilePost = "UserProfilePost";
             public readonly string LeftMenuLinks = "LeftMenuLinks";
         }
 
@@ -93,6 +91,7 @@ namespace WebApplication3.Controllers
             public const string Logout = "Logout";
             public const string TopMenuLinks = "TopMenuLinks";
             public const string UserProfile = "UserProfile";
+            public const string UserProfilePost = "UserProfilePost";
             public const string LeftMenuLinks = "LeftMenuLinks";
         }
 
@@ -286,6 +285,17 @@ namespace WebApplication3.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.UserProfile);
             UserProfileOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void UserProfilePostOverride(T4MVC_System_Web_Mvc_JsonResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.JsonResult UserProfilePost()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.UserProfilePost);
+            UserProfilePostOverride(callInfo);
             return callInfo;
         }
 
