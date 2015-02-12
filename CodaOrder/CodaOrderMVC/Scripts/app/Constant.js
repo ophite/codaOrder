@@ -46,6 +46,14 @@ var ConstantHelper = new function () {
             urlGetJSON: "",
             urlSaveJSON: "",
         },
+        userProfile: {
+            isMenu: false,
+            order: 1,
+            name: "userProfile",
+            fullName: "user profile",
+            url: "",
+            templateUrl: ""
+        }
     };
 
     this.Watchers = new function () {

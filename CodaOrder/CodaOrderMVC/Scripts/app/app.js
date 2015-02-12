@@ -51,7 +51,12 @@
                 .state(ConstantHelper.router.lines.name, {
                     url: ConstantHelper.router.lines.url + '/:documentID',
                     templateUrl: ConstantHelper.router.lines.templateUrl
+                })
+                .state(ConstantHelper.router.userProfile.name, {
+                    url: ConstantHelper.router.userProfile.url,
+                    templateUrl: ConstantHelper.router.userProfile.templateUrl
                 });
+
             //.state('saveLines', {
             //    url: ConstantHelper.router.lines.urlSaveJSON + '/:documentID',
             //    templateUrl: ConstantHelper.router.lines.templateUrl

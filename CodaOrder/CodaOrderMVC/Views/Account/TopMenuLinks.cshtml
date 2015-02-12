@@ -1,49 +1,27 @@
-﻿<div ng-controller="ProfileController">
-    <script type="text/ng-template" id="profile.html">
-        <div class="modal-header">
-            <h3 class="modal-title">I'm a modal!</h3>
-        </div>
-        <div class="modal-body">
-            <ul>
-                <li ng-repeat="item in items">
-                    <a ng-click="selected.item = item">{{ item }}</a>
-                </li>
-            </ul>
-            Selected: <b>{{ selected.item }}</b>
-        </div>
-        <div class="modal-footer">
-            <button class="btn btn-primary" ng-click="ok()">OK</button>
-            <button class="btn btn-warning" ng-click="cancel()">Cancel</button>
-        </div>
-    </script>
+﻿@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <a ui-sref="userProfile">@User.Identity.Name</a>
+        <strong style="color:white"> / </strong>
+        @Html.ActionLink("Logout", MVC.Account.Logout())
+        <strong style="color:white"> / </strong>
+        @Html.ActionLink("Change password", MVC.Account.ChangePassword())
 
-    @{
-        if (User.Identity.IsAuthenticated)
+        if (User.IsInRole("admin"))
         {
-            <strong style="color:white">
-                <a href="" ng-click="open()">@User.Identity.Name</a>
-            </strong>
             <strong style="color:white"> / </strong>
-            @Html.ActionLink("Logout", MVC.Account.Logout())
-            <strong style="color:white"> / </strong>
-            @Html.ActionLink("Change password", MVC.Account.ChangePassword())
-
-            if (User.IsInRole("admin"))
-            {
-                <strong style="color:white"> / </strong>
-                @Html.ActionLink("Add new user", MVC.Account.AddNewUser())
-            }
+            @Html.ActionLink("Add new user", MVC.Account.AddNewUser())
+        }
+    }
+    else
+    {
+        if (@Url.RequestContext.HttpContext.Request.Url.AbsolutePath != @Url.Action(MVC.Account.ActionNames.Login, MVC.Account.Name))
+        {
+            @Html.ActionLink("Login", MVC.Account.Login())
         }
         else
         {
-            if (@Url.RequestContext.HttpContext.Request.Url.AbsolutePath != @Url.Action(MVC.Account.ActionNames.Login, MVC.Account.Name))
-            {
-                @Html.ActionLink("Login", MVC.Account.Login())
-            }
-            else
-            {
-                @Html.ActionLink("Register", MVC.Account.Register())
-            }
+            @Html.ActionLink("Register", MVC.Account.Register())
         }
     }
-</div>
+}

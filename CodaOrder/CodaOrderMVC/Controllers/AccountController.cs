@@ -134,12 +134,13 @@ namespace WebApplication3.Controllers
             return PartialView();
         }
 
-        [ChildActionOnly]
+        [Authorize]
         public virtual PartialViewResult UserProfile()
         {
             return PartialView();
         }
 
+        [HttpGet]
         [ChildActionOnly]
         public virtual PartialViewResult LeftMenuLinks()
         {
