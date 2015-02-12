@@ -1,10 +1,10 @@
 ﻿<div ng-controller="UserProfileController" ng-init="init('@Url.Action(@MVC.Account.ActionNames.UserProfilePost, @MVC.Account.Name)')">
     <form name="userProfileForm">
-        <div>
+        <div class="col-lg-5">
             <tabset>
                 <tab ng-repeat="tab in model.tabs" heading="{{tab.Profile.Name}}" active="tab.active">
                     @* profile tab *@
-                    <div class="col-lg-3" ng-show="tab.isProfile">
+                    <div class="col-lg-9" ng-show="tab.isProfile">
                         <label>First name</label>
                         <input type="text" name="firstName" ng-model="tab.FirstName" class="form-control">
                         <label>Last name</label>
@@ -14,7 +14,7 @@
                         <label>Phone</label>
                         <input type="text" name="phone" ng-model="tab.Phone" class="form-control">
                     </div>
-                    <div class="col-lg-4" ng-show="!tab.isProfile">
+                    <div ng-show="!tab.isProfile">
                         <label>Subjects</label>
                         <ui-select ng-model="tab.selectedSubject" theme="bootstrap" ng-disabled="disabled" style="width: 300px;">
                             <ui-select-match placeholder="Select subject in the list...">{{$select.selected.Name}}</ui-select-match>
@@ -25,7 +25,7 @@
                     </div>
                 </tab>
             </tabset>
-            <button type="button" class="btn btn-primary" ng-disabled="userProfileForm.$invalid">Save</button>
         </div>
+        <button type="button" class="btn btn-primary" ng-disabled="userProfileForm.$invalid" ng-click="save()">Save</button>
     </form>
 </div>
