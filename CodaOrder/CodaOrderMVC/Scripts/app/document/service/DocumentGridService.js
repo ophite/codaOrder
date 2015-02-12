@@ -44,28 +44,40 @@
                     });
                 },
             };
-        }]);
+        }
+    ]);
 
     // wrapper
     angular.module(ConstantHelper.App).factory('apiService', ['documentService', 'DSCacheFactory',
         function (documentService, DSCacheFactory) {
+
+            var getMe = function (paramDict, url, callbackFunc) {
+                // 1 get from cache
+                var defaultCache = DSCacheFactory.get('defaultCache');
+                var result = defaultCache.get(angular.toJson(paramDict));
+
+                if (result) {
+                    callbackFunc(result)
+                }
+                else {
+                    // 2 get 
+                    var resPost = documentService.get(paramDict, url).fn().$promise.then(
+                        function (jsonData) {
+                            var defaultCache = DSCacheFactory.get('defaultCache');
+                            defaultCache.put(angular.toJson(paramDict), jsonData)
+                            callbackFunc(jsonData);
+                        });
+                }
+            };
+
             return {
                 getDocuments: function (paramDict, urlGetDocument, callbackFunc) {
 
-                    var defaultCache = DSCacheFactory.get('defaultCache');
-                    var result = defaultCache.get(angular.toJson(paramDict));
+                    return getMe(paramDict, urlGetDocument, callbackFunc);
+                },
+                getLines: function (paramDict, urlGetLines, callbackFunc) {
 
-                    if (result) {
-                        callbackFunc(result)
-                    }
-                    else {
-                        var resPost = documentService.get(paramDict, urlGetDocument).fn().$promise.then(
-                            function (jsonData) {
-                                var defaultCache = DSCacheFactory.get('defaultCache');
-                                defaultCache.put(angular.toJson(paramDict), jsonData)
-                                callbackFunc(jsonData);
-                            });
-                    }
+                    return getMe(paramDict, urlGetLines, callbackFunc);
                 },
                 saveDocument: function (paramsDict, urlSaveDocument, callbackFunc) {
                     var resPost = documentService.save(paramsDict, urlSaveDocument).fn().$promise.then(

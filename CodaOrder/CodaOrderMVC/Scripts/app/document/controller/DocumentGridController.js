@@ -5,38 +5,12 @@
 (function () {
     'use strict';
 
-    function DocumentGridController($scope, $location, apiService, filterStrToSql, parameterService) {
+    function DocumentGridController($scope, $location, apiService, filterStrToSql, parameterService, gridFilterBarService) {
 
         $scope.model = {};
 
-        // filter plugin
-        var filterBarPlugin = {
-            init: function (scope, grid) {
-                filterBarPlugin.scope = scope;
-                filterBarPlugin.grid = grid;
-                $scope.$watch(function () {
-
-                    var searchQuery = "";
-                    angular.forEach(filterBarPlugin.scope.columns, function (col) {
-                        if (col.visible && col.filterText) {
-                            var filterText = (col.filterText.indexOf('*') == 0 ? col.filterText.replace('*', '') : "^" + col.filterText) + ";";
-                            searchQuery += col.displayName + ": " + filterText;
-                        }
-                    });
-
-                    return searchQuery;
-                },
-                function (searchQuery) {
-
-                    filterBarPlugin.scope.$parent.filterText = searchQuery;
-                    filterBarPlugin.grid.searchProvider.evalFilter();
-                });
-            },
-            scope: undefined,
-            grid: undefined,
-        };
-
         // grid
+        var filterBarPlugin = gridFilterBarService.getPlugin($scope);
         $scope.gridOptions = {
 
             data: 'model.data',
@@ -68,11 +42,6 @@
         $scope.onDblClickRow = function (row) {
             $location.path(ConstantHelper.router.lines.url + '/' + row.entity.OID);
         };
-
-        $scope.$on('ngGridEventEndCellEdit', function (element) {
-            console.log(element.targetScope.row.entity);
-        }); //focus the input element on 'start cell edit'
-
 
         // pagination
         $scope.setPagingData = function (data, page, pageSize) {
@@ -120,6 +89,6 @@
         //alert(res);
     }
 
-    DocumentGridController.$inject = ['$scope', '$location', 'apiService', 'filterStrToSql', 'parameterService'];
+    DocumentGridController.$inject = ['$scope', '$location', 'apiService', 'filterStrToSql', 'parameterService', 'gridFilterBarService'];
     angular.module(ConstantHelper.App).controller('DocumentGridController', DocumentGridController);
 })();

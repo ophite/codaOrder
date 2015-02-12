@@ -222,6 +222,7 @@
     <Content Include="Scripts\app\document\controller\DocumentPaginationController.js" />
     <Content Include="Scripts\app\document\controller\DocumentTypeController.js" />
     <Content Include="Scripts\app\document\directive\ShowErrorDirective.js" />
+    <Content Include="Scripts\app\document\service\gridService.js" />
     <Content Include="Scripts\app\search\SearchCodaObjectController.js" />
     <Content Include="Scripts\app\search\SearchCodaObjectService.js" />
     <Content Include="Scripts\app\subject\GridController.js" />

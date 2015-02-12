@@ -5,42 +5,17 @@
 (function () {
     'use strict';
 
-    angular.module(ConstantHelper.App).controller('LineGridController', ['$scope', '$location', 'apiService', 'filterStrToSql', 'parameterService', '$stateParams', 'showErrorService',
-        function LineGridController($scope, $location, apiService, filterStrToSql, parameterService, $stateParams, showErrorService) {
+    angular.module(ConstantHelper.App).controller('LineGridController',
+        ['$scope', '$location', 'apiService', 'filterStrToSql', 'parameterService', '$stateParams', 'showErrorService', 'gridFilterBarService',
+        function LineGridController($scope, $location, apiService, filterStrToSql, parameterService, $stateParams, showErrorService, gridFilterBarService) {
 
             $scope.model = {
                 isEditable: false,
                 isDirty: false,
             };
 
-            // filter plugin
-            var filterBarPlugin = {
-                init: function (scope, grid) {
-                    filterBarPlugin.scope = scope;
-                    filterBarPlugin.grid = grid;
-                    $scope.$watch(function () {
-
-                        var searchQuery = "";
-                        angular.forEach(filterBarPlugin.scope.columns, function (col) {
-                            if (col.visible && col.filterText) {
-                                var filterText = (col.filterText.indexOf('*') == 0 ? col.filterText.replace('*', '') : "^" + col.filterText) + ";";
-                                searchQuery += col.displayName + ": " + filterText;
-                            }
-                        });
-
-                        return searchQuery;
-                    },
-                    function (searchQuery) {
-
-                        filterBarPlugin.scope.$parent.filterText = searchQuery;
-                        filterBarPlugin.grid.searchProvider.evalFilter();
-                    });
-                },
-                scope: undefined,
-                grid: undefined,
-            };
-
             // grid
+            var filterBarPlugin = gridFilterBarService.getPlugin($scope);
             $scope.gridOptions = {
 
                 data: 'model.data',
@@ -77,15 +52,15 @@
                 $scope.model.urlSaveDocument = urlSaveDocument;
             };
 
-            $scope.$on('ngGridEventStartCellEdit', function (element) {
-                $scope.model.isDirty = true;
-            });
+            //$scope.$on('ngGridEventStartCellEdit', function (element) {
+            //    $scope.model.isDirty = true;
+            //});
 
             $scope.$on('ngGridEventEndCellEdit',
                 function (element) {
-                    console.log(element.targetScope.row.entity);
+                    //console.log(element.targetScope.row.entity);
                     $scope.model.isDirty = true;
-                }); //focus the input element on 'start cell edit'
+                });
 
 
             // pagination
@@ -106,26 +81,24 @@
                 var callbackFunc = function (jsonData) {
                     $scope.setPagingData(JSON.parse(jsonData[ConstantHelper.GridData]), params[ConstantHelper.Document.paramCurrentPage.value]);
                     $scope.model.isEditable = JSON.parse(String(jsonData[ConstantHelper.IsEditable]).toLowerCase());
-                    //$scope.gridOptions.columnDefs[4].enableCellEdit = true;
                 }
 
                 var paramDict = {};
                 paramDict[ConstantHelper.DocumentID] = documentID;
-                apiService.getDocuments(paramDict, ConstantHelper.router.lines.urlGetJSON, callbackFunc);
+                apiService.getLines(paramDict, ConstantHelper.router.lines.urlGetJSON, callbackFunc);
             }
 
             //api
             $scope.saveDocument = function () {
                 var callbackFunc = function (jsonData) {
-                    console.log(jsonData);
                     var isError = jsonData[ConstantHelper.IsResponseError];
                     if (isError.toLowerCase() === 'true') {
-
                         showErrorService.show('Error during save document', jsonData[ConstantHelper.ResponseErrorMessage]);
                     }
                 };
+
                 apiService.saveDocument([angular.toJson($scope.model.data)], $scope.model.urlSaveDocument, callbackFunc);
             };
         }
-    ])
+        ])
 })();
