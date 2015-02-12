@@ -32,39 +32,42 @@
 
             $scope.model = {};
             $scope.model.tabs = [];
+            //$scope.model.selectedSubject = {};
+
             $scope.init = function (urlGetUserProfile) {
                 $scope.model.urlGetUserProfile = urlGetUserProfile;
                 var p = userProfileService.getUserProfile($scope.model.urlGetUserProfile).fn().$promise.then(
                     function (jsonData) {
-                        $scope.model.items = angular.fromJson(jsonData);
-                        var tabInfo = Enumerable.From($scope.model.items);
-                        var tabs = [];
+                        var items = angular.fromJson(jsonData);
 
-                        var profile = $scope.model.items.Profile
-                        var profileTab = {
-                            title: profile.Name,
-                            isProfile: true,
-                            content: {
-                                firstName: profile.FirstName,
-                                lastName: profile.LastName,
-                                phone: profile.phone,
-                                email: profile.email,
-                            }
-                        };
-                        $scope.model.tabs.push(profileTab);
+                        // profile
+                        var profile = items.Profile;
+                        profile.Profile = {}
+                        profile.Profile.Name = "Profile";
+                        profile.isProfile = true;
+                        $scope.model.tabs.push(profile);
+
+                        angular.forEach(items.Firms, function (firm) {
+                            firm.selectedSubject = firm.Subjects[0];
+                            $scope.model.tabs.push(firm);
+                        });
                     })
-                };
+            };
 
-   //         $scope.tabs = [
-   //{ title: 'Dynamic Title 1', content: 'Dynamic content 1' },
-   //{ title: 'Dynamic Title 2', content: 'Dynamic content 2', disabled: true }
-   //         ];
+            $scope.$watch('model.selectedSubject', function (newValues, oldValues) {
+                console.log(newValues, oldValues);
+            }, true);
 
-   //         $scope.alertMe = function () {
-   //             setTimeout(function () {
-   //                 $window.alert('You\'ve selected the alert tab!');
-   //             });
-   //         };
+            //         $scope.tabs = [
+            //{ title: 'Dynamic Title 1', content: 'Dynamic content 1' },
+            //{ title: 'Dynamic Title 2', content: 'Dynamic content 2', disabled: true }
+            //         ];
+
+            //         $scope.alertMe = function () {
+            //             setTimeout(function () {
+            //                 $window.alert('You\'ve selected the alert tab!');
+            //             });
+            //         };
         }
     ]);
 })();
