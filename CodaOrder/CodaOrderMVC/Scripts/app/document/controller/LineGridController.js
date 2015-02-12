@@ -1,6 +1,7 @@
 ﻿/// <reference path="~/Scripts/app/Constant.js" />
 /// <reference path="~/Scripts/angular.js" />
 /// <reference path="~/Scripts/jquery-2.1.1.js" />
+/// <reference path="~/Scripts/linq-vsdoc.js" />
 
 (function () {
     'use strict';
@@ -97,7 +98,13 @@
                     }
                 };
 
-                apiService.saveDocument([angular.toJson($scope.model.data)], $scope.model.urlSaveDocument, callbackFunc);
+                var lines = Enumerable.From($scope.model.data);
+                var resultLines = lines
+                    .Where(function (x) { return x.Quantity != x.Ordered })
+                    .Select(function (x) { return x })
+                    .ToArray();
+
+                apiService.saveDocument([angular.toJson(resultLines)], $scope.model.urlSaveDocument, callbackFunc);
             };
         }
         ])
