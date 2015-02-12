@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -7,6 +8,33 @@ using WebApplication3.Entity.Interfaces;
 
 namespace WebApplication3.Entity.Repositories
 {
+    public class Profile
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+    }
+
+    public class DirectoryProfile
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class FirmProfile
+    {
+        public List<DirectoryProfile> Subjects { get; set; }
+        public int DefaultSubject { get; set; }
+        public DirectoryProfile Profile { get; set; }
+    }
+
+    public class UserProfile
+    {
+        public Profile Profile { get; set; }
+        public List<FirmProfile> Firms { get; set; }
+    }
+
     public class AccountRepository : BaseRepository<JournalSale_Documents>, IAccountRepository
     {
         public AccountRepository(DbContext dbContext) : base(dbContext) { }
@@ -14,53 +42,38 @@ namespace WebApplication3.Entity.Repositories
         public SqlResult GetUserProfile(string userName)
         {
             SqlResult result = new SqlResult();
-            var userProfile = new
-            {
-                info = new Dictionary<string, string>() {
-                    {"last_name", "Kobernik"},
-                    {"first_name", "Yura"},
-                    {"phone", "0681991555"},
-                    {"email", "ophite@ukr.net"},
-                },
-                firms = new Dictionary<int, string>() { 
-                    { 1, "stolitsa"} ,
-                    { 2, "mova" } ,
-                    { 3, "karpatu" } 
-                },
-                subjects = new Dictionary<int, Dictionary<int, string>>() { 
-                    { 
-                        1, 
-                        new Dictionary<int, string>() { 
-                            {1, "stolitsa subject 1"},
-                            {2, "stolitsa subject 2"},
-                            {3, "stolitsa subject 3"},
-                        }
-                    },
-                    { 
-                        2, 
-                        new Dictionary<int, string>() { 
-                            {4, "mova subject 1"},
-                            {5, "mova subject 2"},
-                            {6, "mova subject 3"},
-                        }
-                    },
-                    { 
-                        3, 
-                        new Dictionary<int, string>() { 
-                            {7, "karpatu subject 1"},
-                            {8, "karpatu subject 2"},
-                            {9, "karpatu subject 3"},
-                        }
-                    },
-                },
-                defaultSubject = new Dictionary<int, int> { 
-                    {1, 2},
-                    {2, 3},
-                    {3, 1},
-                }
-            };
+            
+            UserProfile uProfile = new UserProfile();
+            uProfile.Profile = new Profile() { LastName = "Kobernik", FirstName = "Yura", Email = "ophite@ukr.net", Phone = "0681991555" };
 
-            result.Result = userProfile;
+            // firm 1 
+            FirmProfile firmStolitsa = new FirmProfile() { Profile = new DirectoryProfile() { ID = 10, Name = "Stolitsa" } };
+            firmStolitsa.Subjects = new List<DirectoryProfile>()
+            {
+                new DirectoryProfile() {ID = 1, Name = "stolitsa subject 1"},
+                new DirectoryProfile() {ID = 2, Name = "stolitsa subject 2"},
+                new DirectoryProfile() {ID = 3, Name = "stolitsa subject 3"},
+            };
+            // firm 2
+            FirmProfile firmKarpatu = new FirmProfile() { Profile = new DirectoryProfile() { ID = 20, Name = "Karpatu" } };
+            firmKarpatu.Subjects = new List<DirectoryProfile>()
+            {
+                new DirectoryProfile() {ID = 4, Name = "Karpatu subject 1"},
+                new DirectoryProfile() {ID = 5, Name = "Karpatu subject 2"},
+                new DirectoryProfile() {ID = 6, Name = "Karpatu subject 3"},
+            };
+            // firm 3 
+            FirmProfile firmMova = new FirmProfile() { Profile = new DirectoryProfile() { ID = 30, Name = "Mova" } };
+            firmMova.Subjects = new List<DirectoryProfile>()
+            {
+                new DirectoryProfile() {ID = 7, Name = "Mova subject 1"},
+                new DirectoryProfile() {ID = 8, Name = "Mova subject 2"},
+                new DirectoryProfile() {ID = 9, Name = "Mova subject 3"},
+            };
+            uProfile.Firms = new List<FirmProfile>() { firmStolitsa, firmKarpatu, firmMova };
+
+            result.Result = uProfile;
+            //result.Result = JsonConvert.SerializeObject(uProfile);
             return result;
         }
     }

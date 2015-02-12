@@ -151,7 +151,6 @@ namespace WebApplication3.Controllers
         [Authorize]
         public virtual PartialViewResult UserProfile()
         {
-            SqlResult result = _uow.AccountRepository.GetUserProfile(this.User.Identity.Name);
             return PartialView();
         }
         
@@ -159,8 +158,7 @@ namespace WebApplication3.Controllers
         [HttpPost]
         public virtual JsonResult UserProfilePost()
         {
-            SqlResult result = _uow.AccountRepository.GetUserProfile(this.User.Identity.Name);
-            return Json(result.Result);
+            return Json(_uow.AccountRepository.GetUserProfile(this.User.Identity.Name).Result);
         }
 
         [HttpGet]
