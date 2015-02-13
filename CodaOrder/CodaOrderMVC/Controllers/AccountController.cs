@@ -6,6 +6,7 @@ using System.Web.Mvc;
 using System.Web.Security;
 using WebApplication3.Entity;
 using WebApplication3.Entity.Repositories;
+using WebApplication3.Helpers;
 using WebApplication3.Models;
 using WebMatrix.WebData;
 
@@ -155,10 +156,24 @@ namespace WebApplication3.Controllers
         }
         
         [Authorize]
-        [HttpPost]
-        public virtual JsonResult UserProfilePost()
+        [HttpGet]
+        public virtual JsonResult UserProfileInfo()
         {
-            return Json(_uow.AccountRepository.GetUserProfile(this.User.Identity.Name).Result);
+            return Json(_uow.AccountRepository.GetUserProfile(this.User.Identity.Name).Result, JsonRequestBehavior.AllowGet);
+        }
+
+        [Authorize]
+        [HttpPost]
+        public virtual JsonResult UserProfileInfo(WebApplication3.Entity.Repositories.UserProfile userProfile)
+        {
+            SqlResult result = new SqlResult();
+            Dictionary<string, string> msg = new Dictionary<string, string>();
+            msg[ConstantDocument.IsResponseError] = result.IsError.ToString();
+
+            if (result.IsError)
+                msg[ConstantDocument.ResponseErrorMessage] = result.Message.Message;
+
+            return Json(msg);
         }
 
         [HttpGet]

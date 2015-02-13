@@ -1,8 +1,9 @@
-﻿<div ng-controller="UserProfileController" ng-init="init('@Url.Action(@MVC.Account.ActionNames.UserProfilePost, @MVC.Account.Name)')">
+﻿<div ng-controller="UserProfileController" ng-init="init('@Url.Action(@MVC.Account.ActionNames.UserProfileInfo, @MVC.Account.Name)')">
+    <dir-show-error></dir-show-error>
     <form name="userProfileForm">
         <div class="col-lg-5">
             <tabset>
-                <tab ng-repeat="tab in model.tabs" heading="{{tab.Profile.Name}}" active="tab.active">
+                <tab ng-repeat="tab in model.tabs" heading="{{tab.Name|| tab.Profile.Name}}" active="tab.active">
                     @* profile tab *@
                     <div class="col-lg-9" ng-show="tab.isProfile">
                         <label>First name</label>
@@ -14,9 +15,10 @@
                         <label>Phone</label>
                         <input type="text" name="phone" ng-model="tab.Phone" class="form-control">
                     </div>
+                    @* firm tab *@
                     <div ng-show="!tab.isProfile">
                         <label>Subjects</label>
-                        <ui-select ng-model="tab.selectedSubject" theme="bootstrap" ng-disabled="disabled" style="width: 300px;">
+                        <ui-select ng-model="tab.DefaultSubject" theme="bootstrap" ng-disabled="disabled" style="width: 300px;">
                             <ui-select-match placeholder="Select subject in the list...">{{$select.selected.Name}}</ui-select-match>
                             <ui-select-choices repeat="subject in tab.Subjects | filter: $select.search">
                                 <span ng-bind-html="subject.Name | highlight: $select.search"></span>
@@ -26,6 +28,6 @@
                 </tab>
             </tabset>
         </div>
-        <button type="button" class="btn btn-primary" ng-disabled="userProfileForm.$invalid" ng-click="save()">Save</button>
+        <button type="button" class="btn btn-primary" ng-disabled="userProfileForm.$invalid" ng-click="save()" ng-show="userProfileForm.$dirty">Save</button>
     </form>
 </div>

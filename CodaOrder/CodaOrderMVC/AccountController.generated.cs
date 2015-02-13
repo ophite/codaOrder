@@ -77,7 +77,7 @@ namespace WebApplication3.Controllers
             public readonly string Logout = "Logout";
             public readonly string TopMenuLinks = "TopMenuLinks";
             public readonly string UserProfile = "UserProfile";
-            public readonly string UserProfilePost = "UserProfilePost";
+            public readonly string UserProfileInfo = "UserProfileInfo";
             public readonly string LeftMenuLinks = "LeftMenuLinks";
         }
 
@@ -91,7 +91,7 @@ namespace WebApplication3.Controllers
             public const string Logout = "Logout";
             public const string TopMenuLinks = "TopMenuLinks";
             public const string UserProfile = "UserProfile";
-            public const string UserProfilePost = "UserProfilePost";
+            public const string UserProfileInfo = "UserProfileInfo";
             public const string LeftMenuLinks = "LeftMenuLinks";
         }
 
@@ -128,6 +128,14 @@ namespace WebApplication3.Controllers
         public class ActionParamsClass_ChangePassword
         {
             public readonly string chgPwdData = "chgPwdData";
+        }
+        static readonly ActionParamsClass_UserProfileInfo s_params_UserProfileInfo = new ActionParamsClass_UserProfileInfo();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_UserProfileInfo UserProfileInfoParams { get { return s_params_UserProfileInfo; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_UserProfileInfo
+        {
+            public readonly string userProfile = "userProfile";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -289,13 +297,25 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void UserProfilePostOverride(T4MVC_System_Web_Mvc_JsonResult callInfo);
+        partial void UserProfileInfoOverride(T4MVC_System_Web_Mvc_JsonResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.JsonResult UserProfilePost()
+        public override System.Web.Mvc.JsonResult UserProfileInfo()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.UserProfilePost);
-            UserProfilePostOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.UserProfileInfo);
+            UserProfileInfoOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void UserProfileInfoOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, WebApplication3.Entity.Repositories.UserProfile userProfile);
+
+        [NonAction]
+        public override System.Web.Mvc.JsonResult UserProfileInfo(WebApplication3.Entity.Repositories.UserProfile userProfile)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.UserProfileInfo);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "userProfile", userProfile);
+            UserProfileInfoOverride(callInfo, userProfile);
             return callInfo;
         }
 

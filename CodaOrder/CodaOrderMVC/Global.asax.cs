@@ -29,6 +29,7 @@ namespace WebApplication3
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
             ModelBinders.Binders.Add(typeof(LinesViewModel), new LineBinder());
+            ModelBinders.Binders.Add(typeof(WebApplication3.Entity.Repositories.UserProfile), new UserProfileBinder());
         }
     }
 }

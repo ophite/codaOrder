@@ -25,4 +25,19 @@ namespace WebApplication3.ModelBinder
             return item;
         }
     }
+
+    public class UserProfileBinder : DefaultModelBinder
+    {
+        public override object BindModel(ControllerContext controllerContext, ModelBindingContext modelContext)
+        {
+            WebApplication3.Entity.Repositories.UserProfile item = new WebApplication3.Entity.Repositories.UserProfile();
+            // send array from one element (our lines)
+            ValueProviderResult result = modelContext.ValueProvider.GetValue("0");
+            if (result == null || string.IsNullOrEmpty(result.AttemptedValue))
+                return item;
+
+            item = JsonConvert.DeserializeObject<WebApplication3.Entity.Repositories.UserProfile>(result.AttemptedValue);
+            return item;
+        }
+    }
 }

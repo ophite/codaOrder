@@ -8,18 +8,25 @@
     angular.module(ConstantHelper.App).factory('userProfileService', ['$resource', 'DSCacheFactory',
         function ($resource, DSCacheFactory) {
             return {
-                getUserProfile: function (urlGetUserProfile) {
+                api: function (urlGetUserProfile, params) {
                     return $resource(window.location.origin + urlGetUserProfile, {}, {
-
-                        fn: {
-                            method: 'POST',
+                        get: {
+                            method: 'GET',
                             transformRequest: function (data, headersGetter) {
                                 var headers = headersGetter();
-                                //headers['Content-Type'] = 'application/x-www-form-urlencoded';
                                 headers['Content-Type'] = 'application/json';
                                 headers['Data-Type'] = 'json';
                             },
                             cache: true,
+                        },
+                        save: {
+                            method: 'POST',
+                            params: params,
+                            transformRequest: function (data, headersGetter) {
+                                var headers = headersGetter();
+                                headers['Content-Type'] = 'application/json';
+                                headers['Data-Type'] = 'json';
+                            },
                         }
                     });
                 },
@@ -27,39 +34,44 @@
         }
     ]);
 
-    angular.module(ConstantHelper.App).controller('UserProfileController', ['$scope', 'userProfileService',
-        function ($scope, userProfileService) {
+    angular.module(ConstantHelper.App).controller('UserProfileController', ['$scope', 'userProfileService', 'showErrorService',
+        function ($scope, userProfileService, showErrorService) {
 
-            $scope.model = {};
-            $scope.model.tabs = [];
-            //$scope.model.selectedSubject = {};
+            $scope.model = {
+                tabs: [],
+            };
 
             $scope.init = function (urlGetUserProfile) {
                 $scope.model.urlGetUserProfile = urlGetUserProfile;
-                var p = userProfileService.getUserProfile($scope.model.urlGetUserProfile).fn().$promise.then(
+                var p = userProfileService.api($scope.model.urlGetUserProfile).get().$promise.then(
                     function (jsonData) {
                         var items = angular.fromJson(jsonData);
 
                         // profile
-                        var profile = items.Profile;
-                        profile.Profile = {}
-                        profile.Profile.Name = "Profile";
-                        profile.isProfile = true;
-                        $scope.model.tabs.push(profile);
+                        items.Profile.isProfile = true;
+                        $scope.model.tabs[$scope.model.tabs.length] = items.Profile;
 
+                        // firm
                         angular.forEach(items.Firms, function (firm) {
-                            firm.selectedSubject = firm.Subjects[0];
-                            $scope.model.tabs.push(firm);
+                            $scope.model.tabs[$scope.model.tabs.length] = firm;
                         });
-                    })
+                    });
             };
 
-            $scope.$watch('model.selectedSubject', function (newValues, oldValues) {
-                console.log(newValues, oldValues);
-            }, true);
-
             $scope.save = function () {
-                console.log('save');
+                var data = {
+                    Profile: $scope.model.tabs[0],
+                    Firms:$scope.model.tabs.slice(1, $scope.model.tabs.length)
+                }
+                userProfileService.api($scope.model.urlGetUserProfile, [angular.toJson(data)]).save().$promise.then(
+                    function (jsonData) {
+                        var isError = jsonData[ConstantHelper.IsResponseError];
+                        if (isError.toLowerCase() === 'true') {
+                            showErrorService.show('Error during save profile', jsonData[ConstantHelper.ResponseErrorMessage]);
+                        }
+                        else
+                            $scope.userProfileForm.$setPristine();
+                    });
             };
         }
     ]);
