@@ -19,8 +19,7 @@
                         // unpack data
                         var items = angular.fromJson(jsonData);
                         // profile
-                        items.Profile.isProfile = true;
-                        $scope.model.tabs[$scope.model.tabs.length] = items.Profile;
+                        $scope.model.tabProfile = items.Profile;
                         // firm
                         angular.forEach(items.Firms, function (firm) {
                             $scope.model.tabs[$scope.model.tabs.length] = firm;
@@ -31,14 +30,14 @@
             $scope.save = function () {
                 //pack dataq
                 var data = {
-                    Profile: $scope.model.tabs[0],
-                    Firms:$scope.model.tabs.slice(1, $scope.model.tabs.length)
+                    Profile: $scope.model.tabProfile,
+                    Firms:$scope.model.tabs.slice(0, $scope.model.tabs.length)
                 }
                 // save
                 userProfileService.api($scope.model.urlGetUserProfile, [angular.toJson(data)]).save().$promise.then(
                     function (jsonData) {
                         if (!showErrorService.show('Error during save profile', jsonData))
-                            $scope.userProfileForm.$setPristine();
+                            $scope.form.$setPristine();
                     });
             };
         }

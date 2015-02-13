@@ -1,21 +1,34 @@
 ﻿<div ng-controller="UserProfileController" ng-init="init('@Url.Action(@MVC.Account.ActionNames.UserProfileInfo, @MVC.Account.Name)')">
     <dir-show-error></dir-show-error>
-    <form name="userProfileForm">
+    <form novalidate name="form" ng-submit="save()">
         <div class="col-lg-5">
             <tabset>
-                <tab ng-repeat="tab in model.tabs" heading="{{tab.Name|| tab.Profile.Name}}" active="tab.active">
-                    @* profile tab *@
-                    <div class="col-lg-9" ng-show="tab.isProfile">
-                        <label>First name</label>
-                        <input type="text" name="firstName" ng-model="tab.FirstName" class="form-control">
-                        <label>Last name</label>
-                        <input type="text" name="lastName" ng-model="tab.LastName" class="form-control">
-                        <label>Email</label>
-                        <input type="email" name="email" ng-model="tab.Email" class="form-control">
-                        <label>Phone</label>
-                        <input type="text" name="phone" ng-model="tab.Phone" class="form-control">
+                <tab heading="{{model.tabProfile.Name}}" active="tab.tabProfile.active">
+                    <div class="col-lg-9" ng-form="profileForm">
+                        <div class="form-group">
+                            <label>First name</label>
+                            <input type="text" name="firstName" ng-model="model.tabProfile.FirstName" class="form-control" required>
+                            <span ng-show="profileForm.firstName.$error.required"> Required! </span>
+                        </div>
+                        <div class="form-group">
+                            <label>Last name</label>
+                            <input type="text" name="lastName" ng-model="model.tabProfile.LastName" class="form-control" required>
+                            <span ng-show="profileForm.lastName.$error.required"> Required! </span>
+                        </div>
+                        <div class="form-group">
+                            <label>Email</label>
+                            <input type="email" name="email" ng-model="model.tabProfile.Email" class="form-control" required>
+                            <span ng-show="profileForm.email.$error.required"> Required! </span>
+                            <span ng-show="profileForm.email.$error.email"> Not valid email! </span>
+                        </div>
+                        <div class="form-group">
+                            <label>Phone</label>
+                            <input type="text" name="phone" ng-model="model.tabProfile.Phone" class="form-control" ng-pattern="/^[(]{0,1}[0-9]{3}[)\.\- ]{0,1}[0-9]{3}[\.\- ]{0,1}[0-9]{4}$/">
+                            <span ng-show="profileForm.phone.$error.pattern"> Not valid phone number! </span>
+                        </div>
                     </div>
-                    @* firm tab *@
+                </tab>
+                <tab ng-repeat="tab in model.tabs" heading="{{tab.Profile.Name}}" active="tab.active">
                     <div ng-show="!tab.isProfile">
                         <label>Subjects</label>
                         <ui-select ng-model="tab.DefaultSubject" theme="bootstrap" ng-disabled="disabled" style="width: 300px;">
@@ -28,6 +41,6 @@
                 </tab>
             </tabset>
         </div>
-        <button type="button" class="btn btn-primary" ng-disabled="userProfileForm.$invalid" ng-click="save()" ng-show="userProfileForm.$dirty">Save</button>
+        <button type="button" class="btn btn-primary" ng-disabled="form.$invalid" ng-click="save()" ng-show="form.$dirty">Save</button>
     </form>
 </div>
