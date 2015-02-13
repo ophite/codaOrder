@@ -131,6 +131,9 @@ namespace Links
         public static readonly string angular_sanitize_min_js = Url("angular-sanitize.min.js");
         public static readonly string angular_sanitize_min_js_map = Url("angular-sanitize.min.js.map");
         public static readonly string angular_scenario_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-scenario.min.js") ? Url("angular-scenario.min.js") : Url("angular-scenario.js");
+        public static readonly string angular_spinner_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-spinner.min.js") ? Url("angular-spinner.min.js") : Url("angular-spinner.js");
+        public static readonly string angular_spinner_min_js = Url("angular-spinner.min.js");
+        public static readonly string angular_spinner_min_js_map = Url("angular-spinner.min.js.map");
         public static readonly string angular_touch_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-touch.min.js") ? Url("angular-touch.min.js") : Url("angular-touch.js");
         public static readonly string angular_touch_min_js = Url("angular-touch.min.js");
         public static readonly string angular_touch_min_js_map = Url("angular-touch.min.js.map");
@@ -212,6 +215,7 @@ namespace Links
                     private const string URLPATH = "~/Scripts/app/account/service";
                     public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    public static readonly string ProfileService_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ProfileService.min.js") ? Url("ProfileService.min.js") : Url("ProfileService.js");
                 }
             
             }
@@ -1056,6 +1060,8 @@ namespace Links
         public static readonly string modernizr_2_6_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.6.2.min.js") ? Url("modernizr-2.6.2.min.js") : Url("modernizr-2.6.2.js");
         public static readonly string ng_grid_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ng-grid.min.js") ? Url("ng-grid.min.js") : Url("ng-grid.js");
         public static readonly string ng_grid_min_js = Url("ng-grid.min.js");
+        public static readonly string spin_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/spin.min.js") ? Url("spin.min.js") : Url("spin.js");
+        public static readonly string spin_min_js = Url("spin.min.js");
         public static readonly string version_json = Url("version.json");
     }
 

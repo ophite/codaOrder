@@ -5,7 +5,7 @@
 (function () {
     'use strict';
 
-    function DocumentGridController($scope, $location, apiService, filterStrToSql, parameterService, gridFilterBarService) {
+    function DocumentGridController($scope, $location, apiService, filterStrToSql, parameterService, gridFilterBarService, usSpinnerService) {
 
         $scope.model = {};
 
@@ -57,6 +57,7 @@
 
         // listeners
         $scope.$on(ConstantHelper.Watchers.broadcastGetDocuments, function (event, args) {
+
             // filter
             if (filterBarPlugin.scope != null) {
                 var sqlFilter = filterBarPlugin.scope.$parent.filterText;
@@ -72,6 +73,7 @@
 
             // get docs
             var callbackFunc = function (jsonData) {
+                $scope.stopSpin();
                 // sending params
                 params[ConstantHelper.Document.paramTotalRows.value] = jsonData[ConstantHelper.Document.paramTotalRows.value];
                 params[ConstantHelper.Document.paramPagesCount.value] = jsonData[ConstantHelper.Document.paramPagesCount.value];
@@ -80,8 +82,17 @@
                 $scope.setPagingData(JSON.parse(jsonData[ConstantHelper.GridData]), params[ConstantHelper.Document.paramCurrentPage.value]);
             };
 
+            $scope.startSpin();
             apiService.getDocuments(params, $scope.model.urlGetDocument, callbackFunc);
         });
+
+        // spinner
+        $scope.startSpin = function () {
+            usSpinnerService.spin('spinner-1');
+        }
+        $scope.stopSpin = function () {
+            usSpinnerService.stop('spinner-1');
+        }
 
         // test
         //var filterStr = "Сумма: ^41;Код док-та: ^48;ID: ^198;";
@@ -89,6 +100,6 @@
         //alert(res);
     }
 
-    DocumentGridController.$inject = ['$scope', '$location', 'apiService', 'filterStrToSql', 'parameterService', 'gridFilterBarService'];
+    DocumentGridController.$inject = ['$scope', '$location', 'apiService', 'filterStrToSql', 'parameterService', 'gridFilterBarService', 'usSpinnerService'];
     angular.module(ConstantHelper.App).controller('DocumentGridController', DocumentGridController);
 })();

@@ -19,11 +19,12 @@
         'ui.select',
         'ngRoute',
         'ui.router',
-        'angular-data.DSCacheFactory'
+        'angular-data.DSCacheFactory',
+        'angularSpinner'
     ])
 
-    app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider',
-        function ($stateProvider, $urlRouterProvider, $locationProvider) {
+    app.config(['$stateProvider', '$urlRouterProvider', '$locationProvider', 'usSpinnerConfigProvider',
+        function ($stateProvider, $urlRouterProvider, $locationProvider, usSpinnerConfigProvider) {
 
             //$urlRouterProvider.otherwise('Account/Login');
             $locationProvider.html5Mode({
@@ -57,10 +58,8 @@
                     templateUrl: ConstantHelper.router.userProfile.templateUrl
                 });
 
-            //.state('saveLines', {
-            //    url: ConstantHelper.router.lines.urlSaveJSON + '/:documentID',
-            //    templateUrl: ConstantHelper.router.lines.templateUrl
-            //});
+            // spinner
+            usSpinnerConfigProvider.setDefaults({ color: 'blue' });
         }
     ]);
 

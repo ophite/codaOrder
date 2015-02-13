@@ -24,3 +24,4 @@ Installed
 -ui-select.js
 -ui-router.js
 -angular-cache
+-angular-spinner
