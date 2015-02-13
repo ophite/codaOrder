@@ -2,22 +2,24 @@
 
 <div ng-controller="LineGridController" ng-init="init('@Url.Action(@MVC.Document.ActionNames.SaveLines, @MVC.Document.Name)')">
     <dir-show-error></dir-show-error>
-    <div class="gridStyle" ng-grid="gridOptions" />
-    <div ng-controller="DocumentPaginationController">
-        <pagination num-pages="numPages"
-                    total-items="totalRows"
-                    ng-model="currentPage"
-                    items-per-page="pageSize"
-                    max-size="pageNumberCounts"
-                    class="pagination-sm"
-                    boundary-links="true"
-                    rotate="false"
-                    previous-text="&lsaquo;"
-                    next-text="&rsaquo;"
-                    first-text="&laquo;"
-                    last-text="&raquo;"
-                    ng-change="pageChanged()">
-        </pagination>
-    </div>
-    <button class="btn btn-success" ng-click="saveDocument()" ng-show="model.isDirty==true">Save</button>
+    <form name="saveDocumentForm">
+        <div class="gridStyle" ng-grid="gridOptions" />
+        <div ng-controller="DocumentPaginationController">
+            <pagination num-pages="numPages"
+                        total-items="totalRows"
+                        ng-model="currentPage"
+                        items-per-page="pageSize"
+                        max-size="pageNumberCounts"
+                        class="pagination-sm"
+                        boundary-links="true"
+                        rotate="false"
+                        previous-text="&lsaquo;"
+                        next-text="&rsaquo;"
+                        first-text="&laquo;"
+                        last-text="&raquo;"
+                        ng-change="pageChanged()">
+            </pagination>
+        </div>
+        <button class="btn btn-success" ng-click="saveDocument()" ng-show="saveDocumentForm.$dirty">Save</button>
+    </form>
 </div>

@@ -206,6 +206,7 @@
     <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
     <Content Include="Scripts\angular-ui\ui-select.js" />
     <Content Include="Scripts\app\account\controller\ProfileController.js" />
+    <Content Include="Scripts\app\account\service\ProfileService.js" />
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\Constant.js" />
     <Content Include="Scripts\app\common\date.js" />
@@ -1252,7 +1253,6 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Scripts\app\account\service\" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

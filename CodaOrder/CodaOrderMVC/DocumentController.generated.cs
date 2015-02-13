@@ -56,9 +56,9 @@ namespace WebApplication3.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.JsonResult GetDocumentsPost()
+        public virtual System.Web.Mvc.JsonResult GetDocuments()
         {
-            return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetDocumentsPost);
+            return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetDocuments);
         }
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -115,7 +115,7 @@ namespace WebApplication3.Controllers
             public readonly string Index = "Index";
             public readonly string Documents = "Documents";
             public readonly string Lines = "Lines";
-            public readonly string GetDocumentsPost = "GetDocumentsPost";
+            public readonly string GetDocuments = "GetDocuments";
             public readonly string GetLines = "GetLines";
             public readonly string SaveLines = "SaveLines";
             public readonly string NewOrder = "NewOrder";
@@ -134,7 +134,7 @@ namespace WebApplication3.Controllers
             public const string Index = "Index";
             public const string Documents = "Documents";
             public const string Lines = "Lines";
-            public const string GetDocumentsPost = "GetDocumentsPost";
+            public const string GetDocuments = "GetDocuments";
             public const string GetLines = "GetLines";
             public const string SaveLines = "SaveLines";
             public const string NewOrder = "NewOrder";
@@ -148,11 +148,11 @@ namespace WebApplication3.Controllers
         }
 
 
-        static readonly ActionParamsClass_GetDocumentsPost s_params_GetDocumentsPost = new ActionParamsClass_GetDocumentsPost();
+        static readonly ActionParamsClass_GetDocuments s_params_GetDocuments = new ActionParamsClass_GetDocuments();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_GetDocumentsPost GetDocumentsPostParams { get { return s_params_GetDocumentsPost; } }
+        public ActionParamsClass_GetDocuments GetDocumentsParams { get { return s_params_GetDocuments; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_GetDocumentsPost
+        public class ActionParamsClass_GetDocuments
         {
             public readonly string model = "model";
         }
@@ -294,14 +294,14 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void GetDocumentsPostOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, WebApplication3.Models.DocumentsParamsViewModel model);
+        partial void GetDocumentsOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, WebApplication3.Models.DocumentsParamsViewModel model);
 
         [NonAction]
-        public override System.Web.Mvc.JsonResult GetDocumentsPost(WebApplication3.Models.DocumentsParamsViewModel model)
+        public override System.Web.Mvc.JsonResult GetDocuments(WebApplication3.Models.DocumentsParamsViewModel model)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetDocumentsPost);
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetDocuments);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
-            GetDocumentsPostOverride(callInfo, model);
+            GetDocumentsOverride(callInfo, model);
             return callInfo;
         }
 

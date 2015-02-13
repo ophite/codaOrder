@@ -7,11 +7,11 @@
     angular.module(ConstantHelper.App).factory('documentService', ['$resource', 'DSCacheFactory', '$q',
         function ($resource, DSCacheFactory, $q) {
             return {
-                get: function (paramDict, urlGetDocument) {
+                api: function (paramDict, urlGetDocument) {
 
                     return $resource(window.location.origin + urlGetDocument, {}, {
-                        fn: {
-                            method: 'POST',
+                        get: {
+                            method: 'GET',
                             params: paramDict,
                             transformRequest: function (data, headersGetter) {
                                 var headers = headersGetter();
@@ -25,13 +25,8 @@
                             },
                             //cache: DSCacheFactory.get('defaultCache')
                             cache: true
-                        }
-                    });
-                },
-                save: function (paramDict, urlGetDocument) {
-
-                    return $resource(window.location.origin + urlGetDocument, {}, {
-                        fn: {
+                        },
+                        save: {
                             method: 'POST',
                             params: paramDict,
                             transformRequest: function (data, headersGetter) {
@@ -50,7 +45,7 @@
     angular.module(ConstantHelper.App).factory('apiService', ['documentService', 'DSCacheFactory',
         function (documentService, DSCacheFactory) {
 
-            var getMe = function (paramDict, url, callbackFunc) {
+            var cacheWrapper = function (paramDict, url, callbackFunc) {
                 // 1 get from cache
                 var defaultCache = DSCacheFactory.get('defaultCache');
                 var result = defaultCache.get(angular.toJson(paramDict));
@@ -60,7 +55,7 @@
                 }
                 else {
                     // 2 get 
-                    var resPost = documentService.get(paramDict, url).fn().$promise.then(
+                    var resPost = documentService.api(paramDict, url).get().$promise.then(
                         function (jsonData) {
                             var defaultCache = DSCacheFactory.get('defaultCache');
                             defaultCache.put(angular.toJson(paramDict), jsonData)
@@ -71,15 +66,13 @@
 
             return {
                 getDocuments: function (paramDict, urlGetDocument, callbackFunc) {
-
-                    return getMe(paramDict, urlGetDocument, callbackFunc);
+                    return cacheWrapper(paramDict, urlGetDocument, callbackFunc);
                 },
                 getLines: function (paramDict, urlGetLines, callbackFunc) {
-
-                    return getMe(paramDict, urlGetLines, callbackFunc);
+                    return cacheWrapper(paramDict, urlGetLines, callbackFunc);
                 },
                 saveDocument: function (paramsDict, urlSaveDocument, callbackFunc) {
-                    var resPost = documentService.save(paramsDict, urlSaveDocument).fn().$promise.then(
+                    var resPost = documentService.api(paramsDict, urlSaveDocument).save().$promise.then(
                             function (jsonData) {
                                 callbackFunc(jsonData);
                             });

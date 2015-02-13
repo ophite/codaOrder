@@ -7,8 +7,16 @@ angular.module(ConstantHelper.App).factory('showErrorService', ['$modal',
     function ($modal) {
 
         return {
-            show: function (errorTitle, errorDescription) {
+            show: function (errorTitle, jsonDataResponse) {
+                // get error message from json response
+                var isError = jsonDataResponse[ConstantHelper.IsResponseError];
+                if (isError.toLowerCase() !== 'true') {
+                    return false;
+                }
 
+                var errorDescription = jsonDataResponse[ConstantHelper.ResponseErrorMessage];
+
+                // show modal window
                 var modalInstance = $modal.open({
                     templateUrl: 'error.html',
                     controller: 'ErrorControllerModal',
@@ -24,6 +32,8 @@ angular.module(ConstantHelper.App).factory('showErrorService', ['$modal',
                 }, function () {
                     console.log('cancel/error modal');
                 });
+
+                return true;
             }
         };
     }

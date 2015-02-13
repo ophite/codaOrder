@@ -5,35 +5,6 @@
 (function () {
     'use strict';
 
-    angular.module(ConstantHelper.App).factory('userProfileService', ['$resource', 'DSCacheFactory',
-        function ($resource, DSCacheFactory) {
-            return {
-                api: function (urlGetUserProfile, params) {
-                    return $resource(window.location.origin + urlGetUserProfile, {}, {
-                        get: {
-                            method: 'GET',
-                            transformRequest: function (data, headersGetter) {
-                                var headers = headersGetter();
-                                headers['Content-Type'] = 'application/json';
-                                headers['Data-Type'] = 'json';
-                            },
-                            cache: true,
-                        },
-                        save: {
-                            method: 'POST',
-                            params: params,
-                            transformRequest: function (data, headersGetter) {
-                                var headers = headersGetter();
-                                headers['Content-Type'] = 'application/json';
-                                headers['Data-Type'] = 'json';
-                            },
-                        }
-                    });
-                },
-            };
-        }
-    ]);
-
     angular.module(ConstantHelper.App).controller('UserProfileController', ['$scope', 'userProfileService', 'showErrorService',
         function ($scope, userProfileService, showErrorService) {
 
@@ -65,11 +36,7 @@
                 }
                 userProfileService.api($scope.model.urlGetUserProfile, [angular.toJson(data)]).save().$promise.then(
                     function (jsonData) {
-                        var isError = jsonData[ConstantHelper.IsResponseError];
-                        if (isError.toLowerCase() === 'true') {
-                            showErrorService.show('Error during save profile', jsonData[ConstantHelper.ResponseErrorMessage]);
-                        }
-                        else
+                        if (!showErrorService.show('Error during save profile', jsonData))
                             $scope.userProfileForm.$setPristine();
                     });
             };

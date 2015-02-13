@@ -12,7 +12,6 @@
 
             $scope.model = {
                 isEditable: false,
-                isDirty: false,
             };
 
             // grid
@@ -53,17 +52,6 @@
                 $scope.model.urlSaveDocument = urlSaveDocument;
             };
 
-            //$scope.$on('ngGridEventStartCellEdit', function (element) {
-            //    $scope.model.isDirty = true;
-            //});
-
-            $scope.$on('ngGridEventEndCellEdit',
-                function (element) {
-                    //console.log(element.targetScope.row.entity);
-                    $scope.model.isDirty = true;
-                });
-
-
             // pagination
             $scope.setPagingData = function (data, page, pageSize) {
                 $scope.model.data = data;
@@ -92,10 +80,8 @@
             //api
             $scope.saveDocument = function () {
                 var callbackFunc = function (jsonData) {
-                    var isError = jsonData[ConstantHelper.IsResponseError];
-                    if (isError.toLowerCase() === 'true') {
-                        showErrorService.show('Error during save document', jsonData[ConstantHelper.ResponseErrorMessage]);
-                    }
+                    if (!showErrorService.show('Error during save document', jsonData))
+                        $scope.saveDocumentForm.$setPristine();
                 };
 
                 var lines = Enumerable.From($scope.model.data);

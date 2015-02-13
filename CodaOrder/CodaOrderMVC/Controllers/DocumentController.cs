@@ -50,30 +50,20 @@ namespace WebApplication3.Controllers
             return PartialView();
         }
 
-        //[HttpPost]
-        //[ValidateInput(false)]
-        //[Authorize]
-        //public virtual JsonResult GetDocumentsPost(FormCollection form)
-        //{
-        //    var data = form["model"];
-        //    JObject js = (JObject)JsonConvert.DeserializeObject(data);
-        //    return Json(_uow.DocumentRepository.GetLinesJson(js));
-        //}
-
-        [HttpPost]
+        [HttpGet]
         [ValidateInput(false)]
         [Authorize]
-        public virtual JsonResult GetDocumentsPost(DocumentsParamsViewModel model)
+        public virtual JsonResult GetDocuments(DocumentsParamsViewModel model)
         {
-            return Json(_uow.DocumentRepository.GetDocumentsJson(model).Result);
+            return Json(_uow.DocumentRepository.GetDocumentsJson(model).Result, JsonRequestBehavior.AllowGet);
         }
 
-        [HttpPost]
+        [HttpGet]
         [ValidateInput(false)]
         [Authorize]
         public virtual JsonResult GetLines(string documentID)
         {
-            return Json(_uow.DocumentRepository.GetLinesJson(documentID).Result);
+            return Json(_uow.DocumentRepository.GetLinesJson(documentID).Result, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
