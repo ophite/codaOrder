@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 
 namespace WebApplication3.Entity.Repositories
@@ -57,6 +58,27 @@ namespace WebApplication3.Entity.Repositories
             CutTable(ref dt);
 
             return dt;
+        }
+
+        /// <summary>
+        /// TODO для нормальной работы нужно переделать под стороннюю библиотеку например MSMQ
+        /// </summary>
+        public static void SendEmail(string email, string body)
+        {
+            MailMessage mail = new MailMessage();
+            mail.To.Add(email);
+            mail.From = new MailAddress("kobernik.u@asnova.com");
+            mail.Subject = "iOrder restore password";
+            mail.Body = body;
+            mail.IsBodyHtml = true;
+
+            SmtpClient smtp = new SmtpClient();
+            smtp.Host = "mail.asnova.com";
+            smtp.Port = 25;
+            smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
+            smtp.UseDefaultCredentials = false;
+            smtp.Credentials = new System.Net.NetworkCredential("kobernik.u", "Vostochnaya_93");// Enter seders User name and password  
+            smtp.Send(mail);
         }
     }
 }

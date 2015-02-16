@@ -26,6 +26,16 @@
                             <input type="text" name="phone" ng-model="model.tabProfile.Phone" class="form-control" ng-pattern="/^[(]{0,1}[0-9]{3}[)\.\- ]{0,1}[0-9]{3}[\.\- ]{0,1}[0-9]{4}$/">
                             <span ng-show="profileForm.phone.$error.pattern"> Not valid phone number! </span>
                         </div>
+                        <div class="form-group">
+                            <label>Node</label>
+                            <ui-select ng-model="model.tabProfile.DefaultNode" name="node" theme="bootstrap" ng-disabled="disabled" style="width: 300px;">
+                                <ui-select-match placeholder="Select node in the list...">{{$select.selected    }}</ui-select-match>
+                                <ui-select-choices repeat="node in model.tabProfile.Nodes | filter: $select.search">
+                                    <span ng-bind-html="node | highlight: $select.search"></span>
+                                </ui-select-choices>
+                            </ui-select>
+                            <span ng-show="profileForm.node.$error.required"> Required! </span>
+                        </div>
                     </div>
                 </tab>
                 <tab ng-repeat="tab in model.tabs" heading="{{tab.Profile.Name}}" active="tab.active">

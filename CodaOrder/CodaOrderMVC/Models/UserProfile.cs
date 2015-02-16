@@ -118,6 +118,8 @@ namespace WebApplication3.Models
         public string Phone { get; set; }
         public string Email { get; set; }
         public string Name { get; set; }
+        public string DefaultNode { get; set; }
+        public List<string> Nodes { get; set; }
     }
 
     public class DirectoryProfile

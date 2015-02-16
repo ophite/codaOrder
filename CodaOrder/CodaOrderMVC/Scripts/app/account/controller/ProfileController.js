@@ -10,6 +10,7 @@
 
             $scope.model = {
                 tabs: [],
+                tabProfile: ''
             };
 
             $scope.init = function (urlGetUserProfile) {

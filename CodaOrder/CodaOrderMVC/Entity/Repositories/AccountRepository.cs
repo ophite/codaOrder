@@ -52,7 +52,16 @@ namespace WebApplication3.Entity.Repositories
             firmMova.DefaultSubject = firmMova.Subjects[2];
             // profile
             CodaUserProfile uProfile = new CodaUserProfile();
-            uProfile.Profile = new Profile() { LastName = "Kobernik", FirstName = "Yura", Email = "ophite@ukr.net", Phone = "0681991555", Name = "Profile" };
+            uProfile.Profile = new Profile()
+            {
+                LastName = "Kobernik",
+                FirstName = "Yura",
+                Email = "ophite@ukr.net",
+                Phone = "0681991555",
+                Name = "Profile",
+                DefaultNode = firmKarpatu.Profile.Name
+            };
+            uProfile.Profile.Nodes = new List<string>() { firmKarpatu.Profile.Name, firmMova.Profile.Name, firmStolitsa.Profile.Name };
             uProfile.Firms = new List<FirmProfile>() { firmStolitsa, firmKarpatu, firmMova };
 
             result.Result = uProfile;
