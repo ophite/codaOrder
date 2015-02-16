@@ -12,6 +12,7 @@ namespace WebApplication3.Helpers
         public static string ResponseErrorMessage = "responseErrorMessage";
         public static string GridData = "gridData";
         public static string IsEditable = "isEditable";
+        public static string SpinnerID = "spinner-1";
 
         public static string ParamSubjectID = "subjectID";
         public static string ParamDateBegin = "dateBegin";

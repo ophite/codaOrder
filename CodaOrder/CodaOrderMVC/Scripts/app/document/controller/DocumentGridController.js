@@ -88,10 +88,10 @@
 
         // spinner
         $scope.startSpin = function () {
-            usSpinnerService.spin('spinner-1');
+            usSpinnerService.spin(ConstantHelper.SpinnerID);
         }
         $scope.stopSpin = function () {
-            usSpinnerService.stop('spinner-1');
+            usSpinnerService.stop(ConstantHelper.SpinnerID);
         }
 
         // test

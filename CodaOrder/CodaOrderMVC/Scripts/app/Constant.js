@@ -71,6 +71,7 @@ var ConstantHelper = new function () {
     this.DocumentID = 'documentID';
     this.IsEditable = '';
     this.App = 'app';
+    this.SpinnerID = '';
 
     this.Document = new function () {
         this.paramSubjectID = {

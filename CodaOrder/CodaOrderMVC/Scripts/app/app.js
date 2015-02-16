@@ -59,7 +59,7 @@
                 });
 
             // spinner
-            usSpinnerConfigProvider.setDefaults({ color: 'blue' });
+            usSpinnerConfigProvider.setDefaults();
         }
     ]);
 

@@ -28,7 +28,8 @@ angular.module(ConstantHelper.App).factory('showErrorService', ['$modal',
 
                 modalInstance.result.then(function (errorDescriptionFromModel) {
                     console.log('ok modal');
-                    console.log(errorDescriptionFromModel);
+                    if (errorDescriptionFromModel !== undefined)
+                        console.log(errorDescriptionFromModel);
                 }, function () {
                     console.log('cancel/error modal');
                 });
