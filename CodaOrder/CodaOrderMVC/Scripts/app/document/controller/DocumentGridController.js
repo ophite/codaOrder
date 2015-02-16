@@ -19,7 +19,7 @@
             plugins: [filterBarPlugin],
             //showGroupPanel: true,
             //jqueryUIDraggable: true,
-            headerRowHeight: 60, // give room for filter bar
+            headerRowHeight: 60,
             //enableCellSelection: true,
             enableRowSelection: true,
             multiSelect: false,

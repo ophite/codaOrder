@@ -1,1 +1,44 @@
-﻿History
+﻿@using WebApplication3.Helpers;
+@model IEnumerable<WebApplication3.Entity.JournalSale_Documents>
+
+<div class="row" ng-controller="DocumentDateController">
+    <div class="col-lg-2">
+        <div><dir-date-picker ng-model="dates.dateStart" date-format="{{format}}" /></div>
+    </div>
+    <div class="col-lg-2">
+        <div><dir-date-picker ng-model="dates.dateEnd" date-format="{{format}}" /></div>
+    </div>
+    <div class="col-lg-3">
+        <dir-dates-validation ng-model="dates"
+                              date-start-validate="{{dates.dateStart| date:'short'}}"
+                              date-end-validate="{{dates.dateEnd| date:'short'}}"
+                              date-format="{{format}}" />
+    </div>
+    <div class="col-md-offset-6">
+        <div ng-controller="DocumentLoadController">
+            <button class="btn btn-success" ng-click="refresh()">Refresh</button>
+        </div>
+    </div>
+</div>
+
+<div ng-controller="DocumentGridController" ng-init="init('@Url.Action(@MVC.Document.ActionNames.GetDocuments, @MVC.Document.Name)')">
+    <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="@ConstantDocument.SpinnerID" spinner-start-active="true"></span>
+    <div class="gridStyle" ng-grid="gridOptions" />
+</div>
+
+<div ng-controller="DocumentPaginationController">
+    <pagination num-pages="numPages"
+                total-items="totalRows"
+                ng-model="currentPage"
+                items-per-page="pageSize"
+                max-size="pageNumberCounts"
+                class="pagination-sm"
+                boundary-links="true"
+                rotate="false"
+                previous-text="&lsaquo;"
+                next-text="&rsaquo;"
+                first-text="&laquo;"
+                last-text="&raquo;"
+                ng-change="pageChanged()">
+    </pagination>
+</div>
