@@ -3,11 +3,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using WebApplication3.Entity.Repositories;
+using WebApplication3.Models;
 
 namespace WebApplication3.Entity.Interfaces
 {
-    public interface IAccountRepository : IRepository<JournalSale_Documents>
+    public interface IAccountRepository : IRepository<UserProfile>
     {
-        SqlResult GetUserProfile(string userName);
+        UserProfile GetUserByEmail(string email);
+        SqlResult GetCodaUserProfile(string userName);
     }
 }

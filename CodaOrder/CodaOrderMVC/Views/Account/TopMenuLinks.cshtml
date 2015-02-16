@@ -22,6 +22,8 @@
         else
         {
             @Html.ActionLink("Register", MVC.Account.Register())
+            <strong style="color:white"> / </strong>
+            @Html.ActionLink("Restore password", MVC.Account.RestorePassword())
         }
     }
 }

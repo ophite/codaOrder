@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using WebApplication3.Entity.Interfaces;
 using WebApplication3.Entity.Repositories;
+using WebApplication3.Models;
 
 namespace WebApplication3.Entity
 {
@@ -13,14 +14,16 @@ namespace WebApplication3.Entity
         #region Properties
 
         private codaJournal _dbContext;
+        private IdentityContext _dbIdentityContext;
 
         #endregion
         #region Methods
 
-        public Uow() : this(new codaJournal()) { }
-        public Uow(codaJournal context)
+        public Uow() : this(new codaJournal(), new IdentityContext()) { }
+        public Uow(codaJournal context, IdentityContext identityContext)
         {
             this._dbContext = context;
+            this._dbIdentityContext = identityContext;
             // Do NOT enable proxied entities, else serialization fails.
             //if false it will not get the associated certification and skills when we
             ////get the applicants
@@ -71,7 +74,7 @@ namespace WebApplication3.Entity
             get
             {
                 if (_accountRepository == null)
-                    _accountRepository = new AccountRepository(_dbContext);
+                    _accountRepository = new AccountRepository(_dbIdentityContext);
 
                 return _accountRepository;
             }

@@ -7,6 +7,8 @@ using System.Web;
 
 namespace WebApplication3.Models
 {
+    #region Default
+
     [Table("UserProfile")]
     public class UserProfile
     {
@@ -105,4 +107,37 @@ namespace WebApplication3.Models
         [ForeignKey("RoleId")]
         public ICollection<UsersInRole> UsersInRoles { get; set; }
     }
+
+    #endregion
+    #region My
+
+    public class Profile
+    {
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Phone { get; set; }
+        public string Email { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class DirectoryProfile
+    {
+        public int ID { get; set; }
+        public string Name { get; set; }
+    }
+
+    public class FirmProfile
+    {
+        public List<DirectoryProfile> Subjects { get; set; }
+        public DirectoryProfile DefaultSubject { get; set; }
+        public DirectoryProfile Profile { get; set; }
+    }
+
+    public class CodaUserProfile
+    {
+        public Profile Profile { get; set; }
+        public List<FirmProfile> Firms { get; set; }
+    }
+
+    #endregion
 }

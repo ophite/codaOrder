@@ -5,42 +5,21 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using WebApplication3.Entity.Interfaces;
+using WebApplication3.Models;
 
 namespace WebApplication3.Entity.Repositories
 {
-    public class Profile
-    {
-        public string FirstName { get; set; }
-        public string LastName { get; set; }
-        public string Phone { get; set; }
-        public string Email { get; set; }
-        public string Name { get; set; }
-    }
-
-    public class DirectoryProfile
-    {
-        public int ID { get; set; }
-        public string Name { get; set; }
-    }
-
-    public class FirmProfile
-    {
-        public List<DirectoryProfile> Subjects { get; set; }
-        public DirectoryProfile DefaultSubject { get; set; }
-        public DirectoryProfile Profile { get; set; }
-    }
-
-    public class UserProfile
-    {
-        public Profile Profile { get; set; }
-        public List<FirmProfile> Firms { get; set; }
-    }
-
-    public class AccountRepository : BaseRepository<JournalSale_Documents>, IAccountRepository
+    public class AccountRepository : BaseRepository<UserProfile>, IAccountRepository
     {
         public AccountRepository(DbContext dbContext) : base(dbContext) { }
 
-        public SqlResult GetUserProfile(string userName)
+        public UserProfile GetUserByEmail(string email)
+        {
+            UserProfile userProfile = ((IdentityContext)this.dbContext).UserProfiles.Where(i => i.EmailAddress == email).FirstOrDefault();
+            return userProfile;
+        }
+
+        public SqlResult GetCodaUserProfile(string userName)
         {
             SqlResult result = new SqlResult();
 
@@ -72,7 +51,7 @@ namespace WebApplication3.Entity.Repositories
             };
             firmMova.DefaultSubject = firmMova.Subjects[2];
             // profile
-            UserProfile uProfile = new UserProfile();
+            CodaUserProfile uProfile = new CodaUserProfile();
             uProfile.Profile = new Profile() { LastName = "Kobernik", FirstName = "Yura", Email = "ophite@ukr.net", Phone = "0681991555", Name = "Profile" };
             uProfile.Firms = new List<FirmProfile>() { firmStolitsa, firmKarpatu, firmMova };
 

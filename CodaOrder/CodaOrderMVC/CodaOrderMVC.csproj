@@ -1102,6 +1102,9 @@
     <Content Include="Views\Document\Lines.cshtml" />
     <Content Include="Views\Account\UserProfile.cshtml" />
     <Content Include="Views\Directive\DirShowError.cshtml" />
+    <Content Include="Views\Account\RestorePassword.cshtml" />
+    <Content Include="Views\Account\ConfirmPassword.cshtml" />
+    <Content Include="Views\Account\ShowRestorePasswordResult.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -1233,9 +1236,10 @@
     <Compile Include="ModelBinder\CustomBinders.cs" />
     <Compile Include="Models\ChangePassword.cs" />
     <Compile Include="Models\DocumentsParamsViewModel.cs" />
-    <Compile Include="Models\IdentityContext.cs" />
+    <Compile Include="Entity\Repositories\IdentityContext.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Register.cs" />
+    <Compile Include="Models\RestorePassword.cs" />
     <Compile Include="Models\UserProfile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SearchCodaObjectController.generated.cs">

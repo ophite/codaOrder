@@ -75,9 +75,12 @@ namespace WebApplication3.Controllers
             public readonly string AddNewUser = "AddNewUser";
             public readonly string ChangePassword = "ChangePassword";
             public readonly string Logout = "Logout";
+            public readonly string RestorePassword = "RestorePassword";
+            public readonly string ConfirmPassword = "ConfirmPassword";
+            public readonly string ShowRestorePasswordResult = "ShowRestorePasswordResult";
             public readonly string TopMenuLinks = "TopMenuLinks";
             public readonly string UserProfile = "UserProfile";
-            public readonly string UserProfileInfo = "UserProfileInfo";
+            public readonly string CodaUserProfileInfo = "CodaUserProfileInfo";
             public readonly string LeftMenuLinks = "LeftMenuLinks";
         }
 
@@ -89,9 +92,12 @@ namespace WebApplication3.Controllers
             public const string AddNewUser = "AddNewUser";
             public const string ChangePassword = "ChangePassword";
             public const string Logout = "Logout";
+            public const string RestorePassword = "RestorePassword";
+            public const string ConfirmPassword = "ConfirmPassword";
+            public const string ShowRestorePasswordResult = "ShowRestorePasswordResult";
             public const string TopMenuLinks = "TopMenuLinks";
             public const string UserProfile = "UserProfile";
-            public const string UserProfileInfo = "UserProfileInfo";
+            public const string CodaUserProfileInfo = "CodaUserProfileInfo";
             public const string LeftMenuLinks = "LeftMenuLinks";
         }
 
@@ -129,11 +135,19 @@ namespace WebApplication3.Controllers
         {
             public readonly string chgPwdData = "chgPwdData";
         }
-        static readonly ActionParamsClass_UserProfileInfo s_params_UserProfileInfo = new ActionParamsClass_UserProfileInfo();
+        static readonly ActionParamsClass_RestorePassword s_params_RestorePassword = new ActionParamsClass_RestorePassword();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_UserProfileInfo UserProfileInfoParams { get { return s_params_UserProfileInfo; } }
+        public ActionParamsClass_RestorePassword RestorePasswordParams { get { return s_params_RestorePassword; } }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_UserProfileInfo
+        public class ActionParamsClass_RestorePassword
+        {
+            public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_CodaUserProfileInfo s_params_CodaUserProfileInfo = new ActionParamsClass_CodaUserProfileInfo();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_CodaUserProfileInfo CodaUserProfileInfoParams { get { return s_params_CodaUserProfileInfo; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_CodaUserProfileInfo
         {
             public readonly string userProfile = "userProfile";
         }
@@ -152,6 +166,7 @@ namespace WebApplication3.Controllers
                 public readonly string LeftMenuLinks = "LeftMenuLinks";
                 public readonly string Login = "Login";
                 public readonly string Register = "Register";
+                public readonly string RestorePassword = "RestorePassword";
                 public readonly string TopMenuLinks = "TopMenuLinks";
                 public readonly string UserProfile = "UserProfile";
             }
@@ -160,6 +175,7 @@ namespace WebApplication3.Controllers
             public readonly string LeftMenuLinks = "~/Views/Account/LeftMenuLinks.cshtml";
             public readonly string Login = "~/Views/Account/Login.cshtml";
             public readonly string Register = "~/Views/Account/Register.cshtml";
+            public readonly string RestorePassword = "~/Views/Account/RestorePassword.cshtml";
             public readonly string TopMenuLinks = "~/Views/Account/TopMenuLinks.cshtml";
             public readonly string UserProfile = "~/Views/Account/UserProfile.cshtml";
         }
@@ -275,6 +291,51 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
+        partial void RestorePasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult RestorePassword()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RestorePassword);
+            RestorePasswordOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void RestorePasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, WebApplication3.Models.RestorePassword model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult RestorePassword(WebApplication3.Models.RestorePassword model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RestorePassword);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            RestorePasswordOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ConfirmPasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ConfirmPassword()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ConfirmPassword);
+            ConfirmPasswordOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ShowRestorePasswordResultOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ShowRestorePasswordResult()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ShowRestorePasswordResult);
+            ShowRestorePasswordResultOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
         partial void TopMenuLinksOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
 
         [NonAction]
@@ -297,25 +358,25 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void UserProfileInfoOverride(T4MVC_System_Web_Mvc_JsonResult callInfo);
+        partial void CodaUserProfileInfoOverride(T4MVC_System_Web_Mvc_JsonResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.JsonResult UserProfileInfo()
+        public override System.Web.Mvc.JsonResult CodaUserProfileInfo()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.UserProfileInfo);
-            UserProfileInfoOverride(callInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.CodaUserProfileInfo);
+            CodaUserProfileInfoOverride(callInfo);
             return callInfo;
         }
 
         [NonAction]
-        partial void UserProfileInfoOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, WebApplication3.Entity.Repositories.UserProfile userProfile);
+        partial void CodaUserProfileInfoOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, WebApplication3.Models.CodaUserProfile userProfile);
 
         [NonAction]
-        public override System.Web.Mvc.JsonResult UserProfileInfo(WebApplication3.Entity.Repositories.UserProfile userProfile)
+        public override System.Web.Mvc.JsonResult CodaUserProfileInfo(WebApplication3.Models.CodaUserProfile userProfile)
         {
-            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.UserProfileInfo);
+            var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.CodaUserProfileInfo);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "userProfile", userProfile);
-            UserProfileInfoOverride(callInfo, userProfile);
+            CodaUserProfileInfoOverride(callInfo, userProfile);
             return callInfo;
         }
 

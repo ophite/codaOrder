@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
@@ -25,6 +26,9 @@ namespace WebApplication3.Controllers
         {
             this._uow = uow;
         }
+
+        #endregion
+        #region Login
 
         [HttpGet]
         public virtual ActionResult Login()
@@ -143,28 +147,100 @@ namespace WebApplication3.Controllers
             return RedirectToAction(MVC.Document.ActionNames.Index, MVC.Document.Name);
         }
 
+        #endregion
+        #region Restore password
+
+        [HttpGet]
+        public virtual ActionResult RestorePassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public virtual ActionResult RestorePassword(RestorePassword model)
+        {
+            if (ModelState.IsValid)
+            {
+                UserProfile userProfile = _uow.AccountRepository.GetUserByEmail(model.Email);
+                if (userProfile == null || string.IsNullOrEmpty(userProfile.EmailAddress))
+                {
+                    ModelState.AddModelError("Email", "User with such email do not exist!");
+                    return View(model);
+                }
+
+                string securityToken = WebSecurity.GeneratePasswordResetToken(userProfile.UserName);
+                string body = "http://localhost:35133/" + Url.Action(MVC.Account.ActionNames.ConfirmPassword, MVC.Account.Name) + "?token=" + securityToken;
+                Tools.SendEmail(userProfile.EmailAddress, body);
+
+                return RedirectToAction(MVC.Account.ActionNames.ShowRestorePasswordResult, MVC.Account.Name);
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public virtual ActionResult ConfirmPassword()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult ConfirmPassword(RestorePasswordParam model)
+        {
+            if (ModelState.IsValid)
+            {
+                bool result = WebSecurity.ResetPassword(model.token, model.Password);
+                if (result)
+                    return RedirectToAction(MVC.Account.ActionNames.Login, MVC.Account.Name);
+
+                ModelState.AddModelError("", "Can't reset password for you. Contact administrator");
+            }
+
+            return View(model);
+        }
+
+        [HttpGet]
+        public virtual ActionResult ShowRestorePasswordResult()
+        {
+            return View();
+        }
+
+        #endregion
+        #region Menu
+
         [ChildActionOnly]
         public virtual PartialViewResult TopMenuLinks()
         {
             return PartialView();
         }
 
+        [HttpGet]
+        [ChildActionOnly]
+        public virtual PartialViewResult LeftMenuLinks()
+        {
+            return PartialView();
+        }
+
+        #endregion
+        #region User profile
+
         [Authorize]
         public virtual PartialViewResult UserProfile()
         {
             return PartialView();
         }
-        
+
         [Authorize]
         [HttpGet]
-        public virtual JsonResult UserProfileInfo()
+        public virtual JsonResult CodaUserProfileInfo()
         {
-            return Json(_uow.AccountRepository.GetUserProfile(this.User.Identity.Name).Result, JsonRequestBehavior.AllowGet);
+            return Json(_uow.AccountRepository.GetCodaUserProfile(this.User.Identity.Name).Result, JsonRequestBehavior.AllowGet);
         }
 
         [Authorize]
         [HttpPost]
-        public virtual JsonResult UserProfileInfo(WebApplication3.Entity.Repositories.UserProfile userProfile)
+        public virtual JsonResult CodaUserProfileInfo(CodaUserProfile userProfile)
         {
             SqlResult result = new SqlResult();
             Dictionary<string, string> msg = new Dictionary<string, string>();
@@ -174,13 +250,6 @@ namespace WebApplication3.Controllers
                 msg[ConstantDocument.ResponseErrorMessage] = result.Message.Message;
 
             return Json(msg);
-        }
-
-        [HttpGet]
-        [ChildActionOnly]
-        public virtual PartialViewResult LeftMenuLinks()
-        {
-            return PartialView();
         }
 
         #endregion
