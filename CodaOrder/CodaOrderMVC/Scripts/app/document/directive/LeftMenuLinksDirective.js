@@ -12,7 +12,6 @@
                 replace: true,
                 //scope: {},
                 link: function (scope, element, attrs) {
-
                     var template = Enumerable.From(ConstantHelper.router)
                         .Where(function (x) { return x.Value.isMenu === true })
                         .OrderBy(function (x) { return x.Value.order })

@@ -2,6 +2,9 @@
 @model IEnumerable<WebApplication3.Entity.JournalSale_Documents>
 
 <div class="row" ng-controller="DocumentDateController">
+    <div class="col-lg-1" ng-controller="DocumentLoadController">
+        <button class="btn btn-success" ng-click="refresh()">Refresh</button>
+    </div>
     <div class="col-lg-2">
         <div><dir-date-picker ng-model="dates.dateStart" date-format="{{format}}" /></div>
     </div>
@@ -13,11 +16,6 @@
                               date-start-validate="{{dates.dateStart| date:'short'}}"
                               date-end-validate="{{dates.dateEnd| date:'short'}}"
                               date-format="{{format}}" />
-    </div>
-    <div class="col-md-offset-6">
-        <div ng-controller="DocumentLoadController">
-            <button class="btn btn-success" ng-click="refresh()">Refresh</button>
-        </div>
     </div>
 </div>
 
