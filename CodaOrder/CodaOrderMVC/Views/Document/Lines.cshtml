@@ -6,7 +6,18 @@
     <dir-show-error></dir-show-error>
     <span us-spinner="{radius:30, width:8, length: 16}" spinner-key="@ConstantDocument.SpinnerID"></span>
     <form name="saveDocumentForm">
-        <div class="gridStyle" ng-grid="gridOptions" />
+        <div class="row" style="padding-bottom:1em;">
+            <button class="btn btn-success col-lg-1" ng-click="saveDocument()" ng-disabled="!saveDocumentForm.$dirty">Save</button>
+            <div class="col-lg-2" ng-controller="UserProfileController" ng-init="init('@Url.Action(@MVC.Account.ActionNames.CodaUserProfileInfo, @MVC.Account.Name)')">
+                <ui-select ng-model="model.currentFirm.DefaultSubject" name="node" theme="bootstrap" ng-disabled="disabled" style="width: 300px;">
+                    <ui-select-match placeholder="Select subject in the list...">{{$select.selected.Name}}</ui-select-match>
+                    <ui-select-choices repeat="subject in model.currentFirm.Subjects | filter: $select.search">
+                        <span ng-bind-html="subject.Name | highlight: $select.search"></span>
+                    </ui-select-choices>
+                </ui-select>
+            </div>
+        </div>
+        <div class="gridStyle row" ng-grid="gridOptions" />
         <div ng-controller="DocumentPaginationController">
             <pagination num-pages="numPages"
                         total-items="totalRows"
@@ -23,6 +34,5 @@
                         ng-change="pageChanged()">
             </pagination>
         </div>
-        <button class="btn btn-success" ng-click="saveDocument()" ng-show="saveDocumentForm.$dirty">Save</button>
     </form>
 </div>

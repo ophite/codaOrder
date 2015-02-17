@@ -29,7 +29,7 @@
                         <div class="form-group">
                             <label>Node</label>
                             <ui-select ng-model="model.tabProfile.DefaultNode" name="node" theme="bootstrap" ng-disabled="disabled" style="width: 300px;">
-                                <ui-select-match placeholder="Select node in the list...">{{$select.selected    }}</ui-select-match>
+                                <ui-select-match placeholder="Select node in the list...">{{$select.selected}}</ui-select-match>
                                 <ui-select-choices repeat="node in model.tabProfile.Nodes | filter: $select.search">
                                     <span ng-bind-html="node | highlight: $select.search"></span>
                                 </ui-select-choices>

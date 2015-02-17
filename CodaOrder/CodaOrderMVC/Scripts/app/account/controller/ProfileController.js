@@ -25,6 +25,13 @@
                         angular.forEach(items.Firms, function (firm) {
                             $scope.model.tabs[$scope.model.tabs.length] = firm;
                         });
+                        // current subject
+                        if ($scope.model.tabProfile.DefaultNode !== undefined) {
+                            $scope.model.currentFirm = Enumerable.From($scope.model.tabs)
+                             .Where(function (x) { return x.Profile.Name == $scope.model.tabProfile.DefaultNode })
+                             .Select(function (x) { return x })
+                             .FirstOrDefault();
+                        }
                     });
             };
 
@@ -32,7 +39,7 @@
                 //pack dataq
                 var data = {
                     Profile: $scope.model.tabProfile,
-                    Firms:$scope.model.tabs.slice(0, $scope.model.tabs.length)
+                    Firms: $scope.model.tabs.slice(0, $scope.model.tabs.length)
                 }
                 // save
                 userProfileService.api($scope.model.urlGetUserProfile, [angular.toJson(data)]).save().$promise.then(
