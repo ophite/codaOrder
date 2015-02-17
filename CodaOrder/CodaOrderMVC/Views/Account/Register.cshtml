@@ -12,7 +12,7 @@
         {
             @Html.AntiForgeryToken()
             @Html.ValidationSummary("", new { @class = "has-error" })
-            @Html.LabelFor(x => x.UserName)
+            @Html.LabelFor(x => x.UserName, "Login")
             @Html.TextBoxFor(x => x.UserName, new { @class = "form-control" })
             @Html.LabelFor(x => x.Password)
             @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
