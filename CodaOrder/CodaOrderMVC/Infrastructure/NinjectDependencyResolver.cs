@@ -7,6 +7,7 @@ using System.Web.Mvc;
 using WebApplication3.Entity;
 using WebApplication3.Entity.Interfaces;
 using WebApplication3.Entity.Repositories;
+using WebApplication3.Models;
 
 namespace WebApplication3.Infrastructure
 {
@@ -36,6 +37,7 @@ namespace WebApplication3.Infrastructure
             kernel.Bind<IDocumentRepository>().To<DocumentRepository>();
             kernel.Bind<ICodaJsonRepository>().To<CodaJsonRepository>();
             kernel.Bind<IAccountRepository>().To<AccountRepository>();
+            kernel.Bind<IAuthenticationProvider>().To<FormsAuthWrapper>();
         }
     }
 }

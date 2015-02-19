@@ -18,13 +18,14 @@ namespace WebApplication3.Controllers
         #region Properties
 
         private IUow _uow;
-
+        private IAuthenticationProvider _authProvider;
         #endregion
         #region Methods
 
-        public AccountController(IUow uow)
+        public AccountController(IUow uow, IAuthenticationProvider authProvider)
         {
             this._uow = uow;
+            this._authProvider = authProvider;
         }
 
         #endregion
@@ -42,9 +43,12 @@ namespace WebApplication3.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (WebSecurity.Login(loginData.UserName, loginData.Password))
+                if (_authProvider.Login(loginData))
                 {
-                    if (!string.IsNullOrEmpty(returnUrl))
+                    //bool rememberMe = true;
+                    //FormsAuthentication.SetAuthCookie(loginData.UserName, rememberMe);
+
+                    if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
                         return Redirect(returnUrl);
 
                     return RedirectToAction(MVC.Document.ActionNames.Index, MVC.Document.Name);
@@ -55,6 +59,16 @@ namespace WebApplication3.Controllers
             }
 
             return View(loginData);
+        }
+
+        [HttpGet]
+        [Authorize]
+        public virtual ActionResult Logout()
+        {
+            //WebSecurity.Logout();
+            //FormsAuthentication.SignOut();
+            _authProvider.SignOut();
+            return RedirectToAction(MVC.Account.ActionNames.Login, MVC.Account.Name);
         }
 
         [HttpGet]
@@ -137,14 +151,6 @@ namespace WebApplication3.Controllers
             }
 
             return View(chgPwdData);
-        }
-
-        [HttpGet]
-        [Authorize]
-        public virtual ActionResult Logout()
-        {
-            WebSecurity.Logout();
-            return RedirectToAction(MVC.Document.ActionNames.Index, MVC.Document.Name);
         }
 
         #endregion
