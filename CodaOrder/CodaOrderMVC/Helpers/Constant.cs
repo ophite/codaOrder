@@ -46,5 +46,9 @@ namespace WebApplication3.Helpers
                     ParamWhereText
                 };
         }
+
+        // message
+        public static string ErrorLogin = "User name or password is invalid";
+        public static string ErrorChangePassword = "Check your old password and user";
     }
 }

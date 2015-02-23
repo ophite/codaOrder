@@ -19,6 +19,7 @@ namespace WebApplication3.Controllers
 
         private IUow _uow;
         private IAuthenticationProvider _authProvider;
+
         #endregion
         #region Methods
 
@@ -54,7 +55,7 @@ namespace WebApplication3.Controllers
                     return RedirectToAction(MVC.Document.ActionNames.Index, MVC.Document.Name);
                 }
 
-                ModelState.AddModelError("", "User name or password is invalid");
+                ModelState.AddModelError("", ConstantDocument.ErrorLogin);
                 return View(loginData);
             }
 
@@ -65,8 +66,6 @@ namespace WebApplication3.Controllers
         [Authorize]
         public virtual ActionResult Logout()
         {
-            //WebSecurity.Logout();
-            //FormsAuthentication.SignOut();
             _authProvider.SignOut();
             return RedirectToAction(MVC.Account.ActionNames.Login, MVC.Account.Name);
         }
@@ -143,7 +142,7 @@ namespace WebApplication3.Controllers
             {
                 if (!WebSecurity.ChangePassword(chgPwdData.UserName, chgPwdData.PasswordOld, chgPwdData.PasswordNew))
                 {
-                    ModelState.AddModelError("", "Check your old password and user");
+                    ModelState.AddModelError("", ConstantDocument.ErrorChangePassword);
                     return View(chgPwdData);
                 }
 

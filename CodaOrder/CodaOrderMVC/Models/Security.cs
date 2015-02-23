@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 using System.Web.Security;
 using WebMatrix.WebData;
 
@@ -11,7 +12,6 @@ namespace WebApplication3.Models
     {
         void SignOut();
         bool Login(Login loginData);
-
     }
 
     public class FormsAuthWrapper : IAuthenticationProvider
@@ -28,5 +28,4 @@ namespace WebApplication3.Models
             //FormsAuthentication.SignOut();
         }
     }
-
 }
