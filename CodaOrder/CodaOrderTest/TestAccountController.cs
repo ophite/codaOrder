@@ -12,16 +12,27 @@ using WebApplication3.Infrastructure;
 using Assert = NUnit.Framework.Assert;
 using WebApplication3.Models;
 using System.Linq;
+using WebApplication3;
+using System.Collections.Specialized;
+using CodaOrderTest.MockContext;
+using MvcRouteTester;
+using NUnit.Framework;
 
 namespace CodaOrderTest
 {
     [TestClass]
     public class AccountControllerTest
     {
+        #region Properties
+
         private Mock<IUow> _uowMock;
         private Mock<IAuthenticationProvider> _authMock;
         private AccountController _accountController;
         private Login _loginData;
+        private RouteCollection routes;
+
+        #endregion
+        #region Logout
 
         [TestMethod]
         public void TestLogOut()
@@ -57,11 +68,22 @@ namespace CodaOrderTest
             ViewResult result = _accountController.Login(_loginData, null) as ViewResult;
             Assert.IsNotNull(result);
             Assert.AreEqual("User name or password is invalid", result.ViewData.ModelState[""].Errors.First().ErrorMessage);
+
+            RouteAssert.HasRoute(routes, "/Account/Login");
+            RouteAssert.GeneratesActionUrl(routes, "/Account/Login", "Login", "Account");
         }
+
+        #endregion
+        #region Init
 
         [TestInitialize]
         public void Init()
         {
+            routes = new RouteCollection();
+            RouteConfig.RegisterRoutes(routes);
+
+            RouteAssert.UseAssertEngine(new NunitAssertEngine());
+
             _uowMock = new Mock<IUow>();
             _authMock = new Mock<IAuthenticationProvider>();
             _authMock.Setup(x => x.SignOut());
@@ -82,5 +104,7 @@ namespace CodaOrderTest
             _accountController.Dispose();
             _accountController = null;
         }
+
+        #endregion
     }
 }
