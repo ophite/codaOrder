@@ -40,12 +40,13 @@ namespace CodaOrderTest
 
         private Login _loginData;
         private Register _registerData;
+        private ChangePassword _changePasswordData;
 
         #endregion
         #region Login/Logout
 
         [TestMethod]
-        public void TestLogOut()
+        public void LogOut()
         {
             // act
             var result = _accountController.Logout() as RedirectToRouteResult;
@@ -57,7 +58,7 @@ namespace CodaOrderTest
         }
 
         [TestMethod]
-        public void TestLogin()
+        public void Login()
         {
             // act 
             ViewResult result = _accountController.Login() as ViewResult;
@@ -66,7 +67,7 @@ namespace CodaOrderTest
         }
 
         [TestMethod]
-        public void TestLoginPost()
+        public void LoginPost()
         {
             // act 
             var result = _accountController.Login(_loginData, null) as RedirectToRouteResult;
@@ -78,7 +79,7 @@ namespace CodaOrderTest
         }
 
         [TestMethod]
-        public void TestLoginPostWithReturnUrlUsing()
+        public void LoginPostWithReturnUrlUsing()
         {
             // arrange
             string urlLogin = "/" + MVC.Account.Name + "/" + MVC.Account.ActionNames.Login;
@@ -94,18 +95,29 @@ namespace CodaOrderTest
         }
 
         [TestMethod]
-        public void TestLoginPostInvalid()
+        public void LoginPostInvalid()
         {
-            // arrange
-            string urlLogin = "/" + MVC.Account.Name + "/" + MVC.Account.ActionNames.Login;
             // act
             _authMock.Setup(x => x.Login(_loginData)).Returns(false);
             ViewResult result = _accountController.Login(_loginData, null) as ViewResult;
             // assert
             Assert.IsNotNull(result);
             Assert.AreEqual(ConstantDocument.ErrorLogin, result.ViewData.ModelState[""].Errors.First().ErrorMessage);
+        }
+
+        #endregion
+        #region Routes
+
+        public void TestRoutes()
+        {
+            // arrange
+            string urlLogin = "/" + MVC.Account.Name + "/" + MVC.Account.ActionNames.Login;
+            string urlDocument = "/" + MVC.Document.Name + "/" + MVC.Document.ActionNames.Index;
+            // assert
             RouteAssert.HasRoute(_routes, urlLogin);
             RouteAssert.GeneratesActionUrl(_routes, urlLogin, MVC.Account.ActionNames.Login, MVC.Account.Name);
+            RouteAssert.HasRoute(_routes, urlDocument);
+            RouteAssert.GeneratesActionUrl(_routes, urlDocument, MVC.Document.ActionNames.Index, MVC.Document.Name);
         }
 
         #endregion
@@ -161,6 +173,73 @@ namespace CodaOrderTest
             Assert.IsTrue(resultValidation.Any(i => i.ErrorMessage.Contains("The field Password must be a string with a minimum length of")));
             Assert.AreEqual(MVC.Account.Name, result.RouteValues["Controller"]);
             Assert.AreEqual(MVC.Account.ActionNames.Login, result.RouteValues["Action"]);
+            _authMock.Verify(i => i.Register(It.Is<Register>(o => o.UserName == _registerData.UserName)), Times.Once);
+            _authMock.Verify(i => i.Register(It.Is<Register>(o => o.Password == _registerData.Password && o.PasswordConfirm == _registerData.PasswordConfirm)), Times.Once);
+        }
+
+        #endregion
+        #region AddNewUser
+
+        [TestMethod]
+        public void AddNewUser()
+        {
+            // act
+            var result = _accountController.AddNewUser() as ActionResult;
+            // assert
+            Assert.IsNotNull(result, "Should return view on add new user");
+        }
+
+        [TestMethod]
+        public void AddNewUserPost()
+        {
+            // act 
+            var result = _accountController.AddNewUser(_registerData) as RedirectToRouteResult;
+            // assert
+            Assert.AreEqual(MVC.Account.Name, result.RouteValues["Controller"]);
+            Assert.AreEqual(MVC.Account.ActionNames.AddNewUser, result.RouteValues["Action"]);
+            _authMock.Verify(i => i.Register(It.Is<Register>(o => o.UserName == _registerData.UserName)), Times.Once);
+            _authMock.Verify(i => i.Register(It.Is<Register>(o => o.Password == _registerData.Password && o.PasswordConfirm == _registerData.PasswordConfirm)), Times.Once);
+        }
+
+        #endregion
+        #region Change password
+
+        [TestMethod]
+        public void ChangePassword()
+        {
+            // act
+            var result = _accountController.ChangePassword() as ViewResult;
+            // assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void ChangePasswordPost()
+        {
+            // act
+            this.RegisterPost();
+            var result = _accountController.ChangePassword(_changePasswordData) as RedirectToRouteResult;
+            // assert
+            Assert.AreEqual(MVC.Document.Name, result.RouteValues["Controller"]);
+            Assert.AreEqual(MVC.Document.ActionNames.Index, result.RouteValues["Action"]);
+            _authMock.Verify(i => i.ChangePassword(It.Is<ChangePassword>(o => o.UserName == _changePasswordData.UserName)), Times.Once);
+            _authMock.Verify(i => i.ChangePassword(It.Is<ChangePassword>(o => o.PasswordOld == _changePasswordData.PasswordOld && o.PasswordNew == _changePasswordData.PasswordNew)), Times.Once);
+            _authMock.Verify(i => i.ChangePassword(It.Is<ChangePassword>(o => o.UserName == _registerData.UserName)), Times.Once);
+            _authMock.Verify(i => i.ChangePassword(It.Is<ChangePassword>(o => o.PasswordOld == _registerData.Password)), Times.Once);
+        }
+
+        [TestMethod]
+        public void ChangePasswordNotValidResult()
+        {
+            // act
+            this.RegisterPost();
+            _authMock.Setup(x => x.ChangePassword(_changePasswordData)).Returns(false);
+            var result = _accountController.ChangePassword(_changePasswordData) as ViewResult;
+            // assert
+            Assert.AreEqual(MVC.Account.ActionNames.ChangePassword, result.ViewName);
+            Assert.IsNotEmpty(result.ViewData.ModelState.Values.SelectMany(x => x.Errors));
+            Assert.AreEqual(ConstantDocument.ErrorChangePassword, result.ViewData.ModelState.Values.SelectMany(x => x.Errors).Select(x => x.ErrorMessage).FirstOrDefault());
+            Assert.IsFalse(result.ViewData.ModelState.IsValid);
         }
 
         #endregion
@@ -177,13 +256,14 @@ namespace CodaOrderTest
             // arrange auth mock
             _authMock = new Mock<IAuthenticationProvider>();
             _authMock.Setup(x => x.SignOut());
-            // data
+            // login
             _loginData = new Login()
              {
                  UserName = "coda admin",
                  Password = "2222",
              };
             _authMock.Setup(x => x.Login(_loginData)).Returns(true);
+            // register
             _registerData = new Register()
             {
                 UserName = "test user",
@@ -191,6 +271,14 @@ namespace CodaOrderTest
                 PasswordConfirm = "1234"
             };
             _authMock.Setup(x => x.Register(_registerData)).Returns(string.Empty);
+            // change password
+            _changePasswordData = new ChangePassword()
+            {
+                UserName = "test user",
+                PasswordNew = "9944",
+                PasswordOld = _registerData.Password
+            };
+            _authMock.Setup(x => x.ChangePassword(_changePasswordData)).Returns(true);
 
             // arrange account controller
             _uowMock = new Mock<IUow>();

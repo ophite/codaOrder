@@ -13,10 +13,16 @@ namespace WebApplication3.Models
         void SignOut();
         bool Login(Login loginData);
         string Register(Register registerData);
+        bool ChangePassword(ChangePassword registerData);
     }
 
     public class FormsAuthWrapper : IAuthenticationProvider
     {
+        public bool ChangePassword(ChangePassword changeData)
+        {
+            return WebSecurity.ChangePassword(changeData.UserName, changeData.PasswordOld, changeData.PasswordNew);
+        }
+
         public string Register(Register registerData)
         {
             return WebSecurity.CreateUserAndAccount(registerData.UserName, registerData.Password);

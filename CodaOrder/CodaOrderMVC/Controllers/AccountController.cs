@@ -113,7 +113,7 @@ namespace WebApplication3.Controllers
             {
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(registerData.UserName, registerData.Password);
+                    _authProvider.Register(registerData);
                     return RedirectToAction(MVC.Account.ActionNames.AddNewUser, MVC.Account.Name);
                 }
                 catch (MembershipCreateUserException ex)
@@ -140,10 +140,10 @@ namespace WebApplication3.Controllers
         {
             if (ModelState.IsValid)
             {
-                if (!WebSecurity.ChangePassword(chgPwdData.UserName, chgPwdData.PasswordOld, chgPwdData.PasswordNew))
+                if (!_authProvider.ChangePassword(chgPwdData))
                 {
                     ModelState.AddModelError("", ConstantDocument.ErrorChangePassword);
-                    return View(chgPwdData);
+                    return View(MVC.Account.ActionNames.ChangePassword, chgPwdData);
                 }
 
                 return RedirectToAction(MVC.Document.ActionNames.Index, MVC.Document.Name);
