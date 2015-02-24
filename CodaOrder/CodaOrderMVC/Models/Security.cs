@@ -12,10 +12,16 @@ namespace WebApplication3.Models
     {
         void SignOut();
         bool Login(Login loginData);
+        string Register(Register registerData);
     }
 
     public class FormsAuthWrapper : IAuthenticationProvider
     {
+        public string Register(Register registerData)
+        {
+            return WebSecurity.CreateUserAndAccount(registerData.UserName, registerData.Password);
+        }
+
         public bool Login(Login loginData)
         {
             //return System.Web.Security.Membership.ValidateUser(loginData.UserName, loginData.Password);

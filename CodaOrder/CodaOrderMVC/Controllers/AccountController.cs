@@ -84,8 +84,8 @@ namespace WebApplication3.Controllers
             {
                 try
                 {
-                    WebSecurity.CreateUserAndAccount(registerData.UserName, registerData.Password);
-                    return RedirectToAction(MVC.Document.ActionNames.Index, MVC.Document.Name);
+                    _authProvider.Register(registerData);
+                    return RedirectToAction(MVC.Account.ActionNames.Login, MVC.Account.Name);
                 }
                 catch (MembershipCreateUserException ex)
                 {
