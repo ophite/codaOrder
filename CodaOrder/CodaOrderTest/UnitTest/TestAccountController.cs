@@ -129,6 +129,42 @@ namespace CodaOrderTest
             RouteAssert.GeneratesActionUrl(_routes, urlDocument, MVC.Document.ActionNames.Index, MVC.Document.Name);
         }
 
+        [TestMethod]
+        public void Verify_Method_Is_Decorated_With_Authorize_Attribute()
+        {
+            var type = _accountController.GetType();
+            Dictionary<string, Type[]> methodsInfo = new Dictionary<string, Type[]>()
+            {
+                {MVC.Account.ActionNames.Logout, new Type[] {}},
+                {MVC.Account.ActionNames.AddNewUser, new Type[] {}},
+                {MVC.Account.ActionNames.ChangePassword, new Type[] {}},
+                {MVC.Account.ActionNames.UserProfile, new Type[] {}},
+                {MVC.Account.ActionNames.CodaUserProfileInfo, new Type[] {}},
+            };
+
+            Func<string, Type[], string> assert = (string name, Type[] types) =>
+            {
+                var methodInfoLocal = type.GetMethod(name, types);
+                var attributesLocal = methodInfoLocal.GetCustomAttributes(typeof(AuthorizeAttribute), true);
+                Assert.IsTrue(attributesLocal.Any(), string.Format("No AuthorizeAttribute found on {0}() method", name));
+
+                return string.Empty;
+            };
+
+            foreach (string methodName in methodsInfo.Keys)
+                assert(methodName, methodsInfo[methodName]);
+
+            methodsInfo = new Dictionary<string, Type[]>()
+            {
+                {MVC.Account.ActionNames.AddNewUser, new Type[] { typeof(Register)}},
+                {MVC.Account.ActionNames.ChangePassword, new Type[] {typeof(ChangePassword)}},
+                {MVC.Account.ActionNames.CodaUserProfileInfo, new Type[] {typeof(CodaUserProfile)}},
+            };
+
+            foreach (string methodName in methodsInfo.Keys)
+                assert(methodName, methodsInfo[methodName]);
+        }
+
         #endregion
         #region Register
 
@@ -324,11 +360,6 @@ namespace CodaOrderTest
         [TestInitialize]
         public void Init()
         {
-            // arrange route assert
-            _routes = new RouteCollection();
-            RouteConfig.RegisterRoutes(_routes);
-            RouteAssert.UseAssertEngine(new NunitAssertEngine());
-
             // login
             _loginData = new Login()
              {
@@ -386,6 +417,11 @@ namespace CodaOrderTest
             _uowMock = new Mock<IUow>();
             _uowMock.Setup(x => x.AccountRepository).Returns(_accountRepositoryMock.Object);
             _accountController = new AccountController(_uowMock.Object, _authMock.Object);
+
+            // arrange route assert
+            _routes = new RouteCollection();
+            RouteConfig.RegisterRoutes(_routes);
+            RouteAssert.UseAssertEngine(new NunitAssertEngine());
         }
 
         [TestCleanup]
