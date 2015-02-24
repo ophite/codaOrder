@@ -47,8 +47,13 @@ namespace WebApplication3.Helpers
                 };
         }
 
+        // url
+        public static string Url = "http://localhost:35133/";
+
         // message
         public static string ErrorLogin = "User name or password is invalid";
         public static string ErrorChangePassword = "Check your old password and user";
+        public static string ErrorSendEmail = "User with such email do not exist!";
+        public static string ErrorResetPassword = "Can't reset password for you. Contact administrator";
     }
 }

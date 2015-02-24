@@ -170,13 +170,11 @@ namespace WebApplication3.Controllers
                 UserProfile userProfile = _uow.AccountRepository.GetUserByEmail(model.Email);
                 if (userProfile == null || string.IsNullOrEmpty(userProfile.EmailAddress))
                 {
-                    ModelState.AddModelError("Email", "User with such email do not exist!");
+                    ModelState.AddModelError("", ConstantDocument.ErrorSendEmail);
                     return View(model);
                 }
-
-                string securityToken = WebSecurity.GeneratePasswordResetToken(userProfile.UserName);
-                string body = "http://localhost:35133/" + Url.Action(MVC.Account.ActionNames.ConfirmPassword, MVC.Account.Name) + "?token=" + securityToken;
-                Tools.SendEmail(userProfile.EmailAddress, body);
+                string url = Url.Action(MVC.Account.ActionNames.ConfirmPassword, MVC.Account.Name);
+                _authProvider.SendEmail(userProfile, url);
 
                 return RedirectToAction(MVC.Account.ActionNames.ShowRestorePasswordResult, MVC.Account.Name);
             }
@@ -195,14 +193,14 @@ namespace WebApplication3.Controllers
         {
             if (ModelState.IsValid)
             {
-                bool result = WebSecurity.ResetPassword(model.token, model.Password);
+                bool result = _authProvider.ResetPassword(model);
                 if (result)
                     return RedirectToAction(MVC.Account.ActionNames.Login, MVC.Account.Name);
 
-                ModelState.AddModelError("", "Can't reset password for you. Contact administrator");
+                ModelState.AddModelError("", ConstantDocument.ErrorResetPassword);
             }
 
-            return View(model);
+            return View(MVC.Account.ActionNames.ConfirmPassword, model);
         }
 
         [HttpGet]

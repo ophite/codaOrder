@@ -5,6 +5,8 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using System.Linq;
 using System.Collections.Specialized;
+using System.ComponentModel.DataAnnotations;
+using System.Collections.Generic;
 // app
 using WebApplication3.Controllers;
 using WebApplication3.Entity;
@@ -22,8 +24,7 @@ using MvcRouteTester.Common;
 // current app
 using CodaOrderTest.MockContext;
 using Assert = NUnit.Framework.Assert;
-using System.ComponentModel.DataAnnotations;
-using System.Collections.Generic;
+using WebApplication3.Entity.Interfaces;
 
 namespace CodaOrderTest
 {
@@ -33,6 +34,7 @@ namespace CodaOrderTest
         #region Properties
 
         private Mock<IUow> _uowMock;
+        private Mock<IAccountRepository> _accountRepositoryMock;
         private Mock<IAuthenticationProvider> _authMock;
 
         private AccountController _accountController;
@@ -41,6 +43,10 @@ namespace CodaOrderTest
         private Login _loginData;
         private Register _registerData;
         private ChangePassword _changePasswordData;
+        private RestorePassword _restorePasswordData;
+        private RestorePasswordParam _restorePasswordParamData;
+        private UserProfile _userProfileData;
+        private string _securityToken = "1111kkkk";
 
         #endregion
         #region Login/Logout
@@ -49,6 +55,7 @@ namespace CodaOrderTest
         public void LogOut()
         {
             // act
+            _authMock.Setup(x => x.SignOut());
             var result = _accountController.Logout() as RedirectToRouteResult;
             // assert
             Assert.NotNull(result);
@@ -70,6 +77,7 @@ namespace CodaOrderTest
         public void LoginPost()
         {
             // act 
+            _authMock.Setup(x => x.Login(_loginData)).Returns(true);
             var result = _accountController.Login(_loginData, null) as RedirectToRouteResult;
             // assert
             Assert.AreEqual(MVC.Document.ActionNames.Index, result.RouteValues["Action"]);
@@ -87,6 +95,7 @@ namespace CodaOrderTest
             _accountController.Url = Tools.MockUrlHelper(urlLogin, _routes);
             string returnUrl = "/" + MVC.Account.Name + "/" + MVC.Account.ActionNames.UserProfile;
             // act
+            _authMock.Setup(x => x.Login(_loginData)).Returns(true);
             var result = _accountController.Login(_loginData, returnUrl) as RedirectResult;
             // assert
             Assert.AreEqual(returnUrl, result.Url);
@@ -136,6 +145,7 @@ namespace CodaOrderTest
         public void RegisterPost()
         {
             // act
+            _authMock.Setup(x => x.Register(_registerData)).Returns(string.Empty);
             var result = _accountController.Register(_registerData) as RedirectToRouteResult;
             // assert
             Assert.AreEqual(MVC.Account.ActionNames.Login, result.RouteValues["Action"]);
@@ -218,6 +228,7 @@ namespace CodaOrderTest
         {
             // act
             this.RegisterPost();
+            _authMock.Setup(x => x.ChangePassword(_changePasswordData)).Returns(true);
             var result = _accountController.ChangePassword(_changePasswordData) as RedirectToRouteResult;
             // assert
             Assert.AreEqual(MVC.Document.Name, result.RouteValues["Controller"]);
@@ -243,6 +254,71 @@ namespace CodaOrderTest
         }
 
         #endregion
+        #region Restore password
+
+        [TestMethod]
+        public void RestorePassword()
+        {
+            // act
+            var result = _accountController.RestorePassword() as ViewResult;
+            // assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void RestorePasswordPost()
+        {
+            // act 
+            _accountController.Url = Tools.MockUrlHelper("/", _routes);
+            string urlConfirmPassword = "/" + MVC.Account.Name + "/" + MVC.Account.ActionNames.ConfirmPassword;
+            _authMock.Setup(x => x.SendEmail(_userProfileData, urlConfirmPassword)).Returns(ConstantDocument.Url + urlConfirmPassword + "?token=" + _securityToken);
+
+            var result = _accountController.RestorePassword(_restorePasswordData) as RedirectToRouteResult;
+            // assert
+            RouteAssert.GeneratesActionUrl(_routes, urlConfirmPassword, MVC.Account.ActionNames.ConfirmPassword, MVC.Account.Name);
+            Assert.IsNotNull(result);
+            Assert.AreEqual(MVC.Account.Name, result.RouteValues["Controller"]);
+            Assert.AreEqual(MVC.Account.ActionNames.ShowRestorePasswordResult, result.RouteValues["Action"]);
+            _authMock.Verify(i => i.SendEmail(_userProfileData, urlConfirmPassword), Times.Once);
+            Assert.That(_authMock.Object.SendEmail(_userProfileData, urlConfirmPassword), Is.StringContaining(_securityToken));
+        }
+
+        [TestMethod]
+        public void ConfirmPassword()
+        {
+            // act 
+            var result = _accountController.ConfirmPassword();
+            // assert
+            Assert.IsNotNull(result);
+        }
+
+        [TestMethod]
+        public void ConfirmPasswordPost()
+        {
+            // act
+            _authMock.Setup(x => x.ResetPassword(_restorePasswordParamData)).Returns(true);
+            var result = _accountController.ConfirmPassword(_restorePasswordParamData) as RedirectToRouteResult;
+            // assert
+            Assert.AreEqual(MVC.Account.Name, result.RouteValues["Controller"]);
+            Assert.AreEqual(MVC.Account.ActionNames.Login, result.RouteValues["Action"]);
+            _authMock.Verify(x => x.ResetPassword(It.Is<RestorePasswordParam>(o => o.token == _restorePasswordParamData.token)), Times.Once);
+            _authMock.Verify(x => x.ResetPassword(_restorePasswordParamData), Times.Once);
+        }
+
+        [TestMethod]
+        public void ConfirmPasswordPostNotValid()
+        {
+            // act
+            _authMock.Setup(x => x.ResetPassword(_restorePasswordParamData)).Returns(false);
+            var result = _accountController.ConfirmPassword(_restorePasswordParamData) as ViewResult;
+            // assert
+            Assert.AreEqual(MVC.Account.ActionNames.ConfirmPassword, result.ViewName);
+            Assert.AreEqual(ConstantDocument.ErrorResetPassword, result.ViewData.ModelState.Values.SelectMany(x => x.Errors).Where(x => !string.IsNullOrEmpty(x.ErrorMessage)).Select(x => x.ErrorMessage).FirstOrDefault());
+            _authMock.Verify(x => x.ResetPassword(It.Is<RestorePasswordParam>(o => o.token == _securityToken)));
+            _authMock.Verify(x => x.ResetPassword(_restorePasswordParamData), Times.Once);
+        }
+
+        #endregion
         #region Init
 
         [TestInitialize]
@@ -253,16 +329,13 @@ namespace CodaOrderTest
             RouteConfig.RegisterRoutes(_routes);
             RouteAssert.UseAssertEngine(new NunitAssertEngine());
 
-            // arrange auth mock
-            _authMock = new Mock<IAuthenticationProvider>();
-            _authMock.Setup(x => x.SignOut());
             // login
             _loginData = new Login()
              {
                  UserName = "coda admin",
                  Password = "2222",
              };
-            _authMock.Setup(x => x.Login(_loginData)).Returns(true);
+
             // register
             _registerData = new Register()
             {
@@ -270,7 +343,7 @@ namespace CodaOrderTest
                 Password = "1234",
                 PasswordConfirm = "1234"
             };
-            _authMock.Setup(x => x.Register(_registerData)).Returns(string.Empty);
+
             // change password
             _changePasswordData = new ChangePassword()
             {
@@ -278,10 +351,40 @@ namespace CodaOrderTest
                 PasswordNew = "9944",
                 PasswordOld = _registerData.Password
             };
-            _authMock.Setup(x => x.ChangePassword(_changePasswordData)).Returns(true);
+
+            // user profile
+            _userProfileData = new UserProfile()
+            {
+                EmailAddress = "ophite@ukr.net",
+                FirstName = "Yura",
+                LastName = "Kobernik",
+                IsEnabled = true,
+                UserId = 1,
+                UserName = "ophite"
+            };
+
+            // restore password
+            _restorePasswordData = new RestorePassword()
+            {
+                Email = "testEmail@ukr.net"
+            };
+
+            // restore password param
+            _restorePasswordParamData = new RestorePasswordParam()
+            {
+                Password = "not checking password",
+                token = _securityToken
+            };
+
+            // arrange auth mock
+            _authMock = new Mock<IAuthenticationProvider>();
+            _authMock.Setup(x => x.GeneratePasswordResetToken(_userProfileData.UserName)).Returns(_securityToken);
+            _accountRepositoryMock = new Mock<IAccountRepository>();
+            _accountRepositoryMock.Setup(x => x.GetUserByEmail(_restorePasswordData.Email)).Returns(_userProfileData);
 
             // arrange account controller
             _uowMock = new Mock<IUow>();
+            _uowMock.Setup(x => x.AccountRepository).Returns(_accountRepositoryMock.Object);
             _accountController = new AccountController(_uowMock.Object, _authMock.Object);
         }
 

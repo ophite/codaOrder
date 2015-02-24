@@ -19,10 +19,8 @@ namespace WebApplication3.Entity.Repositories
             return userProfile;
         }
 
-        public SqlResult GetCodaUserProfile(string userName)
+        public static CodaUserProfile GenerateUserProfileData()
         {
-            SqlResult result = new SqlResult();
-
             // firm 1 
             FirmProfile firmStolitsa = new FirmProfile() { Profile = new DirectoryProfile() { ID = 10, Name = "Stolitsa" } };
             firmStolitsa.Subjects = new List<DirectoryProfile>()
@@ -64,7 +62,14 @@ namespace WebApplication3.Entity.Repositories
             uProfile.Profile.Nodes = new List<string>() { firmKarpatu.Profile.Name, firmMova.Profile.Name, firmStolitsa.Profile.Name };
             uProfile.Firms = new List<FirmProfile>() { firmStolitsa, firmKarpatu, firmMova };
 
-            result.Result = uProfile;
+            return uProfile;
+        }
+
+        public SqlResult GetCodaUserProfile(string userName)
+        {
+            SqlResult result = new SqlResult();
+            // TODO add sql request
+            result.Result = GenerateUserProfileData();
             return result;
         }
     }
