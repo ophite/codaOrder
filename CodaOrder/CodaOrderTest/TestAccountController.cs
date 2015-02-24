@@ -128,23 +128,39 @@ namespace CodaOrderTest
             // assert
             Assert.AreEqual(MVC.Account.ActionNames.Login, result.RouteValues["Action"]);
             Assert.AreEqual(MVC.Account.Name, result.RouteValues["Controller"]);
-            _authMock.Verify(x => x.Register(It.Is<Register>(o => o.UserName == _registerData.UserName)));
-            _authMock.Verify(x => x.Register(It.Is<Register>(o => o.Password == o.PasswordConfirm && o.Password == _registerData.Password)));
+            _authMock.Verify(i => i.Register(It.Is<Register>(o => o.UserName == _registerData.UserName)));
+            _authMock.Verify(i => i.Register(It.Is<Register>(o => o.Password == o.PasswordConfirm && o.Password == _registerData.Password)));
         }
 
         [TestMethod]
-        public void RegisterPostError()
+        public void RegisterPostErrorModelState()
         {
-            _registerData.Password = "123";
-            var result = _accountController.Register(_registerData) as ViewResult;
-            var resultValidation = Tools.MockValidateModel(_registerData);
-
+            // arrange
             FormCollection fc = new FormCollection()
             {
-                {"Password", "12333"}
+                {"Password", "1"}
             };
+            // act
             ModelStateDictionary modelState = Tools.MockTryUpdateModel<Register>(_registerData, fc);
+            // assert
             Assert.IsFalse(modelState.IsValid);
+            Assert.IsTrue(modelState.Values.SelectMany(i => i.Errors).Any(i => i.ErrorMessage.Equals("Password must be equal")));
+            Assert.IsTrue(modelState.Values.SelectMany(i => i.Errors).Any(i => i.ErrorMessage.Contains("The field Password must be a string with a minimum length of")));
+        }
+
+        [TestMethod]
+        public void RegisterPostErrorValidation()
+        {
+            // arrange
+            _registerData.Password = "1";
+            // act
+            var result = _accountController.Register(_registerData) as RedirectToRouteResult;
+            var resultValidation = Tools.MockValidateModel(_registerData);
+            // assert
+            Assert.IsTrue(resultValidation.Any(i => i.ErrorMessage.Equals("Password must be equal")));
+            Assert.IsTrue(resultValidation.Any(i => i.ErrorMessage.Contains("The field Password must be a string with a minimum length of")));
+            Assert.AreEqual(MVC.Account.Name, result.RouteValues["Controller"]);
+            Assert.AreEqual(MVC.Account.ActionNames.Login, result.RouteValues["Action"]);
         }
 
         #endregion
