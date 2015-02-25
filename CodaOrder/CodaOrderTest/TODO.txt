@@ -1,3 +1,4 @@
 ﻿- Moq
 - MvcRouteTester (+System.Net.Http)
 - System.Web.MVC (5)
+- Ninject

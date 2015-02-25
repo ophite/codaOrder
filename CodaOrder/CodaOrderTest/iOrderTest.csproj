@@ -86,9 +86,9 @@
     <Compile Include="UnitTest\TestDocumentController.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\CodaOrderMVC\CodaOrderMVC.csproj">
+    <ProjectReference Include="..\CodaOrderMVC\iOrder.csproj">
       <Project>{9d2f0df5-91d1-41a6-ac96-95361fb5ef61}</Project>
-      <Name>CodaOrderMVC</Name>
+      <Name>iOrder</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodaOrderMVC", "CodaOrderMVC\CodaOrderMVC.csproj", "{9D2F0DF5-91D1-41A6-AC96-95361FB5EF61}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iOrder", "CodaOrderMVC\iOrder.csproj", "{9D2F0DF5-91D1-41A6-AC96-95361FB5EF61}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CodaOrderTest", "CodaOrderTest\CodaOrderTest.csproj", "{47D44496-9C49-4358-A527-A38C3822B76F}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iOrderTest", "CodaOrderTest\iOrderTest.csproj", "{47D44496-9C49-4358-A527-A38C3822B76F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

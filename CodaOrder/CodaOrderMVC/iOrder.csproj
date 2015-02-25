@@ -1123,7 +1123,6 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="CodaOrderMvc.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\DirectiveController.cs" />
     <Compile Include="Controllers\DocumentController.cs" />
@@ -1226,15 +1225,15 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Helpers\Constant.cs" />
-    <Compile Include="Helpers\Uitl.cs" />
-    <Compile Include="IdentityContextMigration\201501231449562_Initial.cs" />
-    <Compile Include="IdentityContextMigration\201501231449562_Initial.Designer.cs">
+    <Compile Include="Infrastructure\Helpers\Constant.cs" />
+    <Compile Include="Infrastructure\Helpers\Uitl.cs" />
+    <Compile Include="Infrastructure\IdentityContextMigration\201501231449562_Initial.cs" />
+    <Compile Include="Infrastructure\IdentityContextMigration\201501231449562_Initial.Designer.cs">
       <DependentUpon>201501231449562_Initial.cs</DependentUpon>
     </Compile>
-    <Compile Include="IdentityContextMigration\Configuration.cs" />
+    <Compile Include="Infrastructure\IdentityContextMigration\Configuration.cs" />
     <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
-    <Compile Include="ModelBinder\CustomBinders.cs" />
+    <Compile Include="Infrastructure\ModelBinder\CustomBinders.cs" />
     <Compile Include="Models\ChangePassword.cs" />
     <Compile Include="Models\DocumentsParamsViewModel.cs" />
     <Compile Include="Entity\Repositories\IdentityContext.cs" />
@@ -1269,7 +1268,7 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="IdentityContextMigration\201501231449562_Initial.resx">
+    <EmbeddedResource Include="Infrastructure\IdentityContextMigration\201501231449562_Initial.resx">
       <DependentUpon>201501231449562_Initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
