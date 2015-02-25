@@ -1,11 +1,11 @@
-﻿using System;
+﻿using iOrder.Entity.Interfaces;
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using WebApplication3.Entity.Interfaces;
 
-namespace WebApplication3.Entity
+namespace iOrder.Entity
 {
     public interface IUow : IDisposable
     {

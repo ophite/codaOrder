@@ -7,16 +7,16 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using WebApplication3.Entity;
 using System.Data.Entity.Core.Objects;
 using Newtonsoft.Json;
 using System.IO;
 using Newtonsoft.Json.Linq;
-using WebApplication3.Models;
-using WebApplication3.Entity.Repositories;
-using WebApplication3.Helpers;
+using iOrder.Entity;
+using iOrder.Models;
+using iOrder.Entity.Repositories;
+using iOrder.Helpers;
 
-namespace WebApplication3.Controllers
+namespace iOrder.Controllers
 {
     public partial class DocumentController : Controller
     {

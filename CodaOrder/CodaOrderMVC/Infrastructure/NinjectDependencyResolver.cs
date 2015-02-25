@@ -1,15 +1,15 @@
-﻿using Ninject;
+﻿using iOrder.Entity;
+using iOrder.Entity.Interfaces;
+using iOrder.Entity.Repositories;
+using iOrder.Models;
+using Ninject;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebApplication3.Entity;
-using WebApplication3.Entity.Interfaces;
-using WebApplication3.Entity.Repositories;
-using WebApplication3.Models;
 
-namespace WebApplication3.Infrastructure
+namespace iOrder.Infrastructure
 {
     public class NinjectDependencyResolver : IDependencyResolver
     {

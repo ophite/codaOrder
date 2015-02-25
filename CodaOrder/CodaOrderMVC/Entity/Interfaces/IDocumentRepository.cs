@@ -1,13 +1,14 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using iOrder.Entity;
+using iOrder.Entity.Repositories;
+using iOrder.Models;
+using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using WebApplication3.Entity.Repositories;
-using WebApplication3.Models;
 
-namespace WebApplication3.Entity
+namespace iOrder.Entity
 {
     public interface IDocumentRepository : IRepository<JournalSale_Documents>
     {

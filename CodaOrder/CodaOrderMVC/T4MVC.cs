@@ -25,13 +25,13 @@ using T4MVC;
 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
 public static partial class MVC
 {
-    public static WebApplication3.Controllers.AccountController Account = new WebApplication3.Controllers.T4MVC_AccountController();
-    public static WebApplication3.Controllers.DirectiveController Directive = new WebApplication3.Controllers.T4MVC_DirectiveController();
-    public static WebApplication3.Controllers.DocumentController Document = new WebApplication3.Controllers.T4MVC_DocumentController();
-    public static WebApplication3.Controllers.ErrorController Error = new WebApplication3.Controllers.T4MVC_ErrorController();
-    public static WebApplication3.Controllers.SearchCodaObjectController SearchCodaObject = new WebApplication3.Controllers.T4MVC_SearchCodaObjectController();
-    public static WebApplication3.Controllers.SubjectsController Subjects = new WebApplication3.Controllers.T4MVC_SubjectsController();
-    public static WebApplication3.Controllers.TemplateController Template = new WebApplication3.Controllers.T4MVC_TemplateController();
+    public static iOrder.Controllers.AccountController Account = new iOrder.Controllers.T4MVC_AccountController();
+    public static iOrder.Controllers.DirectiveController Directive = new iOrder.Controllers.T4MVC_DirectiveController();
+    public static iOrder.Controllers.DocumentController Document = new iOrder.Controllers.T4MVC_DocumentController();
+    public static iOrder.Controllers.ErrorController Error = new iOrder.Controllers.T4MVC_ErrorController();
+    public static iOrder.Controllers.SearchCodaObjectController SearchCodaObject = new iOrder.Controllers.T4MVC_SearchCodaObjectController();
+    public static iOrder.Controllers.SubjectsController Subjects = new iOrder.Controllers.T4MVC_SubjectsController();
+    public static iOrder.Controllers.TemplateController Template = new iOrder.Controllers.T4MVC_TemplateController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 

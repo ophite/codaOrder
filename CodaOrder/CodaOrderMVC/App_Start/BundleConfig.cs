@@ -3,7 +3,7 @@ using System.Web.Optimization;
 using System.Linq;
 using System.IO;
 
-namespace WebApplication3
+namespace iOrder
 {
     public class BundleHelper
     {

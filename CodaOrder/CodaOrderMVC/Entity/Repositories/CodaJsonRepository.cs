@@ -1,11 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using iOrder.Entity;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
 
-namespace WebApplication3.Entity
+namespace iOrder.Entity
 {
     public class CodaJsonRepository: BaseRepository<CodaJson>, ICodaJsonRepository
     {

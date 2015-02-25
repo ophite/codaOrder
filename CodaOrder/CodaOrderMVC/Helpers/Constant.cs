@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebApplication3.Helpers
+namespace iOrder.Helpers
 {
     public class ConstantDocument
     {

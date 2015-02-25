@@ -1,14 +1,14 @@
-﻿using System;
+﻿using iOrder.Entity.Repositories;
+using iOrder.Helpers;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using WebApplication3.Entity.Repositories;
-using WebApplication3.Helpers;
 using WebMatrix.WebData;
 
-namespace WebApplication3.Models
+namespace iOrder.Models
 {
     public interface IAuthenticationProvider
     {

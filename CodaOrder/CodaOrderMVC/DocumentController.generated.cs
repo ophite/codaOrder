@@ -21,7 +21,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace WebApplication3.Controllers
+namespace iOrder.Controllers
 {
     public partial class DocumentController
     {
@@ -256,7 +256,7 @@ namespace WebApplication3.Controllers
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_DocumentController : WebApplication3.Controllers.DocumentController
+    public partial class T4MVC_DocumentController : iOrder.Controllers.DocumentController
     {
         public T4MVC_DocumentController() : base(Dummy.Instance) { }
 
@@ -294,10 +294,10 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void GetDocumentsOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, WebApplication3.Models.DocumentsParamsViewModel model);
+        partial void GetDocumentsOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, iOrder.Models.DocumentsParamsViewModel model);
 
         [NonAction]
-        public override System.Web.Mvc.JsonResult GetDocuments(WebApplication3.Models.DocumentsParamsViewModel model)
+        public override System.Web.Mvc.JsonResult GetDocuments(iOrder.Models.DocumentsParamsViewModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.GetDocuments);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
@@ -318,10 +318,10 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void SaveLinesOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, WebApplication3.Models.LinesViewModel model);
+        partial void SaveLinesOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, iOrder.Models.LinesViewModel model);
 
         [NonAction]
-        public override System.Web.Mvc.JsonResult SaveLines(WebApplication3.Models.LinesViewModel model)
+        public override System.Web.Mvc.JsonResult SaveLines(iOrder.Models.LinesViewModel model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.SaveLines);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
@@ -398,10 +398,10 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, WebApplication3.Entity.JournalSale_Documents docs);
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, iOrder.Entity.JournalSale_Documents docs);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Create(WebApplication3.Entity.JournalSale_Documents docs)
+        public override System.Web.Mvc.ActionResult Create(iOrder.Entity.JournalSale_Documents docs)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "docs", docs);
@@ -422,10 +422,10 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, WebApplication3.Entity.JournalSale_Documents docs);
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, iOrder.Entity.JournalSale_Documents docs);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Edit(WebApplication3.Entity.JournalSale_Documents docs)
+        public override System.Web.Mvc.ActionResult Edit(iOrder.Entity.JournalSale_Documents docs)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "docs", docs);

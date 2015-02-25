@@ -5,7 +5,7 @@ using System.Linq;
 using System.Web;
 using WebMatrix.WebData;
 
-namespace WebApplication3.Models
+namespace iOrder.Models
 {
     public class IdentityContext : DbContext
     {

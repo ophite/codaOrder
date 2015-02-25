@@ -21,7 +21,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace WebApplication3.Controllers
+namespace iOrder.Controllers
 {
     public partial class SubjectsController
     {
@@ -195,7 +195,7 @@ namespace WebApplication3.Controllers
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_SubjectsController : WebApplication3.Controllers.SubjectsController
+    public partial class T4MVC_SubjectsController : iOrder.Controllers.SubjectsController
     {
         public T4MVC_SubjectsController() : base(Dummy.Instance) { }
 
@@ -245,10 +245,10 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, WebApplication3.Entity.Subject subject);
+        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, iOrder.Entity.Subject subject);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Create(WebApplication3.Entity.Subject subject)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Create(iOrder.Entity.Subject subject)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "subject", subject);
@@ -269,10 +269,10 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, WebApplication3.Entity.Subject subject);
+        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, iOrder.Entity.Subject subject);
 
         [NonAction]
-        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Edit(WebApplication3.Entity.Subject subject)
+        public override System.Threading.Tasks.Task<System.Web.Mvc.ActionResult> Edit(iOrder.Entity.Subject subject)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "subject", subject);

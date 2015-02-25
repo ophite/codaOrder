@@ -21,7 +21,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace WebApplication3.Controllers
+namespace iOrder.Controllers
 {
     public partial class SearchCodaObjectController
     {
@@ -111,7 +111,7 @@ namespace WebApplication3.Controllers
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_SearchCodaObjectController : WebApplication3.Controllers.SearchCodaObjectController
+    public partial class T4MVC_SearchCodaObjectController : iOrder.Controllers.SearchCodaObjectController
     {
         public T4MVC_SearchCodaObjectController() : base(Dummy.Instance) { }
 

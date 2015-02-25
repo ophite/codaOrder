@@ -7,10 +7,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace WebApplication3.Entity
+namespace iOrder.Entity
 {
     using System;
     using System.Collections.Generic;
+    using iOrder.Entity;
     
     public partial class Box : BaseEntity
     {

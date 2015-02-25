@@ -1,4 +1,4 @@
-namespace WebApplication3.IdentityContextMigration
+namespace iOrder.IdentityContextMigration
 {
     using System;
     using System.Data.Entity.Migrations;

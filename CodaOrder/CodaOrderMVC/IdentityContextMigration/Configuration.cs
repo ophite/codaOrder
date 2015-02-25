@@ -1,14 +1,14 @@
-namespace WebApplication3.IdentityContextMigration
+namespace iOrder.IdentityContextMigration
 {
+    using iOrder.Models;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
     using System.Web.Security;
-    using WebApplication3.Models;
     using WebMatrix.WebData;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<WebApplication3.Models.IdentityContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<iOrder.Models.IdentityContext>
     {
         public Configuration()
         {
@@ -16,7 +16,7 @@ namespace WebApplication3.IdentityContextMigration
             MigrationsDirectory = @"IdentityContextMigration";
         }
 
-        protected override void Seed(WebApplication3.Models.IdentityContext context)
+        protected override void Seed(iOrder.Models.IdentityContext context)
         {
             //context.UserProfiles.AddOrUpdate(
             //    u => u.UserName,

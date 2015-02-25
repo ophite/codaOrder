@@ -4,7 +4,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Linq.Expressions;
 
-namespace WebApplication3.Entity
+namespace iOrder.Entity
 {
     public interface IRepository<TEntity>// : IDisposable
         where TEntity : class

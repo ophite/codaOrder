@@ -21,7 +21,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace WebApplication3.Controllers
+namespace iOrder.Controllers
 {
     public partial class ErrorController
     {
@@ -102,7 +102,7 @@ namespace WebApplication3.Controllers
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_ErrorController : WebApplication3.Controllers.ErrorController
+    public partial class T4MVC_ErrorController : iOrder.Controllers.ErrorController
     {
         public T4MVC_ErrorController() : base(Dummy.Instance) { }
 

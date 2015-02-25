@@ -1,10 +1,10 @@
-﻿using System;
+﻿using iOrder.Entity;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using WebApplication3.Entity;
 
-namespace WebApplication3.Models
+namespace iOrder.Models
 {
     public class DocumentsParamsViewModel
     {

@@ -8,12 +8,12 @@ using System.Collections.Specialized;
 using System.ComponentModel.DataAnnotations;
 using System.Collections.Generic;
 // app
-using WebApplication3.Controllers;
-using WebApplication3.Entity;
-using WebApplication3.Infrastructure;
-using WebApplication3.Models;
-using WebApplication3;
-using WebApplication3.Helpers;
+using iOrder.Controllers;
+using iOrder.Entity;
+using iOrder.Infrastructure;
+using iOrder.Models;
+using iOrder;
+using iOrder.Helpers;
 // custom
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using NUnit.Framework;
@@ -24,8 +24,9 @@ using MvcRouteTester.Common;
 // current app
 using CodaOrderTest.MockContext;
 using Assert = NUnit.Framework.Assert;
-using WebApplication3.Entity.Interfaces;
-using WebApplication3.Entity.Repositories;
+using iOrder.Entity.Interfaces;
+using iOrder.Entity.Repositories;
+using iOrder.Entity;
 
 namespace CodaOrderTest.UnitTest
 {

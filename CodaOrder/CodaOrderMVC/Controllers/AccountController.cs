@@ -1,17 +1,17 @@
-﻿using System;
+﻿using iOrder.Entity;
+using iOrder.Entity.Repositories;
+using iOrder.Helpers;
+using iOrder.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
-using WebApplication3.Entity;
-using WebApplication3.Entity.Repositories;
-using WebApplication3.Helpers;
-using WebApplication3.Models;
 using WebMatrix.WebData;
 
-namespace WebApplication3.Controllers
+namespace iOrder.Controllers
 {
     public partial class AccountController : Controller
     {
@@ -189,7 +189,7 @@ namespace WebApplication3.Controllers
         }
 
         [HttpPost]
-        public ActionResult ConfirmPassword(RestorePasswordParam model)
+        public virtual ActionResult ConfirmPassword(RestorePasswordParam model)
         {
             if (ModelState.IsValid)
             {

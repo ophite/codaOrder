@@ -8,7 +8,7 @@ using System.Linq;
 using System.Net.Mail;
 using System.Web;
 
-namespace WebApplication3.Entity.Repositories
+namespace iOrder.Entity.Repositories
 {
     public static class Tools
     {

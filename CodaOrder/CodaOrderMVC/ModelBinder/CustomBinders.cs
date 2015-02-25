@@ -1,4 +1,6 @@
-﻿using Newtonsoft.Json;
+﻿using iOrder.Entity;
+using iOrder.Models;
+using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Generic;
@@ -6,10 +8,8 @@ using System.IO;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using WebApplication3.Entity;
-using WebApplication3.Models;
 
-namespace WebApplication3.ModelBinder
+namespace iOrder.ModelBinder
 {
     public class LineBinder : DefaultModelBinder
     {

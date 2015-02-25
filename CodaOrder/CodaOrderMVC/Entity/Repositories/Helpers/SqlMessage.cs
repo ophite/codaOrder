@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace WebApplication3.Entity.Repositories
+namespace iOrder.Entity.Repositories
 {
     public class SqlResult
     {

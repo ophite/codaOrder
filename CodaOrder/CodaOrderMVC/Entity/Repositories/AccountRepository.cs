@@ -1,13 +1,13 @@
-﻿using Newtonsoft.Json;
+﻿using iOrder.Entity.Interfaces;
+using iOrder.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Web;
-using WebApplication3.Entity.Interfaces;
-using WebApplication3.Models;
 
-namespace WebApplication3.Entity.Repositories
+namespace iOrder.Entity.Repositories
 {
     public class AccountRepository : BaseRepository<UserProfile>, IAccountRepository
     {

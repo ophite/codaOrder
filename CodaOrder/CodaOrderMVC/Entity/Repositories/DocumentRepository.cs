@@ -1,5 +1,9 @@
 ﻿using CodaRemoting;
 using CodaRemoting.Datasets;
+using iOrder.Entity;
+using iOrder.Entity.Repositories;
+using iOrder.Helpers;
+using iOrder.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
@@ -11,11 +15,8 @@ using System.Data.Entity.Core.Objects;
 using System.Data.SqlClient;
 using System.Linq;
 using System.Web;
-using WebApplication3.Entity.Repositories;
-using WebApplication3.Helpers;
-using WebApplication3.Models;
 
-namespace WebApplication3.Entity
+namespace iOrder.Entity
 {
     public class EntityClassSetting
     {
@@ -198,7 +199,7 @@ namespace WebApplication3.Entity
                 item = new EntityClassSetting() { ClassName = "Box", Index = ++index, Items = qBox.ToList() };
                 items.Add(item);
 
-                var qAction = qBox.GetNextResult<WebApplication3.Entity.Action>();
+                var qAction = qBox.GetNextResult<Entity.Action>();
                 item = new EntityClassSetting() { ClassName = "Action", Index = ++index, Items = qAction.ToList() };
                 items.Add(item);
 

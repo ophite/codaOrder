@@ -6,7 +6,7 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Web;
 
-namespace WebApplication3.Entity
+namespace iOrder.Entity
 {
     public class BaseRepository<TEntity> : IRepository<TEntity>//, IDisposable
         where TEntity : class

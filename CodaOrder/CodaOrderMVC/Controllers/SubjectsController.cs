@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using WebApplication3.Entity;
 using Newtonsoft.Json;
 using System.Data.Entity.Core.Objects;
+using iOrder.Entity;
 
-namespace WebApplication3.Controllers
+namespace iOrder.Controllers
 {
     public partial class SubjectsController : Controller
     {
@@ -134,7 +134,7 @@ namespace WebApplication3.Controllers
                 item = new EntityClassSetting() { ClassName = "Box", Index = ++index, Items = qBox.ToList() };
                 items.Add(item);
 
-                var qAction = qBox.GetNextResult<WebApplication3.Entity.Action>();
+                var qAction = qBox.GetNextResult<Entity.Action>();
                 item = new EntityClassSetting() { ClassName = "Action", Index = ++index, Items = qAction.ToList() };
                 items.Add(item);
 

@@ -21,7 +21,7 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace WebApplication3.Controllers
+namespace iOrder.Controllers
 {
     public partial class AccountController
     {
@@ -71,34 +71,34 @@ namespace WebApplication3.Controllers
         public class ActionNamesClass
         {
             public readonly string Login = "Login";
+            public readonly string Logout = "Logout";
             public readonly string Register = "Register";
             public readonly string AddNewUser = "AddNewUser";
             public readonly string ChangePassword = "ChangePassword";
-            public readonly string Logout = "Logout";
             public readonly string RestorePassword = "RestorePassword";
             public readonly string ConfirmPassword = "ConfirmPassword";
             public readonly string ShowRestorePasswordResult = "ShowRestorePasswordResult";
             public readonly string TopMenuLinks = "TopMenuLinks";
+            public readonly string LeftMenuLinks = "LeftMenuLinks";
             public readonly string UserProfile = "UserProfile";
             public readonly string CodaUserProfileInfo = "CodaUserProfileInfo";
-            public readonly string LeftMenuLinks = "LeftMenuLinks";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
             public const string Login = "Login";
+            public const string Logout = "Logout";
             public const string Register = "Register";
             public const string AddNewUser = "AddNewUser";
             public const string ChangePassword = "ChangePassword";
-            public const string Logout = "Logout";
             public const string RestorePassword = "RestorePassword";
             public const string ConfirmPassword = "ConfirmPassword";
             public const string ShowRestorePasswordResult = "ShowRestorePasswordResult";
             public const string TopMenuLinks = "TopMenuLinks";
+            public const string LeftMenuLinks = "LeftMenuLinks";
             public const string UserProfile = "UserProfile";
             public const string CodaUserProfileInfo = "CodaUserProfileInfo";
-            public const string LeftMenuLinks = "LeftMenuLinks";
         }
 
 
@@ -143,6 +143,14 @@ namespace WebApplication3.Controllers
         {
             public readonly string model = "model";
         }
+        static readonly ActionParamsClass_ConfirmPassword s_params_ConfirmPassword = new ActionParamsClass_ConfirmPassword();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ConfirmPassword ConfirmPasswordParams { get { return s_params_ConfirmPassword; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ConfirmPassword
+        {
+            public readonly string model = "model";
+        }
         static readonly ActionParamsClass_CodaUserProfileInfo s_params_CodaUserProfileInfo = new ActionParamsClass_CodaUserProfileInfo();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_CodaUserProfileInfo CodaUserProfileInfoParams { get { return s_params_CodaUserProfileInfo; } }
@@ -163,26 +171,30 @@ namespace WebApplication3.Controllers
             {
                 public readonly string AddNewUser = "AddNewUser";
                 public readonly string ChangePassword = "ChangePassword";
+                public readonly string ConfirmPassword = "ConfirmPassword";
                 public readonly string LeftMenuLinks = "LeftMenuLinks";
                 public readonly string Login = "Login";
                 public readonly string Register = "Register";
                 public readonly string RestorePassword = "RestorePassword";
+                public readonly string ShowRestorePasswordResult = "ShowRestorePasswordResult";
                 public readonly string TopMenuLinks = "TopMenuLinks";
                 public readonly string UserProfile = "UserProfile";
             }
             public readonly string AddNewUser = "~/Views/Account/AddNewUser.cshtml";
             public readonly string ChangePassword = "~/Views/Account/ChangePassword.cshtml";
+            public readonly string ConfirmPassword = "~/Views/Account/ConfirmPassword.cshtml";
             public readonly string LeftMenuLinks = "~/Views/Account/LeftMenuLinks.cshtml";
             public readonly string Login = "~/Views/Account/Login.cshtml";
             public readonly string Register = "~/Views/Account/Register.cshtml";
             public readonly string RestorePassword = "~/Views/Account/RestorePassword.cshtml";
+            public readonly string ShowRestorePasswordResult = "~/Views/Account/ShowRestorePasswordResult.cshtml";
             public readonly string TopMenuLinks = "~/Views/Account/TopMenuLinks.cshtml";
             public readonly string UserProfile = "~/Views/Account/UserProfile.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_AccountController : WebApplication3.Controllers.AccountController
+    public partial class T4MVC_AccountController : iOrder.Controllers.AccountController
     {
         public T4MVC_AccountController() : base(Dummy.Instance) { }
 
@@ -198,15 +210,26 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, WebApplication3.Models.Login loginData, string returnUrl);
+        partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, iOrder.Models.Login loginData, string returnUrl);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Login(WebApplication3.Models.Login loginData, string returnUrl)
+        public override System.Web.Mvc.ActionResult Login(iOrder.Models.Login loginData, string returnUrl)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "loginData", loginData);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "returnUrl", returnUrl);
             LoginOverride(callInfo, loginData, returnUrl);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void LogoutOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Logout()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Logout);
+            LogoutOverride(callInfo);
             return callInfo;
         }
 
@@ -222,10 +245,10 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void RegisterOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, WebApplication3.Models.Register registerData);
+        partial void RegisterOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, iOrder.Models.Register registerData);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Register(WebApplication3.Models.Register registerData)
+        public override System.Web.Mvc.ActionResult Register(iOrder.Models.Register registerData)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Register);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "registerData", registerData);
@@ -245,10 +268,10 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void AddNewUserOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, WebApplication3.Models.Register registerData);
+        partial void AddNewUserOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, iOrder.Models.Register registerData);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult AddNewUser(WebApplication3.Models.Register registerData)
+        public override System.Web.Mvc.ActionResult AddNewUser(iOrder.Models.Register registerData)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.AddNewUser);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "registerData", registerData);
@@ -268,25 +291,14 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void ChangePasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, WebApplication3.Models.ChangePassword chgPwdData);
+        partial void ChangePasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, iOrder.Models.ChangePassword chgPwdData);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult ChangePassword(WebApplication3.Models.ChangePassword chgPwdData)
+        public override System.Web.Mvc.ActionResult ChangePassword(iOrder.Models.ChangePassword chgPwdData)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ChangePassword);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "chgPwdData", chgPwdData);
             ChangePasswordOverride(callInfo, chgPwdData);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void LogoutOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Logout()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Logout);
-            LogoutOverride(callInfo);
             return callInfo;
         }
 
@@ -302,10 +314,10 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void RestorePasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, WebApplication3.Models.RestorePassword model);
+        partial void RestorePasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, iOrder.Models.RestorePassword model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult RestorePassword(WebApplication3.Models.RestorePassword model)
+        public override System.Web.Mvc.ActionResult RestorePassword(iOrder.Models.RestorePassword model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.RestorePassword);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
@@ -321,6 +333,18 @@ namespace WebApplication3.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ConfirmPassword);
             ConfirmPasswordOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ConfirmPasswordOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, iOrder.Models.RestorePasswordParam model);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ConfirmPassword(iOrder.Models.RestorePasswordParam model)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ConfirmPassword);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
+            ConfirmPasswordOverride(callInfo, model);
             return callInfo;
         }
 
@@ -347,6 +371,17 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
+        partial void LeftMenuLinksOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.PartialViewResult LeftMenuLinks()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.LeftMenuLinks);
+            LeftMenuLinksOverride(callInfo);
+            return callInfo;
+        }
+
+        [NonAction]
         partial void UserProfileOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
 
         [NonAction]
@@ -369,25 +404,14 @@ namespace WebApplication3.Controllers
         }
 
         [NonAction]
-        partial void CodaUserProfileInfoOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, WebApplication3.Models.CodaUserProfile userProfile);
+        partial void CodaUserProfileInfoOverride(T4MVC_System_Web_Mvc_JsonResult callInfo, iOrder.Models.CodaUserProfile userProfile);
 
         [NonAction]
-        public override System.Web.Mvc.JsonResult CodaUserProfileInfo(WebApplication3.Models.CodaUserProfile userProfile)
+        public override System.Web.Mvc.JsonResult CodaUserProfileInfo(iOrder.Models.CodaUserProfile userProfile)
         {
             var callInfo = new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.CodaUserProfileInfo);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "userProfile", userProfile);
             CodaUserProfileInfoOverride(callInfo, userProfile);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void LeftMenuLinksOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.PartialViewResult LeftMenuLinks()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.LeftMenuLinks);
-            LeftMenuLinksOverride(callInfo);
             return callInfo;
         }
 

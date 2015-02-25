@@ -4,7 +4,7 @@
 using Glimpse.AspNet.Extensions;
 using Glimpse.Core.Extensibility;
 
-namespace WebApplication3
+namespace iOrder
 {
     public class GlimpseSecurityPolicy:IRuntimePolicy
     {
