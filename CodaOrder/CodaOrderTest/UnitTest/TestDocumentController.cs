@@ -26,6 +26,7 @@ using CodaOrderTest.MockContext;
 using Assert = NUnit.Framework.Assert;
 using iOrder.Entity.Interfaces;
 using iOrder.Entity.Repositories;
+using iOrder.Infrastructure.Entity;
 
 namespace CodaOrderTest.UnitTest
 {

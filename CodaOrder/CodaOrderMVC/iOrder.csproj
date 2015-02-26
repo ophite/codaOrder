@@ -436,7 +436,7 @@
     <Compile Include="Infrastructure\T4MVC\ErrorController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="GlimpseSecurityPolicy.cs" />
+    <Compile Include="Infrastructure\GlimpseSecurityPolicy.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -447,7 +447,7 @@
       <DependentUpon>201501231449562_Initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Infrastructure\IdentityContextMigration\Configuration.cs" />
-    <Compile Include="Infrastructure\NinjectDependencyResolver.cs" />
+    <Compile Include="Infrastructure\DI\NinjectDependencyResolver.cs" />
     <Compile Include="Infrastructure\ModelBinder\CustomBinders.cs" />
     <Compile Include="Models\ChangePassword.cs" />
     <Compile Include="Models\DocumentsParamsViewModel.cs" />
