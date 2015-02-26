@@ -1,4 +1,5 @@
 ﻿using iOrder.Entity;
+using iOrder.Infrastructure.Entity;
 using iOrder.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;

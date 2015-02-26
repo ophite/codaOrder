@@ -1,4 +1,5 @@
 ﻿using iOrder.Entity;
+using iOrder.Infrastructure.Entity;
 using System;
 using System.Collections.Generic;
 using System.Linq;

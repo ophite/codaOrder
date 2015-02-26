@@ -245,19 +245,19 @@
     <Content Include="Scripts\angular_source\angular-cookies.min.js.map" />
     <Content Include="Scripts\angular_source\angular-aria.min.js.map" />
     <Content Include="Scripts\angular_source\angular-animate.min.js.map" />
-    <EntityDeploy Include="Entity\JournalSaleDocument.edmx">
+    <EntityDeploy Include="Infrastructure\Entity\JournalSaleDocument.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>JournalSaleDocument.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <Content Include="Entity\JournalSaleDocument.Context.tt">
+    <Content Include="Infrastructure\Entity\JournalSaleDocument.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>JournalSaleDocument.edmx</DependentUpon>
       <LastGenOutput>JournalSaleDocument.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Entity\JournalSaleDocument.edmx.diagram">
+    <Content Include="Infrastructure\Entity\JournalSaleDocument.edmx.diagram">
       <DependentUpon>JournalSaleDocument.edmx</DependentUpon>
     </Content>
-    <Content Include="Entity\JournalSaleDocument.tt">
+    <Content Include="Infrastructure\Entity\JournalSaleDocument.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>JournalSaleDocument.edmx</DependentUpon>
       <LastGenOutput>JournalSaleDocument.cs</LastGenOutput>
@@ -351,86 +351,86 @@
     <Compile Include="DocumentController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Action.cs">
+    <Compile Include="Infrastructure\Entity\Action.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Address.cs">
+    <Compile Include="Infrastructure\Entity\Address.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\BaseEntity.cs" />
-    <Compile Include="Entity\Box.cs">
+    <Compile Include="Infrastructure\Entity\BaseEntity.cs" />
+    <Compile Include="Infrastructure\Entity\Box.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\BusinessUnit.cs">
+    <Compile Include="Infrastructure\Entity\BusinessUnit.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Classification.cs">
+    <Compile Include="Infrastructure\Entity\Classification.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\CodaJson.cs">
+    <Compile Include="Infrastructure\Entity\CodaJson.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Contract.cs">
+    <Compile Include="Infrastructure\Entity\Contract.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Department.cs">
+    <Compile Include="Infrastructure\Entity\Department.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Directory.cs">
+    <Compile Include="Infrastructure\Entity\Directory.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\DocBoxLine.cs">
+    <Compile Include="Infrastructure\Entity\DocBoxLine.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\DocTradeLine.cs">
+    <Compile Include="Infrastructure\Entity\DocTradeLine.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Employee.cs">
+    <Compile Include="Infrastructure\Entity\Employee.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Filial.cs">
+    <Compile Include="Infrastructure\Entity\Filial.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Firm.cs">
+    <Compile Include="Infrastructure\Entity\Firm.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Interfaces\IAccountRepository.cs" />
-    <Compile Include="Entity\JournalSale_Documents.cs">
+    <Compile Include="Infrastructure\Entity\Interfaces\IAccountRepository.cs" />
+    <Compile Include="Infrastructure\Entity\JournalSale_Documents.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Repositories\AccountRepository.cs" />
-    <Compile Include="Entity\Repositories\BaseRepository.cs" />
-    <Compile Include="Entity\Repositories\CodaJsonRepository.cs" />
-    <Compile Include="Entity\Repositories\DocumentRepository.cs" />
-    <Compile Include="Entity\Interfaces\ICodaJsonRepository.cs" />
-    <Compile Include="Entity\Interfaces\IDocumentRepository.cs" />
-    <Compile Include="Entity\Interfaces\IRepository.cs" />
-    <Compile Include="Entity\Interfaces\IUow.cs" />
-    <Compile Include="Entity\JournalSaleDocument.Context.cs">
+    <Compile Include="Infrastructure\Entity\Repositories\AccountRepository.cs" />
+    <Compile Include="Infrastructure\Entity\Repositories\BaseRepository.cs" />
+    <Compile Include="Infrastructure\Entity\Repositories\CodaJsonRepository.cs" />
+    <Compile Include="Infrastructure\Entity\Repositories\DocumentRepository.cs" />
+    <Compile Include="Infrastructure\Entity\Interfaces\ICodaJsonRepository.cs" />
+    <Compile Include="Infrastructure\Entity\Interfaces\IDocumentRepository.cs" />
+    <Compile Include="Infrastructure\Entity\Interfaces\IRepository.cs" />
+    <Compile Include="Infrastructure\Entity\Interfaces\IUow.cs" />
+    <Compile Include="Infrastructure\Entity\JournalSaleDocument.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>JournalSaleDocument.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\JournalSaleDocument.cs">
+    <Compile Include="Infrastructure\Entity\JournalSaleDocument.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\JournalSaleDocument.Designer.cs">
+    <Compile Include="Infrastructure\Entity\JournalSaleDocument.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>JournalSaleDocument.edmx</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Repositories\Helpers\SqlMessage.cs" />
-    <Compile Include="Entity\Repositories\Helpers\Tools.cs" />
-    <Compile Include="Entity\Repositories\Uow.cs" />
-    <Compile Include="Entity\Revenue.cs">
+    <Compile Include="Infrastructure\Entity\Repositories\Helpers\SqlMessage.cs" />
+    <Compile Include="Infrastructure\Entity\Repositories\Helpers\Tools.cs" />
+    <Compile Include="Infrastructure\Entity\Repositories\Uow.cs" />
+    <Compile Include="Infrastructure\Entity\Revenue.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\Subject.cs">
+    <Compile Include="Infrastructure\Entity\Subject.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
-    <Compile Include="Entity\TaxType.cs">
+    <Compile Include="Infrastructure\Entity\TaxType.cs">
       <DependentUpon>JournalSaleDocument.tt</DependentUpon>
     </Compile>
     <Compile Include="ErrorController.generated.cs">
@@ -451,7 +451,7 @@
     <Compile Include="Infrastructure\ModelBinder\CustomBinders.cs" />
     <Compile Include="Models\ChangePassword.cs" />
     <Compile Include="Models\DocumentsParamsViewModel.cs" />
-    <Compile Include="Entity\Repositories\IdentityContext.cs" />
+    <Compile Include="Infrastructure\Entity\Repositories\IdentityContext.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\Register.cs" />
     <Compile Include="Models\RestorePassword.cs" />
