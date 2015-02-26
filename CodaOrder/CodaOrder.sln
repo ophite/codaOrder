@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iOrder", "CodaOrderMVC\iOrd
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iOrderTest", "CodaOrderTest\iOrderTest.csproj", "{47D44496-9C49-4358-A527-A38C3822B76F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "iOrderUiTest", "iOrderUiTest\iOrderUiTest.csproj", "{5D50EBB3-61A7-40D8-9D87-C7CE05EF6E6D}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{47D44496-9C49-4358-A527-A38C3822B76F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{47D44496-9C49-4358-A527-A38C3822B76F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{47D44496-9C49-4358-A527-A38C3822B76F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5D50EBB3-61A7-40D8-9D87-C7CE05EF6E6D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5D50EBB3-61A7-40D8-9D87-C7CE05EF6E6D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5D50EBB3-61A7-40D8-9D87-C7CE05EF6E6D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5D50EBB3-61A7-40D8-9D87-C7CE05EF6E6D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

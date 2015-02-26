@@ -1045,6 +1045,7 @@ namespace Links
             public static readonly string angular_locale_zu_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-locale_zu.min.js") ? Url("angular-locale_zu.min.js") : Url("angular-locale_zu.js");
         }
     
+        public static readonly string ieshiv_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ieshiv.min.js") ? Url("ieshiv.min.js") : Url("ieshiv.js");
         public static readonly string jquery_2_1_1_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.1.intellisense.min.js") ? Url("jquery-2.1.1.intellisense.min.js") : Url("jquery-2.1.1.intellisense.js");
         public static readonly string jquery_2_1_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.1.min.js") ? Url("jquery-2.1.1.min.js") : Url("jquery-2.1.1.js");
         public static readonly string jquery_2_1_1_min_js = Url("jquery-2.1.1.min.js");
