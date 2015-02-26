@@ -26,7 +26,6 @@ using CodaOrderTest.MockContext;
 using Assert = NUnit.Framework.Assert;
 using iOrder.Entity.Interfaces;
 using iOrder.Entity.Repositories;
-using iOrder.Entity;
 
 namespace CodaOrderTest.UnitTest
 {
@@ -42,7 +41,7 @@ namespace CodaOrderTest.UnitTest
         private RouteCollection _routes;
 
         private DocumentsParamsViewModel _documentsParamsViewModel;
-        private LinesViewModel _linesViewModel;
+        //private LinesViewModel _linesViewModel;
 
         #endregion
         #region Methods
