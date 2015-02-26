@@ -36,46 +36,7 @@
     <Group Name="TechnologyManagers" />
   </Configuration>
   <InitializeActions />
-  <ExecuteActions>
-    <LaunchApplicationAction UIObjectName="UIMap.UINewTabGoogleChromeWindow">
-      <ParameterName />
-      <FileName>C:\Program Files (x86)\Google\Chrome\Application\chrome.exe</FileName>
-      <AlternateFileName>%ProgramFiles%\Google\Chrome\Application\chrome.exe</AlternateFileName>
-    </LaunchApplicationAction>
-    <SendKeysAction UIObjectName="UIMap.UINewTabGoogleChromeWindow.UIItemGroup.UIAddressandsearchbarEdit">
-      <ParameterName />
-      <ModifierKeys>None</ModifierKeys>
-      <IsGlobalHotkey>false</IsGlobalHotkey>
-      <Text Encoded="true">XQGxZarsUFSPSI6iz6BrIq0YRpGILEa8</Text>
-    </SendKeysAction>
-    <MouseAction UIObjectName="UIMap.UINewTabGoogleChromeWindow.UIChromeLegacyWindowWindow.UIChromeLegacyWindowClient">
-      <ParameterName />
-      <ModifierKeys>None</ModifierKeys>
-      <IsGlobalHotkey>false</IsGlobalHotkey>
-      <Location X="1080" Y="8" />
-      <WheelDirection>0</WheelDirection>
-      <ActionType>Click</ActionType>
-      <MouseButton>Left</MouseButton>
-    </MouseAction>
-    <MouseAction UIObjectName="UIMap.UINewTabGoogleChromeWindow.UIChromeLegacyWindowWindow.UIChromeLegacyWindowClient">
-      <ParameterName />
-      <ModifierKeys>None</ModifierKeys>
-      <IsGlobalHotkey>false</IsGlobalHotkey>
-      <Location X="1210" Y="725" />
-      <WheelDirection>0</WheelDirection>
-      <ActionType>Click</ActionType>
-      <MouseButton>Left</MouseButton>
-    </MouseAction>
-    <TestStepMarkerAction Comment="" MarkerInformation="RecordedMethod1">
-      <ParameterName />
-      <StepId>-1</StepId>
-      <Direction>Start</Direction>
-      <Outcome />
-      <Disabled>false</Disabled>
-      <WorkItemId>0</WorkItemId>
-      <MarkerRegionType>Action</MarkerRegionType>
-    </TestStepMarkerAction>
-  </ExecuteActions>
+  <ExecuteActions />
   <CleanupActions />
   <OnErrorActions />
   <Maps>

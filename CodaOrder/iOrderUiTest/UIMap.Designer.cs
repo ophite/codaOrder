@@ -29,42 +29,7 @@ namespace iOrderUiTest
     public partial class UIMap
     {
         
-        /// <summary>
-        /// RecordedMethod1 - Use 'RecordedMethod1Params' to pass parameters into this method.
-        /// </summary>
-        public void RecordedMethod1()
-        {
-            #region Variable Declarations
-            WinEdit uIAddressandsearchbarEdit = this.UINewTabGoogleChromeWindow.UIItemGroup.UIAddressandsearchbarEdit;
-            WinClient uIChromeLegacyWindowClient = this.UINewTabGoogleChromeWindow.UIChromeLegacyWindowWindow.UIChromeLegacyWindowClient;
-            #endregion
-
-            // Launch '%ProgramFiles%\Google\Chrome\Application\chrome.exe'
-            ApplicationUnderTest uINewTabGoogleChromeWindow = ApplicationUnderTest.Launch(this.RecordedMethod1Params.UINewTabGoogleChromeWindowExePath, this.RecordedMethod1Params.UINewTabGoogleChromeWindowAlternateExePath);
-
-            // Type '********' in 'Address and search bar' text box
-            Keyboard.SendKeys(uIAddressandsearchbarEdit, this.RecordedMethod1Params.UIAddressandsearchbarEditSendKeys, true);
-
-            // Click 'Chrome Legacy Window' client
-            Mouse.Click(uIChromeLegacyWindowClient, new Point(1080, 8));
-
-            // Click 'Chrome Legacy Window' client
-            Mouse.Click(uIChromeLegacyWindowClient, new Point(1210, 725));
-        }
-        
         #region Properties
-        public virtual RecordedMethod1Params RecordedMethod1Params
-        {
-            get
-            {
-                if ((this.mRecordedMethod1Params == null))
-                {
-                    this.mRecordedMethod1Params = new RecordedMethod1Params();
-                }
-                return this.mRecordedMethod1Params;
-            }
-        }
-        
         public UINewTabGoogleChromeWindow UINewTabGoogleChromeWindow
         {
             get
@@ -79,34 +44,7 @@ namespace iOrderUiTest
         #endregion
         
         #region Fields
-        private RecordedMethod1Params mRecordedMethod1Params;
-        
         private UINewTabGoogleChromeWindow mUINewTabGoogleChromeWindow;
-        #endregion
-    }
-    
-    /// <summary>
-    /// Parameters to be passed into 'RecordedMethod1'
-    /// </summary>
-    [GeneratedCode("Coded UITest Builder", "12.0.31101.0")]
-    public class RecordedMethod1Params
-    {
-        
-        #region Fields
-        /// <summary>
-        /// Launch '%ProgramFiles%\Google\Chrome\Application\chrome.exe'
-        /// </summary>
-        public string UINewTabGoogleChromeWindowExePath = "C:\\Program Files (x86)\\Google\\Chrome\\Application\\chrome.exe";
-        
-        /// <summary>
-        /// Launch '%ProgramFiles%\Google\Chrome\Application\chrome.exe'
-        /// </summary>
-        public string UINewTabGoogleChromeWindowAlternateExePath = "%ProgramFiles%\\Google\\Chrome\\Application\\chrome.exe";
-        
-        /// <summary>
-        /// Type '********' in 'Address and search bar' text box
-        /// </summary>
-        public string UIAddressandsearchbarEditSendKeys = "XQGxZarsUFSPSI6iz6BrIq0YRpGILEa8";
         #endregion
     }
     
