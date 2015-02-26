@@ -1,4 +1,4 @@
-﻿/// <reference path="~/Scripts/linq-vsdoc.js" />
+﻿/// <reference path="~/Scripts/3rdparty/linq-vsdoc.js" />
 /// <reference path="~/Scripts/app/Constant.js" />
 
 (function () {

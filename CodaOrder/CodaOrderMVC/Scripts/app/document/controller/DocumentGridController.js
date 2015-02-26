@@ -1,6 +1,6 @@
 ﻿/// <reference path="~/Scripts/app/Constant.js" />
-/// <reference path="~/Scripts/angular.js" />
-/// <reference path="~/Scripts/angular-cache.js" />
+/// <reference path="~/Scripts/angular_source/angular.js" />
+/// <reference path="~/Scripts/angular_ui/angular-cache.js" />
 
 (function () {
     'use strict';

@@ -1,7 +1,7 @@
 ﻿/// <reference path="~/Scripts/app/Constant.js" />
-/// <reference path="~/Scripts/angular.js" />
-/// <reference path="~/Scripts/jquery-2.1.1.js" />
-/// <reference path="~/Scripts/linq-vsdoc.js" />
+/// <reference path="~/Scripts/angular_source/angular.js" />
+/// <reference path="~/Scripts/jquery/jquery-2.1.1.js" />
+/// <reference path="~/Scripts/3rdparty/linq-vsdoc.js" />
 
 (function () {
     'use strict';

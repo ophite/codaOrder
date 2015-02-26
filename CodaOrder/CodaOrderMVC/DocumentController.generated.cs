@@ -72,30 +72,6 @@ namespace iOrder.Controllers
         {
             return new T4MVC_System_Web_Mvc_JsonResult(Area, Name, ActionNames.SaveLines);
         }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult Details()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Details);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult Edit()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult Delete()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
-        }
-        [NonAction]
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public virtual System.Web.Mvc.ActionResult DeleteConfirmed()
-        {
-            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteConfirmed);
-        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public DocumentController Actions { get { return MVC.Document; } }
@@ -121,11 +97,6 @@ namespace iOrder.Controllers
             public readonly string NewOrder = "NewOrder";
             public readonly string OrdersDraft = "OrdersDraft";
             public readonly string OrdersHistory = "OrdersHistory";
-            public readonly string Details = "Details";
-            public readonly string Create = "Create";
-            public readonly string Edit = "Edit";
-            public readonly string Delete = "Delete";
-            public readonly string DeleteConfirmed = "Delete";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -140,11 +111,6 @@ namespace iOrder.Controllers
             public const string NewOrder = "NewOrder";
             public const string OrdersDraft = "OrdersDraft";
             public const string OrdersHistory = "OrdersHistory";
-            public const string Details = "Details";
-            public const string Create = "Create";
-            public const string Edit = "Edit";
-            public const string Delete = "Delete";
-            public const string DeleteConfirmed = "Delete";
         }
 
 
@@ -172,55 +138,6 @@ namespace iOrder.Controllers
         {
             public readonly string model = "model";
         }
-        static readonly ActionParamsClass_NewOrder s_params_NewOrder = new ActionParamsClass_NewOrder();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_NewOrder NewOrderParams { get { return s_params_NewOrder; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_NewOrder
-        {
-            public readonly string form = "form";
-        }
-        static readonly ActionParamsClass_Details s_params_Details = new ActionParamsClass_Details();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_Details DetailsParams { get { return s_params_Details; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Details
-        {
-            public readonly string id = "id";
-        }
-        static readonly ActionParamsClass_Create s_params_Create = new ActionParamsClass_Create();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_Create CreateParams { get { return s_params_Create; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Create
-        {
-            public readonly string docs = "docs";
-        }
-        static readonly ActionParamsClass_Edit s_params_Edit = new ActionParamsClass_Edit();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_Edit EditParams { get { return s_params_Edit; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Edit
-        {
-            public readonly string id = "id";
-            public readonly string docs = "docs";
-        }
-        static readonly ActionParamsClass_Delete s_params_Delete = new ActionParamsClass_Delete();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_Delete DeleteParams { get { return s_params_Delete; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_Delete
-        {
-            public readonly string id = "id";
-        }
-        static readonly ActionParamsClass_DeleteConfirmed s_params_DeleteConfirmed = new ActionParamsClass_DeleteConfirmed();
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public ActionParamsClass_DeleteConfirmed DeleteConfirmedParams { get { return s_params_DeleteConfirmed; } }
-        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public class ActionParamsClass_DeleteConfirmed
-        {
-            public readonly string id = "id";
-        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -231,22 +148,14 @@ namespace iOrder.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string Create = "Create";
-                public readonly string Delete = "Delete";
-                public readonly string Details = "Details";
                 public readonly string Documents = "Documents";
-                public readonly string Edit = "Edit";
                 public readonly string Index = "Index";
                 public readonly string Lines = "Lines";
                 public readonly string NewOrder = "NewOrder";
                 public readonly string OrdersDraft = "OrdersDraft";
                 public readonly string OrdersHistory = "OrdersHistory";
             }
-            public readonly string Create = "~/Views/Document/Create.cshtml";
-            public readonly string Delete = "~/Views/Document/Delete.cshtml";
-            public readonly string Details = "~/Views/Document/Details.cshtml";
             public readonly string Documents = "~/Views/Document/Documents.cshtml";
-            public readonly string Edit = "~/Views/Document/Edit.cshtml";
             public readonly string Index = "~/Views/Document/Index.cshtml";
             public readonly string Lines = "~/Views/Document/Lines.cshtml";
             public readonly string NewOrder = "~/Views/Document/NewOrder.cshtml";
@@ -359,101 +268,6 @@ namespace iOrder.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.OrdersHistory);
             OrdersHistoryOverride(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void NewOrderOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, System.Web.Mvc.FormCollection form);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult NewOrder(System.Web.Mvc.FormCollection form)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.NewOrder);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "form", form);
-            NewOrderOverride(callInfo, form);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void DetailsOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long? id);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Details(long? id)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Details);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            DetailsOverride(callInfo, id);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Create()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            CreateOverride(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void CreateOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, iOrder.Entity.JournalSale_Documents docs);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Create(iOrder.Entity.JournalSale_Documents docs)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Create);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "docs", docs);
-            CreateOverride(callInfo, docs);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long? id);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Edit(long? id)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            EditOverride(callInfo, id);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void EditOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, iOrder.Entity.JournalSale_Documents docs);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Edit(iOrder.Entity.JournalSale_Documents docs)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Edit);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "docs", docs);
-            EditOverride(callInfo, docs);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void DeleteOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long? id);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult Delete(long? id)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Delete);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            DeleteOverride(callInfo, id);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void DeleteConfirmedOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, long id);
-
-        [NonAction]
-        public override System.Web.Mvc.ActionResult DeleteConfirmed(long id)
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.DeleteConfirmed);
-            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
-            DeleteConfirmedOverride(callInfo, id);
             return callInfo;
         }
 

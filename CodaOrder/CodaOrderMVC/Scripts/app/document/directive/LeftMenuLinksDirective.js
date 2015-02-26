@@ -1,6 +1,6 @@
 ﻿/// <reference path="~/Scripts/app/Constant.js" />
-/// <reference path="~/Scripts/linq-vsdoc.js" />
-/// <reference path="~/Scripts/angular.js" />
+/// <reference path="~/Scripts/3rdparty/linq-vsdoc.js" />
+/// <reference path="~/Scripts/angular_source/angular.js" />
 
 (function () {
     'use strict';

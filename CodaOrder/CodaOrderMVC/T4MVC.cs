@@ -30,7 +30,6 @@ public static partial class MVC
     public static iOrder.Controllers.DocumentController Document = new iOrder.Controllers.T4MVC_DocumentController();
     public static iOrder.Controllers.ErrorController Error = new iOrder.Controllers.T4MVC_ErrorController();
     public static iOrder.Controllers.SearchCodaObjectController SearchCodaObject = new iOrder.Controllers.T4MVC_SearchCodaObjectController();
-    public static iOrder.Controllers.SubjectsController Subjects = new iOrder.Controllers.T4MVC_SubjectsController();
     public static iOrder.Controllers.TemplateController Template = new iOrder.Controllers.T4MVC_TemplateController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
@@ -101,23 +100,22 @@ namespace Links
         public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
         public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public static class angular_ui {
-            private const string URLPATH = "~/Scripts/angular-ui";
+        public static class _3rdparty {
+            private const string URLPATH = "~/Scripts/3rdparty";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
-            public static readonly string angular_cache_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-cache.min.js") ? Url("angular-cache.min.js") : Url("angular-cache.js");
-            public static readonly string angular_cache_min_js = Url("angular-cache.min.js");
-            public static readonly string angular_cache_min_map = Url("angular-cache.min.map");
-            public static readonly string angular_spinner_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-spinner.min.js") ? Url("angular-spinner.min.js") : Url("angular-spinner.js");
-            public static readonly string angular_spinner_min_js = Url("angular-spinner.min.js");
-            public static readonly string angular_spinner_min_js_map = Url("angular-spinner.min.js.map");
-            public static readonly string angular_ui_router_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-ui-router.min.js") ? Url("angular-ui-router.min.js") : Url("angular-ui-router.js");
-            public static readonly string angular_ui_router_min_js = Url("angular-ui-router.min.js");
-            public static readonly string ui_bootstrap_tpls_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ui-bootstrap-tpls.min.js") ? Url("ui-bootstrap-tpls.min.js") : Url("ui-bootstrap-tpls.js");
-            public static readonly string ui_bootstrap_tpls_min_js = Url("ui-bootstrap-tpls.min.js");
-            public static readonly string ui_bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ui-bootstrap.min.js") ? Url("ui-bootstrap.min.js") : Url("ui-bootstrap.js");
-            public static readonly string ui_bootstrap_min_js = Url("ui-bootstrap.min.js");
-            public static readonly string ui_select_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ui-select.min.js") ? Url("ui-select.min.js") : Url("ui-select.js");
+            public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
+            public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
+            public static readonly string errors_json = Url("errors.json");
+            public static readonly string linq_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/linq-vsdoc.min.js") ? Url("linq-vsdoc.min.js") : Url("linq-vsdoc.js");
+            public static readonly string linq_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/linq.min.js") ? Url("linq.min.js") : Url("linq.js");
+            public static readonly string linq_min_js = Url("linq.min.js");
+            public static readonly string modernizr_2_6_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.6.2.min.js") ? Url("modernizr-2.6.2.min.js") : Url("modernizr-2.6.2.js");
+            public static readonly string ng_grid_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ng-grid.min.js") ? Url("ng-grid.min.js") : Url("ng-grid.js");
+            public static readonly string ng_grid_min_js = Url("ng-grid.min.js");
+            public static readonly string spin_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/spin.min.js") ? Url("spin.min.js") : Url("spin.js");
+            public static readonly string spin_min_js = Url("spin.min.js");
+            public static readonly string version_json = Url("version.json");
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -159,6 +157,26 @@ namespace Links
             public static readonly string angular_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular.min.js") ? Url("angular.min.js") : Url("angular.js");
             public static readonly string angular_min_js = Url("angular.min.js");
             public static readonly string angular_min_js_map = Url("angular.min.js.map");
+        }
+    
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class angular_ui {
+            private const string URLPATH = "~/Scripts/angular_ui";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string angular_cache_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-cache.min.js") ? Url("angular-cache.min.js") : Url("angular-cache.js");
+            public static readonly string angular_cache_min_js = Url("angular-cache.min.js");
+            public static readonly string angular_cache_min_map = Url("angular-cache.min.map");
+            public static readonly string angular_spinner_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-spinner.min.js") ? Url("angular-spinner.min.js") : Url("angular-spinner.js");
+            public static readonly string angular_spinner_min_js = Url("angular-spinner.min.js");
+            public static readonly string angular_spinner_min_js_map = Url("angular-spinner.min.js.map");
+            public static readonly string angular_ui_router_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/angular-ui-router.min.js") ? Url("angular-ui-router.min.js") : Url("angular-ui-router.js");
+            public static readonly string angular_ui_router_min_js = Url("angular-ui-router.min.js");
+            public static readonly string ui_bootstrap_tpls_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ui-bootstrap-tpls.min.js") ? Url("ui-bootstrap-tpls.min.js") : Url("ui-bootstrap-tpls.js");
+            public static readonly string ui_bootstrap_tpls_min_js = Url("ui-bootstrap-tpls.min.js");
+            public static readonly string ui_bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ui-bootstrap.min.js") ? Url("ui-bootstrap.min.js") : Url("ui-bootstrap.js");
+            public static readonly string ui_bootstrap_min_js = Url("ui-bootstrap.min.js");
+            public static readonly string ui_select_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ui-select.min.js") ? Url("ui-select.min.js") : Url("ui-select.js");
         }
     
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -261,27 +279,22 @@ namespace Links
         
         }
     
-        public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
-        public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
-        public static readonly string errors_json = Url("errors.json");
-        public static readonly string jquery_2_1_1_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.1.intellisense.min.js") ? Url("jquery-2.1.1.intellisense.min.js") : Url("jquery-2.1.1.intellisense.js");
-        public static readonly string jquery_2_1_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.1.min.js") ? Url("jquery-2.1.1.min.js") : Url("jquery-2.1.1.js");
-        public static readonly string jquery_2_1_1_min_js = Url("jquery-2.1.1.min.js");
-        public static readonly string jquery_2_1_1_min_map = Url("jquery-2.1.1.min.map");
-        public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
-        public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
-        public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
-        public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js") : Url("jquery.validate.unobtrusive.js");
-        public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
-        public static readonly string linq_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/linq-vsdoc.min.js") ? Url("linq-vsdoc.min.js") : Url("linq-vsdoc.js");
-        public static readonly string linq_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/linq.min.js") ? Url("linq.min.js") : Url("linq.js");
-        public static readonly string linq_min_js = Url("linq.min.js");
-        public static readonly string modernizr_2_6_2_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/modernizr-2.6.2.min.js") ? Url("modernizr-2.6.2.min.js") : Url("modernizr-2.6.2.js");
-        public static readonly string ng_grid_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ng-grid.min.js") ? Url("ng-grid.min.js") : Url("ng-grid.js");
-        public static readonly string ng_grid_min_js = Url("ng-grid.min.js");
-        public static readonly string spin_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/spin.min.js") ? Url("spin.min.js") : Url("spin.js");
-        public static readonly string spin_min_js = Url("spin.min.js");
-        public static readonly string version_json = Url("version.json");
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public static class jquery {
+            private const string URLPATH = "~/Scripts/jquery";
+            public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+            public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string jquery_2_1_1_intellisense_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.1.intellisense.min.js") ? Url("jquery-2.1.1.intellisense.min.js") : Url("jquery-2.1.1.intellisense.js");
+            public static readonly string jquery_2_1_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.1.min.js") ? Url("jquery-2.1.1.min.js") : Url("jquery-2.1.1.js");
+            public static readonly string jquery_2_1_1_min_js = Url("jquery-2.1.1.min.js");
+            public static readonly string jquery_2_1_1_min_map = Url("jquery-2.1.1.min.map");
+            public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
+            public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
+            public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
+            public static readonly string jquery_validate_unobtrusive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.unobtrusive.min.js") ? Url("jquery.validate.unobtrusive.min.js") : Url("jquery.validate.unobtrusive.js");
+            public static readonly string jquery_validate_unobtrusive_min_js = Url("jquery.validate.unobtrusive.min.js");
+        }
+    
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]

@@ -176,17 +176,17 @@
     <Content Include="Content\ui-select.css" />
     <Content Include="Global.asax" />
     <Content Include="packages.config" />
-    <Content Include="Scripts\angular-ui\angular-cache.js" />
-    <Content Include="Scripts\angular-ui\angular-cache.min.js" />
-    <Content Include="Scripts\angular-ui\angular-spinner.js" />
-    <Content Include="Scripts\angular-ui\angular-spinner.min.js" />
-    <Content Include="Scripts\angular-ui\angular-ui-router.js" />
-    <Content Include="Scripts\angular-ui\angular-ui-router.min.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap-tpls.min.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap.js" />
-    <Content Include="Scripts\angular-ui\ui-bootstrap.min.js" />
-    <Content Include="Scripts\angular-ui\ui-select.js" />
+    <Content Include="Scripts\angular_ui\angular-cache.js" />
+    <Content Include="Scripts\angular_ui\angular-cache.min.js" />
+    <Content Include="Scripts\angular_ui\angular-spinner.js" />
+    <Content Include="Scripts\angular_ui\angular-spinner.min.js" />
+    <Content Include="Scripts\angular_ui\angular-ui-router.js" />
+    <Content Include="Scripts\angular_ui\angular-ui-router.min.js" />
+    <Content Include="Scripts\angular_ui\ui-bootstrap-tpls.js" />
+    <Content Include="Scripts\angular_ui\ui-bootstrap-tpls.min.js" />
+    <Content Include="Scripts\angular_ui\ui-bootstrap.js" />
+    <Content Include="Scripts\angular_ui\ui-bootstrap.min.js" />
+    <Content Include="Scripts\angular_ui\ui-select.js" />
     <Content Include="Scripts\app\account\controller\ProfileController.js" />
     <Content Include="Scripts\app\account\service\ProfileService.js" />
     <Content Include="Scripts\app\app.js" />
@@ -233,8 +233,8 @@
     <Content Include="Scripts\angular_source\angular-touch.min.js" />
     <Content Include="Scripts\angular_source\angular.js" />
     <Content Include="Scripts\angular_source\angular.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\3rdparty\bootstrap.js" />
+    <Content Include="Scripts\3rdparty\bootstrap.min.js" />
     <Content Include="Scripts\angular_source\angular.min.js.map" />
     <Content Include="Scripts\angular_source\angular-route.min.js.map" />
     <Content Include="Scripts\angular_source\angular-touch.min.js.map" />
@@ -262,27 +262,27 @@
       <DependentUpon>JournalSaleDocument.edmx</DependentUpon>
       <LastGenOutput>JournalSaleDocument.cs</LastGenOutput>
     </Content>
-    <Content Include="Scripts\errors.json" />
-    <Content Include="Scripts\angular-ui\angular-cache.min.map" />
-    <Content Include="Scripts\angular-ui\angular-spinner.min.js.map" />
-    <None Include="Scripts\jquery-2.1.1.intellisense.js" />
-    <Content Include="Scripts\jquery-2.1.1.js" />
-    <Content Include="Scripts\jquery-2.1.1.min.js" />
-    <Content Include="Scripts\jquery-2.1.1.min.map" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <None Include="Scripts\linq-vsdoc.js" />
-    <Content Include="Scripts\linq.js" />
-    <Content Include="Scripts\linq.min.js" />
-    <Content Include="Scripts\modernizr-2.6.2.js" />
-    <Content Include="Scripts\ng-grid.js" />
-    <Content Include="Scripts\ng-grid.min.js" />
-    <Content Include="Scripts\spin.js" />
-    <Content Include="Scripts\spin.min.js" />
-    <Content Include="Scripts\version.json" />
+    <Content Include="Scripts\3rdparty\errors.json" />
+    <Content Include="Scripts\angular_ui\angular-cache.min.map" />
+    <Content Include="Scripts\angular_ui\angular-spinner.min.js.map" />
+    <None Include="Scripts\jquery\jquery-2.1.1.intellisense.js" />
+    <Content Include="Scripts\jquery\jquery-2.1.1.js" />
+    <Content Include="Scripts\jquery\jquery-2.1.1.min.js" />
+    <Content Include="Scripts\jquery\jquery-2.1.1.min.map" />
+    <None Include="Scripts\jquery\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery\jquery.validate.js" />
+    <Content Include="Scripts\jquery\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery\jquery.validate.unobtrusive.min.js" />
+    <None Include="Scripts\3rdparty\linq-vsdoc.js" />
+    <Content Include="Scripts\3rdparty\linq.js" />
+    <Content Include="Scripts\3rdparty\linq.min.js" />
+    <Content Include="Scripts\3rdparty\modernizr-2.6.2.js" />
+    <Content Include="Scripts\3rdparty\ng-grid.js" />
+    <Content Include="Scripts\3rdparty\ng-grid.min.js" />
+    <Content Include="Scripts\3rdparty\spin.js" />
+    <Content Include="Scripts\3rdparty\spin.min.js" />
+    <Content Include="Scripts\3rdparty\version.json" />
     <None Include="T4MVC.tt.settings.xml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\_ViewStart.cshtml" />
@@ -290,22 +290,10 @@
     <Content Include="Views\web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Subjects\Create.cshtml" />
-    <Content Include="Views\Subjects\Delete.cshtml" />
-    <Content Include="Views\Subjects\Details.cshtml" />
-    <Content Include="Views\Subjects\Edit.cshtml" />
-    <Content Include="Views\Subjects\Index.cshtml" />
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Views\Subjects\GetSubjects.cshtml" />
-    <Content Include="Views\Subjects\filterHeaderTemplate.cshtml" />
-    <Content Include="Views\Subjects\GetDocuments.cshtml" />
-    <Content Include="Views\Document\Create.cshtml" />
-    <Content Include="Views\Document\Delete.cshtml" />
-    <Content Include="Views\Document\Details.cshtml" />
-    <Content Include="Views\Document\Edit.cshtml" />
     <Content Include="Views\Document\Index.cshtml" />
     <Content Include="Views\Template\FilterHeaderTemplate.cshtml" />
     <Content Include="Views\SearchCodaObject\Subject.cshtml" />
@@ -356,7 +344,6 @@
     <Compile Include="Controllers\DocumentController.cs" />
     <Compile Include="Controllers\ErrorController.cs" />
     <Compile Include="Controllers\SearchCodaObjectController.cs" />
-    <Compile Include="Controllers\SubjectsController.cs" />
     <Compile Include="Controllers\TemplateController.cs" />
     <Compile Include="DirectiveController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
@@ -475,9 +462,6 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="SharedController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="SubjectsController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="T4MVC.cs">

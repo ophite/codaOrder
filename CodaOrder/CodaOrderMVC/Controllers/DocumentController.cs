@@ -105,97 +105,97 @@ namespace iOrder.Controllers
         #endregion
         #region Methods
 
-        [HttpPost]
-        [Authorize]
-        public virtual ActionResult NewOrder(FormCollection form)
-        {
-            return View(form);
-        }
+        //[HttpPost]
+        //[Authorize]
+        //public virtual ActionResult NewOrder(FormCollection form)
+        //{
+        //    return View(form);
+        //}
 
-        // GET: Document/Details/5
-        public virtual ActionResult Details(long? id)
-        {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //// GET: Document/Details/5
+        //public virtual ActionResult Details(long? id)
+        //{
+        //    if (id == null)
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            JournalSale_Documents docs = _uow.DocumentRepository.GetById((long)id);
-            if (docs == null)
-                return HttpNotFound();
+        //    JournalSale_Documents docs = _uow.DocumentRepository.GetById((long)id);
+        //    if (docs == null)
+        //        return HttpNotFound();
 
-            return View(docs);
-        }
+        //    return View(docs);
+        //}
 
-        // GET: Document/Create
-        public virtual ActionResult Create()
-        {
-            return View();
-        }
+        //// GET: Document/Create
+        //public virtual ActionResult Create()
+        //{
+        //    return View();
+        //}
 
-        // POST: Document/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult Create([Bind(Include = "OID,CID,Amount,BranchID,ChangeDate,Comments,CreateDate,DelDate,DocCode,DocDate,EmployeeID,DeliverID,ReceiverID,FirmID,FullName,GUID,IconIndex,IsDeleted,Name,NodeID,RGB,SourceDocID,DocGroupID,DocGroupPosition,TST,PriceSum,VatSum,ContractID,CustomerID,DepartmentID,CorrespondID,TaxCode,TaxDate,FilialID,PrintComments,IsForeign,RevenueID,DelayLimit,VatPercent,SourceDocCode,IsChangedAfterPrint,CasefillrateID,SectorID,CreditComments,VATNNSum,TaxInvoiceType,LineCount,Coordinate,BrandName")] JournalSale_Documents docs)
-        {
-            if (ModelState.IsValid)
-            {
-                _uow.DocumentRepository.Create(docs);
-                return RedirectToAction("Index");
-            }
+        //// POST: Document/Create
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public virtual ActionResult Create([Bind(Include = "OID,CID,Amount,BranchID,ChangeDate,Comments,CreateDate,DelDate,DocCode,DocDate,EmployeeID,DeliverID,ReceiverID,FirmID,FullName,GUID,IconIndex,IsDeleted,Name,NodeID,RGB,SourceDocID,DocGroupID,DocGroupPosition,TST,PriceSum,VatSum,ContractID,CustomerID,DepartmentID,CorrespondID,TaxCode,TaxDate,FilialID,PrintComments,IsForeign,RevenueID,DelayLimit,VatPercent,SourceDocCode,IsChangedAfterPrint,CasefillrateID,SectorID,CreditComments,VATNNSum,TaxInvoiceType,LineCount,Coordinate,BrandName")] JournalSale_Documents docs)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _uow.DocumentRepository.Create(docs);
+        //        return RedirectToAction("Index");
+        //    }
 
-            return View(docs);
-        }
+        //    return View(docs);
+        //}
 
-        // GET: Document/Edit/5
-        public virtual ActionResult Edit(long? id)
-        {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //// GET: Document/Edit/5
+        //public virtual ActionResult Edit(long? id)
+        //{
+        //    if (id == null)
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            JournalSale_Documents docs = _uow.DocumentRepository.GetById((long)id);
-            if (docs == null)
-                return HttpNotFound();
+        //    JournalSale_Documents docs = _uow.DocumentRepository.GetById((long)id);
+        //    if (docs == null)
+        //        return HttpNotFound();
 
-            return View(docs);
-        }
+        //    return View(docs);
+        //}
 
-        // POST: Document/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult Edit([Bind(Include = "OID,CID,Amount,BranchID,ChangeDate,Comments,CreateDate,DelDate,DocCode,DocDate,EmployeeID,DeliverID,ReceiverID,FirmID,FullName,GUID,IconIndex,IsDeleted,Name,NodeID,RGB,SourceDocID,DocGroupID,DocGroupPosition,TST,PriceSum,VatSum,ContractID,CustomerID,DepartmentID,CorrespondID,TaxCode,TaxDate,FilialID,PrintComments,IsForeign,RevenueID,DelayLimit,VatPercent,SourceDocCode,IsChangedAfterPrint,CasefillrateID,SectorID,CreditComments,VATNNSum,TaxInvoiceType,LineCount,Coordinate,BrandName")] JournalSale_Documents docs)
-        {
-            if (ModelState.IsValid)
-            {
-                _uow.DocumentRepository.Edit(docs);
-                return RedirectToAction("Index");
-            }
-            return View(docs);
-        }
+        //// POST: Document/Edit/5
+        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public virtual ActionResult Edit([Bind(Include = "OID,CID,Amount,BranchID,ChangeDate,Comments,CreateDate,DelDate,DocCode,DocDate,EmployeeID,DeliverID,ReceiverID,FirmID,FullName,GUID,IconIndex,IsDeleted,Name,NodeID,RGB,SourceDocID,DocGroupID,DocGroupPosition,TST,PriceSum,VatSum,ContractID,CustomerID,DepartmentID,CorrespondID,TaxCode,TaxDate,FilialID,PrintComments,IsForeign,RevenueID,DelayLimit,VatPercent,SourceDocCode,IsChangedAfterPrint,CasefillrateID,SectorID,CreditComments,VATNNSum,TaxInvoiceType,LineCount,Coordinate,BrandName")] JournalSale_Documents docs)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        _uow.DocumentRepository.Edit(docs);
+        //        return RedirectToAction("Index");
+        //    }
+        //    return View(docs);
+        //}
 
-        // GET: Document/Delete/5
-        public virtual ActionResult Delete(long? id)
-        {
-            if (id == null)
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+        //// GET: Document/Delete/5
+        //public virtual ActionResult Delete(long? id)
+        //{
+        //    if (id == null)
+        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
 
-            JournalSale_Documents docs = _uow.DocumentRepository.GetById((long)id);
-            if (docs == null)
-                return HttpNotFound();
+        //    JournalSale_Documents docs = _uow.DocumentRepository.GetById((long)id);
+        //    if (docs == null)
+        //        return HttpNotFound();
 
-            return View(docs);
-        }
+        //    return View(docs);
+        //}
 
-        // POST: Document/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public virtual ActionResult DeleteConfirmed(long id)
-        {
-            _uow.DocumentRepository.Delete(id);
-            return RedirectToAction("Index");
-        }
+        //// POST: Document/Delete/5
+        //[HttpPost, ActionName("Delete")]
+        //[ValidateAntiForgeryToken]
+        //public virtual ActionResult DeleteConfirmed(long id)
+        //{
+        //    _uow.DocumentRepository.Delete(id);
+        //    return RedirectToAction("Index");
+        //}
 
         #endregion
         #region IDispose
