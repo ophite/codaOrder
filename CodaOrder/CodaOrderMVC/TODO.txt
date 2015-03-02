@@ -10,7 +10,7 @@ Add-Migration -configuration WebApplication3.IdentityContextMigration.Configurat
 Update-Database -configuration WebApplication3.IdentityContextMigration.Configuration -Verbose
 
 
-Installed
+Installed:
 -T4MVC
 -Glimpse mvc5
 -ng-grid
@@ -25,3 +25,8 @@ Installed
 -ui-router.js
 -angular-cache
 -angular-spinner
+
+
+
+Visual Studio addins:
+- https://visualstudiogallery.msdn.microsoft.com/65748cdb-4087-497e-a394-2e3449c8e61e
