@@ -2,7 +2,6 @@
 // Generated on Mon Mar 02 2015 17:01:18 GMT+0200 (FLE Standard Time)
 
 module.exports = function (config) {
-    console.log('test log');
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
@@ -16,7 +15,7 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'Scripts/app/test/base/mySpec.js',
+            'Scripts/app/test/**/*Spec.js',
         ],
 
 
