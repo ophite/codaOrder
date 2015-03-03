@@ -16,16 +16,26 @@ module.exports = function (config) {
         // list of files / patterns to load in the browser
         files: [
             'Scripts/angular_source/angular.js',
+            'Scripts/angular_source/angular-sanitize.js',
             'Scripts/angular_source/angular-mocks.js',
             'Scripts/angular_source/angular-resource.js',
             'Scripts/angular_source/angular-route.js',
+            'Scripts/angular_ui/angular-ui-router.js',
+            'Scripts/angular_ui/angular-cache.js',
+            'Scripts/angular_ui/angular-spinner.js',
+            'Scripts/angular_ui/ui-bootstrap.js',
+            'Scripts/angular_ui/ui-bootstrap-tpls.js',
+            'Scripts/angular_ui/ui-select.js',
             'Scripts/jquery/jquery-2.1.1.js',
             'Scripts/3rdparty/ng-grid.js',
             'Scripts/3rdparty/bootstrap.js',
+            'Scripts/3rdparty/linq-vsdoc.js',
+            'Scripts/3rdparty/linq.js',
             'Scripts/app/*.js',
             'Scripts/app/**/*.js',
             'Scripts/app/**/**/*.js',
             'Scripts/app/test/unit/**/*Spec.js',
+            'Scripts/app/document/controller/DocumentGridController.js'
         ],
 
 
