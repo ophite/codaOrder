@@ -4,11 +4,10 @@
 (function () {
     'use strict';
 
-    angular.module(ConstantHelper.App).factory('documentService', ['$resource', 'DSCacheFactory', '$q',
-        function ($resource, DSCacheFactory, $q) {
+    angular.module(ConstantHelper.App).factory('documentService', ['$resource',
+        function ($resource) {
             return {
                 api: function (paramDict, urlGetDocument) {
-
                     return $resource(window.location.origin + urlGetDocument, {}, {
                         get: {
                             method: 'GET',
@@ -73,9 +72,9 @@
                 },
                 saveDocument: function (paramsDict, urlSaveDocument, callbackFunc) {
                     var resPost = documentService.api(paramsDict, urlSaveDocument).save().$promise.then(
-                            function (jsonData) {
-                                callbackFunc(jsonData);
-                            });
+                        function (jsonData) {
+                            callbackFunc(jsonData);
+                        });
                 }
             };
         }

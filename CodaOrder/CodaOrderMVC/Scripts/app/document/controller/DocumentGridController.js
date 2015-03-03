@@ -5,7 +5,13 @@
 (function () {
     'use strict';
 
-    function DocumentGridController($scope, $location, apiService, filterStrToSql, parameterService, gridFilterBarService, usSpinnerService) {
+    function DocumentGridController($scope,
+                                    $location,
+                                    apiService,
+                                    filterStrToSql,
+                                    parameterService,
+                                    gridFilterBarService,
+                                    usSpinnerService) {
 
         $scope.model = {};
 
@@ -25,11 +31,11 @@
             multiSelect: false,
             rowTemplate: '<div ng-dblclick="onDblClickRow(row)" ng-style="{ \'cursor\': row.cursor }" ng-repeat="col in renderedColumns" ng-class="col.colIndex()" class="ngCell {{col.cellClass}}"><div class="ngVerticalBar" ng-style="{height: rowHeight}" ng-class="{ ngVerticalBarVisible: !$last }">&nbsp;</div><div ng-cell></div></div>',
             columnDefs: [
-                { field: 'Amount', displayName: 'Сумма', headerCellTemplate: '../template/filterHeaderTemplate' },
-                { field: 'DocCode', displayName: 'Код док-та', headerCellTemplate: '../template/filterHeaderTemplate' },
-                { field: 'DocDate', displayName: 'Дата док-та', headerCellTemplate: '../template/filterHeaderTemplate' },
-                { field: 'OID', displayName: 'ID', headerCellTemplate: '../template/filterHeaderTemplate' },
-                { field: 'Comments', displayName: 'Комментарий', headerCellTemplate: '../template/filterHeaderTemplate' }
+                {field: 'Amount', displayName: 'Сумма', headerCellTemplate: '../template/filterHeaderTemplate'},
+                {field: 'DocCode', displayName: 'Код док-та', headerCellTemplate: '../template/filterHeaderTemplate'},
+                {field: 'DocDate', displayName: 'Дата док-та', headerCellTemplate: '../template/filterHeaderTemplate'},
+                {field: 'OID', displayName: 'ID', headerCellTemplate: '../template/filterHeaderTemplate'},
+                {field: 'Comments', displayName: 'Комментарий', headerCellTemplate: '../template/filterHeaderTemplate'}
             ],
 
             //enablePaging: true,

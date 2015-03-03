@@ -5,7 +5,7 @@ module.exports = function (config) {
     config.set({
 
         // base path that will be used to resolve all patterns (eg. files, exclude)
-        basePath: '',
+        basePath: '../../../',
 
 
         // frameworks to use
@@ -15,7 +15,17 @@ module.exports = function (config) {
 
         // list of files / patterns to load in the browser
         files: [
-            'Scripts/app/test/**/*Spec.js',
+            'Scripts/angular_source/angular.js',
+            'Scripts/angular_source/angular-mocks.js',
+            'Scripts/angular_source/angular-resource.js',
+            'Scripts/angular_source/angular-route.js',
+            'Scripts/jquery/jquery-2.1.1.js',
+            'Scripts/3rdparty/ng-grid.js',
+            'Scripts/3rdparty/bootstrap.js',
+            'Scripts/app/*.js',
+            'Scripts/app/**/*.js',
+            'Scripts/app/**/**/*.js',
+            'Scripts/app/test/unit/**/*Spec.js',
         ],
 
 
@@ -37,6 +47,10 @@ module.exports = function (config) {
         // web server port
         port: 9876,
 
+        plugins : [
+            'karma-chrome-launcher',
+            'karma-jasmine'
+        ],
 
         // enable / disable colors in the output (reporters and logs)
         colors: true,
