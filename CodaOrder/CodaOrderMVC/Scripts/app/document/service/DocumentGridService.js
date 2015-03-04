@@ -8,7 +8,7 @@
         function ($resource) {
             return {
                 api: function (paramDict, urlGetDocument) {
-                    return $resource(window.location.origin + urlGetDocument, {}, {
+                    return $resource(urlGetDocument, {}, {
                         get: {
                             method: 'GET',
                             params: paramDict,
@@ -16,11 +16,11 @@
                                 var headers = headersGetter();
                                 //headers['Content-Type'] = 'application/json';
                                 //headers['Content-Type'] = 'multipart/form-data';
-                                headers['Content-Type'] = 'application/x-www-form-urlencoded';
-                                //headers['X-Requested-With'] = 'XMLHttpRequest';
-                                var formData = new FormData();
-                                formData.append("model", angular.toJson(paramDict))
-                                return formData;
+                                //headers['Content-Type'] = 'application/x-www-form-urlencoded';
+                                ////headers['X-Requested-With'] = 'XMLHttpRequest';
+                                //var formData = new FormData();
+                                //formData.append("model", angular.toJson(paramDict))
+                                //return formData;
                             },
                             //cache: DSCacheFactory.get('defaultCache')
                             cache: true
@@ -32,10 +32,10 @@
                                 var headers = headersGetter();
                                 headers['Content-Type'] = 'application/json';
                                 headers['Data-Type'] = 'json';
-                            },
+                            }
                         }
                     });
-                },
+                }
             };
         }
     ]);
@@ -47,10 +47,10 @@
             var cacheWrapper = function (paramDict, url, callbackFunc) {
                 // 1 get from cache
                 var defaultCache = DSCacheFactory.get('defaultCache');
-                var result = defaultCache.get(angular.toJson(paramDict));
+                var jsonData = defaultCache.get(angular.toJson(paramDict));
 
-                if (result) {
-                    callbackFunc(result)
+                if (jsonData) {
+                    callbackFunc(jsonData)
                 }
                 else {
                     // 2 get 

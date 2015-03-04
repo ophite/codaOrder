@@ -30,3 +30,13 @@ Installed:
 
 Visual Studio addins:
 - https://visualstudiogallery.msdn.microsoft.com/65748cdb-4087-497e-a394-2e3449c8e61e
+
+WebStorm:
+- Karma (npm install -g karma, npm install -g karmacli)
+- Karma config make
+- Jasmine (npm gui)
+- Jasmine add intellisense
+
+
+TODO
+pageNumberCounts - delete or refactor
