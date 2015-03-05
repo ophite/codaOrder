@@ -1,72 +1,65 @@
 describe('controller: document', function () {
-    beforeEach(module('app'));
-
     var $controller, $location, $rootScope;
+    var $scope, controller;
 
+    beforeEach(module('app'));
     beforeEach(inject(function (_$controller_, _$location_, _$rootScope_) {
         $controller = _$controller_;
         $location = _$location_;
         $rootScope = _$rootScope_;
+        $scope = $rootScope.$new();
+        controller = $controller('DocumentGridController', {$scope: $scope});
     }));
 
-    describe('after injection', function () {
-        var $scope, controller;
+    it('should run init function and change scope.model.urlGetDocument', function () {
+        spyOn($scope, 'init').and.callThrough();
+        var testUrl = 'testUrl';
+        $scope.init(testUrl);
+        expect($scope.init).toHaveBeenCalledWith(testUrl);
+        expect($scope.model.urlGetDocument).toBe(testUrl);
+    });
 
-        beforeEach(function () {
-            $scope = $rootScope.$new();
-            controller = $controller('DocumentGridController', {$scope: $scope});
-        });
+    it('should run onDblClickRow and check row param', function () {
+        spyOn($scope, 'onDblClickRow').and.callThrough();
+        var row = {};
+        row.entity = {OID: 1};
+        $scope.onDblClickRow(row);
+        expect($scope.onDblClickRow).toHaveBeenCalled();
+        expect($scope.onDblClickRow).toHaveBeenCalledWith(row);
+        $rootScope.$apply();
+        expect($location.path()).toBe(ConstantHelper.router.lines.url + '/' + row.entity.OID);
+    });
 
-        it('should run init function and change scope.model.urlGetDocument', function () {
-            spyOn($scope, 'init').and.callThrough();
-            var testUrl = 'testUrl';
-            $scope.init(testUrl);
-            expect($scope.init).toHaveBeenCalledWith(testUrl);
-            expect($scope.model.urlGetDocument).toBe(testUrl);
-        });
+    it('should exists setPagingData function', function () {
+        expect($scope.setPagingData).toBeDefined();
+    });
 
-        it('should run onDblClickRow and check row param', function () {
-            spyOn($scope, 'onDblClickRow').and.callThrough();
-            var row = {};
-            row.entity = {OID: 1};
-            $scope.onDblClickRow(row);
-            expect($scope.onDblClickRow).toHaveBeenCalled();
-            expect($scope.onDblClickRow).toHaveBeenCalledWith(row);
-            $rootScope.$apply();
-            expect($location.path()).toBe(ConstantHelper.router.lines.url + '/' + row.entity.OID);
-        });
+    it('should exists startSpin, stopSpin function', function () {
+        expect($scope.startSpin).toBeDefined();
+        expect($scope.stopSpin).toBeDefined();
+    });
 
-        it('should exists setPagingData function', function () {
-            expect($scope.setPagingData).toBeDefined();
-        });
+    it('check gridOptions properties', function () {
+        expect($scope.gridOptions).toBeDefined();
+        var items = Enumerable.From($scope.gridOptions.columnDefs);
+        expect(items.Where(function (x) {
+            return x.field == 'Amount'
+        }).ToArray().length).toBe(1);
 
-        it('should exists startSpin, stopSpin function', function () {
-            expect($scope.startSpin).toBeDefined();
-            expect($scope.stopSpin).toBeDefined();
-        });
+        expect($scope.gridOptions.data).toBe('model.data');
+        expect($scope.gridOptions.plugins.length).toBeGreaterThan(0);
+    });
 
-        it('check gridOptions properties', function () {
-            expect($scope.gridOptions).toBeDefined();
-            var items = Enumerable.From($scope.gridOptions.columnDefs);
-            expect(items.Where(function (x) {
-                return x.field == 'Amount'
-            }).ToArray().length).toBe(1);
+    it('check scope.on', function () {
+        spyOn($scope, 'init').and.callThrough();
+        var testUrl = 'testUrl';
+        $scope.init(testUrl);
 
-            expect($scope.gridOptions.data).toBe('model.data');
-            expect($scope.gridOptions.plugins.length).toBeGreaterThan(0);
-        });
-
-        it('check scope.on', function () {
-            spyOn($scope, 'init').and.callThrough();
-            var testUrl = 'testUrl';
-            $scope.init(testUrl);
-
-            spyOn($rootScope, '$broadcast').and.callThrough();
-            $rootScope.$broadcast(ConstantHelper.Watchers.broadcastGetDocuments, [{id: 1, name: 'test'}]);
-            expect($scope.$broadcast).toHaveBeenCalledWith(ConstantHelper.Watchers.broadcastGetDocuments, [{
-                id: 1,
-                name: 'test'
-            }]);
-        });
+        spyOn($rootScope, '$broadcast').and.callThrough();
+        $rootScope.$broadcast(ConstantHelper.Watchers.broadcastGetDocuments, [{id: 1, name: 'test'}]);
+        expect($scope.$broadcast).toHaveBeenCalledWith(ConstantHelper.Watchers.broadcastGetDocuments, [{
+            id: 1,
+            name: 'test'
+        }]);
     });
 });

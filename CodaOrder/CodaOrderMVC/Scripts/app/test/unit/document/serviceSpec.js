@@ -1,11 +1,9 @@
 describe("service: document", function () {
-    beforeEach(module('app'));
-    var mockDocumentService,
-        mockApiService;
-    var $httpBackend,
-        $controller;
+    var mockDocumentService, mockApiService;
+    var $httpBackend, $controller;
     var generateUrl;
 
+    beforeEach(module('app'));
     beforeEach(inject(function (_$httpBackend_, _$controller_, _documentService_, _apiService_) {
         mockDocumentService = _documentService_;
         mockApiService = _apiService_;
@@ -33,37 +31,36 @@ describe("service: document", function () {
         expect(mockApiService).toBeDefined();
     });
 
-    it('check getDocuments method', inject(function (documentService) {
-            var urlGetDocument = ConstantHelper.router.documents.url || '/Document/GetDocuments';
+    it('check getDocuments method', function () {
+        var urlGetDocument = ConstantHelper.router.documents.url || '/Document/GetDocuments';
 
-            var params = {
-                subjectID: ConstantHelper.Document.paramSubjectID.default,
-                dateBegin: ConstantHelper.Document.paramDateBegin.default,
-                dateEnd: ConstantHelper.Document.paramDateEnd.default,
-                pagesCount: ConstantHelper.Document.paramPagesCount.default,
-                pageSize: ConstantHelper.Document.paramPageSize.default,
-                currentPage: ConstantHelper.Document.paramCurrentPage.default,
-                totalRows: ConstantHelper.Document.paramTotalRows.default
-            };
+        var params = {
+            subjectID: ConstantHelper.Document.paramSubjectID.default,
+            dateBegin: ConstantHelper.Document.paramDateBegin.default,
+            dateEnd: ConstantHelper.Document.paramDateEnd.default,
+            pagesCount: ConstantHelper.Document.paramPagesCount.default,
+            pageSize: ConstantHelper.Document.paramPageSize.default,
+            currentPage: ConstantHelper.Document.paramCurrentPage.default,
+            totalRows: ConstantHelper.Document.paramTotalRows.default
+        };
 
-            var expectedUrl = generateUrl(params);
-            var jsonTestData = {
-                documents: [{
-                    OID: 1,
-                    Amount: 22.4,
-                    ItemName: 'test item name'
-                }]
-            };
-            var jsonStr = JSON.stringify(jsonTestData);
+        var expectedUrl = generateUrl(params);
+        var jsonTestData = {
+            documents: [{
+                OID: 1,
+                Amount: 22.4,
+                ItemName: 'test item name'
+            }]
+        };
+        var jsonStr = JSON.stringify(jsonTestData);
 
-            $httpBackend.whenGET(urlGetDocument + expectedUrl).respond(jsonStr);
-            $httpBackend.expectGET(urlGetDocument + expectedUrl).respond(200, jsonStr);
+        $httpBackend.whenGET(urlGetDocument + expectedUrl).respond(jsonStr);
+        $httpBackend.expectGET(urlGetDocument + expectedUrl).respond(200, jsonStr);
 
-            mockDocumentService.api(params, urlGetDocument).get().$promise.then(function (jsonData) {
-                expect(JSON.stringify(jsonData.documents)).toBe(JSON.stringify(jsonTestData.documents));
-            });
+        mockDocumentService.api(params, urlGetDocument).get().$promise.then(function (jsonData) {
+            expect(JSON.stringify(jsonData.documents)).toBe(JSON.stringify(jsonTestData.documents));
+        });
 
-            $httpBackend.flush();
-        })
-    );
+        $httpBackend.flush();
+    });
 });
