@@ -9,7 +9,7 @@
             return {
                 restrict: 'E',
                 replace: true,
-                templateUrl: 'directive/DirShowError',
+                templateUrl: 'directive/DirShowError'
             };
         }
     ]);

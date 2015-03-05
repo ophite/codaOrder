@@ -17,7 +17,7 @@
 
         'ngSanitize',
         'ui.select',
-        'ngRoute',
+        //'ngRoute',
         'ui.router',
         'angular-data.DSCacheFactory',
         'angularSpinner'
@@ -31,6 +31,7 @@
                 enabled: false,
                 requireBase: false
             });
+
             $locationProvider.hashPrefix('!');
             $stateProvider
                 .state(ConstantHelper.router.documents.name, {
