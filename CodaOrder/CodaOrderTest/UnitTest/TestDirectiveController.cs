@@ -21,15 +21,6 @@ namespace CodaOrderTest.UnitTest
         #region Methods
 
         [TestMethod]
-        public void TestDirDatePicker()
-        {
-            // act
-             var result = _directiveController.DirDatePicker() as PartialViewResult;
-            // assert
-             Assert.IsNotNull(result);
-        }
-
-        [TestMethod]
         public void TestDirDatesValidation()
         {
             // act

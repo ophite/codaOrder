@@ -74,7 +74,6 @@ namespace iOrder.Controllers
         public class ActionNamesClass
         {
             public readonly string Index = "Index";
-            public readonly string DirDatePicker = "DirDatePicker";
             public readonly string DirDatesValidation = "DirDatesValidation";
             public readonly string DirShowError = "DirShowError";
         }
@@ -83,7 +82,6 @@ namespace iOrder.Controllers
         public class ActionNameConstants
         {
             public const string Index = "Index";
-            public const string DirDatePicker = "DirDatePicker";
             public const string DirDatesValidation = "DirDatesValidation";
             public const string DirShowError = "DirShowError";
         }
@@ -99,11 +97,9 @@ namespace iOrder.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
-                public readonly string DirDatePicker = "DirDatePicker";
                 public readonly string DirDatesValidation = "DirDatesValidation";
                 public readonly string DirShowError = "DirShowError";
             }
-            public readonly string DirDatePicker = "~/Views/Directive/DirDatePicker.cshtml";
             public readonly string DirDatesValidation = "~/Views/Directive/DirDatesValidation.cshtml";
             public readonly string DirShowError = "~/Views/Directive/DirShowError.cshtml";
         }
@@ -122,17 +118,6 @@ namespace iOrder.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Index);
             IndexOverride(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void DirDatePickerOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.PartialViewResult DirDatePicker()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.DirDatePicker);
-            DirDatePickerOverride(callInfo);
             return callInfo;
         }
 

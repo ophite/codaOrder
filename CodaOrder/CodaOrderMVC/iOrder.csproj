@@ -166,6 +166,10 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\3rdparty\Date.min.js" />
+    <Content Include="Scripts\app\test\karma.conf.js" />
+    <Content Include="Scripts\app\test\unit\document\controllerSpec.js" />
+    <Content Include="Scripts\app\test\unit\document\directiveSpec.js" />
+    <Content Include="Scripts\app\test\unit\document\serviceSpec.js" />
     <Content Include="TODO.txt" />
     <Content Include="Content\angular_grid_custom.css" />
     <Content Include="Content\bootstrap.css" />
@@ -267,6 +271,7 @@
     <Content Include="Scripts\angular_ui\angular-cache.min.map" />
     <Content Include="Scripts\angular_ui\angular-spinner.min.js.map" />
     <Content Include="bower.json" />
+    <Content Include="Scripts\app\document\template\DirDatePicker.html" />
     <None Include="Scripts\jquery\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery\jquery-2.1.1.min.js" />
@@ -311,7 +316,6 @@
     <Content Include="Views\Account\TopMenuLinks.cshtml" />
     <Content Include="Views\Error\NotFound.cshtml" />
     <Content Include="Views\Document\NewOrder.cshtml" />
-    <Content Include="Views\Directive\DirDatePicker.cshtml" />
     <Content Include="Views\Directive\DirDatesValidation.cshtml" />
     <Content Include="Views\Account\LeftMenuLinks.cshtml" />
     <Content Include="Views\Document\OrdersDraft.cshtml" />

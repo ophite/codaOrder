@@ -265,6 +265,14 @@ namespace Links
                     public static readonly string GridService_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/GridService.min.js") ? Url("GridService.min.js") : Url("GridService.js");
                 }
             
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class template {
+                    private const string URLPATH = "~/Scripts/app/document/template";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    public static readonly string DirDatePicker_html = Url("DirDatePicker.html");
+                }
+            
             }
         
             [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -283,6 +291,31 @@ namespace Links
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string GridController_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/GridController.min.js") ? Url("GridController.min.js") : Url("GridController.js");
                 public static readonly string GridService_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/GridService.min.js") ? Url("GridService.min.js") : Url("GridService.js");
+            }
+        
+            [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+            public static class test {
+                private const string URLPATH = "~/Scripts/app/test";
+                public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                public static readonly string karma_conf_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/karma.conf.min.js") ? Url("karma.conf.min.js") : Url("karma.conf.js");
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class unit {
+                    private const string URLPATH = "~/Scripts/app/test/unit";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                    public static class document {
+                        private const string URLPATH = "~/Scripts/app/test/unit/document";
+                        public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                        public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                        public static readonly string controllerSpec_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/controllerSpec.min.js") ? Url("controllerSpec.min.js") : Url("controllerSpec.js");
+                        public static readonly string directiveSpec_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/directiveSpec.min.js") ? Url("directiveSpec.min.js") : Url("directiveSpec.js");
+                        public static readonly string serviceSpec_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/serviceSpec.min.js") ? Url("serviceSpec.min.js") : Url("serviceSpec.js");
+                    }
+                
+                }
+            
             }
         
         }
