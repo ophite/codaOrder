@@ -35,7 +35,7 @@ module.exports = function (config) {
             'Scripts/app/**/*.js',
             'Scripts/app/**/**/*.js',
             'Scripts/app/test/unit/**/*Spec.js',
-            'Scripts/app/view/*.html'
+            'Scripts/app/**/template/*.html'
         ],
 
         //ngHtml2JsPreprocessor: {
@@ -62,7 +62,7 @@ module.exports = function (config) {
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
         preprocessors: {
-            'Scripts/**/**/*.html': ['ng-html2js']
+            'Scripts/**/**/**/*.html': ['ng-html2js']
         },
 
 

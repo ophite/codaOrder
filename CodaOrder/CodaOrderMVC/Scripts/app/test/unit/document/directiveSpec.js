@@ -2,7 +2,7 @@ describe('directive: document', function () {
     var $compile, $rootScope, $httpBackend, $filter, $scope;
 
     beforeEach(module('app'));
-    beforeEach(module('Scripts/app/view/DirDatePicker2.html'));
+    beforeEach(module('Scripts/app/document/template/DirDatePicker.html'));
 
     beforeEach(inject(function (_$compile_, _$rootScope_, _$httpBackend_, _$filter_) {
         $compile = _$compile_;
