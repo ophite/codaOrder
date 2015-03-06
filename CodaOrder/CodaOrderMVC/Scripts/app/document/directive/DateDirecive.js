@@ -79,7 +79,7 @@
                 scope: {
                     dateStartValidate: "@dateStartValidate",
                     dateEndValidate: "@dateEndValidate",
-                    dateFormat: "@dateFormat",
+                    dateFormat: "@dateFormat"
                 },
                 link: function (scope, element, attrs, ctrl) {
 
