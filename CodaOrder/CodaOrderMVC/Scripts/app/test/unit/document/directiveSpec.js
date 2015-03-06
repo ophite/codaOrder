@@ -14,14 +14,6 @@ describe('directive: document', function () {
 
     describe('test.dirDatePicker', function () {
         it('should test dir date picker', function () {
-            //
-            $scope.format = 'dd.MM.yyyy';
-            $scope.dates = {};
-            var date = new Date();
-            $scope.dates.dateStart = formatDate(date);
-            date.setDate(date.getDate() + 7);
-            $scope.dates.dateEnd = formatDate(date);
-
             function formatDate(dateRow) {
                 return $filter('date')(dateRow, $scope.format);
             }
@@ -34,19 +26,17 @@ describe('directive: document', function () {
 
             expect(childIsolateScope).toBeDefined();
             expect(input).toBeDefined();
-            //    expect(element.html()).toContain('min-date');
-            //    expect(element.html()).toContain('max-date');
-            //    expect(element.html()).toContain('datepicker-popup');
-            //    expect(element.html()).toContain('datepicker-options');
+            expect(element.html()).toContain('min-date');
+            expect(element.html()).toContain('max-date');
+            expect(element.html()).toContain('datepicker-popup');
+            expect(element.html()).toContain('datepicker-options');
+            expect(childIsolateScope.maxDate).toBeDefined();
+            expect(childIsolateScope.minDate).toBeDefined();
+            expect(childIsolateScope.dateOptions).toBeDefined();
+            expect(childIsolateScope.disabled).toBeDefined();
         });
     });
 
-    //describe('test.dirDatesValidation', function () {
-    //    it('should test dir dates validation', function () {
-    //
-    //    });
-    //});
-    //
     describe('test.dirLeftMenuLinks', function () {
         it('should be true', function () {
             // fire run request by all state's templateUrl and if not setting up url then get Error
