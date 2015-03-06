@@ -1,5 +1,6 @@
 ﻿/// <reference path="~/Scripts/app/Constant.js" />
 /// <reference path="~/Scripts/angular_source/angular.js" />
+/// <reference path="~/Scripts/3rdparty/Date.min.js" />
 
 (function () {
     'use strict';
@@ -15,6 +16,7 @@
                     dateFormat: "@dateFormat"
                 },
                 controller: function ($scope) {
+                    $scope.minDate = '2012-12-30';
                     $scope.dateOptions = {
                         formatYear: 'yy',
                         startingDay: 1

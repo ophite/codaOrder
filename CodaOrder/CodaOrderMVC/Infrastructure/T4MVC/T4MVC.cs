@@ -106,6 +106,7 @@ namespace Links
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
             public static readonly string bootstrap_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/bootstrap.min.js") ? Url("bootstrap.min.js") : Url("bootstrap.js");
             public static readonly string bootstrap_min_js = Url("bootstrap.min.js");
+            public static readonly string Date_min_js = Url("Date.min.js");
             public static readonly string errors_json = Url("errors.json");
             public static readonly string linq_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/linq-vsdoc.min.js") ? Url("linq-vsdoc.min.js") : Url("linq-vsdoc.js");
             public static readonly string linq_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/linq.min.js") ? Url("linq.min.js") : Url("linq.js");

@@ -8,7 +8,7 @@
         function ($resource) {
             return {
                 api: function (paramDict, urlGetDocument) {
-                    return $resource(window.location.origin + urlGetDocument, {}, {
+                    return $resource(urlGetDocument, {}, {
                         get: {
                             method: 'GET',
                             params: paramDict,
@@ -18,9 +18,9 @@
                                 //headers['Content-Type'] = 'multipart/form-data';
                                 headers['Content-Type'] = 'application/x-www-form-urlencoded';
                                 //headers['X-Requested-With'] = 'XMLHttpRequest';
-                                var formData = new FormData();
-                                formData.append("model", angular.toJson(paramDict))
-                                return formData;
+                                //var formData = new FormData();
+                                //formData.append("model", angular.toJson(paramDict))
+                                //return formData;
                             },
                             //cache: DSCacheFactory.get('defaultCache')
                             cache: true

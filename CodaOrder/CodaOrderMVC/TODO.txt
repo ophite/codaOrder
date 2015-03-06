@@ -25,7 +25,7 @@ Installed:
 -ui-router.js
 -angular-cache
 -angular-spinner
-
+-karma-ng-html2js-preprocessor
 
 
 Visual Studio addins:

@@ -17,14 +17,14 @@
             $scope.dates.dateEnd = formatDate(date);
 
             //test
-            $scope.dates.dateStart = '01.01.2014';
-            $scope.dates.dateEnd = '31.01.2014';
+            $scope.dates.dateStart = '2014.01.01';
+            $scope.dates.dateEnd = '2014.01.31';
 
             parameterService.setDocumentParam(ConstantHelper.Document.paramDateBegin.value, $scope.dates.dateStart);
             parameterService.setDocumentParam(ConstantHelper.Document.paramDateEnd.value, $scope.dates.dateEnd);
         };
 
-        $scope.format = 'dd.MM.yyyy';
+        $scope.format = 'yyyy.MM.dd';
         $scope.dates = {};
         $scope.today();
 
@@ -35,7 +35,6 @@
         });
 
         $scope.init = function (templateDatePicker, templateValidation) {
-
             $scope.templateDirDatePicker = templateDatePicker;
             $scope.templateDirDatesValidation = templateValidation;
         }
