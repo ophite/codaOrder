@@ -17,6 +17,7 @@
                 },
                 controller: function ($scope) {
                     $scope.minDate = '2012-12-30';
+                    $scope.maxDate = '2020-12-30';
                     $scope.dateOptions = {
                         formatYear: 'yy',
                         startingDay: 1
