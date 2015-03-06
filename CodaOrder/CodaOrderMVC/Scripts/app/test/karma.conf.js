@@ -35,9 +35,25 @@ module.exports = function (config) {
             'Scripts/app/**/*.js',
             'Scripts/app/**/**/*.js',
             'Scripts/app/test/unit/**/*Spec.js',
-            'Scripts/app/document/controller/DocumentGridController.js'
+            'Scripts/app/view/*.html'
         ],
 
+        //ngHtml2JsPreprocessor: {
+        //    // strip this from the file path
+        //    stripPrefix: 'Scripts/'
+        //    //stripSufix: '.ext',
+        //    //// prepend this to the
+        //    //prependPrefix: 'served/',
+        //    //
+        //    //// or define a custom transform function
+        //    //cacheIdFromPath: function(filepath) {
+        //    //    return cacheId;
+        //    //},
+        //
+        //    // setting this option will create only a single module that contains templates
+        //    // from all the files, so you can load them all with module('foo')
+        //    //moduleName: 'preprocessTemplate'
+        //},
 
         // list of files to exclude
         exclude: [],
@@ -45,7 +61,9 @@ module.exports = function (config) {
 
         // preprocess matching files before serving them to the browser
         // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
-        preprocessors: {},
+        preprocessors: {
+            'Scripts/**/**/*.html': ['ng-html2js']
+        },
 
 
         // test results reporter to use
@@ -57,9 +75,10 @@ module.exports = function (config) {
         // web server port
         port: 9876,
 
-        plugins : [
+        plugins: [
             'karma-chrome-launcher',
-            'karma-jasmine'
+            'karma-jasmine',
+            'karma-ng-html2js-preprocessor'
         ],
 
         // enable / disable colors in the output (reporters and logs)
@@ -68,7 +87,7 @@ module.exports = function (config) {
 
         // level of logging
         // possible values: config.LOG_DISABLE || config.LOG_ERROR || config.LOG_WARN || config.LOG_INFO || config.LOG_DEBUG
-        logLevel: config.LOG_INFO,
+        logLevel: config.LOG_INFO || config.LOG_DEBUG,
 
 
         // enable / disable watching file and executing tests whenever any file changes
