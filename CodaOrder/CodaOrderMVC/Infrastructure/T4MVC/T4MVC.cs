@@ -353,6 +353,7 @@ namespace Links
             private const string URLPATH = "~/Content/img";
             public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
             public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+            public static readonly string _404_png = Url("404.png");
             public static readonly string logo_png = Url("logo.png");
         }
     

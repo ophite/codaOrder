@@ -16,7 +16,8 @@ namespace iOrder.Controllers
 
         public virtual ActionResult NotFound()
         {
-            return HttpNotFound("This url not exist!");
+            Response.StatusCode = 404;
+            return View();
         }
     }
 }

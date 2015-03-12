@@ -43,10 +43,15 @@ namespace iOrder
                 defaults: new { action = MVC.Document.ActionNames.Index, id = UrlParameter.Optional }
             );
             routes.MapRoute(
-                name: "Not found",
-                url: "{*.}",
-                defaults: new { controller = MVC.Error.Name, action = MVC.Error.ActionNames.NotFound }
+                name: "Base",
+                url: "",
+                defaults: new { controller = MVC.Document.Name, action = MVC.Document.ActionNames.Index, id = UrlParameter.Optional }
             );
+            //routes.MapRoute(
+            //    name: "404-PageNotFound",
+            //    url: "{*url}",
+            //    defaults: new { controller = MVC.Error.Name, action = MVC.Error.ActionNames.NotFound }
+            //);
         }
     }
 }

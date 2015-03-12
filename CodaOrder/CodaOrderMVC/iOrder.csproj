@@ -165,6 +165,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Content\img\404.png" />
     <Content Include="Scripts\3rdparty\Date.min.js" />
     <Content Include="Scripts\app\test\karma.conf.js" />
     <Content Include="Scripts\app\test\unit\document\controllerSpec.js" />
