@@ -18,10 +18,5 @@ namespace iOrder.Controllers
         {
             return PartialView();
         }
-
-        public virtual PartialViewResult DirShowError()
-        {
-            return PartialView();
-        }
     }
 }

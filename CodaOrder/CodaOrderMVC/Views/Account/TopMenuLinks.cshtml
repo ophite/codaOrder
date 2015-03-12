@@ -1,7 +1,10 @@
 ﻿@{
     if (User.Identity.IsAuthenticated)
     {
-        <a ui-sref="userProfile">@User.Identity.Name</a>
+        @*<a ui-sref="userProfile">@User.Identity.Name</a>*@
+        @*<a href="#!/Account/UserProfile">@User.Identity.Name</a>*@
+        @Html.ActionLink(@User.Identity.Name, MVC.Account.UserProfile())
+        @*@Ajax.ActionLink(@User.Identity.Name, MVC.Account.ActionNames.UserProfile, MVC.Account.Name, new AjaxOptions() { UpdateTargetId = "UserProfile" })*@
         <strong style="color:white"> / </strong>
         @Html.ActionLink("Logout", MVC.Account.Logout())
         <strong style="color:white"> / </strong>

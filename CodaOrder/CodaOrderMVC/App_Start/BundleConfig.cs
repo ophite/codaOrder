@@ -41,7 +41,7 @@ namespace iOrder
             bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_DOCUMENT), Links.Scripts.app.document.Url(), true));
             bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_ACCOUNT), Links.Scripts.app.account.Url(), true));
             bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_SEARCH_CODA_OBJECT), Links.Scripts.app.search.Url()));
-            bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_COMMON), Links.Scripts.app.common.Url()));
+            bundles.Add(IncludeT4MVCDirectoryJS(new ScriptBundle(BundleHelper.APP_COMMON), Links.Scripts.app.common.Url(), true));
         }
     }
 }

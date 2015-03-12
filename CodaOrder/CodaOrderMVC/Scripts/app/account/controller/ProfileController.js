@@ -15,7 +15,7 @@
 
             $scope.init = function (urlGetUserProfile) {
                 $scope.model.urlGetUserProfile = urlGetUserProfile;
-                var p = userProfileService.api($scope.model.urlGetUserProfile).get().$promise.then(
+                userProfileService.api($scope.model.urlGetUserProfile).get().$promise.then(
                     function (jsonData) {
                         // unpack data
                         var items = angular.fromJson(jsonData);
@@ -28,9 +28,13 @@
                         // current subject
                         if ($scope.model.tabProfile.DefaultNode !== undefined) {
                             $scope.model.currentFirm = Enumerable.From($scope.model.tabs)
-                             .Where(function (x) { return x.Profile.Name == $scope.model.tabProfile.DefaultNode })
-                             .Select(function (x) { return x })
-                             .FirstOrDefault();
+                                .Where(function (x) {
+                                    return x.Profile.Name == $scope.model.tabProfile.DefaultNode
+                                })
+                                .Select(function (x) {
+                                    return x
+                                })
+                                .FirstOrDefault();
                         }
                     });
             };

@@ -222,8 +222,24 @@ namespace Links
                 public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
                 public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                 public static readonly string date_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/date.min.js") ? Url("date.min.js") : Url("date.js");
-                public static readonly string FilterService_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/FilterService.min.js") ? Url("FilterService.min.js") : Url("FilterService.js");
-                public static readonly string ParameterService_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ParameterService.min.js") ? Url("ParameterService.min.js") : Url("ParameterService.js");
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class directive {
+                    private const string URLPATH = "~/Scripts/app/common/directive";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    public static readonly string DirShowError_html = Url("DirShowError.html");
+                    public static readonly string ShowErrorDirective_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ShowErrorDirective.min.js") ? Url("ShowErrorDirective.min.js") : Url("ShowErrorDirective.js");
+                }
+            
+                [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+                public static class service {
+                    private const string URLPATH = "~/Scripts/app/common/service";
+                    public static string Url() { return T4MVCHelpers.ProcessVirtualPath(URLPATH); }
+                    public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
+                    public static readonly string FilterService_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/FilterService.min.js") ? Url("FilterService.min.js") : Url("FilterService.js");
+                    public static readonly string ParameterService_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ParameterService.min.js") ? Url("ParameterService.min.js") : Url("ParameterService.js");
+                }
+            
             }
         
             public static readonly string Constant_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/Constant.min.js") ? Url("Constant.min.js") : Url("Constant.js");
@@ -252,7 +268,6 @@ namespace Links
                     public static string Url(string fileName) { return T4MVCHelpers.ProcessVirtualPath(URLPATH + "/" + fileName); }
                     public static readonly string DateDirecive_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/DateDirecive.min.js") ? Url("DateDirecive.min.js") : Url("DateDirecive.js");
                     public static readonly string LeftMenuLinksDirective_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/LeftMenuLinksDirective.min.js") ? Url("LeftMenuLinksDirective.min.js") : Url("LeftMenuLinksDirective.js");
-                    public static readonly string ShowErrorDirective_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/ShowErrorDirective.min.js") ? Url("ShowErrorDirective.min.js") : Url("ShowErrorDirective.js");
                 }
             
                 [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -329,6 +344,8 @@ namespace Links
             public static readonly string jquery_2_1_1_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery-2.1.1.min.js") ? Url("jquery-2.1.1.min.js") : Url("jquery-2.1.1.js");
             public static readonly string jquery_2_1_1_min_js = Url("jquery-2.1.1.min.js");
             public static readonly string jquery_2_1_1_min_map = Url("jquery-2.1.1.min.map");
+            public static readonly string jquery_unobtrusive_ajax_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.unobtrusive-ajax.min.js") ? Url("jquery.unobtrusive-ajax.min.js") : Url("jquery.unobtrusive-ajax.js");
+            public static readonly string jquery_unobtrusive_ajax_min_js = Url("jquery.unobtrusive-ajax.min.js");
             public static readonly string jquery_validate_vsdoc_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate-vsdoc.min.js") ? Url("jquery.validate-vsdoc.min.js") : Url("jquery.validate-vsdoc.js");
             public static readonly string jquery_validate_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(URLPATH + "/jquery.validate.min.js") ? Url("jquery.validate.min.js") : Url("jquery.validate.js");
             public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");

@@ -10,7 +10,7 @@
             return {
                 restrict: 'E',
                 require: 'ngModel',
-                templateUrl: 'Scripts/app/document/template/DirDatePicker.html',
+                templateUrl: '/Scripts/app/document/template/DirDatePicker.html',
                 scope: {
                     dateValue: "=ngModel",
                     dateFormat: "@dateFormat"

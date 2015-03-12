@@ -26,6 +26,7 @@ Installed:
 -angular-cache
 -angular-spinner
 -karma-ng-html2js-preprocessor
+-jquery_unobtrusive_ajax_js (for AjaxHelper - @Ajax.ActionLink)
 
 
 Visual Studio addins:

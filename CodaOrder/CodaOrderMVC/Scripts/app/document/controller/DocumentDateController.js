@@ -33,11 +33,6 @@
             parameterService.setDocumentParam(ConstantHelper.Document.paramDateBegin.value, formatDate(newValues[0]));
             parameterService.setDocumentParam(ConstantHelper.Document.paramDateEnd.value, formatDate(newValues[1]));
         });
-
-        $scope.init = function (templateDatePicker, templateValidation) {
-            $scope.templateDirDatePicker = templateDatePicker;
-            $scope.templateDirDatesValidation = templateValidation;
-        }
     };
 
     DocumentDateController.$inject = ['$scope', '$filter', 'parameterService'];

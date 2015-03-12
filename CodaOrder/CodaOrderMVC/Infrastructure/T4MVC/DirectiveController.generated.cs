@@ -75,7 +75,6 @@ namespace iOrder.Controllers
         {
             public readonly string Index = "Index";
             public readonly string DirDatesValidation = "DirDatesValidation";
-            public readonly string DirShowError = "DirShowError";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -83,7 +82,6 @@ namespace iOrder.Controllers
         {
             public const string Index = "Index";
             public const string DirDatesValidation = "DirDatesValidation";
-            public const string DirShowError = "DirShowError";
         }
 
 
@@ -98,10 +96,8 @@ namespace iOrder.Controllers
             public class _ViewNamesClass
             {
                 public readonly string DirDatesValidation = "DirDatesValidation";
-                public readonly string DirShowError = "DirShowError";
             }
             public readonly string DirDatesValidation = "~/Views/Directive/DirDatesValidation.cshtml";
-            public readonly string DirShowError = "~/Views/Directive/DirShowError.cshtml";
         }
     }
 
@@ -129,17 +125,6 @@ namespace iOrder.Controllers
         {
             var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.DirDatesValidation);
             DirDatesValidationOverride(callInfo);
-            return callInfo;
-        }
-
-        [NonAction]
-        partial void DirShowErrorOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
-
-        [NonAction]
-        public override System.Web.Mvc.PartialViewResult DirShowError()
-        {
-            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.DirShowError);
-            DirShowErrorOverride(callInfo);
             return callInfo;
         }
 

@@ -229,9 +229,9 @@ namespace iOrder.Controllers
         #region User profile
 
         [Authorize]
-        public virtual PartialViewResult UserProfile()
+        public virtual ActionResult UserProfile()
         {
-            return PartialView();
+            return View();
         }
 
         [Authorize]
@@ -247,6 +247,8 @@ namespace iOrder.Controllers
         {
             SqlResult result = new SqlResult();
             Dictionary<string, string> msg = new Dictionary<string, string>();
+            //TODO
+            result.Message = new SqlMessage() { FullMessage = "test error", Message = "mes erro", IsError = true };
             msg[ConstantDocument.IsResponseError] = result.IsError.ToString();
 
             if (result.IsError)

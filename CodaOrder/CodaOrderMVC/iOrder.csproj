@@ -171,6 +171,8 @@
     <Content Include="Scripts\app\test\unit\document\controllerSpec.js" />
     <Content Include="Scripts\app\test\unit\document\directiveSpec.js" />
     <Content Include="Scripts\app\test\unit\document\serviceSpec.js" />
+    <Content Include="Scripts\jquery\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery\jquery.unobtrusive-ajax.min.js" />
     <Content Include="TODO.txt" />
     <Content Include="Content\angular_grid_custom.css" />
     <Content Include="Content\bootstrap.css" />
@@ -198,8 +200,8 @@
     <Content Include="Scripts\app\app.js" />
     <Content Include="Scripts\app\Constant.js" />
     <Content Include="Scripts\app\common\date.js" />
-    <Content Include="Scripts\app\common\FilterService.js" />
-    <Content Include="Scripts\app\common\ParameterService.js" />
+    <Content Include="Scripts\app\common\service\FilterService.js" />
+    <Content Include="Scripts\app\common\service\ParameterService.js" />
     <Content Include="Scripts\app\document\service\ErrorService.js" />
     <Content Include="Scripts\app\document\controller\LineGridController.js" />
     <Content Include="Scripts\app\document\directive\DateDirecive.js" />
@@ -210,7 +212,7 @@
     <Content Include="Scripts\app\document\controller\DocumentLoadController.js" />
     <Content Include="Scripts\app\document\controller\DocumentPaginationController.js" />
     <Content Include="Scripts\app\document\controller\DocumentTypeController.js" />
-    <Content Include="Scripts\app\document\directive\ShowErrorDirective.js" />
+    <Content Include="Scripts\app\common\directive\ShowErrorDirective.js" />
     <Content Include="Scripts\app\document\service\GridService.js" />
     <Content Include="Scripts\app\search\SearchCodaObjectController.js" />
     <Content Include="Scripts\app\search\SearchCodaObjectService.js" />
@@ -273,6 +275,7 @@
     <Content Include="Scripts\angular_ui\angular-spinner.min.js.map" />
     <Content Include="bower.json" />
     <Content Include="Scripts\app\document\template\DirDatePicker.html" />
+    <Content Include="Scripts\app\common\directive\DirShowError.html" />
     <None Include="Scripts\jquery\jquery-2.1.1.intellisense.js" />
     <Content Include="Scripts\jquery\jquery-2.1.1.js" />
     <Content Include="Scripts\jquery\jquery-2.1.1.min.js" />
@@ -324,10 +327,10 @@
     <Content Include="Views\Document\Documents.cshtml" />
     <Content Include="Views\Document\Lines.cshtml" />
     <Content Include="Views\Account\UserProfile.cshtml" />
-    <Content Include="Views\Directive\DirShowError.cshtml" />
     <Content Include="Views\Account\RestorePassword.cshtml" />
     <Content Include="Views\Account\ConfirmPassword.cshtml" />
     <Content Include="Views\Account\ShowRestorePasswordResult.cshtml" />
+    <Content Include="Views\Account\DirShowError.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

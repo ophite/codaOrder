@@ -172,6 +172,7 @@ namespace iOrder.Controllers
                 public readonly string AddNewUser = "AddNewUser";
                 public readonly string ChangePassword = "ChangePassword";
                 public readonly string ConfirmPassword = "ConfirmPassword";
+                public readonly string DirShowError = "DirShowError";
                 public readonly string LeftMenuLinks = "LeftMenuLinks";
                 public readonly string Login = "Login";
                 public readonly string Register = "Register";
@@ -183,6 +184,7 @@ namespace iOrder.Controllers
             public readonly string AddNewUser = "~/Views/Account/AddNewUser.cshtml";
             public readonly string ChangePassword = "~/Views/Account/ChangePassword.cshtml";
             public readonly string ConfirmPassword = "~/Views/Account/ConfirmPassword.cshtml";
+            public readonly string DirShowError = "~/Views/Account/DirShowError.cshtml";
             public readonly string LeftMenuLinks = "~/Views/Account/LeftMenuLinks.cshtml";
             public readonly string Login = "~/Views/Account/Login.cshtml";
             public readonly string Register = "~/Views/Account/Register.cshtml";
@@ -382,12 +384,12 @@ namespace iOrder.Controllers
         }
 
         [NonAction]
-        partial void UserProfileOverride(T4MVC_System_Web_Mvc_PartialViewResult callInfo);
+        partial void UserProfileOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
 
         [NonAction]
-        public override System.Web.Mvc.PartialViewResult UserProfile()
+        public override System.Web.Mvc.ActionResult UserProfile()
         {
-            var callInfo = new T4MVC_System_Web_Mvc_PartialViewResult(Area, Name, ActionNames.UserProfile);
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.UserProfile);
             UserProfileOverride(callInfo);
             return callInfo;
         }
