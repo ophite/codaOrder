@@ -13,10 +13,11 @@ namespace iOrder.Controllers
         {
             return View();
         }
-        
+
         public virtual PartialViewResult DirDatesValidation()
         {
             return PartialView();
         }
     }
+
 }
