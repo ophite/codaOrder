@@ -29,15 +29,6 @@ namespace CodaOrderTest.UnitTest
             Assert.IsNotNull(result);
         }
         
-        [TestMethod]
-        public void TestDirShowError()
-        {
-            // act
-            var result = _directiveController.DirShowError() as PartialViewResult;
-            // assert
-            Assert.IsNotNull(result);
-        }
-
         #endregion
         #region Init
 
