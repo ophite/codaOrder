@@ -78,7 +78,7 @@ namespace iOrder.Entity.Repositories
             smtp.Port = 25;
             smtp.DeliveryMethod = SmtpDeliveryMethod.Network;
             smtp.UseDefaultCredentials = false;
-            smtp.Credentials = new System.Net.NetworkCredential("kobernik.u", "Vostochnaya_93");// Enter seders User name and password  
+            smtp.Credentials = new System.Net.NetworkCredential("kobernik.u", "******");// Enter seders User name and password  
             smtp.Send(mail);
         }
     }
